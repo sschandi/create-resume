@@ -3,6 +3,12 @@
 html {
   font-family: $font-family-base;
 }
+body {
+  margin: 0;
+}
+html, body, #___gatsby, #gatsby-focus-wrapper {
+  height: 100%;
+}
 
 h1, h2, h3, h4 {
   font-family: $font-family-header;
