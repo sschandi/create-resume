@@ -3,28 +3,48 @@ import React, { createContext, useState } from 'react'
 type ContextProps = {
   testing: string
   setApp?: any
+  header: HeaderType
+  updateHeader(payload: Partial<HeaderType>): void
 }
 
-enum AppComponents {
-  Home = 1,
-  Header,
-  SelectContent,
-  Content,
-  AdditionalContent,
-  Arrangement,
-  Design,
-  Colors,
-  Export
+interface HeaderType {
+  name: string
+  address: string
+  city: string
+  province: string
+  postalCode: string
+  contacts: Contact[]
+}
+
+interface Contact {
+  id: number
+  name: string
+  value: string
 }
 
 export const AppContext = createContext<Partial<ContextProps>>({})
 
 const AppContextProvider = ({ children }) => {
-  const [app, setApp] = useState<ContextProps>({
+  // Remove later
+  const [app, setApp] = useState<Partial<ContextProps>>({
     testing: 'Hello World'
   })
+
+  const [header, setHeader] = useState<HeaderType>({
+    name: '',
+    address: '',
+    city: '',
+    province: '',
+    postalCode: '',
+    contacts: [],
+  })
+
+  const updateHeader = (payload: Partial<HeaderType>) => {
+    setHeader({...header, ...payload})
+  }
+
   return (
-    <AppContext.Provider value={{ ...app, setApp }}>
+    <AppContext.Provider value={{ ...app, setApp, header, updateHeader }}>
       {children}
     </AppContext.Provider>
   )
