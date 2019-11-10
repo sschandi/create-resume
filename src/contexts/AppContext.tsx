@@ -3,6 +3,8 @@ import React, { createContext, useState } from 'react'
 type ContextProps = {
   header: HeaderType
   updateHeader(payload: Partial<HeaderType>): void
+  sections: Section[]
+  addSection(payload: Section): void
 }
 
 interface HeaderType {
@@ -19,6 +21,12 @@ interface Contact {
   value: string
 }
 
+interface Section {
+  title: string
+  type: string
+  elements: any[] // swap any type to list of possible options
+}
+
 export const AppContext = createContext<Partial<ContextProps>>({})
 
 const AppContextProvider = ({ children }) => {
@@ -31,13 +39,17 @@ const AppContextProvider = ({ children }) => {
     postalCode: '',
     contacts: [],
   })
-
   const updateHeader = (payload: Partial<HeaderType>) => {
     setHeader({...header, ...payload})
   }
 
+  const [sections, setSections] = useState<Section[]>([])
+  const addSection = (payload: Section) => {
+    setSections([...sections, payload])
+  }
+
   return (
-    <AppContext.Provider value={{ header, updateHeader }}>
+    <AppContext.Provider value={{ header, updateHeader, sections, addSection }}>
       {children}
     </AppContext.Provider>
   )
