@@ -1,5 +1,6 @@
 import React, { useContext, useState, ChangeEvent } from 'react'
 import { AppContext } from '../../contexts/AppContext'
+import Contact from './contents/Contact'
 
 interface HeaderType {
   name: string
@@ -11,7 +12,6 @@ interface HeaderType {
 }
 
 interface Contact {
-  id: number
   name: string
   value: string
 }
@@ -24,7 +24,19 @@ const Header = () => {
     updateHeader({ [e.target.name]: e.target.value })
   }
 
-  const [name, setName] = useState('')
+  const addToContact = (name: string, value: string = '') => {
+    updateHeader({ contacts: [...header.contacts, { name, value }]})
+  }
+
+  const updateContact = (index: number, contact: Contact) => {
+    const contacts = header.contacts.map((val, valIndex) => valIndex === index ? contact : val)
+    updateHeader({ contacts })
+  }
+
+  const deleteContact = (index: number) => {
+    updateHeader({ contacts: header.contacts.filter((contact, contactIndex) => contactIndex !== index) })
+  }
+
   return (
     <div>
       <h1>Header</h1>
@@ -63,6 +75,12 @@ const Header = () => {
         placeholder="1A2 B3C"
         value={header.postalCode}
         onChange={headerChange}
+      />
+      <Contact
+        contacts={header.contacts}
+        addToContact={addToContact}
+        updateContact={updateContact}
+        deleteContact={deleteContact}
       />
     </div>
   )
