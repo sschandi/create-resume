@@ -1,8 +1,6 @@
 import React, { createContext, useState } from 'react'
 
 type ContextProps = {
-  testing: string
-  setApp?: any
   header: HeaderType
   updateHeader(payload: Partial<HeaderType>): void
 }
@@ -24,10 +22,6 @@ interface Contact {
 export const AppContext = createContext<Partial<ContextProps>>({})
 
 const AppContextProvider = ({ children }) => {
-  // Remove later
-  const [app, setApp] = useState<Partial<ContextProps>>({
-    testing: 'Hello World'
-  })
 
   const [header, setHeader] = useState<HeaderType>({
     name: '',
@@ -43,7 +37,7 @@ const AppContextProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ ...app, setApp, header, updateHeader }}>
+    <AppContext.Provider value={{ header, updateHeader }}>
       {children}
     </AppContext.Provider>
   )
