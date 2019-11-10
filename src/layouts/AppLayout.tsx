@@ -14,6 +14,6 @@ const styles = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center'
-}
+} as React.CSSProperties
 
 export default appLayout
