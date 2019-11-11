@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 
+// TODO: Correctly map these to type states (ie. list has extra, elements properties)
 const selectOptions = [
   { type: 'text', title: 'Summary' },
   { type: 'education', title: 'Education' },
