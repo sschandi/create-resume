@@ -51,11 +51,10 @@ const List = (props) => {
       />
       {props.list.elements.map((element, index) => {
         return (
-          <div>
+          <div key={index}>
             <input
-              key={index}
               name="element"
-              placeholder="List Element"
+              placeholder={`${props.type} Element`}
               value={element}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 e.preventDefault()

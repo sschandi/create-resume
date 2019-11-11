@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext, SectionTypes } from '../../contexts/AppContext'
 import List from './contents/List'
 
 const Content = () => {
@@ -12,8 +12,8 @@ const Content = () => {
       {/* Temp */}
       {JSON.stringify(sections, null, 2)}
       {sections.map((section, index) => {
-        if (section.type === 'list') {
-          return <List key={index} list={section} index={index} />
+        if (section.type === SectionTypes.LIST || section.type === SectionTypes.TEXT) {
+          return <List key={index} type={section.type} list={section} index={index} />
         }
       })}
     </div>

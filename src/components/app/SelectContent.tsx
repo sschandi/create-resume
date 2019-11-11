@@ -1,20 +1,20 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext, SectionTypes } from '../../contexts/AppContext'
 
 // TODO: Correctly map these to type states (ie. list has extra, elements properties)
 const selectOptions = [
-  { type: 'text', title: 'Summary' },
-  { type: 'education', title: 'Education' },
-  { type: 'skill', title: 'Skills' },
-  { type: 'list', title: 'Experience' },
-  { type: 'list', title: 'Volunteer' },
-  { type: 'reference', title: 'References' }
+  { type: SectionTypes.TEXT, title: 'Summary' },
+  { type: SectionTypes.EDUCATION, title: 'Education' },
+  { type: SectionTypes.SKILL, title: 'Skills' },
+  { type: SectionTypes.LIST, title: 'Experience' },
+  { type: SectionTypes.LIST, title: 'Volunteer' },
+  { type: SectionTypes.REFERENCE, title: 'References' }
 ]
 
 const customSelectOptions = [
-  { type: 'list', title: 'List' },
-  { type: 'text', title: 'Text' },
-  { type: 'skill', title: 'Skill' },
+  { type: SectionTypes.LIST, title: 'List' },
+  { type: SectionTypes.TEXT, title: 'Text' },
+  { type: SectionTypes.SKILL, title: 'Skill' },
 ]
 
 const SelectContent = () => {

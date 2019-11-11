@@ -29,6 +29,14 @@ interface Section {
   elements: any[] // swap any type to list of possible options
 }
 
+export enum SectionTypes {
+  LIST = 'List',
+  TEXT = 'Text',
+  SKILL = 'Skill',
+  EDUCATION = 'Education',
+  REFERENCE = 'Reference'
+}
+
 export const AppContext = createContext<Partial<ContextProps>>({})
 
 const AppContextProvider = ({ children }) => {
