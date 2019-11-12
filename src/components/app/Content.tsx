@@ -3,6 +3,7 @@ import { AppContext, SectionTypes } from '../../contexts/AppContext'
 import List from './contents/List'
 import Skill from './contents/Skill'
 import Education from './contents/Education'
+import Reference from './contents/Reference'
 
 const Content = () => {
   const { sections } = useContext(AppContext)
@@ -20,6 +21,8 @@ const Content = () => {
           return <Skill key={index} skill={section} index={index} />
         } else if (section.type === SectionTypes.EDUCATION) {
           return <Education key={index} education={section} index={index} />
+        } else if (section.type === SectionTypes.REFERENCE) {
+          return <Reference key={index} reference={section} index={index} />
         }
       })}
     </div>
