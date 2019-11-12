@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { AppContext, SectionTypes } from '../../contexts/AppContext'
 import List from './contents/List'
-import Skill from './contents/SKill'
+import Skill from './contents/Skill'
+import Education from './contents/Education'
 
 const Content = () => {
   const { sections } = useContext(AppContext)
@@ -17,6 +18,8 @@ const Content = () => {
           return <List key={index} type={section.type} list={section} index={index} />
         } else if (section.type === SectionTypes.SKILL) {
           return <Skill key={index} skill={section} index={index} />
+        } else if (section.type === SectionTypes.EDUCATION) {
+          return <Education key={index} education={section} index={index} />
         }
       })}
     </div>
