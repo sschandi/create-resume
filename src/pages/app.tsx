@@ -4,6 +4,7 @@ import Home from '../components/app/Home'
 import Header from '../components/app/Header'
 import SelectContent from '../components/app/SelectContent'
 import Content from '../components/app/Content'
+import Design from '../components/app/Design'
 
 import AppLayout from '../layouts/AppLayout'
 import styles from '../styles/app.module.scss'
@@ -14,10 +15,10 @@ enum AppComponents {
   Header,
   SelectContent,
   Content,
-  AdditionalContent,
-  Arrangement,
+  // AdditionalContent,
+  // Arrangement,
   Design,
-  Colors,
+  // Colors,
   Export
 }
 
@@ -40,6 +41,8 @@ const App = () => {
         return <SelectContent />
       case AppComponents.Content:
         return <Content />
+      case AppComponents.Design:
+        return <Design />
       default:
         return <Home />
     }
