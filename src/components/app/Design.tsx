@@ -58,7 +58,7 @@ const Design = () => {
       <h1>Design</h1>
       <p>{JSON.stringify(sections)}</p>
       <button onClick={updateFrame}>Update</button>
-      <iframe ref={frame} />
+      <iframe ref={frame} style={{ width: '500px', height: '500px' }}/>
     </div>
   )
 }
