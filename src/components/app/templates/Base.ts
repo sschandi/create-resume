@@ -245,16 +245,16 @@ export default class Base {
       } else if (element.extra) {
         stack.push(this.createListExtra(element.extra))
       }
-      if (type === 'list') {
+      if (type === 'List') {
         stack.push({
-          ul: element.elements,
+          ul: [...element.elements],
           style:
             !element.title && !element.extra ? 'soloListMargin' : 'listMargin',
           markerColor: this.colors.primary
         })
       } else {
         stack.push({
-          stack: element.elements,
+          stack: [...element.elements],
           style:
             !element.title && !element.extra ? 'soloListMargin' : 'listMargin'
         })
