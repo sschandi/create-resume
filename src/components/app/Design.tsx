@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 
 const pdfMake = require('pdfmake/build/pdfmake')
@@ -34,31 +34,51 @@ import Teres from './templates/Teres'
 import Cluo from './templates/Cluo'
 import Cogito from './templates/Cogito'
 
+interface Template {
+  id: number
+  name: string
+  document: object
+  pdf: any
+  template: any
+}
+
+const templateList = [Teres, Cluo, Cogito]
+
 const Design = () => {
   const { sections, header } = useContext(AppContext)
   const frame = useRef<HTMLIFrameElement>(null)
 
-  const updateFrame = () => {
-    // const template = new Cluo()
-    const template = new Teres()
-    // const template = new Cogito()
-    const document = template.render(
-      sections,
-      header
-    )
+  const templates: Template[] = templateList.map((Template) => {
+    const template = new Template()
+    const document = template.render(sections, header)
     const pdf = pdfMake.createPdf(document)
-    pdf.getDataUrl((dataUrl: string) => {
+
+    return {
+      id: template.id,
+      name: template.name,
+      document,
+      pdf,
+      template: template
+    }
+  })
+  const [activeTemplate, setActiveTemplate]= useState<Template>(templates[0])
+
+  useEffect(() => {
+    activeTemplate.pdf.getDataUrl((url: string) => {
       if (frame) {
-        frame.current.src = dataUrl
+        frame.current.src = url
       }
     })
-  }
+  }, [activeTemplate])
+
   return (
     <div>
       <h1>Design</h1>
       <p>{JSON.stringify(sections)}</p>
-      <button onClick={updateFrame}>Update</button>
-      <iframe ref={frame} style={{ width: '500px', height: '500px' }}/>
+      <iframe ref={frame} style={{ width: '700px', height: '700px' }} />
+      {templates.map((template) => {
+        return <button key={template.id} onClick={() => setActiveTemplate(template)}>{template.name}</button>
+      })}
     </div>
   )
 }
