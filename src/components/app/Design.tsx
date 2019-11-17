@@ -47,7 +47,6 @@ const templateList = [Teres, Cluo, Cogito]
 
 const Design = () => {
   const { sections, header } = useContext(AppContext)
-  const frame = useRef<HTMLIFrameElement>(null)
   const [document, setDocument] = useState(null)
 
   const templates: Template[] = templateList.map((Template) => {
@@ -64,26 +63,40 @@ const Design = () => {
     }
   })
   const [activeTemplate, setActiveTemplate]= useState<Template>(templates[0])
+  const [pageCount, setPageCount] = useState(0)
+  const [currPage, setCurrPage] = useState(1)
+  const onDocumentLoad = ({ numPages }) => {
+    setPageCount(numPages)
+  }
+  const setPage = (action: 'prev' | 'next') => {
+    if (action === 'prev' && currPage !== 1) {
+      setCurrPage(currPage - 1)
+    } else if (action === 'next' && currPage !== pageCount) {
+      setCurrPage(currPage +1)
+    }
+  }
 
   useEffect(() => {
-    activeTemplate.pdf.getDataUrl((url: string) => {
-      setDocument(url)
-      if (frame) {
-        frame.current.src = url
-      }
-    })
+    const effectDocument = async () => {
+      await activeTemplate.pdf.getDataUrl((url: string) => {
+        setDocument(url)
+      })
+    }
+    effectDocument()
   }, [activeTemplate])
 
   return (
     <div>
       <h1>Design</h1>
-      <p>{JSON.stringify(sections)}</p>
-      <div>
-        <Document file={document} style={{ border: '1px solid red' }}>
-          <Page pageNumber={1} style={{ border: '1px solid blue' }}/>
+      <div className="pdf">
+        <Document file={document} className="pdf-document" onLoadSuccess={onDocumentLoad}>
+          <Page pageNumber={currPage} width={300} />
+          <div style={{ position: 'absolute', top: 0 }}>
+            <button onClick={() => setPage('prev')}>prev</button>
+            <button onClick={() => setPage('next')}>Next</button>
+          </div>
         </Document>
       </div>
-      <iframe ref={frame} style={{ width: '700px', height: '700px' }} />
       {templates.map((template) => {
         return <button key={template.id} onClick={() => setActiveTemplate(template)}>{template.name}</button>
       })}
