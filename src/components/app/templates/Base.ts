@@ -6,6 +6,7 @@ import {
   List,
   Reference,
   Section,
+  SectionTypes,
   Skill
 } from '../ResumeTypes'
 
@@ -156,22 +157,22 @@ export default class Base {
   protected renderContent(sections: Section[]): any[] {
     let result: object[] = []
     sections.forEach((item: Section) => {
-      if (item.type === 'List' || item.type === 'Text') {
+      if (item.type === SectionTypes.LIST || item.type === SectionTypes.TEXT) {
         // result.push(this.renderListSection(item.title, item.elements))
         result = [
           ...result,
           ...this.renderListAndText(item.title, item.elements, item.type)
         ]
-      } else if (item.type === 'Reference') {
+      } else if (item.type === SectionTypes.EDUCATION) {
         result = [
           ...result,
           ...this.renderReferences(item.title, item.elements)
         ]
-      } else if (item.type === 'Skill') {
+      } else if (item.type === SectionTypes.SKILL) {
         result = [...result, ...this.renderSkills(item.title, item.elements)]
-      } else if (item.type === 'Education') {
+      } else if (item.type === SectionTypes.EDUCATION) {
         result = [...result, ...this.renderEducation(item.title, item.elements)]
-      } else if (item.type === 'pageBreak') {
+      } else if (item.type === SectionTypes.PAGEBREAK) {
         result = [...result, ...this.renderPageBreak()]
       }
     })
@@ -236,7 +237,7 @@ export default class Base {
   protected renderListAndText(
     title: string,
     elements: List[],
-    type: string
+    type: SectionTypes
   ): any[] {
     const result = []
     result.push(this.createTitle(title))
@@ -249,7 +250,7 @@ export default class Base {
       } else if (element.extra) {
         stack.push(this.createListExtra(element.extra))
       }
-      if (type === 'List') {
+      if (type === SectionTypes.LIST) {
         stack.push({
           ul: [...element.elements],
           style:

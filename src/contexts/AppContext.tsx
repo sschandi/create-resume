@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-import { Header, Contact, Section } from '../components/app/ResumeTypes'
+import { Header, Section } from '../components/app/ResumeTypes'
 
 type ContextProps = {
   header: Header
@@ -8,14 +8,6 @@ type ContextProps = {
   addSection(payload: Section): void
   updateSection(index: number, payload: Section): void
   deleteSection(index: number)
-}
-
-export enum SectionTypes {
-  LIST = 'List',
-  TEXT = 'Text',
-  SKILL = 'Skill',
-  EDUCATION = 'Education',
-  REFERENCE = 'Reference'
 }
 
 export const AppContext = createContext<Partial<ContextProps>>({})

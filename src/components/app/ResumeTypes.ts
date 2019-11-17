@@ -18,6 +18,15 @@ export interface Section {
   elements: any[] // swap any type to list of possible options
 }
 
+export enum SectionTypes {
+  LIST = 'List',
+  TEXT = 'Text',
+  SKILL = 'Skill',
+  EDUCATION = 'Education',
+  REFERENCE = 'Reference',
+  PAGEBREAK = 'PageBreak'
+}
+
 export interface Education {
   degree: string
   program: string
