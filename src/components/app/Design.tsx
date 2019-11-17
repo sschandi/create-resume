@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
+import { Document, Page } from 'react-pdf'
 
 const pdfMake = require('pdfmake/build/pdfmake')
 const pdfFonts = require('./templates/vfs_fonts')
@@ -47,6 +48,7 @@ const templateList = [Teres, Cluo, Cogito]
 const Design = () => {
   const { sections, header } = useContext(AppContext)
   const frame = useRef<HTMLIFrameElement>(null)
+  const [document, setDocument] = useState(null)
 
   const templates: Template[] = templateList.map((Template) => {
     const template = new Template()
@@ -65,6 +67,7 @@ const Design = () => {
 
   useEffect(() => {
     activeTemplate.pdf.getDataUrl((url: string) => {
+      setDocument(url)
       if (frame) {
         frame.current.src = url
       }
@@ -75,6 +78,11 @@ const Design = () => {
     <div>
       <h1>Design</h1>
       <p>{JSON.stringify(sections)}</p>
+      <div>
+        <Document file={document} style={{ border: '1px solid red' }}>
+          <Page pageNumber={1} style={{ border: '1px solid blue' }}/>
+        </Document>
+      </div>
       <iframe ref={frame} style={{ width: '700px', height: '700px' }} />
       {templates.map((template) => {
         return <button key={template.id} onClick={() => setActiveTemplate(template)}>{template.name}</button>
