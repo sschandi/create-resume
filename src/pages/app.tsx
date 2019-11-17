@@ -7,7 +7,7 @@ import Content from '../components/app/Content'
 import Design from '../components/app/Design'
 
 import AppLayout from '../layouts/AppLayout'
-import styles from '../styles/app.module.scss'
+import '../styles/app.scss'
 import SEO from '../components/seo'
 
 enum AppComponents {
@@ -53,7 +53,7 @@ const App = () => {
       <AppContextProvider>
         <ComponentTag />
       </AppContextProvider>
-      <div className={styles.navigation}>
+      <div className="navigation">
         <button disabled={currentComponent === AppComponents.Home} onClick={goBack}>Prev</button>
         <button disabled={currentComponent === AppComponents.Export} onClick={goNext}>Next</button>
       </div>

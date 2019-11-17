@@ -1,0 +1,19 @@
+@import './variables';
+
+.navigation {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+.pdf {
+  display: flex;
+  justify-content: center;
+  &-document {
+    position: relative;
+    border: 1px solid red;
+  }
+  &-page {
+  }
+}
