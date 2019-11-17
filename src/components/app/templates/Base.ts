@@ -58,6 +58,8 @@ export default class Base {
     font: Font | object,
     styles: StyleObject | object
   ) {
+    this.name = name
+    this.id = id
     this.setColors(colors)
     this.setFont(font)
     this.setStyles(styles)
