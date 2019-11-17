@@ -1,32 +1,13 @@
 import React, { createContext, useState } from 'react'
+import { Header, Contact, Section } from '../components/app/ResumeTypes'
 
 type ContextProps = {
-  header: HeaderType
-  updateHeader(payload: Partial<HeaderType>): void
+  header: Header
+  updateHeader(payload: Partial<Header>): void
   sections: Section[]
   addSection(payload: Section): void
   updateSection(index: number, payload: Section): void
   deleteSection(index: number)
-}
-
-interface HeaderType {
-  name: string
-  address: string
-  city: string
-  province: string
-  postalCode: string
-  contacts: Contact[]
-}
-
-interface Contact {
-  name: string
-  value: string
-}
-
-interface Section {
-  title: string
-  type: string
-  elements: any[] // swap any type to list of possible options
 }
 
 export enum SectionTypes {
@@ -41,7 +22,7 @@ export const AppContext = createContext<Partial<ContextProps>>({})
 
 const AppContextProvider = ({ children }) => {
 
-  const [header, setHeader] = useState<HeaderType>({
+  const [header, setHeader] = useState<Header>({
     name: '',
     address: '',
     city: '',
@@ -49,7 +30,7 @@ const AppContextProvider = ({ children }) => {
     postalCode: '',
     contacts: [],
   })
-  const updateHeader = (payload: Partial<HeaderType>) => {
+  const updateHeader = (payload: Partial<Header>) => {
     setHeader({...header, ...payload})
   }
 

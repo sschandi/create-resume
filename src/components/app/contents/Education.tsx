@@ -1,13 +1,6 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
 
-interface EducationType {
-  degree: string
-  program: string
-  university: string
-  date: string
-}
-
 const education = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)
 

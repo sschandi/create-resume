@@ -1,16 +1,8 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
+import { Reference as ReferenceType } from '../ResumeTypes'
 
-interface ReferenceType {
-  name: string
-  occupation: string
-  company: string
-  companyAddress?: string
-  phone?: string
-  email?: string
-}
-
-const reference = (props) => {
+const Reference = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)
 
   const deleteReference = () => {
@@ -120,4 +112,4 @@ const reference = (props) => {
   )
 }
 
-export default reference
+export default Reference

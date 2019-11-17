@@ -1,10 +1,6 @@
 import React, { ChangeEvent, useContext }  from 'react'
 import { AppContext } from '../../../contexts/AppContext'
-
-interface SkillType {
-  name: string
-  levels: boolean[]
-}
+import { Skill as SkillType } from '../ResumeTypes'
 
 const Skill = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)

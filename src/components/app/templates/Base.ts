@@ -1,11 +1,13 @@
 import { StyleObject, Font, Colors, PageSizes } from './Interfaces'
-import List from '@/resume/List'
-import Section from '@/resume/Section'
-import Header from '@/resume/Header'
-import Contact from '@/resume/Contact'
-import Reference from '@/resume/Reference'
-import Education from '@/resume/Education'
-import Skill from '@/resume/Skill'
+import {
+  Contact,
+  Education,
+  Header,
+  List,
+  Reference,
+  Section,
+  Skill
+} from '../ResumeTypes'
 
 export default class Base {
   public name: string = 'Base'

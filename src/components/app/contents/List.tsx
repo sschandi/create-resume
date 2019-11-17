@@ -1,11 +1,6 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext, SectionTypes } from '../../../contexts/AppContext'
-
-export interface List {
-  title: string | null
-  extra: string | null
-  elements: string[]
-}
+import { List as ListType } from '../ResumeTypes'
 
 const List = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)
@@ -17,13 +12,13 @@ const List = (props) => {
   const deleteList = () => {
     deleteSection(props.index)
   }
-  const updateListElement = (index: number, value: Partial<List>) => {
+  const updateListElement = (index: number, value: Partial<ListType>) => {
     const elements = props.list.elements
       .map((el, elIndex) => elIndex === index ? { ...el, ...value } : el)
     updateSection(props.index, { ...props.list, elements })
   }
   const addListElement = () => {
-    const list: List = {
+    const list: ListType = {
       title: props.type === SectionTypes.TEXT ? null : '',
       extra: props.type === SectionTypes.TEXT ? null : '',
       elements: [],
