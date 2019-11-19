@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { AppContext, SectionTypes } from '../../contexts/AppContext'
+import { AppContext } from '../../contexts/AppContext'
+import { SectionTypes } from './ResumeTypes'
 
-// TODO: Correctly map these to type states (ie. list has extra, elements properties)
 const selectOptions = [
   { type: SectionTypes.TEXT, title: 'Summary' },
   { type: SectionTypes.EDUCATION, title: 'Education' },
