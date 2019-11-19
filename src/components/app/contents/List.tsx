@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext } from 'react'
-import { AppContext, SectionTypes } from '../../../contexts/AppContext'
+import { AppContext } from '../../../contexts/AppContext'
+import { SectionTypes } from '../ResumeTypes'
 import { List as ListType } from '../ResumeTypes'
 
 const List = (props) => {

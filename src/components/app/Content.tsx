@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { AppContext, SectionTypes } from '../../contexts/AppContext'
+import { AppContext } from '../../contexts/AppContext'
+import { SectionTypes } from './ResumeTypes'
 import List from './contents/List'
 import Skill from './contents/Skill'
 import Education from './contents/Education'
