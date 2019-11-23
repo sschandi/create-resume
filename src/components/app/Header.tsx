@@ -46,6 +46,7 @@ const Header = () => {
         name="name"
         placeholder="John Smith"
         value={header.name}
+        autoFocus
         onChange={headerChange}
       />
       <input

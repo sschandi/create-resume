@@ -77,7 +77,6 @@ export default class Base {
   }
 
   public render(content: Section[], header: Header): object {
-    console.log(content, header)
     return {
       pageSize: this.pageSize,
       header: this.renderPageHeader(header.name),
@@ -163,7 +162,7 @@ export default class Base {
           ...result,
           ...this.renderListAndText(item.title, item.elements, item.type)
         ]
-      } else if (item.type === SectionTypes.EDUCATION) {
+      } else if (item.type === SectionTypes.REFERENCE) {
         result = [
           ...result,
           ...this.renderReferences(item.title, item.elements)
