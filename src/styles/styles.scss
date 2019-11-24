@@ -6,6 +6,8 @@ html {
 }
 body {
   margin: 0;
+  color: $dark-grey;
+  font-size: 20px;
 }
 // html, body, #___gatsby, #gatsby-focus-wrapper {
   // height: 100%;
@@ -13,4 +15,26 @@ body {
 
 h1, h2, h3, h4 {
   font-family: $font-family-header;
+}
+
+.input {
+  margin: 1rem;
+  label {
+    display: block;
+    font-size: 12px;
+  }
+  input, &-field {
+    padding-bottom: 0.25rem;
+    font-size: 20px;
+    color: $dark-grey;
+    border: none;
+    border-bottom: 2px solid rgba($primary, 0.4);
+    transition: all 200ms ease-out;
+    &:focus {
+      border-bottom-color: $primary;
+    }
+    &::placeholder {
+      color: $dark-grey;
+    }
+  }
 }
