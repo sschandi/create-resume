@@ -25,22 +25,28 @@ const Contact = (props) => {
       {props.contacts.map((contact, index) => {
         return (
           <div key={index}>
-            <input
-              type="text"
-              value={contact.name}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateContactName(index, e.target.value)
-              }}
-            />
-            <input
-              type="text"
-              value={contact.value}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateContactValue(index, e.target.value)
-              }}
-            />
+            <div className="input">
+              <label>Contact Type</label>
+              <input
+                value={contact.name}
+                type="text"
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateContactName(index, e.target.value)
+                }}
+              />
+            </div>
+            <div className="input">
+              <label>Value</label>
+              <input
+                value={contact.value}
+                type="text"
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateContactValue(index, e.target.value)
+                }}
+              />
+            </div>
             <button onClick={() => props.deleteContact(index)}>Delete</button>
           </div>
         )
