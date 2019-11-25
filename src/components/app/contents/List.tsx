@@ -22,7 +22,7 @@ const List = (props) => {
     const list: ListType = {
       title: props.type === SectionTypes.TEXT ? null : '',
       extra: props.type === SectionTypes.TEXT ? null : '',
-      elements: [],
+      elements: [''],
     }
     updateSection(props.index, { ...props.list, elements: [...props.list.elements, list]})
   }
@@ -42,11 +42,6 @@ const List = (props) => {
   const deleteListElementText = (index: number, listIndex: number) => {
     const listTexts = props.list.elements[index].elements.filter((el, elIndex) => elIndex !== listIndex)
     updateListElement(index, { elements: listTexts })
-  }
-
-  let listHeader
-  if (props.type === SectionTypes.TEXT) {
-    
   }
 
   return (
@@ -88,25 +83,33 @@ const List = (props) => {
             {element.elements.map((listEl, listIndex) => {
               return (
                 <div key={listIndex}>
-                  <input
+                  <textarea
                     name="element"
                     placeholder={`${props.type} Text`}
                     value={listEl}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                       e.preventDefault()
                       updateListElementText(index, listIndex, e.target.value)
                     }}
                   />
-                  <button onClick={() => deleteListElementText(index, listIndex)}>Delete El Text</button>
+                  {props.type !== SectionTypes.TEXT &&
+                    <button onClick={() => deleteListElementText(index, listIndex)}>Delete El Text</button>
+                  }
                 </div>
               )
             })}
-            <button onClick={() => addListElementText(index)}>Add El Text</button>
-            <button onClick={() => deleteListElement(index)}>Delete</button>
+            {props.type !== SectionTypes.TEXT &&
+              <>
+                <button onClick={() => addListElementText(index)}>Add El Text</button>
+                <button onClick={() => deleteListElement(index)}>Delete</button>
+              </>
+            }
           </div>
         )
       })}
-      <button onClick={() => addListElement()}>Add</button>
+      {props.type !== SectionTypes.TEXT &&
+        <button onClick={() => addListElement()}>Add</button>
+      }
       <button onClick={() => deleteList()}>Delete</button>
     </div>
   )
