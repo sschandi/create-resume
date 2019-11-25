@@ -2,18 +2,10 @@ import React from 'react'
 
 const appLayout = ({ children }) => {
   return (
-    <div className="app-layout" style={styles}>
+    <div className="app-layout">
       {children}
     </div>
   )
 }
-
-const styles = {
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center'
-} as React.CSSProperties
 
 export default appLayout

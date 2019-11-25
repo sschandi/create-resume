@@ -1,5 +1,12 @@
 @import './variables';
 
+.app-container {
+  max-width: 1200px;
+  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navigation {
   position: fixed;
   bottom: 1rem;

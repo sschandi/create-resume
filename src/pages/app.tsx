@@ -51,7 +51,9 @@ const App = () => {
     <AppLayout>
       <SEO title="App" />
       <AppContextProvider>
-        <ComponentTag />
+        <div className="app-container">
+          <ComponentTag />
+        </div>
       </AppContextProvider>
       <div className="navigation">
         <button disabled={currentComponent === AppComponents.Home} onClick={goBack}>Prev</button>
