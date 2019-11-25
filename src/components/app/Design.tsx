@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
-import { Document, Page } from 'react-pdf'
+import PDFDisplay from './PDFDisplay'
 
 const pdfMake = require('pdfmake/build/pdfmake')
 const pdfFonts = require('./templates/vfs_fonts')
@@ -63,18 +63,6 @@ const Design = () => {
     }
   })
   const [activeTemplate, setActiveTemplate]= useState<Template>(templates[0])
-  const [pageCount, setPageCount] = useState(0)
-  const [currPage, setCurrPage] = useState(1)
-  const onDocumentLoad = ({ numPages }) => {
-    setPageCount(numPages)
-  }
-  const setPage = (action: 'prev' | 'next') => {
-    if (action === 'prev' && currPage !== 1) {
-      setCurrPage(currPage - 1)
-    } else if (action === 'next' && currPage !== pageCount) {
-      setCurrPage(currPage +1)
-    }
-  }
 
   useEffect(() => {
     const effectDocument = async () => {
@@ -88,15 +76,7 @@ const Design = () => {
   return (
     <div>
       <h1>Design</h1>
-      <div className="pdf">
-        <Document file={document} className="pdf-document" onLoadSuccess={onDocumentLoad}>
-          <Page pageNumber={currPage} width={300} />
-          <div style={{ position: 'absolute', top: 0 }}>
-            <button onClick={() => setPage('prev')}>prev</button>
-            <button onClick={() => setPage('next')}>Next</button>
-          </div>
-        </Document>
-      </div>
+      <PDFDisplay document={document} width={300} />
       {templates.map((template) => {
         return <button key={template.id} onClick={() => setActiveTemplate(template)}>{template.name}</button>
       })}
