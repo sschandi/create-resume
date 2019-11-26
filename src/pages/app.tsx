@@ -5,6 +5,7 @@ import Header from '../components/app/Header'
 import SelectContent from '../components/app/SelectContent'
 import Content from '../components/app/Content'
 import Design from '../components/app/Design'
+import Exporter from '../components/app/Exporter'
 
 import AppLayout from '../layouts/AppLayout'
 import '../styles/app.scss'
@@ -43,6 +44,8 @@ const App = () => {
         return <Content />
       case AppComponents.Design:
         return <Design />
+      case AppComponents.Export:
+        return <Exporter />
       default:
         return <Home />
     }
