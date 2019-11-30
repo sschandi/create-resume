@@ -18,7 +18,7 @@ const Uploader = () => {
 
   return (
     <div>
-      <input type="file" id="load" onChange={(e) => upload(e)} />
+      <input type="file" id="load" onChange={upload} />
     </div>
   )
 }
