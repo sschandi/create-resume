@@ -7,7 +7,8 @@ type ContextProps = {
   sections: Section[]
   addSection(payload: Section): void
   updateSection(index: number, payload: Section): void
-  deleteSection(index: number)
+  deleteSection(index: number): void
+  setSections(payload: Section[]): void
 }
 
 export const AppContext = createContext<Partial<ContextProps>>({})
@@ -38,7 +39,7 @@ const AppContextProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ header, updateHeader, sections, addSection, updateSection, deleteSection }}>
+    <AppContext.Provider value={{ header, updateHeader, sections, addSection, updateSection, deleteSection, setSections }}>
       {children}
     </AppContext.Provider>
   )
