@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import AppContextProvider from '../contexts/AppContext'
 import Home from '../components/app/Home'
 import Header from '../components/app/Header'
-import SelectContent from '../components/app/SelectContent'
 import Content from '../components/app/Content'
 import Design from '../components/app/Design'
 import Exporter from '../components/app/Exporter'
@@ -14,12 +13,8 @@ import SEO from '../components/seo'
 enum AppComponents {
   Home = 1,
   Header,
-  SelectContent,
   Content,
-  // AdditionalContent,
-  // Arrangement,
   Design,
-  // Colors,
   Export
 }
 
@@ -38,8 +33,6 @@ const App = () => {
         return <Home next={goNext} />
       case AppComponents.Header:
         return <Header />
-      case AppComponents.SelectContent:
-        return <SelectContent />
       case AppComponents.Content:
         return <Content />
       case AppComponents.Design:

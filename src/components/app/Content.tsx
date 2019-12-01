@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
+import SelectContent from './SelectContent'
 import List from './contents/List'
 import Skill from './contents/Skill'
 import Education from './contents/Education'
@@ -11,6 +12,7 @@ const Content = () => {
 
   return (
     <div>
+      <SelectContent />
       <h1>Content</h1>
       <p>Now lets fill everything with Content</p>
       {/* Temp */}
