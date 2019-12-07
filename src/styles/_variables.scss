@@ -1,5 +1,9 @@
-$primary: #00d1cd;
-$secondary: #f30067;
+$primary: #39648A;
+$secondary: #2d9cca;
+
+$dark: #25274d;
+$light: #F7F9FB;
+$med: #AAABB8;
 
 $light-grey: #e5e5e5;
 $med-grey: #393e46;
@@ -12,3 +16,9 @@ $font-family-header: 'Libre Baskerville', sans-serif;
 $font-family-base: 'Open Sans', sans-serif;
 
 $border-radius: 0.25rem;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
