@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons'
 import AppContextProvider from '../contexts/AppContext'
 import Home from '../components/app/Home'
 import Header from '../components/app/Header'
@@ -11,7 +12,7 @@ import '../styles/app.scss'
 import SEO from '../components/seo'
 
 enum AppComponents {
-  Home = 1,
+  Home = 0,
   Header,
   Content,
   Design,
@@ -20,39 +21,46 @@ enum AppComponents {
 
 const App = () => {
   const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Home)
+  const parallax: any = useRef(null)
+  // Parallax Components Props
+  const componentProps = {
+    speed: 0.5,
+    style: { overflowY: 'auto' },
+    onScroll: (e) => e.stopPropagation()
+  }
 
   const goBack = () => {
-    setCurrentComponent(currentComponent !== AppComponents.Home ? currentComponent - 1 : AppComponents.Home)
+    const back = currentComponent - 1
+    setCurrentComponent(back)
+    parallax.current.scrollTo(back)
   }
   const goNext = () => {
-    setCurrentComponent(currentComponent !== AppComponents.Export ? currentComponent + 1 : AppComponents.Export)
+    const next = currentComponent + 1
+    setCurrentComponent(next)
+    parallax.current.scrollTo(next)
   }
-  const ComponentTag = () => {
-    switch (currentComponent) {
-      case AppComponents.Home:
-        return <Home next={goNext} />
-      case AppComponents.Header:
-        return <Header />
-      case AppComponents.Content:
-        return <Content />
-      case AppComponents.Design:
-        return <Design />
-      case AppComponents.Export:
-        return <Exporter />
-      default:
-        return <Home />
-    }
-  }
+
   return (
     <AppLayout>
       <SEO title="App" />
       <AppContextProvider>
-          {/* <ComponentTag /> */}
-          <Home next={goNext} />
-          <Header />
-          <Content />
-          <Design />
-          <Exporter />
+        <Parallax pages={5} ref={parallax} horizontal={true} scrolling={false}>
+          <ParallaxLayer offset={0} {...componentProps}>
+            <Home next={goNext} />
+          </ParallaxLayer>
+          <ParallaxLayer offset={1} {...componentProps}>
+            <Header />
+          </ParallaxLayer>
+          <ParallaxLayer offset={2} {...componentProps}>
+            <Content />
+          </ParallaxLayer>
+          <ParallaxLayer offset={3} {...componentProps}>
+            <Design />
+          </ParallaxLayer>
+          <ParallaxLayer offset={4} {...componentProps}>
+            <Exporter />
+          </ParallaxLayer>
+        </Parallax>
       </AppContextProvider>
       <div className="navigation">
         <button disabled={currentComponent === AppComponents.Home} onClick={goBack}>Prev</button>
