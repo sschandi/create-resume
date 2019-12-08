@@ -25,7 +25,7 @@ const Header = () => {
   }
 
   return (
-    <div>
+    <div className="component-container">
       <h1>Header</h1>
       <p>Lets start off with the easy stuff.</p>
       <div className="input">

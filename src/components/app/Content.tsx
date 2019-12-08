@@ -11,7 +11,7 @@ const Content = () => {
   const { sections } = useContext(AppContext)
 
   return (
-    <div>
+    <div className="component-container">
       <SelectContent />
       <h1>Content</h1>
       <p>Now lets fill everything with Content</p>

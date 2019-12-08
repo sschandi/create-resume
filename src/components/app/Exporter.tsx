@@ -19,7 +19,7 @@ const Exporter = () => {
   }
 
   return (
-    <div>
+    <div className="component-container">
       <h1>Export</h1>
       <button onClick={() => downloadJSON()}>Export JSON</button>
     </div>

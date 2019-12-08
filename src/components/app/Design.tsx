@@ -74,7 +74,7 @@ const Design = () => {
   }, [activeTemplate])
 
   return (
-    <div>
+    <div className="component-container">
       <h1>Design</h1>
       <PDFDisplay document={document} width={300} />
       {templates.map((template) => {
