@@ -13,7 +13,7 @@ const Content = ({ scrollTop }) => {
   return (
     <div id="content" className="component-container">
       <div className="content__main">
-        <h1>Content {scrollTop}</h1>
+        <h1>Content</h1>
         <p>Now lets fill everything with Content</p>
         {sections.map((section, index) => {
           if (section.type === SectionTypes.LIST || section.type === SectionTypes.TEXT) {
