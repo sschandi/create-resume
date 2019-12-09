@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
 
@@ -98,8 +98,7 @@ const SelectContent = () => {
   const { sections, addSection } = useContext(AppContext)
 
   return (
-    <div>
-      <h1>Select Content</h1>
+    <div className="content__select">
       <div>
         {selectOptions.map((option, index) => {
           return (
@@ -125,9 +124,6 @@ const SelectContent = () => {
           )
         })}
       </div>
-      {sections.map((section, index) => {
-        return <div key={index}>{section.title}</div>
-      })}
     </div>
   )
 }

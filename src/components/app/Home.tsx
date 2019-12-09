@@ -6,7 +6,7 @@ const Home = (props) => {
     <div id="home" className="component-container">
       <h1>Create Resume</h1>
       <p>Simple resume maker where you control your data.</p>
-      <div class="home__actions">
+      <div className="home__actions">
         <button onClick={() => props.next()}>Get Started</button>
         <Uploader />
       </div>

@@ -17,6 +17,14 @@
   }
 }
 
+#content {
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
 // Main Parallax Styling
 .home-bg {
   z-index: -1;

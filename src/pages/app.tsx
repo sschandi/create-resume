@@ -22,11 +22,17 @@ enum AppComponents {
 const App = () => {
   const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Home)
   const parallax: any = useRef(null)
+  const [contentScrollTop, setcontentScrollTop] = useState(0)
   // Parallax Components Props
   const componentProps = {
     speed: 0.5,
     style: { overflowY: 'auto' },
     onScroll: (e) => e.stopPropagation()
+  }
+
+  const onContentScroll = (e) => {
+    setcontentScrollTop(e.target.scrollTop)
+    e.stopPropagation()
   }
 
   const goBack = () => {
@@ -71,8 +77,8 @@ const App = () => {
           <ParallaxLayer offset={1} {...componentProps}>
             <Header />
           </ParallaxLayer>
-          <ParallaxLayer offset={2} {...componentProps}>
-            <Content />
+          <ParallaxLayer offset={2} {...{ ...componentProps, onScroll: onContentScroll }}>
+            <Content scrollTop={contentScrollTop}/>
           </ParallaxLayer>
           <ParallaxLayer offset={3} {...componentProps}>
             <Design />
