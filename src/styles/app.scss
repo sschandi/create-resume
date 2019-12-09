@@ -1,5 +1,29 @@
 @import './variables';
 
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  h1 {
+    font-size: 4rem;
+    @media (min-width: $breakpoint-md) {
+      font-size: 6rem;
+    }
+  }
+  .home__actions {
+    align-self: flex-end;
+  }
+}
+
+// Main Parallax Styling
+.home-bg {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
 .component-container {
   max-width: $breakpoint-xl;
   max-height: 100vh;

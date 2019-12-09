@@ -45,6 +45,26 @@ const App = () => {
       <SEO title="App" />
       <AppContextProvider>
         <Parallax pages={5} ref={parallax} horizontal={true} scrolling={false}>
+          {/* BG Designs */}
+          <ParallaxLayer offset={0.25} factor={1.25} speed={.4}>
+            <div className="home-bg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 205.05208 132.29167"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none">
+                <g
+                  id="layer1">
+                  <path
+                    d="M 139.39734,3.6290322e-6 -2.375e-6,132.29166 H 139.39734 205.05209 V 3.6290322e-6 Z"
+                    style={{ fill: '#2d9cca' }}
+                    id="rect833" />
+                </g>
+              </svg>
+            </div>
+          </ParallaxLayer>
+          {/* Main components */}
           <ParallaxLayer offset={0} {...componentProps}>
             <Home next={goNext} />
           </ParallaxLayer>
