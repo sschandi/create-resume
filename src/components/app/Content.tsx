@@ -19,7 +19,7 @@ const Content = ({ scrollTop }) => {
 
   return (
     <div id="content" className="component-container">
-      <div ref={main} className="content__main">
+      <div className="content__main">
         <h1>Content</h1>
         <p>Now lets fill everything with Content</p>
         {sections.map((section, index) => {
