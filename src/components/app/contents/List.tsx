@@ -43,49 +43,63 @@ const List = (props) => {
     const listTexts = props.list.elements[index].elements.filter((el, elIndex) => elIndex !== listIndex)
     updateListElement(index, { elements: listTexts })
   }
+  
+  // Display for placeholder/labels
+  const display = () => props.list.title ? props.list.title : 'List'
 
   return (
-    <div>
-      <input
-        name="title"
-        placeholder="Title"
-        value={props.list.title}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          e.preventDefault()
-          updateList(e.target.name, e.target.value)
-        }}
-      />
+    <div className="content">
+      <div className="content__title">
+        <div className="input">
+          <input
+            name="title"
+            placeholder="Title"
+            value={props.list.title}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              e.preventDefault()
+              updateList(e.target.name, e.target.value)
+            }}
+          />
+        </div>
+      </div>
       {props.list.elements.map((element, index) => {
         return (
-          <div key={index}>
+          <div key={index} className="content__el content--list">
             {props.type !== SectionTypes.TEXT &&
-              <div>
-                <input
-                  name="title"
-                  placeholder={`${props.type} Title`}
-                  value={element.title}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    e.preventDefault()
-                    updateListElement(index, { title: e.target.value })
-                  }}
-                />
-                <input
-                  name="extra"
-                  placeholder={`${props.type} Extra`}
-                  value={element.extra}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    e.preventDefault()
-                    updateListElement(index, { extra: e.target.value })
-                  }}
-                />
+              <div className="list__title">
+                <div className="input">
+                  <label>{display()} Title</label>
+                  <input
+                    name="title"
+                    placeholder={`${props.type} Title`}
+                    value={element.title}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      e.preventDefault()
+                      updateListElement(index, { title: e.target.value })
+                    }}
+                  />
+                </div>
+                <div className="input">
+                  <label>{display()} Extra</label>
+                  <input
+                    name="extra"
+                    placeholder={`${display()} Extra`}
+                    value={element.extra}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      e.preventDefault()
+                      updateListElement(index, { extra: e.target.value })
+                    }}
+                  />
+                </div>
               </div>
             }
             {element.elements.map((listEl, listIndex) => {
               return (
-                <div key={listIndex}>
+                <div className="input input__actionable" key={listIndex}>
+                  <label>{display()} Text</label>
                   <textarea
                     name="element"
-                    placeholder={`${props.type} Text`}
+                    placeholder={`${display()} Text`}
                     value={listEl}
                     onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                       e.preventDefault()
@@ -93,7 +107,9 @@ const List = (props) => {
                     }}
                   />
                   {props.type !== SectionTypes.TEXT &&
-                    <button onClick={() => deleteListElementText(index, listIndex)}>Delete El Text</button>
+                    <div className="input__actions">
+                      <button onClick={() => deleteListElementText(index, listIndex)}>Del</button>
+                    </div>
                   }
                 </div>
               )

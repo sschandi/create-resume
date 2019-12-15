@@ -1,0 +1,35 @@
+@import './variables';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  border-radius: 2rem 0.25rem 0.25rem 2rem;
+  overflow: hidden;
+  &__title {
+    padding: 1rem;
+    background-color: $accent-1;
+  }
+  &__el {
+    padding: 1rem;
+    background-color: $white;
+  }
+}
+
+// List styles
+.content--list {
+  .list {
+    &__title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      .input {
+        width: 100%;
+        @media(min-width: $breakpoint-sm) {
+          width: calc(50% - 0.5rem);
+        }
+      }
+    }
+  }
+}

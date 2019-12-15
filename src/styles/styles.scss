@@ -47,23 +47,45 @@ p {
 }
 
 .input {
-  margin: 1rem;
+  position: relative;
+  // margin: 1rem;
   label {
     display: block;
     font-size: 12px;
+    margin-bottom: 0.25rem;
   }
-  input, &-field {
-    padding-bottom: 0.25rem;
+  input, textarea, &-field {
+    width: 100%;
+    padding: 0.5rem;
+    font-family: $font-family-base;
     font-size: 20px;
     color: $dark-grey;
+    background-color: $light;
     border: none;
-    border-bottom: 2px solid rgba($primary, 0.4);
-    transition: all 200ms ease-out;
-    &:focus {
-      border-bottom-color: $primary;
-    }
+    border-radius: 0.25rem;
+    transition: width 200ms ease-in;
     &::placeholder {
       color: $dark-grey;
     }
+  }
+  textarea {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  &__actionable {
+    $actionable-width: calc(100% - 2rem);
+    input, textarea, &-field {
+      width: $actionable-width;
+    }
+    textarea {
+      min-width: $actionable-width;
+      max-width: $actionable-width;
+    }
+  }
+  &__actions {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    display: flex;
   }
 }
