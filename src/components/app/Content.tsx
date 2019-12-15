@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
 import SelectContent from './SelectContent'
@@ -10,9 +10,16 @@ import Reference from './contents/Reference'
 const Content = ({ scrollTop }) => {
   const { sections } = useContext(AppContext)
 
+  const [scroll, setScroll] = useState(scrollTop)
+  useEffect(() => {
+    if (scrollTop > scroll + 100 || scrollTop < scroll - 100) {
+      setScroll(scrollTop)
+    }
+  }, [scrollTop])
+
   return (
     <div id="content" className="component-container">
-      <div className="content__main">
+      <div ref={main} className="content__main">
         <h1>Content</h1>
         <p>Now lets fill everything with Content</p>
         {sections.map((section, index) => {
@@ -28,7 +35,7 @@ const Content = ({ scrollTop }) => {
         })}
       </div>
       <div>
-        <div style={{ transform: `translateY(${scrollTop}px)` }}>
+        <div style={{ transform: `translateY(calc(${scroll}px + 50%))`, transition: 'all 1000ms ease-in' }}>
           <SelectContent />
         </div>
       </div>
