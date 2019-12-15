@@ -18,11 +18,17 @@
 }
 
 #content {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   @media (min-width: $breakpoint-md) {
     grid-template-columns: 2fr 1fr;
   }
+}
+.content__actions {
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 // Main Parallax Styling

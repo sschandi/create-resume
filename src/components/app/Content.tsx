@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
 import SelectContent from './SelectContent'
@@ -7,15 +8,8 @@ import Skill from './contents/Skill'
 import Education from './contents/Education'
 import Reference from './contents/Reference'
 
-const Content = ({ scrollTop }) => {
+const Content = ({ active, scrollTop }) => {
   const { sections } = useContext(AppContext)
-
-  const [scroll, setScroll] = useState(scrollTop)
-  useEffect(() => {
-    if (scrollTop > scroll + 100 || scrollTop < scroll - 100) {
-      setScroll(scrollTop)
-    }
-  }, [scrollTop])
 
   return (
     <div id="content" className="component-container">
@@ -34,11 +28,12 @@ const Content = ({ scrollTop }) => {
           }
         })}
       </div>
-      <div>
-        <div style={{ transform: `translateY(calc(${scroll}px + 50%))`, transition: 'all 1000ms ease-in' }}>
+      { active ? ReactDOM.createPortal(
+        <div className="content__actions">
           <SelectContent />
-        </div>
-      </div>
+        </div>,
+        document.getElementById('app-layout')
+      ) : null}
     </div>
   )
 }

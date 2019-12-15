@@ -78,7 +78,7 @@ const App = () => {
             <Header />
           </ParallaxLayer>
           <ParallaxLayer offset={2} {...{ ...componentProps, onScroll: onContentScroll }}>
-            <Content scrollTop={contentScrollTop}/>
+            <Content active={currentComponent === AppComponents.Content} scrollTop={contentScrollTop}/>
           </ParallaxLayer>
           <ParallaxLayer offset={3} {...componentProps}>
             <Design />
