@@ -25,7 +25,7 @@ const App = () => {
   const [contentScrollTop, setcontentScrollTop] = useState(0)
   // Parallax Components Props
   const componentProps = {
-    speed: 0.5,
+    speed: 0,
     style: { overflowY: 'auto' },
     onScroll: (e) => e.stopPropagation()
   }
