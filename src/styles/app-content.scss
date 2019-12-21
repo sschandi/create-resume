@@ -4,15 +4,51 @@
   display: flex;
   flex-direction: column;
   max-width: 800px;
-  border-radius: 2rem 0.25rem 0.25rem 2rem;
-  overflow: hidden;
+  // border-radius: 2rem 0.25rem 0.25rem 2rem;
+  // overflow: hidden;
   &__title {
+    width: calc(100% - 3rem);
     padding: 1rem;
     background-color: $accent-1;
   }
+  &__wrapper {
+    position: relative;
+    // For small devices (usually touch) always show as hover won't work
+    // TODO: detect if device is actually touch to handle large touch screens
+    @media (max-width: $breakpoint-md - 1) {
+      .content__el--actions {
+        transform: translateX(100%);
+      }
+    }
+    &:hover {
+      .content__el {
+        border-color: $secondary;
+      }
+      .content__el--actions {
+        transform: translateX(100%);
+      }
+    }
+  }
   &__el {
+    position: relative;
+    z-index: 1;
+    width: calc(100% - 3rem);
     padding: 1rem;
     background-color: $white;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+  }
+  &__el--actions {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 3rem;
+    width: 3rem;
+    height: calc(100% - 2rem);
+    margin: 1rem 0;
+    background-color: $secondary;
+    border-radius: 0 0.25rem 0.25rem 0;
+    transition: all 300ms ease-in;
   }
 }
 
