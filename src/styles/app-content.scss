@@ -33,3 +33,17 @@
     }
   }
 }
+
+// Education Styles
+.content--education {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .input {
+    width: 100%;
+    margin-bottom: 0.25rem;
+    @media (min-width: $breakpoint-sm) {
+      width: calc(50% - 0.5rem);
+    }
+  }
+}

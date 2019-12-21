@@ -32,55 +32,71 @@ const education = (props) => {
   }
 
   return (
-    <div>
-      <input
-        name="title"
-        placeholder="Title"
-        value={props.education.title}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          e.preventDefault()
-          updateEducationTitle(e.target.value)
-        }}
-      />
+    <div className="content">
+      <div className="content__title">
+        <div className="input">
+          <input
+            name="title"
+            placeholder="Title"
+            value={props.education.title}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              e.preventDefault()
+              updateEducationTitle(e.target.value)
+            }}
+          />
+        </div>
+      </div>
       {props.education.elements.map((education, index) => {
         return (
-          <div key={index}>
-            <input
-              name="degree"
-              placeholder="Degree"
-              value={education.degree}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateEducationElement(index, e.target.name, e.target.value)
-              }}
-            />
-            <input
-              name="program"
-              placeholder="Program"
-              value={education.program}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateEducationElement(index, e.target.name, e.target.value)
-              }}
-            />
-            <input
-              name="university"
-              placeholder="University"
-              value={education.university}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateEducationElement(index, e.target.name, e.target.value)
-              }}
-            />
-            <input
-              name="date"
-              placeholder="Date"
-              value={education.date}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateEducationElement(index, e.target.name, e.target.value)
-              }}
-            />
+          <div key={index} className="content__el content--education">
+            <div className="input">
+              <label>Degree</label>
+              <input
+                name="degree"
+                placeholder="Degree"
+                value={education.degree}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateEducationElement(index, e.target.name, e.target.value)
+                }}
+              />
+            </div>
+            <div className="input">
+              <label>Program</label>
+              <input
+                name="program"
+                placeholder="Program"
+                value={education.program}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateEducationElement(index, e.target.name, e.target.value)
+                }}
+              />
+            </div>
+            <div className="input">
+              <label>University</label>
+              <input
+                name="university"
+                placeholder="University"
+                value={education.university}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateEducationElement(index, e.target.name, e.target.value)
+                }}
+              />
+            </div>
+            <div className="input">
+              <label>Date</label>
+              <input
+                name="date"
+                placeholder="Date"
+                value={education.date}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateEducationElement(index, e.target.name, e.target.value)
+                }}
+              />
+            </div>
             <button onClick={() => deleteEducationElement(index)}>Delete</button>
           </div>
         )
