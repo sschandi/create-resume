@@ -36,37 +36,46 @@ const Skill = (props) => {
   }
 
   return (
-    <div>
-      <input
-        name="title"
-        placeholder="Title"
-        value={props.skill.title}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          e.preventDefault()
-          updateTitle(e.target.value)
-        }}
-      />
+    <div className="content">
+      <div className="content__title">
+        <div className="input">
+          <input
+            name="title"
+            placeholder="Title"
+            value={props.skill.title}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              e.preventDefault()
+              updateTitle(e.target.value)
+            }}
+          />
+        </div>
+      </div>
       {props.skill.elements.map((element, index) => {
         return (
-          <div key={index}>
-            <input
-              name="name"
-              placeholder="Skill"
-              value={element.name}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                e.preventDefault()
-                updateSkillElement(index, { name: e.target.value })
-              }}
-            />
-            {element.levels.map((level, levelIndex) => {
-              return (
-                <div
-                  key={levelIndex}
-                  style={{width: '20px', height: '20px', backgroundColor: level ? 'red' : 'grey'}}
-                  onClick={() => updateSkillLevels(index, levelIndex)}
-                />
-              )
-            })}
+          <div key={index} className="content__el content--skill">
+            <div className="input">
+              <label>Skill</label>
+              <input
+                name="name"
+                placeholder="Skill"
+                value={element.name}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault()
+                  updateSkillElement(index, { name: e.target.value })
+                }}
+              />
+            </div>
+            <div className="skill__list">
+              {element.levels.map((level, levelIndex) => {
+                return (
+                  <div
+                    key={levelIndex}
+                    className={`skill__el ${level ? 'skill__el--selected' : ''}`}
+                    onClick={() => updateSkillLevels(index, levelIndex)}
+                  />
+                )
+              })}
+            </div>
             <button onClick={() => deleteSkillElement(index)}>Delete</button>
           </div>
         )

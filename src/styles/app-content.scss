@@ -47,3 +47,35 @@
     }
   }
 }
+
+// Skill Styles
+.content--skill {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  .input {
+    width: 100%;
+    @media (min-width: $breakpoint-sm) {
+      width: calc(50% - 0.5rem);
+    }
+  }
+  .skill__list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @media (min-width: $breakpoint-sm) {
+      width: calc(50% - 0.5rem);
+    }
+  }
+  .skill__el {
+    width: 22px;
+    height: 22px;
+    margin: 11px;
+    background-color: $med;
+    cursor: pointer;
+    &--selected {
+      background-color: $primary;
+    }
+  }
+}
