@@ -57,6 +57,7 @@ p {
   input, textarea, &-field {
     width: 100%;
     padding: 0.5rem;
+    margin: 0;
     font-family: $font-family-base;
     font-size: 20px;
     color: $dark-grey;
@@ -73,6 +74,7 @@ p {
     min-width: 100%;
   }
   &__actionable {
+    position: relative;
     $actionable-width: calc(100% - 2rem);
     input, textarea, &-field {
       width: $actionable-width;
@@ -84,8 +86,11 @@ p {
   }
   &__actions {
     position: absolute;
-    top: 2rem;
+    top: 21px;
     right: 0;
-    display: flex;
+    height: calc(100% - 21px);
+    width: 2rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+    background-color: $light;
   }
 }
