@@ -64,62 +64,64 @@ const List = (props) => {
       </div>
       {props.list.elements.map((element, index) => {
         return (
-          <div key={index} className="content__el content--list">
-            {props.type !== SectionTypes.TEXT &&
-              <div className="list__title">
-                <div className="input">
-                  <label>{display()} Title</label>
-                  <input
-                    name="title"
-                    placeholder={`${props.type} Title`}
-                    value={element.title}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                      e.preventDefault()
-                      updateListElement(index, { title: e.target.value })
-                    }}
-                  />
+          <div key={index} className="content__wrapper">
+            <div className="content__el content--list">
+              {props.type !== SectionTypes.TEXT &&
+                <div className="list__title">
+                  <div className="input">
+                    <label>{display()} Title</label>
+                    <input
+                      name="title"
+                      placeholder={`${props.type} Title`}
+                      value={element.title}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        e.preventDefault()
+                        updateListElement(index, { title: e.target.value })
+                      }}
+                    />
+                  </div>
+                  <div className="input">
+                    <label>{display()} Extra</label>
+                    <input
+                      name="extra"
+                      placeholder={`${display()} Extra`}
+                      value={element.extra}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        e.preventDefault()
+                        updateListElement(index, { extra: e.target.value })
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="input">
-                  <label>{display()} Extra</label>
-                  <input
-                    name="extra"
-                    placeholder={`${display()} Extra`}
-                    value={element.extra}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                      e.preventDefault()
-                      updateListElement(index, { extra: e.target.value })
-                    }}
-                  />
+              }
+              {element.elements.map((listEl, listIndex) => {
+                return (
+                  <div className="input input__actionable" key={listIndex}>
+                    <label>{display()} Text</label>
+                    <textarea
+                      name="element"
+                      placeholder={`${display()} Text`}
+                      value={listEl}
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+                        e.preventDefault()
+                        updateListElementText(index, listIndex, e.target.value)
+                      }}
+                    />
+                    {props.type !== SectionTypes.TEXT &&
+                      <div className="input__actions">
+                        <button onClick={() => deleteListElementText(index, listIndex)}>Del</button>
+                      </div>
+                    }
+                  </div>
+                )
+              })}
+            </div>
+              {props.type !== SectionTypes.TEXT &&
+                <div className="content__el--actions">
+                  <button onClick={() => addListElementText(index)}>Add El Text</button>
+                  <button onClick={() => deleteListElement(index)}>Delete</button>
                 </div>
-              </div>
-            }
-            {element.elements.map((listEl, listIndex) => {
-              return (
-                <div className="input input__actionable" key={listIndex}>
-                  <label>{display()} Text</label>
-                  <textarea
-                    name="element"
-                    placeholder={`${display()} Text`}
-                    value={listEl}
-                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-                      e.preventDefault()
-                      updateListElementText(index, listIndex, e.target.value)
-                    }}
-                  />
-                  {props.type !== SectionTypes.TEXT &&
-                    <div className="input__actions">
-                      <button onClick={() => deleteListElementText(index, listIndex)}>Del</button>
-                    </div>
-                  }
-                </div>
-              )
-            })}
-            {props.type !== SectionTypes.TEXT &&
-              <>
-                <button onClick={() => addListElementText(index)}>Add El Text</button>
-                <button onClick={() => deleteListElement(index)}>Delete</button>
-              </>
-            }
+              }
           </div>
         )
       })}

@@ -51,80 +51,84 @@ const Reference = (props) => {
       </div>
       {props.reference.elements.map((reference, index) => {
         return (
-          <div key={index} className="content__el content--reference">
-            <div className="input">
-              <label>Name</label>
-              <input
-                name="name"
-                placeholder="Name"
-                value={reference.name}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateReferenceElement(index, e.target.name, e.target.value)
-                }}
-              />
+          <div key={index} className="content__wrapper">
+            <div className="content__el content--reference">
+              <div className="input">
+                <label>Name</label>
+                <input
+                  name="name"
+                  placeholder="Name"
+                  value={reference.name}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateReferenceElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
+              <div className="input">
+                <label>Occupation</label>
+                <input
+                  name="occupation"
+                  placeholder="Occupation"
+                  value={reference.occupation}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateReferenceElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
+              <div className="input">
+                <label>Company</label>
+                <input
+                  name="company"
+                  placeholder="Company"
+                  value={reference.company}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateReferenceElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
+              <div className="input">
+                <label>Address</label>
+                <input
+                  name="companyAddress"
+                  placeholder="Company Address"
+                  value={reference.companyAddress}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateReferenceElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
+              <div className="input">
+                <label>Phone</label>
+                <input
+                  name="phone"
+                  placeholder="Phone"
+                  value={reference.phone}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateReferenceElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
+              <div className="input">
+                <label>Email</label>
+                <input
+                  name="email"
+                  placeholder="Email"
+                  value={reference.email}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateReferenceElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
             </div>
-            <div className="input">
-              <label>Occupation</label>
-              <input
-                name="occupation"
-                placeholder="Occupation"
-                value={reference.occupation}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateReferenceElement(index, e.target.name, e.target.value)
-                }}
-              />
+            <div className="content__el--actions">
+              <button onClick={() => deleteReferenceElement(index)}>Delete</button>
             </div>
-            <div className="input">
-              <label>Company</label>
-              <input
-                name="company"
-                placeholder="Company"
-                value={reference.company}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateReferenceElement(index, e.target.name, e.target.value)
-                }}
-              />
-            </div>
-            <div className="input">
-              <label>Address</label>
-              <input
-                name="companyAddress"
-                placeholder="Company Address"
-                value={reference.companyAddress}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateReferenceElement(index, e.target.name, e.target.value)
-                }}
-              />
-            </div>
-            <div className="input">
-              <label>Phone</label>
-              <input
-                name="phone"
-                placeholder="Phone"
-                value={reference.phone}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateReferenceElement(index, e.target.name, e.target.value)
-                }}
-              />
-            </div>
-            <div className="input">
-              <label>Email</label>
-              <input
-                name="email"
-                placeholder="Email"
-                value={reference.email}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateReferenceElement(index, e.target.name, e.target.value)
-                }}
-              />
-            </div>
-            <button onClick={() => deleteReferenceElement(index)}>Delete</button>
           </div>
         )
       })}

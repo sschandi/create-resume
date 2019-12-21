@@ -52,31 +52,35 @@ const Skill = (props) => {
       </div>
       {props.skill.elements.map((element, index) => {
         return (
-          <div key={index} className="content__el content--skill">
-            <div className="input">
-              <label>Skill</label>
-              <input
-                name="name"
-                placeholder="Skill"
-                value={element.name}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateSkillElement(index, { name: e.target.value })
-                }}
-              />
+          <div key={index} className="content__wrapper">
+            <div key={index} className="content__el content--skill">
+              <div className="input">
+                <label>Skill</label>
+                <input
+                  name="name"
+                  placeholder="Skill"
+                  value={element.name}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateSkillElement(index, { name: e.target.value })
+                  }}
+                />
+              </div>
+              <div className="skill__list">
+                {element.levels.map((level, levelIndex) => {
+                  return (
+                    <div
+                      key={levelIndex}
+                      className={`skill__el ${level ? 'skill__el--selected' : ''}`}
+                      onClick={() => updateSkillLevels(index, levelIndex)}
+                    />
+                  )
+                })}
+              </div>
             </div>
-            <div className="skill__list">
-              {element.levels.map((level, levelIndex) => {
-                return (
-                  <div
-                    key={levelIndex}
-                    className={`skill__el ${level ? 'skill__el--selected' : ''}`}
-                    onClick={() => updateSkillLevels(index, levelIndex)}
-                  />
-                )
-              })}
+            <div className="content__el--actions">
+              <button onClick={() => deleteSkillElement(index)}>Delete</button>
             </div>
-            <button onClick={() => deleteSkillElement(index)}>Delete</button>
           </div>
         )
       })}
