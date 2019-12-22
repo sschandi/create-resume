@@ -54,7 +54,7 @@ p {
     font-size: 12px;
     margin-bottom: 0.25rem;
   }
-  input, textarea, &-field {
+  input, textarea, select, &-field {
     width: 100%;
     padding: 0.5rem;
     margin: 0;
@@ -68,10 +68,20 @@ p {
     &::placeholder {
       color: $dark-grey;
     }
+    &:disabled {
+      opacity: 0.6;
+    }
   }
   textarea {
     max-width: 100%;
     min-width: 100%;
+  }
+  select {
+    appearance: none;
+    background-image: url('../images/select-arrow.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right .5rem top 50%, 0 0;
+    background-size: .5rem .5rem, 100%;
   }
   &__actionable {
     position: relative;
