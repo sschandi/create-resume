@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
+import BulletInput from './BulletInput'
 
 const List = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)
@@ -24,23 +25,6 @@ const List = (props) => {
       elements: [''],
     }
     updateSection(props.index, { ...props.list, elements: [...props.list.elements, list]})
-  }
-  const deleteListElement = (index: number) => {
-    const elements = props.list.elements.filter((el, elIndex) => elIndex !== index)
-    updateSection(props.index, { ...props.list, elements })
-  }
-
-  const addListElementText = (index: number) => {
-    const listTexts = [...props.list.elements[index].elements, '']
-    updateListElement(index, { elements: listTexts })
-  }
-  const updateListElementText = (index: number, listIndex: number, value: string) => {
-    const listTexts = props.list.elements[index].elements.map((el, elIndex) => elIndex === listIndex ? value : el);
-    updateListElement(index, { elements: listTexts })
-  }
-  const deleteListElementText = (index: number, listIndex: number) => {
-    const listTexts = props.list.elements[index].elements.filter((el, elIndex) => elIndex !== listIndex)
-    updateListElement(index, { elements: listTexts })
   }
   
   // Display for placeholder/labels
@@ -91,30 +75,12 @@ const List = (props) => {
                   />
                 </div>
               </div>
-              {element.elements.map((listEl, listIndex) => {
-                return (
-                  <div className="input input__actionable" key={listIndex}>
-                    <label>{display()} Text</label>
-                    <textarea
-                      name="element"
-                      placeholder={`${display()} Text`}
-                      value={listEl}
-                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-                        e.preventDefault()
-                        updateListElementText(index, listIndex, e.target.value)
-                      }}
-                    />
-                    <div className="input__actions">
-                      <button onClick={() => deleteListElementText(index, listIndex)}>Del</button>
-                    </div>
-                  </div>
-                )
-              })}
+              <BulletInput
+                value={element.elements}
+                placeholder={`${display()} Bullets`}
+                onChange={(elements) => updateListElement(index, { elements })}
+              />
             </div>
-              <div className="content__el--actions">
-                <button onClick={() => addListElementText(index)}>Add El Text</button>
-                <button onClick={() => deleteListElement(index)}>Delete</button>
-              </div>
           </div>
         )
       })}
