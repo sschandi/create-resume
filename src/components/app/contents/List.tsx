@@ -26,6 +26,12 @@ const List = (props) => {
     }
     updateSection(props.index, { ...props.list, elements: [...props.list.elements, list]})
   }
+  const deleteListElement = (index: number) => {
+    console.log(index)
+    const elements = props.list.elements.filter((el, elIndex) => elIndex !== index)
+    console.log(elements)
+    updateSection(props.index, { ...props.list, elements })
+  }
   
   // Display for placeholder/labels
   const display = () => props.list.title ? props.list.title : 'List'
@@ -81,6 +87,9 @@ const List = (props) => {
                 onChange={(elements) => updateListElement(index, { elements })}
               />
             </div>
+              <div className="content__el--actions">
+                <button onClick={() => deleteListElement(index)}>Delete</button>
+              </div>
           </div>
         )
       })}
