@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
+import ResumeDateInput from './ResumeDateInput'
 
 const education = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)
@@ -86,18 +87,11 @@ const education = (props) => {
                   }}
                 />
               </div>
-              <div className="input">
-                <label>Date</label>
-                <input
-                  name="date"
-                  placeholder="Date"
-                  value={education.date}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    e.preventDefault()
-                    updateEducationElement(index, e.target.name, e.target.value)
-                  }}
-                />
-              </div>
+              <ResumeDateInput
+                value={education.date}
+                label="Date"
+                onChange={(value) => updateEducationElement(index, 'date', value)}
+              />
             </div>
             <div className="content__el--actions">
               <button onClick={() => deleteEducationElement(index)}>Delete</button>
