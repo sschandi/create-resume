@@ -48,7 +48,33 @@
     margin: 1rem 0;
     background-color: $secondary;
     border-radius: 0 0.25rem 0.25rem 0;
-    transition: all 300ms ease-in;
+    transition: all 250ms ease-in;
+  }
+}
+
+// Special 'date' component styling
+.input__date {
+  display: flex;
+  flex-wrap: wrap;
+  &--group {
+    width: 48%;
+    display: flex;
+    background-color: $light;
+    border-radius: 0.25rem;
+    select {
+      width: 50%;
+    }
+  }
+  &--divider {
+    width: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &--present {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
