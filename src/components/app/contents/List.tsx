@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
-import { SectionTypes } from '../ResumeTypes'
 import { List as ListType } from '../ResumeTypes'
 
 const List = (props) => {
@@ -20,8 +19,8 @@ const List = (props) => {
   }
   const addListElement = () => {
     const list: ListType = {
-      title: props.type === SectionTypes.TEXT ? null : '',
-      extra: props.type === SectionTypes.TEXT ? null : '',
+      title: '',
+      extra: '',
       elements: [''],
     }
     updateSection(props.index, { ...props.list, elements: [...props.list.elements, list]})
@@ -66,34 +65,32 @@ const List = (props) => {
         return (
           <div key={index} className="content__wrapper">
             <div className="content__el content--list">
-              {props.type !== SectionTypes.TEXT &&
-                <div className="list__title">
-                  <div className="input">
-                    <label>{display()} Title</label>
-                    <input
-                      name="title"
-                      placeholder={`${props.type} Title`}
-                      value={element.title}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        e.preventDefault()
-                        updateListElement(index, { title: e.target.value })
-                      }}
-                    />
-                  </div>
-                  <div className="input">
-                    <label>{display()} Extra</label>
-                    <input
-                      name="extra"
-                      placeholder={`${display()} Extra`}
-                      value={element.extra}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        e.preventDefault()
-                        updateListElement(index, { extra: e.target.value })
-                      }}
-                    />
-                  </div>
+              <div className="list__title">
+                <div className="input">
+                  <label>{display()} Title</label>
+                  <input
+                    name="title"
+                    placeholder="List Title"
+                    value={element.title}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      e.preventDefault()
+                      updateListElement(index, { title: e.target.value })
+                    }}
+                  />
                 </div>
-              }
+                <div className="input">
+                  <label>{display()} Extra</label>
+                  <input
+                    name="extra"
+                    placeholder={`${display()} Extra`}
+                    value={element.extra}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      e.preventDefault()
+                      updateListElement(index, { extra: e.target.value })
+                    }}
+                  />
+                </div>
+              </div>
               {element.elements.map((listEl, listIndex) => {
                 return (
                   <div className="input input__actionable" key={listIndex}>
@@ -107,27 +104,21 @@ const List = (props) => {
                         updateListElementText(index, listIndex, e.target.value)
                       }}
                     />
-                    {props.type !== SectionTypes.TEXT &&
-                      <div className="input__actions">
-                        <button onClick={() => deleteListElementText(index, listIndex)}>Del</button>
-                      </div>
-                    }
+                    <div className="input__actions">
+                      <button onClick={() => deleteListElementText(index, listIndex)}>Del</button>
+                    </div>
                   </div>
                 )
               })}
             </div>
-              {props.type !== SectionTypes.TEXT &&
-                <div className="content__el--actions">
-                  <button onClick={() => addListElementText(index)}>Add El Text</button>
-                  <button onClick={() => deleteListElement(index)}>Delete</button>
-                </div>
-              }
+              <div className="content__el--actions">
+                <button onClick={() => addListElementText(index)}>Add El Text</button>
+                <button onClick={() => deleteListElement(index)}>Delete</button>
+              </div>
           </div>
         )
       })}
-      {props.type !== SectionTypes.TEXT &&
-        <button onClick={() => addListElement()}>Add</button>
-      }
+      <button onClick={() => addListElement()}>Add</button>
       <button onClick={() => deleteList()}>Delete</button>
     </div>
   )
