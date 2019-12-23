@@ -27,9 +27,7 @@ const List = (props) => {
     updateSection(props.index, { ...props.list, elements: [...props.list.elements, list]})
   }
   const deleteListElement = (index: number) => {
-    console.log(index)
     const elements = props.list.elements.filter((el, elIndex) => elIndex !== index)
-    console.log(elements)
     updateSection(props.index, { ...props.list, elements })
   }
   
