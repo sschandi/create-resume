@@ -76,11 +76,11 @@ export default class Base {
     }
   }
 
-  public render(content: Section[], header: Header): object {
+  public render(sections: Section[], header: Header): object {
     return {
       pageSize: this.pageSize,
       header: this.renderPageHeader(header.name),
-      content: [this.renderHeader(header), ...this.renderContent(content)],
+      content: [this.renderHeader(header), ...this.renderContent(sections)],
       footer: this.renderPageFooter(),
       defaultStyle: this.defaultStyle,
       styles: this.styles,
@@ -89,7 +89,8 @@ export default class Base {
         author: header.name,
         subject: 'Resume',
         keywords: '',
-        creator: 'Resume Builder'
+        creator: 'Create Resume',
+        serialized: JSON.stringify({ header, sections })
       }
     }
   }

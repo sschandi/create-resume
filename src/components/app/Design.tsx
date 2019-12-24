@@ -80,6 +80,7 @@ const Design = () => {
       {templates.map((template) => {
         return <button key={template.id} onClick={() => setActiveTemplate(template)}>{template.name}</button>
       })}
+      <button onClick={() => activeTemplate.pdf.download()}>Get PDF</button>
     </div>
   )
 }
