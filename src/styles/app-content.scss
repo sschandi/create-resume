@@ -54,6 +54,7 @@
 
 // Special 'date' component styling
 .input__date {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   &--group {
@@ -72,9 +73,10 @@
     justify-content: center;
   }
   &--present {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    top: -1.25rem;
+    right: 0;
+    background-color: $white;
   }
 }
 
