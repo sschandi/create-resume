@@ -38,6 +38,7 @@ export interface List {
   title: string | null
   extra: string | null
   elements: string[]
+  date?: boolean
 }
 
 export interface Skill {

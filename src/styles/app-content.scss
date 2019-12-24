@@ -86,12 +86,15 @@
       flex-wrap: wrap;
       justify-content: space-between;
       margin-bottom: 0.5rem;
-      .input {
+      .list__input, .list__extra {
         width: 100%;
         @media(min-width: $breakpoint-sm) {
           width: calc(50% - 0.5rem);
         }
       }
+    }
+    &__extra {
+      position: relative;
     }
   }
 }

@@ -39,7 +39,8 @@ const selectOptions = [
           'Directed staff.'
         ]
       }
-    ]
+    ],
+    date: true
   },
   {
     type: SectionTypes.LIST,
@@ -55,7 +56,20 @@ const selectOptions = [
           'Directed staff.'
         ]
       }
-    ]
+    ],
+    date: true
+  },
+  {
+    type: SectionTypes.LIST,
+    title: 'Projects',
+    elements: [
+      {
+        title: 'My great project', extra: 'This is really neat', elements: [
+          'Directed staff.'
+        ]
+      }
+    ],
+    date: false
   },
   {
     type: SectionTypes.REFERENCE,
@@ -76,8 +90,15 @@ const selectOptions = [
 const customSelectOptions = [
   {
     type: SectionTypes.LIST,
-    title: 'List',
-    elements: [{ title: '', extra: '', elements: [''] }]
+    title: 'List with Date',
+    elements: [{ title: '', extra: '', elements: [''] }],
+    date: true
+  },
+  {
+    type: SectionTypes.LIST,
+    title: 'List with Subtitle',
+    elements: [{ title: '', extra: '', elements: [''] }],
+    date: false
   },
   {
     type: SectionTypes.TEXT,
@@ -104,7 +125,7 @@ const SelectContent = () => {
           return (
             <button
               key={index}
-              onClick={() => addSection({ type: option.type, title: option.title, elements: option.elements })}
+              onClick={() => addSection(option)}
             >
               {option.title}
             </button>
@@ -117,7 +138,7 @@ const SelectContent = () => {
           return (
             <button
               key={index}
-              onClick={() => addSection({ type: option.type, title: option.title, elements: option.elements })}
+              onClick={() => addSection(option)}
             >
               {option.title}
             </button>

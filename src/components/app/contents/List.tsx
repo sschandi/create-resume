@@ -2,11 +2,12 @@ import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 import BulletInput from './BulletInput'
+import ResumeDateInput from './ResumeDateInput'
 
 const List = (props) => {
   const { updateSection, deleteSection } = useContext(AppContext)
 
-  const updateList = (name: string, value: string) => {
+  const updateList = (name: string, value: any) => {
     const list = Object.assign({}, props.list, { [name]: value })
     updateSection(props.index, list)
   }
@@ -54,7 +55,7 @@ const List = (props) => {
           <div key={index} className="content__wrapper">
             <div className="content__el content--list">
               <div className="list__title">
-                <div className="input">
+                <div className="input list__input">
                   <label>{display()} Title</label>
                   <input
                     name="title"
@@ -66,17 +67,27 @@ const List = (props) => {
                     }}
                   />
                 </div>
-                <div className="input">
-                  <label>{display()} Extra</label>
-                  <input
-                    name="extra"
-                    placeholder={`${display()} Extra`}
-                    value={element.extra}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                      e.preventDefault()
-                      updateListElement(index, { extra: e.target.value })
-                    }}
-                  />
+                <div className="list__extra">
+                  {!props.list.date ?
+                    <div className="input">
+                      <label>{display()} Subtitle</label>
+                      <input
+                        name="extra"
+                        placeholder={`${display()} Extra`}
+                        value={element.extra}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                          e.preventDefault()
+                          updateListElement(index, { extra: e.target.value })
+                        }}
+                      />
+                    </div>
+                    :
+                    <ResumeDateInput
+                      value={element.extra}
+                      label={`${display()} Date`}
+                      onChange={(extra) => updateListElement(index, { extra })}
+                    />
+                  }
                 </div>
               </div>
               <BulletInput
