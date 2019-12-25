@@ -36,7 +36,6 @@ import Cluo from './templates/Cluo'
 import Cogito from './templates/Cogito'
 
 interface Template {
-  id: number
   name: string
   document: object
   pdf: any
@@ -55,7 +54,6 @@ const Design = () => {
     const pdf = pdfMake.createPdf(document)
 
     return {
-      id: template.id,
       name: template.name,
       document,
       pdf,
@@ -78,7 +76,7 @@ const Design = () => {
       <h1>Design</h1>
       <PDFDisplay document={document} width={300} />
       {templates.map((template) => {
-        return <button key={template.id} onClick={() => setActiveTemplate(template)}>{template.name}</button>
+        return <button key={template.name} onClick={() => setActiveTemplate(template)}>{template.name}</button>
       })}
       <button onClick={() => activeTemplate.pdf.download()}>Get PDF</button>
     </div>
