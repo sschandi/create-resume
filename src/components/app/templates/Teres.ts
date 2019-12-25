@@ -45,7 +45,7 @@ export default class Teres extends Base {
         margin: [10, 7, 10, 3]
       }
     }
-    super('Teres', 1, colors, font, styles)
+    super('Teres', colors, font, styles)
 	}
 	
 	createListTitleAndExtra(title: string, extra: string) {

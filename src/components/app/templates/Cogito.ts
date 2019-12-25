@@ -46,7 +46,7 @@ export default class Cogito extends Base {
         margin: [10, 7, 10, 3]
       }
     }
-    super('Cogito', 3, colors, font, styles)
+    super('Cogito', colors, font, styles)
 	}
 
 	protected renderHeader(header: Header): object {

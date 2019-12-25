@@ -37,7 +37,7 @@ export default class Cluo extends Base {
         margin: [0, 7, 0, 3]
       },
 		}
-    super('Cluo', 2, colors, font, styles)
+    super('Cluo', colors, font, styles)
   }
 
   protected createAddress(

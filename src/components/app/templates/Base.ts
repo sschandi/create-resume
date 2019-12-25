@@ -12,7 +12,6 @@ import {
 
 export default class Base {
   public name: string = 'Base'
-  public id: number = NaN
   public version: number = 1
   public pageSize = PageSizes.LETTER
   public font: Font = {
@@ -56,13 +55,11 @@ export default class Base {
 
   constructor(
     name: string,
-    id: number,
     colors: Partial<Colors>,
     font: Partial<Font>,
     styles: Partial<StyleObject>
   ) {
     this.name = name
-    this.id = id
     this.setColors(colors)
     this.setFont(font)
     this.setStyles(styles)
