@@ -57,9 +57,9 @@ export default class Base {
   constructor(
     name: string,
     id: number,
-    colors: Colors | object,
-    font: Font | object,
-    styles: StyleObject | object
+    colors: Partial<Colors>,
+    font: Partial<Font>,
+    styles: Partial<StyleObject>
   ) {
     this.name = name
     this.id = id
