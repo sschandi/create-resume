@@ -1,6 +1,6 @@
 import Base from './Base'
 import { Colors, Font, StyleObject } from './Interfaces'
-import Contact from '@/resume/Contact'
+import { Contact } from '../ResumeTypes'
 
 export default class Cluo extends Base {
 

@@ -1,6 +1,6 @@
 import Base from './Base'
 import { Colors, Font, StyleObject } from './Interfaces'
-import Education from '@/resume/Education'
+import { Education } from '../ResumeTypes'
 
 export default class Teres extends Base {
   constructor() {

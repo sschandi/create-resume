@@ -1,8 +1,6 @@
 import Base from './Base'
 import { Colors, Font, StyleObject } from './Interfaces'
-import Header from '@/resume/Header'
-import Contact from '@/resume/Contact'
-import Education from '@/resume/Education'
+import { Header, Contact } from '../ResumeTypes'
 
 export default class Cogito extends Base {
 	constructor() {
