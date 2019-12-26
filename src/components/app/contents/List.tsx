@@ -5,7 +5,7 @@ import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
 
 const List = (props) => {
-  const { updateSection, deleteSection } = useContext(AppContext)
+  const { updateSection, deleteSection, reorderSection } = useContext(AppContext)
 
   const updateList = (name: string, value: any) => {
     const list = Object.assign({}, props.list, { [name]: value })
@@ -50,7 +50,9 @@ const List = (props) => {
           />
         </div>
         <div className="content__title--actions">
+          <button onClick={() => reorderSection(props.index, props.index - 1)}>Up</button>
           <button onClick={() => deleteList()}>Delete</button>
+          <button onClick={() => reorderSection(props.index, props.index + 1)}>Down</button>
         </div>
       </div>
       {props.list.elements.map((element, index) => {

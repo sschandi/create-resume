@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import Move from 'lodash-move'
 import { Header, Section } from '../components/app/ResumeTypes'
 
 type ContextProps = {
@@ -9,6 +10,7 @@ type ContextProps = {
   updateSection(index: number, payload: Section): void
   deleteSection(index: number): void
   setSections(payload: Section[]): void
+  reorderSection(curIndex: number, newIndex: number): void
 }
 
 export const AppContext = createContext<Partial<ContextProps>>({})
@@ -37,9 +39,15 @@ const AppContextProvider = ({ children }) => {
   const deleteSection = (index: number) => {
     setSections(sections.filter((section, secIndex) => secIndex !== index))
   }
+  const reorderSection = (curIndex: number, newIndex: number) => {
+    console.log('reordering')
+    const moved = Move(sections, curIndex, newIndex)
+    console.log(moved)
+    setSections(moved)
+  }
 
   return (
-    <AppContext.Provider value={{ header, updateHeader, sections, addSection, updateSection, deleteSection, setSections }}>
+    <AppContext.Provider value={{ header, updateHeader, sections, addSection, updateSection, deleteSection, setSections, reorderSection }}>
       {children}
     </AppContext.Provider>
   )
