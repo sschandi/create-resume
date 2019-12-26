@@ -40,9 +40,7 @@ const AppContextProvider = ({ children }) => {
     setSections(sections.filter((section, secIndex) => secIndex !== index))
   }
   const reorderSection = (curIndex: number, newIndex: number) => {
-    console.log('reordering')
     const moved = Move(sections, curIndex, newIndex)
-    console.log(moved)
     setSections(moved)
   }
 
