@@ -74,10 +74,20 @@ export default class Base {
   }
 
   public render(sections: Section[], header: Header): object {
+    const content = [this.renderHeader(header), ...this.renderContent(sections)]
+    const serialized = JSON.stringify({
+      name: this.name,
+      version: this.version,
+      header,
+      sections,
+      font: this.font,
+      colors: this.colors
+    })
+
     return {
       pageSize: this.pageSize,
       header: this.renderPageHeader(header.name),
-      content: [this.renderHeader(header), ...this.renderContent(sections)],
+      content,
       footer: this.renderPageFooter(),
       defaultStyle: this.defaultStyle,
       styles: this.styles,
@@ -87,7 +97,7 @@ export default class Base {
         subject: 'Resume',
         keywords: '',
         creator: 'Create Resume',
-        serialized: JSON.stringify({ header, sections })
+        serialized
       }
     }
   }

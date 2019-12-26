@@ -34,6 +34,7 @@ const Uploader = () => {
     loadingTask.promise.then((doc) => {
       doc.getMetadata().then((data) => {
         const obj = JSON.parse(data.info.Custom.serialized)
+        console.log(obj)
         updateHeader(obj.header)
         setSections(obj.sections)
       })

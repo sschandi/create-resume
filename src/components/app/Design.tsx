@@ -78,7 +78,7 @@ const Design = () => {
       {templates.map((template) => {
         return <button key={template.name} onClick={() => setActiveTemplate(template)}>{template.name}</button>
       })}
-      <button onClick={() => activeTemplate.pdf.download()}>Get PDF</button>
+      <button onClick={() => activeTemplate.pdf.download(`Resume - ${header.name}`)}>Get PDF</button>
     </div>
   )
 }
