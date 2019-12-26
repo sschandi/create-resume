@@ -116,15 +116,17 @@ const customSelectOptions = [
 ]
 
 const SelectContent = () => {
-  const { sections, addSection } = useContext(AppContext)
+  const { addSection } = useContext(AppContext)
 
   return (
     <div className="content__select">
-      <div>
+      <h3>Add Content</h3>
+      <div className="text--center">
         {selectOptions.map((option, index) => {
           return (
             <button
               key={index}
+              className="btn"
               onClick={() => addSection(option)}
             >
               {option.title}
@@ -132,12 +134,13 @@ const SelectContent = () => {
           )
         })}
       </div>
-      <div>
-        <p>Custom Options</p>
+      <h4>Custom Options</h4>
+      <div className="text--center">
         {customSelectOptions.map((option, index) => {
           return (
             <button
               key={index}
+              className="btn btn-primary"
               onClick={() => addSection(option)}
             >
               {option.title}

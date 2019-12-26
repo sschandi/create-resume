@@ -22,8 +22,14 @@
 }
 .content__actions {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 2rem;
+  right: 2rem;
+  max-height: calc(100vh - 4rem);
+  max-width: 400px;
+}
+.content__select {
+  padding: 1rem;
+  background-color: $white;
 }
 
 // Main Parallax Styling
