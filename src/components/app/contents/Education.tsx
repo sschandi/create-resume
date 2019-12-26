@@ -3,14 +3,7 @@ import { AppContext } from '../../../contexts/AppContext'
 import ResumeDateInput from './ResumeDateInput'
 
 const education = (props) => {
-  const { updateSection, deleteSection } = useContext(AppContext)
-
-  const deleteEducation = () => {
-    deleteSection(props.index)
-  }
-  const updateEducationTitle = (title: string) => {
-    updateSection(props.index, { ...props.education, title })
-  }
+  const { updateSection } = useContext(AppContext)
 
   const addEducationElement = () => {
     const educationEl = {
@@ -33,23 +26,7 @@ const education = (props) => {
   }
 
   return (
-    <div className="content">
-      <div className="content__title">
-        <div className="input">
-          <input
-            name="title"
-            placeholder="Title"
-            value={props.education.title}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              e.preventDefault()
-              updateEducationTitle(e.target.value)
-            }}
-          />
-        </div>
-        <div className="content__title--actions">
-          <button onClick={() => deleteEducation()}>Delete</button>
-        </div>
-      </div>
+    <div>
       {props.education.elements.map((education, index) => {
         return (
           <div key={index} className="content__wrapper">

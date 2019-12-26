@@ -5,15 +5,8 @@ import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
 
 const List = (props) => {
-  const { updateSection, deleteSection, reorderSection } = useContext(AppContext)
+  const { updateSection } = useContext(AppContext)
 
-  const updateList = (name: string, value: any) => {
-    const list = Object.assign({}, props.list, { [name]: value })
-    updateSection(props.index, list)
-  }
-  const deleteList = () => {
-    deleteSection(props.index)
-  }
   const updateListElement = (index: number, value: Partial<ListType>) => {
     const elements = props.list.elements
       .map((el, elIndex) => elIndex === index ? { ...el, ...value } : el)
@@ -36,25 +29,7 @@ const List = (props) => {
   const display = () => props.list.title ? props.list.title : 'List'
 
   return (
-    <div className="content">
-      <div className="content__title">
-        <div className="input">
-          <input
-            name="title"
-            placeholder="Title"
-            value={props.list.title}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              e.preventDefault()
-              updateList(e.target.name, e.target.value)
-            }}
-          />
-        </div>
-        <div className="content__title--actions">
-          <button onClick={() => reorderSection(props.index, props.index - 1)}>Up</button>
-          <button onClick={() => deleteList()}>Delete</button>
-          <button onClick={() => reorderSection(props.index, props.index + 1)}>Down</button>
-        </div>
-      </div>
+    <div>
       {props.list.elements.map((element, index) => {
         return (
           <div key={index} className="content__wrapper">

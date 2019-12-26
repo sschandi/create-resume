@@ -3,15 +3,8 @@ import { AppContext } from '../../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 
 const Text = (props) => {
-  const { updateSection, deleteSection } = useContext(AppContext)
+  const { updateSection } = useContext(AppContext)
 
-  const updateList = (name: string, value: string) => {
-    const list = Object.assign({}, props.text, { [name]: value })
-    updateSection(props.index, list)
-  }
-  const deleteList = () => {
-    deleteSection(props.index)
-  }
   const updateListElement = (index: number, value: Partial<ListType>) => {
     const elements = props.text.elements
       .map((el, elIndex) => elIndex === index ? { ...el, ...value } : el)
@@ -27,23 +20,7 @@ const Text = (props) => {
   const display = () => props.text.title ? props.text.title : 'Text'
 
   return (
-    <div className="content">
-      <div className="content__title">
-        <div className="input">
-          <input
-            name="title"
-            placeholder="Title"
-            value={props.text.title}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              e.preventDefault()
-              updateList(e.target.name, e.target.value)
-            }}
-          />
-        </div>
-        <div className="content__title--actions">
-          <button onClick={() => deleteList()}>Delete</button>
-        </div>
-      </div>
+    <div>
       {props.text.elements.map((element, index) => {
         return (
           <div key={index} className="content__wrapper">

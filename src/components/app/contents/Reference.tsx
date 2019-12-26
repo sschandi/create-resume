@@ -3,14 +3,7 @@ import { AppContext } from '../../../contexts/AppContext'
 import { Reference as ReferenceType } from '../ResumeTypes'
 
 const Reference = (props) => {
-  const { updateSection, deleteSection } = useContext(AppContext)
-
-  const deleteReference = () => {
-    deleteSection(props.index)
-  }
-  const updateReferenceTitle = (title: string) => {
-    updateSection(props.index, { ...props.reference, title })
-  }
+  const { updateSection } = useContext(AppContext)
 
   const addReferenceElement = () => {
     const referenceEl: ReferenceType = {
@@ -35,23 +28,7 @@ const Reference = (props) => {
   }
 
   return (
-    <div className="content">
-      <div className="content__title">
-        <div className="input">
-          <input
-            name="title"
-            placeholder="Title"
-            value={props.reference.title}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              e.preventDefault()
-              updateReferenceTitle(e.target.value)
-            }}
-          />
-        </div>
-        <div className="content__title--actions">
-          <button onClick={() => deleteReference()}>Delete</button>
-        </div>
-      </div>
+    <div>
       {props.reference.elements.map((reference, index) => {
         return (
           <div key={index} className="content__wrapper">

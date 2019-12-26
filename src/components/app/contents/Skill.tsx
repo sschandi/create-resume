@@ -3,15 +3,7 @@ import { AppContext } from '../../../contexts/AppContext'
 import { Skill as SkillType } from '../ResumeTypes'
 
 const Skill = (props) => {
-  const { updateSection, deleteSection } = useContext(AppContext)
-
-  const updateTitle = (title: string) => {
-    const skill = Object.assign({}, props.skill, { title })
-    updateSection(props.index, skill)
-  }
-  const deleteSkill = () => {
-    deleteSection(props.index)
-  }
+  const { updateSection } = useContext(AppContext)
 
   const addSkillElement = () => {
     const skill = {
@@ -36,23 +28,7 @@ const Skill = (props) => {
   }
 
   return (
-    <div className="content">
-      <div className="content__title">
-        <div className="input">
-          <input
-            name="title"
-            placeholder="Title"
-            value={props.skill.title}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              e.preventDefault()
-              updateTitle(e.target.value)
-            }}
-          />
-        </div>
-        <div className="content__title--actions">
-          <button onClick={() => deleteSkill()}>Delete</button>
-        </div>
-      </div>
+    <div>
       {props.skill.elements.map((element, index) => {
         return (
           <div key={index} className="content__wrapper">
