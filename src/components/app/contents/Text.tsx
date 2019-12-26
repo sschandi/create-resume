@@ -40,6 +40,9 @@ const Text = (props) => {
             }}
           />
         </div>
+        <div className="content__title--actions">
+          <button onClick={() => deleteList()}>Delete</button>
+        </div>
       </div>
       {props.text.elements.map((element, index) => {
         return (
@@ -65,7 +68,6 @@ const Text = (props) => {
           </div>
         )
       })}
-      <button onClick={() => deleteList()}>Delete</button>
     </div>
   )
 }

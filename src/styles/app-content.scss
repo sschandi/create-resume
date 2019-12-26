@@ -8,9 +8,17 @@
   // border-radius: 2rem 0.25rem 0.25rem 2rem;
   // overflow: hidden;
   &__title {
+    display: flex;
+    justify-content: space-between;
     width: calc(100% - 3rem);
     padding: 1rem;
     background-color: $accent-1;
+    .input {
+      width: calc(50% - 2rem);
+    }
+    &--actions {
+      // width: calc(50% - 2rem);
+    }
   }
   &__wrapper {
     position: relative;

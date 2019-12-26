@@ -49,6 +49,9 @@ const List = (props) => {
             }}
           />
         </div>
+        <div className="content__title--actions">
+          <button onClick={() => deleteList()}>Delete</button>
+        </div>
       </div>
       {props.list.elements.map((element, index) => {
         return (
@@ -103,7 +106,6 @@ const List = (props) => {
         )
       })}
       <button onClick={() => addListElement()}>Add</button>
-      <button onClick={() => deleteList()}>Delete</button>
     </div>
   )
 }

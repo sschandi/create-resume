@@ -49,6 +49,9 @@ const Skill = (props) => {
             }}
           />
         </div>
+        <div className="content__title--actions">
+          <button onClick={() => deleteSkill()}>Delete</button>
+        </div>
       </div>
       {props.skill.elements.map((element, index) => {
         return (
@@ -85,7 +88,6 @@ const Skill = (props) => {
         )
       })}
       <button onClick={() => addSkillElement()}>Add</button>
-      <button onClick={() => deleteSkill()}>Delete</button>
     </div>
   )
 }

@@ -48,6 +48,9 @@ const Reference = (props) => {
             }}
           />
         </div>
+        <div className="content__title--actions">
+          <button onClick={() => deleteReference()}>Delete</button>
+        </div>
       </div>
       {props.reference.elements.map((reference, index) => {
         return (
@@ -133,7 +136,6 @@ const Reference = (props) => {
         )
       })}
       <button onClick={() => addReferenceElement()}>Add</button>
-      <button onClick={() => deleteReference()}>Delete</button>
     </div>
   )
 }
