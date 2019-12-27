@@ -35,30 +35,12 @@ import Teres from './templates/Teres'
 import Cluo from './templates/Cluo'
 import Cogito from './templates/Cogito'
 
-interface Template {
-  name: string
-  document: object
-  pdf: any
-  template: any
-}
-
 const templateList = [new Teres(), new Cluo(), new Cogito()]
 
 const Design = ({ active }) => {
   const { sections, header } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
-  // const templates: Template[] = templateList.map((template) => {
-  //   const document = template.render(sections, header)
-  //   const pdf = pdfMake.createPdf(document)
-  //   console.log('generate templates')
-  //   return {
-  //     name: template.name,
-  //     document,
-  //     pdf,
-  //     template: template
-  //   }
-  // })
   const [activeTemplate, setActiveTemplate] = useState(templateList[0])
   const downloadActive = () => {
     const document = activeTemplate.render(sections, header)
@@ -70,7 +52,6 @@ const Design = ({ active }) => {
     if (!active) {
       return
     }
-    console.log('hello everonye')
     const effectDocument = async () => {
       const document = activeTemplate.render(sections, header)
       const pdf = pdfMake.createPdf(document)
@@ -85,7 +66,7 @@ const Design = ({ active }) => {
     <div className="component-container">
       <h1>Design</h1>
       {active ?
-        <PDFDisplay document={document} width={300} />
+        <PDFDisplay document={document} />
       : null}
       {templateList.map((template) => {
         return <button key={template.name} onClick={() => setActiveTemplate(template)}>{template.name}</button>
