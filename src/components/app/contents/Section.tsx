@@ -8,7 +8,7 @@ import Reference from './Reference'
 import { SectionTypes } from '../ResumeTypes'
 
 const Section = ({ section, index }) => {
-  const { updateSection, deleteSection, reorderSection } = useContext(AppContext)
+  const { sections, updateSection, deleteSection, reorderSection } = useContext(AppContext)
 
   const updateSectionTitle = (title: string) => {
     const updated = Object.assign({}, section, { title })
@@ -44,9 +44,19 @@ const Section = ({ section, index }) => {
           />
         </div>
         <div className="content__title--actions">
-          <button onClick={() => reorderSection(index, index - 1)}>Up</button>
+          <button
+            disabled={index === 0}
+            onClick={() => reorderSection(index, index - 1)}
+          >
+            Up
+          </button>
           <button onClick={() => deleteSection(index)}>Delete</button>
-          <button onClick={() => reorderSection(index, index + 1)}>Down</button>
+          <button
+            disabled={index === sections.length - 1}
+            onClick={() => reorderSection(index, index + 1)}
+          >
+            Down
+          </button>
         </div>
       </div>
       {Component()}
