@@ -42,43 +42,55 @@ interface Template {
   template: any
 }
 
-const templateList = [Teres, Cluo, Cogito]
+const templateList = [new Teres(), new Cluo(), new Cogito()]
 
-const Design = () => {
+const Design = ({ active }) => {
   const { sections, header } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
-  const templates: Template[] = templateList.map((Template) => {
-    const template = new Template()
-    const document = template.render(sections, header)
+  // const templates: Template[] = templateList.map((template) => {
+  //   const document = template.render(sections, header)
+  //   const pdf = pdfMake.createPdf(document)
+  //   console.log('generate templates')
+  //   return {
+  //     name: template.name,
+  //     document,
+  //     pdf,
+  //     template: template
+  //   }
+  // })
+  const [activeTemplate, setActiveTemplate] = useState(templateList[0])
+  const downloadActive = () => {
+    const document = activeTemplate.render(sections, header)
     const pdf = pdfMake.createPdf(document)
-
-    return {
-      name: template.name,
-      document,
-      pdf,
-      template: template
-    }
-  })
-  const [activeTemplate, setActiveTemplate]= useState<Template>(templates[0])
+    pdf.download(`Resume - ${header.name}`)
+  }
 
   useEffect(() => {
+    if (!active) {
+      return
+    }
+    console.log('hello everonye')
     const effectDocument = async () => {
-      await activeTemplate.pdf.getDataUrl((url: string) => {
+      const document = activeTemplate.render(sections, header)
+      const pdf = pdfMake.createPdf(document)
+      await pdf.getDataUrl((url: string) => {
         setDocument(url)
       })
     }
     effectDocument()
-  }, [activeTemplate])
+  }, [activeTemplate, active])
 
   return (
     <div className="component-container">
       <h1>Design</h1>
-      <PDFDisplay document={document} width={300} />
-      {templates.map((template) => {
+      {active ?
+        <PDFDisplay document={document} width={300} />
+      : null}
+      {templateList.map((template) => {
         return <button key={template.name} onClick={() => setActiveTemplate(template)}>{template.name}</button>
       })}
-      <button onClick={() => activeTemplate.pdf.download(`Resume - ${header.name}`)}>Get PDF</button>
+      <button onClick={downloadActive}>Get PDF</button>
     </div>
   )
 }
