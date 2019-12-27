@@ -119,10 +119,18 @@ p {
   &:hover {
     opacity: 0.9;
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
   &-primary {
     background-color: $primary;
   }
   &-accent {
     background-color: $accent-1;
+  }
+  &-compact {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }
