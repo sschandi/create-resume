@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
+import { useTrail, animated } from 'react-spring'
 
 const selectOptions = [
   {
@@ -118,33 +119,46 @@ const customSelectOptions = [
 const SelectContent = () => {
   const { addSection } = useContext(AppContext)
 
+  const springOptions = useTrail(selectOptions.length, {
+    config: { mass: 2, tension: 4000, friction: 200 },
+    opacity: 1,
+    from: { opacity: 0 }
+  })
+  const springCustomOptions = useTrail(customSelectOptions.length, {
+    config: { mass: 2, tension: 4000, friction: 200 },
+    opacity: 1,
+    from: { opacity: 0 }
+  })
+
   return (
     <div className="content__select">
       <h3>Add Content</h3>
       <div className="text--center">
-        {selectOptions.map((option, index) => {
+        {springOptions.map(({ ...rest }, index) => {
           return (
-            <button
+            <animated.button
               key={index}
+              style={{ ...rest }}
               className="btn"
-              onClick={() => addSection(option)}
+              onClick={() => addSection(selectOptions[index])}
             >
-              {option.title}
-            </button>
+              {selectOptions[index].title}
+            </animated.button>
           )
         })}
       </div>
       <h4>Custom Options</h4>
       <div className="text--center">
-        {customSelectOptions.map((option, index) => {
+      {springCustomOptions.map(({ ...rest }, index) => {
           return (
-            <button
+            <animated.button
               key={index}
+              style={{ ...rest }}
               className="btn btn-primary"
-              onClick={() => addSection(option)}
+              onClick={() => addSection(customSelectOptions[index])}
             >
-              {option.title}
-            </button>
+              {customSelectOptions[index].title}
+            </animated.button>
           )
         })}
       </div>
