@@ -76,7 +76,7 @@ const App = () => {
             <Content active={currentComponent === AppComponents.Content} />
           </ParallaxLayer>
           <ParallaxLayer offset={3} {...componentProps}>
-            <Design />
+            <Design active={currentComponent === AppComponents.Design} />
           </ParallaxLayer>
           <ParallaxLayer offset={4} {...componentProps}>
             <Exporter />
