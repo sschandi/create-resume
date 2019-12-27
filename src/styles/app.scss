@@ -61,9 +61,26 @@
   justify-content: center;
   &-document {
     position: relative;
-    border: 1px solid red;
-    width: 50%;
+    width: 80%;
+    @media (min-width: $breakpoint-sm) {
+      width: 80%;
+    }
+    @media (min-width: $breakpoint-md) {
+      width: 60%;
+    }
+    @media (min-width: $breakpoint-lg) {
+      width: 40%;
+    }
   }
   &-page {
+  }
+  &__pagination {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

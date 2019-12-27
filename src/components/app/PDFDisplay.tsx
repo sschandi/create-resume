@@ -41,11 +41,25 @@ const PDFDisplay = ({ document }) => {
       <div ref={docRef} className="pdf-document">
         <Document file={document} onLoadSuccess={onDocumentLoad}>
           <Page pageNumber={currPage} width={width} />
-          <div style={{ position: 'absolute', top: 0 }}>
-            <button onClick={() => setPage('prev')}>prev</button>
-            <button onClick={() => setPage('next')}>Next</button>
-          </div>
         </Document>
+        {pageCount > 1 ?
+          <div className="pdf__pagination">
+            <button
+              disabled={currPage === 1}
+              className="btn btn-compact"
+              onClick={() => setPage('prev')}
+            >
+              prev
+            </button>
+            <button
+              disabled={currPage === pageCount}
+              className="btn btn-compact"
+              onClick={() => setPage('next')}
+            >
+              Next
+            </button>
+          </div>
+        : null}
       </div>
     </div>
   )
