@@ -19,6 +19,8 @@
 }
 
 #content {
+  height: 100%;
+  overflow-y: auto;
 }
 .content__actions {
   position: fixed;

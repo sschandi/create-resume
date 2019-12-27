@@ -30,11 +30,6 @@ const App = () => {
     onScroll: (e) => e.stopPropagation()
   }
 
-  const onContentScroll = (e) => {
-    setcontentScrollTop(e.target.scrollTop)
-    e.stopPropagation()
-  }
-
   const goBack = () => {
     const back = currentComponent - 1
     setCurrentComponent(back)
@@ -77,8 +72,8 @@ const App = () => {
           <ParallaxLayer offset={1} {...componentProps}>
             <Header />
           </ParallaxLayer>
-          <ParallaxLayer offset={2} {...{ ...componentProps, onScroll: onContentScroll }}>
-            <Content active={currentComponent === AppComponents.Content} scrollTop={contentScrollTop}/>
+          <ParallaxLayer offset={2} {...componentProps}>
+            <Content active={currentComponent === AppComponents.Content} />
           </ParallaxLayer>
           <ParallaxLayer offset={3} {...componentProps}>
             <Design />

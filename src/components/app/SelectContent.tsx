@@ -116,8 +116,12 @@ const customSelectOptions = [
   },
 ]
 
-const SelectContent = () => {
+const SelectContent = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
+  const add = (section) => {
+    addSection(section)
+    scrollToBottom()
+  }
 
   const springOptions = useTrail(selectOptions.length, {
     config: { mass: 2, tension: 4000, friction: 200 },
@@ -140,7 +144,7 @@ const SelectContent = () => {
               key={index}
               style={{ ...rest }}
               className="btn"
-              onClick={() => addSection(selectOptions[index])}
+              onClick={() => add(selectOptions[index])}
             >
               {selectOptions[index].title}
             </animated.button>
@@ -155,7 +159,7 @@ const SelectContent = () => {
               key={index}
               style={{ ...rest }}
               className="btn btn-primary"
-              onClick={() => addSection(customSelectOptions[index])}
+              onClick={() => add(customSelectOptions[index])}
             >
               {customSelectOptions[index].title}
             </animated.button>
