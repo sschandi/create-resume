@@ -5,7 +5,6 @@ import Home from '../components/app/Home'
 import Header from '../components/app/Header'
 import Content from '../components/app/Content'
 import Design from '../components/app/Design'
-import Exporter from '../components/app/Exporter'
 
 import AppLayout from '../layouts/AppLayout'
 import '../styles/app.scss'
@@ -15,8 +14,7 @@ enum AppComponents {
   Home = 0,
   Header,
   Content,
-  Design,
-  Export
+  Design
 }
 
 const App = () => {
@@ -78,14 +76,11 @@ const App = () => {
           <ParallaxLayer offset={3} {...componentProps}>
             <Design active={currentComponent === AppComponents.Design} />
           </ParallaxLayer>
-          <ParallaxLayer offset={4} {...componentProps}>
-            <Exporter />
-          </ParallaxLayer>
         </Parallax>
       </AppContextProvider>
       <div className="navigation">
         <button disabled={currentComponent === AppComponents.Home} onClick={goBack}>Prev</button>
-        <button disabled={currentComponent === AppComponents.Export} onClick={goNext}>Next</button>
+        <button disabled={currentComponent === AppComponents.Design} onClick={goNext}>Next</button>
       </div>
     </AppLayout>
   )
