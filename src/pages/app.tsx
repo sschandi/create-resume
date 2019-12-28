@@ -5,6 +5,7 @@ import Home from '../components/app/Home'
 import Header from '../components/app/Header'
 import Content from '../components/app/Content'
 import Design from '../components/app/Design'
+import Navigation from '../components/app/Navigation'
 
 import AppLayout from '../layouts/AppLayout'
 import '../styles/app.scss'
@@ -78,10 +79,7 @@ const App = () => {
           </ParallaxLayer>
         </Parallax>
       </AppContextProvider>
-      <div className="navigation">
-        <button disabled={currentComponent === AppComponents.Home} onClick={goBack}>Prev</button>
-        <button disabled={currentComponent === AppComponents.Design} onClick={goNext}>Next</button>
-      </div>
+      <Navigation current={currentComponent} prev={goBack} next={goNext} />
     </AppLayout>
   )
 }
