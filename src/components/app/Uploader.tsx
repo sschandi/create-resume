@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import PDFJS from 'pdfjs-dist'
 
 const Uploader = () => {
   const { updateHeader, setSections } = useContext(AppContext);
+  const input = useRef(null)
 
   const uploadPDF = (e: any) => {
     const reader = new FileReader()
@@ -18,7 +19,7 @@ const Uploader = () => {
     loadingTask.promise.then((doc) => {
       doc.getMetadata().then((data) => {
         const obj = JSON.parse(data.info.Custom.serialized)
-        console.log(obj)
+
         updateHeader(obj.header)
         setSections(obj.sections)
       })
@@ -27,7 +28,19 @@ const Uploader = () => {
 
   return (
     <div>
-      <input type="file" id="pdfLoad" onChange={uploadPDF} />
+      <input
+        ref={input}
+        type="file"
+        id="pdfLoad"
+        style={{ position: 'absolute', visibility: 'hidden', opacity: 0, width: '1px', height: '1px' }}
+        onChange={uploadPDF}
+      />
+      <button
+        className="btn btn-accent"
+        onClick={() => input.current.click()}
+      >
+        Upload PDF
+      </button>
     </div>
   )
 }
