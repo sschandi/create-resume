@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
+  min-height: calc(100vh - 3rem);
   h1 {
     font-size: 4rem;
     @media (min-width: $breakpoint-md) {
