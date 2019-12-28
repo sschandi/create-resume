@@ -43,10 +43,10 @@
 
 .component-container {
   max-width: $breakpoint-xl;
-  max-height: 100vh;
   padding: 1rem;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 3rem;
 }
 
 .navigation {
@@ -56,20 +56,45 @@
   transform: translateX(-50%)
 }
 
+#design {
+}
+.design__title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.design {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: 2fr 1fr;
+  }
+  &__actions {
+    order: -1;
+    padding: 1rem;
+    background-color: $white;
+    @media (min-width: $breakpoint-md) {
+      order: unset;
+    }
+  }
+}
 .pdf {
   display: flex;
   justify-content: center;
   &-document {
     position: relative;
-    width: 80%;
+    width: 100%;
     @media (min-width: $breakpoint-sm) {
-      width: 80%;
+      width: 100%;
     }
     @media (min-width: $breakpoint-md) {
-      width: 60%;
+      width: 100%;
     }
     @media (min-width: $breakpoint-lg) {
-      width: 40%;
+      width: 100%;
     }
   }
   &-page {

@@ -63,15 +63,34 @@ const Design = ({ active }) => {
   }, [activeTemplate, active])
 
   return (
-    <div className="component-container">
-      <h1>Design</h1>
-      {active ?
-        <PDFDisplay document={document} />
-      : null}
-      {templateList.map((template) => {
-        return <button key={template.name} onClick={() => setActiveTemplate(template)}>{template.name}</button>
-      })}
-      <button onClick={downloadActive}>Get PDF</button>
+    <div id="design">
+      <div className="component-container">
+        <div className="design__title">
+          <h1>Design</h1>
+          <button className="btn btn-primary" onClick={downloadActive}>Get Resume</button>
+        </div>
+        <div className="design">
+          <div className="design__preview">
+            {active ?
+              <PDFDisplay document={document} />
+            : null}
+          </div>
+          <div className="design__actions">
+            <h3>Template</h3>
+            {templateList.map((template) => {
+              return (
+                <button
+                  key={template.name}
+                  className={`btn ${activeTemplate.name === template.name ? 'btn-accent' : ''}`}
+                  onClick={() => setActiveTemplate(template)}
+                >
+                  {template.name}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
