@@ -3,9 +3,10 @@ import { AppContext } from '../../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
+import ContentActions from './ContentActions'
 
 const List = (props) => {
-  const { updateSection } = useContext(AppContext)
+  const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const updateListElement = (index: number, value: Partial<ListType>) => {
     const elements = props.list.elements
@@ -76,9 +77,13 @@ const List = (props) => {
                 onChange={(elements) => updateListElement(index, { elements })}
               />
             </div>
-              <div className="content__el--actions">
-                <button onClick={() => deleteListElement(index)}>Delete</button>
-              </div>
+            <ContentActions
+              section={props.list}
+              sectionIndex={props.index}
+              index={index}
+              reorder={reorderSectionEl}
+              remove={deleteListElement}
+            />
           </div>
         )
       })}

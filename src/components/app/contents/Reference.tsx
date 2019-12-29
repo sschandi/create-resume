@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
 import { Reference as ReferenceType } from '../ResumeTypes'
+import ContentActions from './ContentActions'
 
 const Reference = (props) => {
-  const { updateSection } = useContext(AppContext)
+  const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addReferenceElement = () => {
     const referenceEl: ReferenceType = {
@@ -106,9 +107,13 @@ const Reference = (props) => {
                 />
               </div>
             </div>
-            <div className="content__el--actions">
-              <button onClick={() => deleteReferenceElement(index)}>Delete</button>
-            </div>
+            <ContentActions
+              section={props.reference}
+              sectionIndex={props.index}
+              index={index}
+              reorder={reorderSectionEl}
+              remove={deleteReferenceElement}
+            />
           </div>
         )
       })}

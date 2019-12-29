@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../../contexts/AppContext'
 import ResumeDateInput from './ResumeDateInput'
+import ContentActions from './ContentActions'
 
 const education = (props) => {
-  const { updateSection } = useContext(AppContext)
+  const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addEducationElement = () => {
     const educationEl = {
@@ -73,9 +74,13 @@ const education = (props) => {
                 onChange={(value) => updateEducationElement(index, 'date', value)}
               />
             </div>
-            <div className="content__el--actions">
-              <button onClick={() => deleteEducationElement(index)}>Delete</button>
-            </div>
+            <ContentActions
+              section={props.education}
+              sectionIndex={props.index}
+              index={index}
+              reorder={reorderSectionEl}
+              remove={deleteEducationElement}
+            />
           </div>
         )
       })}

@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useContext }  from 'react'
 import { AppContext } from '../../../contexts/AppContext'
 import { Skill as SkillType } from '../ResumeTypes'
+import ContentActions from './ContentActions'
 
 const Skill = (props) => {
-  const { updateSection } = useContext(AppContext)
+  const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addSkillElement = () => {
     const skill = {
@@ -57,9 +58,13 @@ const Skill = (props) => {
                 })}
               </div>
             </div>
-            <div className="content__el--actions">
-              <button onClick={() => deleteSkillElement(index)}>Delete</button>
-            </div>
+            <ContentActions
+              section={props.skill}
+              sectionIndex={props.index}
+              index={index}
+              reorder={reorderSectionEl}
+              remove={deleteSkillElement}
+            />
           </div>
         )
       })}
