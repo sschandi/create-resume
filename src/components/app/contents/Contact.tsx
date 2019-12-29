@@ -16,41 +16,44 @@ const Contact = (props) => {
   return (
     <div>
       <h2>Contact Info</h2>
-      <div>
-        {defaultContacts.map((contact, index) => {
-          return <button key={index} onClick={() => props.addToContact(contact)}>{contact}</button>
+      <p>How do you want to be reached?</p>
+      <div className="header__contact">
+        {props.contacts.map((contact, index) => {
+          return (
+            <div key={index} className="header__contact--container">
+              <div className="input type">
+                <label>Contact</label>
+                <input
+                  value={contact.name}
+                  type="text"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateContactName(index, e.target.value)
+                  }}
+                />
+              </div>
+              <div className="input value">
+                <label>Value</label>
+                <input
+                  value={contact.value}
+                  type="text"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateContactValue(index, e.target.value)
+                  }}
+                />
+              </div>
+              <button onClick={() => props.deleteContact(index)}>Delete</button>
+            </div>
+          )
         })}
-        <button onClick={() => props.addToContact('')}>Custom</button>
+        <div className="header__contact--actions">
+          {defaultContacts.map((contact, index) => {
+            return <button key={index} className="btn btn-primary" onClick={() => props.addToContact(contact)}>{contact}</button>
+          })}
+          <button className="btn" onClick={() => props.addToContact('')}>Custom</button>
+        </div>
       </div>
-      {props.contacts.map((contact, index) => {
-        return (
-          <div key={index}>
-            <div className="input">
-              <label>Contact Type</label>
-              <input
-                value={contact.name}
-                type="text"
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateContactName(index, e.target.value)
-                }}
-              />
-            </div>
-            <div className="input">
-              <label>Value</label>
-              <input
-                value={contact.value}
-                type="text"
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  e.preventDefault()
-                  updateContactValue(index, e.target.value)
-                }}
-              />
-            </div>
-            <button onClick={() => props.deleteContact(index)}>Delete</button>
-          </div>
-        )
-      })}
     </div>
   )
 }

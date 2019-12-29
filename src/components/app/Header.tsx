@@ -28,56 +28,58 @@ const Header = () => {
     <div className="component-container">
       <h1>Header</h1>
       <p>Lets start off with the easy stuff.</p>
-      <div className="input">
-        <label htmlFor="name">Name</label>
-        <input
-          value={header.name}
-          type="text"
-          name="name"
-          placeholder="John Smith"
-          autoFocus
-          onChange={headerChange}
-        />
-      </div>
-      <div className="input">
-        <label htmlFor="address">Address</label>
-        <input
-          value={header.address}
-          type="text"
-          name="address"
-          placeholder="123 Sesame Street"
-          onChange={headerChange}
-        />
-      </div>
-      <div className="input">
-        <label htmlFor="city">City</label>
-        <input
-          value={header.city}
-          type="text"
-          name="city"
-          placeholder="Vancouver"
-          onChange={headerChange}
-        />
-      </div>
-      <div className="input">
-        <label htmlFor="province">Province</label>
-        <input
-          value={header.province}
-          type="text"
-          name="province"
-          placeholder="British Columbia"
-          onChange={headerChange}
-        />
-      </div>
-      <div className="input">
-        <label htmlFor="postalCode">Postal Code/Zip Code</label>
-        <input
-          value={header.postalCode}
-          type="text"
-          name="postalCode"
-          placeholder="1A2 B3C"
-          onChange={headerChange}
-        />
+      <div className="header__personal">
+        <div className="input name">
+          <label htmlFor="name">Name</label>
+          <input
+            value={header.name}
+            type="text"
+            name="name"
+            placeholder="John Smith"
+            autoFocus
+            onChange={headerChange}
+          />
+        </div>
+        <div className="input address">
+          <label htmlFor="address">Address</label>
+          <input
+            value={header.address}
+            type="text"
+            name="address"
+            placeholder="123 Sesame Street"
+            onChange={headerChange}
+          />
+        </div>
+        <div className="input city">
+          <label htmlFor="city">City</label>
+          <input
+            value={header.city}
+            type="text"
+            name="city"
+            placeholder="Vancouver"
+            onChange={headerChange}
+          />
+        </div>
+        <div className="input province">
+          <label htmlFor="province">Province / State</label>
+          <input
+            value={header.province}
+            type="text"
+            name="province"
+            placeholder="British Columbia"
+            onChange={headerChange}
+          />
+        </div>
+        <div className="input postal">
+          <label htmlFor="postalCode">Postal / Zip Code</label>
+          <input
+            value={header.postalCode}
+            type="text"
+            name="postalCode"
+            placeholder="1A2 B3C"
+            onChange={headerChange}
+          />
+        </div>
       </div>
       <Contact
         contacts={header.contacts}
