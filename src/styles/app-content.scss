@@ -57,9 +57,10 @@
     height: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 1rem 0;
+    padding: 1rem 0;
     background-color: $secondary;
     border-radius: 0 0.25rem 0.25rem 0;
     transition: all 250ms ease-in;

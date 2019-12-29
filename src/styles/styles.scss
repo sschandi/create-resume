@@ -143,3 +143,17 @@ p {
     background-color: transparent;
   }
 }
+
+.icon__delete {
+  line, circle {
+    transition: all 200ms ease-in;
+  }
+  :hover {
+    line {
+      color: $danger;
+    }
+    circle {
+      fill: rgba($white, 0.5);
+    }
+  }
+}
