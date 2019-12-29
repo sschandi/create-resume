@@ -252,22 +252,33 @@
     color: $primary;
     background-color: $white;
     border-radius: 0.25rem;
-    border: 2px solid $primary;
+    border: none;
     margin: 0 2rem;
     cursor: pointer;
-    transition: all 300ms ease-in;
+    transition: all 200ms ease-in;
     &:hover {
-      border-color: $accent-1;
+      svg {
+        color: $accent-1;
+      }
     }
     &:disabled {
       opacity: 0;
       pointer-events: none;
     }
+    svg {
+      transition: all 200ms ease-in;
+    }
     &--right {
       padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+      &:hover {
+        transform: translateX(5px);
+      }
     }
     &--left {
       padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+      &:hover {
+        transform: translateX(-5px);
+      }
     }
   }
 }
