@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 3rem);
+  min-height: calc(100vh - 5rem);
   text-align: center;
   @media (min-width: $breakpoint-md) {
     align-items: flex-start;
@@ -76,18 +76,20 @@
   padding: 1rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
 
 .navigation {
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 0;
+  background-color: $white;
+  border-radius: 0.25rem 0.25rem 0 0;
   &__icon {
     width: 48px;
     height: 48px;
@@ -120,8 +122,8 @@
     top: 50%;
     left: 0;
     z-index: -1;
-    stroke: $white;
-    stroke-width: 10;
+    stroke: $secondary;
+    stroke-width: 8;
   }
   &__moving-line {
     position: absolute;
@@ -129,7 +131,7 @@
     left: 0;
     z-index: -1;
     stroke: $accent-1;
-    stroke-width: 5;
+    stroke-width: 8;
   }
   &__btn {
     display: flex;
