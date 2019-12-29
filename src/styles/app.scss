@@ -88,6 +88,74 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  &__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 2px solid $primary;
+    background-color: $white;
+    transition: all 300ms ease-in;
+    &.completed {
+      border-color: $accent-1;
+    }
+    &.active {
+      transform: scale(1.1);
+      color: $secondary;
+    }
+  }
+  &__components {
+    position: relative;
+    width: 400px;
+    display: none;
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    stroke: $white;
+    stroke-width: 10;
+  }
+  &__moving-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    stroke: $accent-1;
+    stroke-width: 5;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: $primary;
+    background-color: $white;
+    border-radius: 0.25rem;
+    border: 2px solid $primary;
+    margin: 0 2rem;
+    cursor: pointer;
+    transition: all 300ms ease-in;
+    &:hover {
+      border-color: $accent-1;
+    }
+    &:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+    &--right {
+      padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+    }
+    &--left {
+      padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    }
+  }
 }
 
 #design {
