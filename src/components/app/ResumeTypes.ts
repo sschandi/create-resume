@@ -16,6 +16,7 @@ export interface Section {
   title: string
   type: string
   elements: any[] // swap any type to list of possible options
+  date?: boolean // Used for list extra (date or text)
 }
 
 export enum SectionTypes {
@@ -39,7 +40,6 @@ export interface List {
   title: string | null
   extra: string | null
   elements: string[]
-  date?: boolean
   id: string
 }
 
