@@ -57,13 +57,19 @@
     height: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 1rem 0;
-    padding: 1rem 0;
     background-color: $secondary;
     border-radius: 0 0.25rem 0.25rem 0;
     transition: all 250ms ease-in;
+  }
+  &__add {
+    width: calc(100% - 3rem);
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+    background-color: $white;
   }
 }
 

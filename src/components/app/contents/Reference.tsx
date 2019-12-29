@@ -3,6 +3,7 @@ import UUID from 'uuid/v4'
 import { AppContext } from '../../../contexts/AppContext'
 import { Reference as ReferenceType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
+import ContentAdd from './ContentAdd'
 
 const Reference = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
@@ -119,7 +120,7 @@ const Reference = (props) => {
           </div>
         )
       })}
-      <button onClick={() => addReferenceElement()}>Add</button>
+      <ContentAdd add={addReferenceElement} />
     </div>
   )
 }

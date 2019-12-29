@@ -5,6 +5,7 @@ import { List as ListType } from '../ResumeTypes'
 import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
+import ContentAdd from './ContentAdd'
 
 const List = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
@@ -89,7 +90,7 @@ const List = (props) => {
           </div>
         )
       })}
-      <button onClick={() => addListElement()}>Add</button>
+      <ContentAdd add={addListElement} />
     </div>
   )
 }

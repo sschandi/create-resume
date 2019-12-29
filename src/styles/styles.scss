@@ -157,3 +157,14 @@ p {
     }
   }
 }
+.icon__add {
+  color: $success;
+  circle {
+    transition: all 200ms ease-in;
+  }
+  :hover {
+    circle {
+      fill: rgba($success, 0.1);
+    }
+  }
+}

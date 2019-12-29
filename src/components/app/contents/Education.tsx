@@ -4,6 +4,7 @@ import { AppContext } from '../../../contexts/AppContext'
 import { Education as EducationType } from '../ResumeTypes'
 import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
+import ContentAdd from './ContentAdd'
 
 const education = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
@@ -87,7 +88,7 @@ const education = (props) => {
           </div>
         )
       })}
-      <button onClick={() => addEducationElement()}>Add</button>
+      <ContentAdd add={addEducationElement} />
     </div>
   )
 }

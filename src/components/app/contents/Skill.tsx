@@ -3,6 +3,7 @@ import UUID from 'uuid/v4'
 import { AppContext } from '../../../contexts/AppContext'
 import { Skill as SkillType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
+import ContentAdd from './ContentAdd'
 
 const Skill = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
@@ -70,7 +71,7 @@ const Skill = (props) => {
           </div>
         )
       })}
-      <button onClick={() => addSkillElement()}>Add</button>
+      <ContentAdd add={addSkillElement} />
     </div>
   )
 }
