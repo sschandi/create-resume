@@ -126,7 +126,11 @@ const customSelectOptions = [
 const SelectContent = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
   const add = (section) => {
-    addSection(section)
+    const sectionWithId = { ...section, id: UUID() }
+    sectionWithId.elements.forEach((element) => {
+      element.id = UUID()
+    })
+    addSection(sectionWithId)
     scrollToBottom()
   }
 

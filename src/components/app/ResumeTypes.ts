@@ -17,6 +17,7 @@ export interface Section {
   type: string
   elements: any[] // swap any type to list of possible options
   date?: boolean // Used for list extra (date or text)
+  id: string
 }
 
 export enum SectionTypes {
