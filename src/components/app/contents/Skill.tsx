@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useContext }  from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../../contexts/AppContext'
 import { Skill as SkillType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
@@ -7,9 +8,10 @@ const Skill = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addSkillElement = () => {
-    const skill = {
+    const skill: SkillType = {
       name: '',
-      levels: [true, false, false, false, false]
+      levels: [true, false, false, false, false],
+      id: UUID()
     }
     updateSection(props.index, { ...props.skill, elements: [...props.skill.elements, skill]})
   }
@@ -32,8 +34,8 @@ const Skill = (props) => {
     <div>
       {props.skill.elements.map((element, index) => {
         return (
-          <div key={index} className="content__wrapper">
-            <div key={index} className="content__el content--skill">
+          <div key={element.id} className="content__wrapper">
+            <div className="content__el content--skill">
               <div className="input">
                 <label>Skill</label>
                 <input

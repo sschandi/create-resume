@@ -32,6 +32,7 @@ export interface Education {
   program: string
   university: string
   date: string
+  id: string
 }
 
 export interface List {
@@ -39,11 +40,13 @@ export interface List {
   extra: string | null
   elements: string[]
   date?: boolean
+  id: string
 }
 
 export interface Skill {
   name: string
   levels: boolean[]
+  id: string
 }
 
 export interface Reference {
@@ -53,4 +56,5 @@ export interface Reference {
   companyAddress?: string
   phone?: string
   email?: string
+  id: string
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
 import { useTrail, animated } from 'react-spring'
@@ -8,22 +9,22 @@ const selectOptions = [
     type: SectionTypes.TEXT,
     title: 'Summary',
     elements: [
-      { elements: ['Summary Here'] }
+      { elements: ['Summary Here'], id: UUID() }
     ]
   },
   {
     type: SectionTypes.EDUCATION,
     title: 'Education',
     elements: [
-      { degree: '', program: '', university: '', date: '' }
+      { degree: '', program: '', university: '', date: '', id: UUID() }
     ]
   },
   {
     type: SectionTypes.SKILL,
     title: 'Skills',
     elements: [
-      { name: 'Your Skill', levels: [ true, true, true, true, false ]},
-      { name: 'Your Skill', levels: [ true, true, true, false, false ]}
+      { name: 'Your Skill', levels: [ true, true, true, true, false ], id: UUID()},
+      { name: 'Your Skill', levels: [ true, true, true, false, false ], id: UUID()}
     ]
   },
   {
@@ -33,12 +34,14 @@ const selectOptions = [
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
+        id: UUID()
       },
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
+        id: UUID()
       }
     ],
     date: true
@@ -50,12 +53,14 @@ const selectOptions = [
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
+        id: UUID()
       },
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
+        id: UUID()
       }
     ],
     date: true
@@ -67,7 +72,8 @@ const selectOptions = [
       {
         title: 'My great project', extra: 'This is really neat', elements: [
           'Directed staff.'
-        ]
+        ],
+        id: UUID()
       }
     ],
     date: false
@@ -82,7 +88,8 @@ const selectOptions = [
         company: 'Washington',
         companyAddress: '123',
         phone: '(555) 123 - 4312',
-        email: 'jimmy@company.com'
+        email: 'jimmy@company.com',
+        id: UUID()
       }
     ]
   }
@@ -92,26 +99,26 @@ const customSelectOptions = [
   {
     type: SectionTypes.LIST,
     title: 'List with Date',
-    elements: [{ title: '', extra: '', elements: [''] }],
+    elements: [{ title: '', extra: '', elements: [''], id: UUID() }],
     date: true
   },
   {
     type: SectionTypes.LIST,
     title: 'List with Subtitle',
-    elements: [{ title: '', extra: '', elements: [''] }],
+    elements: [{ title: '', extra: '', elements: [''], id: UUID() }],
     date: false
   },
   {
     type: SectionTypes.TEXT,
     title: 'Text',
-    elements: [{ elements: [''] }]
+    elements: [{ elements: [''], id: UUID() }]
   },
   {
     type: SectionTypes.SKILL,
     title: 'Skill',
     elements: [
-      { name: '', levels: [ true, true, true, true, false ]},
-      { name: 'Your Skill', levels: [ true, true, true, false, false ]}
+      { name: '', levels: [ true, true, true, true, false ], id: UUID() },
+      { name: 'Your Skill', levels: [ true, true, true, false, false ], id: UUID() }
     ]
   },
 ]

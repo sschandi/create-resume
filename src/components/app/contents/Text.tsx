@@ -23,7 +23,7 @@ const Text = (props) => {
     <div>
       {props.text.elements.map((element, index) => {
         return (
-          <div key={index} className="content__wrapper">
+          <div key={element.id} className="content__wrapper">
             <div className="content__el content--list">
               {element.elements.map((listEl, listIndex) => {
                 return (

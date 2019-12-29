@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../../contexts/AppContext'
 import { Reference as ReferenceType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
@@ -13,7 +14,8 @@ const Reference = (props) => {
       company: '',
       companyAddress: '',
       phone: '',
-      email: ''
+      email: '',
+      id: UUID()
     }
     updateSection(props.index, { ...props.reference, elements: [...props.reference.elements, referenceEl]})
   }

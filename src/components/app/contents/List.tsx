@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 import BulletInput from './BulletInput'
@@ -18,6 +19,7 @@ const List = (props) => {
       title: '',
       extra: '',
       elements: [''],
+      id: UUID()
     }
     updateSection(props.index, { ...props.list, elements: [...props.list.elements, list]})
   }
@@ -33,7 +35,7 @@ const List = (props) => {
     <div>
       {props.list.elements.map((element, index) => {
         return (
-          <div key={index} className="content__wrapper">
+          <div key={element.id} className="content__wrapper">
             <div className="content__el content--list">
               <div className="list__title">
                 <div className="input list__input">
