@@ -11,6 +11,7 @@ type ContextProps = {
   deleteSection(index: number): void
   setSections(payload: Section[]): void
   reorderSection(curIndex: number, newIndex: number): void
+  reorderSectionEl(section: Section, sectionIndex: number, curIndex: number, newIndex: number): void
 }
 
 export const AppContext = createContext<Partial<ContextProps>>({})
@@ -44,8 +45,26 @@ const AppContextProvider = ({ children }) => {
     setSections(moved)
   }
 
+  const reorderSectionEl = (section: Section, sectionIndex: number, curIndex: number, newIndex: number) => {
+    const moved = Move(section.elements, curIndex, newIndex)
+    const updated = Object.assign({}, section, { elements: moved })
+    updateSection(sectionIndex, updated)
+  }
+
   return (
-    <AppContext.Provider value={{ header, updateHeader, sections, addSection, updateSection, deleteSection, setSections, reorderSection }}>
+    <AppContext.Provider 
+      value={{
+        header,
+        updateHeader,
+        sections,
+        addSection,
+        updateSection,
+        deleteSection,
+        setSections,
+        reorderSection,
+        reorderSectionEl
+      }}
+    >
       {children}
     </AppContext.Provider>
   )

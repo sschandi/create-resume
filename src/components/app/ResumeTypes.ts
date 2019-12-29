@@ -16,6 +16,8 @@ export interface Section {
   title: string
   type: string
   elements: any[] // swap any type to list of possible options
+  date?: boolean // Used for list extra (date or text)
+  id: string
 }
 
 export enum SectionTypes {
@@ -32,18 +34,20 @@ export interface Education {
   program: string
   university: string
   date: string
+  id: string
 }
 
 export interface List {
   title: string | null
   extra: string | null
   elements: string[]
-  date?: boolean
+  id: string
 }
 
 export interface Skill {
   name: string
   levels: boolean[]
+  id: string
 }
 
 export interface Reference {
@@ -53,4 +57,5 @@ export interface Reference {
   companyAddress?: string
   phone?: string
   email?: string
+  id: string
 }

@@ -1,16 +1,20 @@
 import React, { ChangeEvent, useContext } from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../../contexts/AppContext'
+import { Education as EducationType } from '../ResumeTypes'
 import ResumeDateInput from './ResumeDateInput'
+import ContentActions from './ContentActions'
 
 const education = (props) => {
-  const { updateSection } = useContext(AppContext)
+  const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addEducationElement = () => {
-    const educationEl = {
+    const educationEl: EducationType = {
       degree: '',
       program: '',
       university: '',
-      date: ''
+      date: '',
+      id: UUID()
     }
     updateSection(props.index, { ...props.education, elements: [...props.education.elements, educationEl]})
   }
@@ -29,7 +33,7 @@ const education = (props) => {
     <div>
       {props.education.elements.map((education, index) => {
         return (
-          <div key={index} className="content__wrapper">
+          <div key={education.id} className="content__wrapper">
             <div className="content__el content--education">
               <div className="input">
                 <label>Degree</label>
@@ -73,9 +77,13 @@ const education = (props) => {
                 onChange={(value) => updateEducationElement(index, 'date', value)}
               />
             </div>
-            <div className="content__el--actions">
-              <button onClick={() => deleteEducationElement(index)}>Delete</button>
-            </div>
+            <ContentActions
+              section={props.education}
+              sectionIndex={props.index}
+              index={index}
+              reorder={reorderSectionEl}
+              remove={deleteEducationElement}
+            />
           </div>
         )
       })}

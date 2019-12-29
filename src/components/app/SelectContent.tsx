@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
 import { useTrail, animated } from 'react-spring'
@@ -22,8 +23,8 @@ const selectOptions = [
     type: SectionTypes.SKILL,
     title: 'Skills',
     elements: [
-      { name: 'Your Skill', levels: [ true, true, true, true, false ]},
-      { name: 'Your Skill', levels: [ true, true, true, false, false ]}
+      { name: 'Your Skill', levels: [ true, true, true, true, false ] },
+      { name: 'Your Skill', levels: [ true, true, true, false, false ] }
     ]
   },
   {
@@ -33,12 +34,12 @@ const selectOptions = [
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
       },
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
       }
     ],
     date: true
@@ -50,12 +51,12 @@ const selectOptions = [
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
       },
       {
         title: 'Reginal Manager', extra: '', elements: [
           'Directed staff.'
-        ]
+        ],
       }
     ],
     date: true
@@ -67,7 +68,7 @@ const selectOptions = [
       {
         title: 'My great project', extra: 'This is really neat', elements: [
           'Directed staff.'
-        ]
+        ],
       }
     ],
     date: false
@@ -82,7 +83,7 @@ const selectOptions = [
         company: 'Washington',
         companyAddress: '123',
         phone: '(555) 123 - 4312',
-        email: 'jimmy@company.com'
+        email: 'jimmy@company.com',
       }
     ]
   }
@@ -110,8 +111,8 @@ const customSelectOptions = [
     type: SectionTypes.SKILL,
     title: 'Skill',
     elements: [
-      { name: '', levels: [ true, true, true, true, false ]},
-      { name: 'Your Skill', levels: [ true, true, true, false, false ]}
+      { name: '', levels: [ true, true, true, true, false ] },
+      { name: 'Your Skill', levels: [ true, true, true, false, false ] }
     ]
   },
 ]
@@ -119,7 +120,11 @@ const customSelectOptions = [
 const SelectContent = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
   const add = (section) => {
-    addSection(section)
+    const sectionWithId = { ...section, id: UUID() }
+    sectionWithId.elements.forEach((element) => {
+      element.id = UUID()
+    })
+    addSection(sectionWithId)
     scrollToBottom()
   }
 

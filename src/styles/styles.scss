@@ -134,4 +134,26 @@ p {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
   }
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+}
+
+.icon__delete {
+  line, circle {
+    transition: all 200ms ease-in;
+  }
+  :hover {
+    line {
+      color: $danger;
+    }
+    circle {
+      fill: rgba($white, 0.5);
+    }
+  }
 }
