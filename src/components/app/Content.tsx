@@ -7,7 +7,6 @@ import { useSpring, useTransition, animated } from 'react-spring'
 
 const Content = ({ active }) => {
   const { sections } = useContext(AppContext)
-  // TODO: The key is section.title which is not unique
   const transitions = useTransition(sections, item => item.id, {
     from: { transform: 'translate3d(5rem,0,0)' },
     enter: { transform: 'translate3d(0,0px,0)' },

@@ -17,7 +17,8 @@
       width: calc(50% - 2rem);
     }
     &--actions {
-      // width: calc(50% - 2rem);
+      display: flex;
+      align-items: center;
     }
   }
   &__wrapper {
@@ -54,6 +55,10 @@
     right: 3rem;
     width: 3rem;
     height: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 1rem 0;
     background-color: $secondary;
     border-radius: 0 0.25rem 0.25rem 0;
