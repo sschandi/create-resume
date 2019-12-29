@@ -29,9 +29,20 @@ const Section = ({ section, index }) => {
     }
   }
 
+  const borderRadius = () => {
+    const styles: any = { overflow: 'hidden' }
+    if (index === 0) {
+      styles.borderTopLeftRadius = '2rem'
+    }
+    if (index === sections.length - 1) {
+      styles.borderBottomLeftRadius = '2rem'
+    }
+    return styles
+  }
+
   return (
-    <div className="content">
-      <div className="content__title">
+    <div className="content" style={borderRadius()}>
+      <div className="content__title" >
         <div className="input">
           <input
             name="title"

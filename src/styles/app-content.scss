@@ -31,9 +31,6 @@
       }
     }
     &:hover {
-      .content__el {
-        border-color: $secondary;
-      }
       .content__el--actions {
         transform: translateX(100%);
       }
@@ -45,8 +42,6 @@
     width: calc(100% - 3rem);
     padding: 1rem;
     background-color: $white;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
   }
   &__el--actions {
     position: absolute;
@@ -68,7 +63,7 @@
     width: calc(100% - 3rem);
     display: flex;
     justify-content: center;
-    padding-bottom: 1rem;
+    padding: 0.5rem;
     background-color: $white;
   }
 }

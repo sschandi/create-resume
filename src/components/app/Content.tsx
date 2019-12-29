@@ -32,15 +32,17 @@ const Content = ({ active }) => {
     <animated.div id="content" scrollTop={scrollLoc.y}>
       <div className="component-container">
         <div className="content__main">
-          <h1>Content</h1>
+          <h1>Resume Content</h1>
           <p>Now lets fill everything with Content</p>
-          {transitions.map(({ item, props }, index) => {
-            return (
-              <animated.div key={item.id} style={props}>
-                <Section section={item} index={index} />
-              </animated.div>
-            )
-          })}
+          <div className="content__elements">
+            {transitions.map(({ item, props }, index) => {
+              return (
+                <animated.div key={item.id} style={props}>
+                  <Section section={item} index={index} />
+                </animated.div>
+              )
+            })}
+          </div>
         </div>
         { active ? ReactDOM.createPortal(
           <div className="content__actions">
