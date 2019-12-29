@@ -67,7 +67,8 @@ p {
     border-radius: 0.25rem;
     transition: width 200ms ease-in;
     &::placeholder {
-      color: $dark-grey;
+      color: $med;
+      opacity: 1;
     }
     &:disabled {
       opacity: 0.6;
