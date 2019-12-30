@@ -45,7 +45,7 @@ const Design = ({ active }) => {
   const downloadActive = () => {
     const document = activeTemplate.render(sections, header)
     const pdf = pdfMake.createPdf(document)
-    pdf.download(`Resume - ${header.name}`)
+    pdf.download(`Resume - ${header.name}.pdf`)
   }
 
   useEffect(() => {

@@ -18,10 +18,18 @@ const Uploader = () => {
 
     loadingTask.promise.then((doc) => {
       doc.getMetadata().then((data) => {
-        const obj = JSON.parse(data.info.Custom.serialized)
+        if (!data || !data.info || !data.info.Custom || !data.info.Custom.serialized) {
+          console.log('No custom info')
+          return
+        }
+        try {
+          const obj = JSON.parse(data.info.Custom.serialized)
 
-        updateHeader(obj.header)
-        setSections(obj.sections)
+          updateHeader(obj.header)
+          setSections(obj.sections)
+        } catch (e) {
+          console.log('Failed parsing')
+        }
       })
     })
   }
@@ -32,6 +40,7 @@ const Uploader = () => {
         ref={input}
         type="file"
         id="pdfLoad"
+        accept=".pdf"
         style={{ position: 'absolute', visibility: 'hidden', opacity: 0, width: '1px', height: '1px' }}
         onChange={uploadPDF}
       />
