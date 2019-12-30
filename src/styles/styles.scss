@@ -168,3 +168,39 @@ p {
     }
   }
 }
+
+// Modal
+.modal {
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($light, 0.5);
+  }
+  &__container {
+    width: 600px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.25rem;
+    background-color: $white;
+  }
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  &__close {
+    display: flex;
+    justify-content: center;
+  }
+}

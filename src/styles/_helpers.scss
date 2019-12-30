@@ -1,3 +1,5 @@
+@import 'variables';
+
 .text--center {
   text-align: center;
 }
@@ -6,4 +8,11 @@
 }
 .text--left {
   text-align: left;
+}
+
+.text--danger {
+  color: $danger;
+}
+.text--success {
+  color: $success;
 }

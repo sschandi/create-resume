@@ -1,10 +1,12 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import PDFJS from 'pdfjs-dist'
+import Modal from '../Modal'
 
 const Uploader = () => {
   const { updateHeader, setSections } = useContext(AppContext);
   const input = useRef(null)
+  const [error, setError] = useState({ show: false, message: '' })
 
   const uploadPDF = (e: any) => {
     const reader = new FileReader()
@@ -19,7 +21,7 @@ const Uploader = () => {
     loadingTask.promise.then((doc) => {
       doc.getMetadata().then((data) => {
         if (!data || !data.info || !data.info.Custom || !data.info.Custom.serialized) {
-          console.log('No custom info')
+          setError({ show: true, message: 'Sorry, this file was not made here :(' })
           return
         }
         try {
@@ -28,7 +30,7 @@ const Uploader = () => {
           updateHeader(obj.header)
           setSections(obj.sections)
         } catch (e) {
-          console.log('Failed parsing')
+          setError({ show: true, message: 'Sorry, file data is corrupted :(' })
         }
       })
     })
@@ -50,6 +52,12 @@ const Uploader = () => {
       >
         Upload PDF
       </button>
+      <Modal show={error.show} title="Error" close={() => setError({ show: false, message: '' })}>
+        <div className="text--danger">
+          <p>Unable to Process</p>
+          <p>{error.message}</p>
+        </div>
+      </Modal>
     </div>
   )
 }
