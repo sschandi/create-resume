@@ -14,7 +14,10 @@
     padding: 1rem;
     background-color: $accent-1;
     .input {
-      width: calc(50% - 2rem);
+      margin-right: 1rem;
+      @media (min-width: $breakpoint-md) {
+        width: 50%;
+      }
     }
     &--actions {
       display: flex;
