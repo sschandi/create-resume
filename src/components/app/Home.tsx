@@ -11,7 +11,7 @@ const Home = (props) => {
         <h2>Been</h2>
         <h2>Here Before?</h2>
         <p>Continue working on a resume:</p>
-        <Uploader />
+        <Uploader next={props.next} />
       </div>
     </div>
   )

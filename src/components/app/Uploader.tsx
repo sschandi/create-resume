@@ -3,7 +3,7 @@ import { AppContext } from '../../contexts/AppContext'
 import PDFJS from 'pdfjs-dist'
 import Modal from '../Modal'
 
-const Uploader = () => {
+const Uploader = ({ next }) => {
   const { updateHeader, setSections } = useContext(AppContext);
   const input = useRef(null)
   const [error, setError] = useState({ show: false, message: '' })
@@ -29,6 +29,8 @@ const Uploader = () => {
 
           updateHeader(obj.header)
           setSections(obj.sections)
+
+          next()
         } catch (e) {
           setError({ show: true, message: 'Sorry, file data is corrupted :(' })
         }
