@@ -112,14 +112,46 @@
 }
 .content__actions {
   position: fixed;
-  top: 2rem;
-  right: 2rem;
-  max-height: calc(100vh - 4rem);
-  max-width: 400px;
+  top: 0;
+  right: 0;
+  width: calc(100% - 2rem);
+  max-width: 300px;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  margin: 2rem;
+  overflow-y: auto;
+  @media (min-width: $breakpoint-lg) {
+    overflow-y: hidden;
+  }
+  @media (min-width: $breakpoint-xl) {
+    right: 50%;
+    transform: translateX(600px);
+  }
+  &--btn {
+    background-color: $white;
+    border-radius: 2rem;
+    @media (min-width: $breakpoint-xl) {
+      display: none;
+    }
+    svg {
+      width: 4rem;
+      height: 4rem;
+    }
+    &.close {
+      color: $danger;
+      transform: rotate(45deg);
+      :hover {
+        circle {
+          fill: rgba($danger, 0.1);
+        }
+      }
+    }
+  }
 }
 .content__select {
   padding: 1rem;
   background-color: $white;
+  overflow: hidden;
 }
 .content__elements {
   margin-top: 2rem;
