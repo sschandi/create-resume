@@ -120,10 +120,9 @@ const customSelectOptions = [
 const SelectContent = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
   const add = (section) => {
-    const sectionWithId = { ...section, id: UUID() }
-    sectionWithId.elements.forEach((element) => {
-      element.id = UUID()
-    })
+    // Create unique copy of elements instead of passing reference
+    const sectionWithIdElements = section.elements.map((el) => ({ ...el, id: UUID() }))
+    const sectionWithId = { ...section, id: UUID(), elements: sectionWithIdElements }
     addSection(sectionWithId)
     scrollToBottom()
   }
