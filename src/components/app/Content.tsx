@@ -9,9 +9,10 @@ import useWindowSize from '../useWindowSize'
 const Content = ({ active }) => {
   const { sections } = useContext(AppContext)
   const transitions = useTransition(sections, item => item.id, {
-    from: { transform: 'translate3d(5rem,0,0)' },
+    from: { transform: 'translate3d(10rem,0,0)' },
     enter: { transform: 'translate3d(0,0px,0)' },
-    leave: { transform: 'translate3d(-5rem,0,0)' },
+    leave: { transform: 'translate3d(10rem,0,0)' },
+    config: { mass: 1, tension: 140, friction: 20 }
   })
 
   const [scrollLoc, setScrollLoc] = useSpring(() => ({ y: 0}))
