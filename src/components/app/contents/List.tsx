@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
+import { useTransition, animated } from 'react-spring'
 import { AppContext } from '../../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 import BulletInput from './BulletInput'
@@ -32,11 +33,19 @@ const List = (props) => {
   // Display for placeholder/labels
   const display = () => props.list.title ? props.list.title : 'List'
 
+  // Transitions
+  const transitions = useTransition(props.list.elements, item => item.id, {
+    from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
+    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
+    leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
+    config: { mass: 1, tension: 140, friction: 20 }
+  })
+
   return (
     <div>
-      {props.list.elements.map((element, index) => {
+      {transitions.map(({ item, ...rest}, index) => {
         return (
-          <div key={element.id} className="content__wrapper">
+          <animated.div key={item.id} style={rest.props} className="content__wrapper">
             <div className="content__el content--list">
               <div className="list__title">
                 <div className="input list__input">
@@ -44,7 +53,7 @@ const List = (props) => {
                   <input
                     name="title"
                     placeholder="List Title"
-                    value={element.title}
+                    value={item.title}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       e.preventDefault()
                       updateListElement(index, { title: e.target.value })
@@ -58,7 +67,7 @@ const List = (props) => {
                       <input
                         name="extra"
                         placeholder={`${display()} Extra`}
-                        value={element.extra}
+                        value={item.extra}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
                           e.preventDefault()
                           updateListElement(index, { extra: e.target.value })
@@ -67,7 +76,7 @@ const List = (props) => {
                     </div>
                     :
                     <ResumeDateInput
-                      value={element.extra}
+                      value={item.extra}
                       label={`${display()} Date`}
                       onChange={(extra) => updateListElement(index, { extra })}
                     />
@@ -75,7 +84,7 @@ const List = (props) => {
                 </div>
               </div>
               <BulletInput
-                value={element.elements}
+                value={item.elements}
                 placeholder={`${display()} Bullets`}
                 onChange={(elements) => updateListElement(index, { elements })}
               />
@@ -87,7 +96,7 @@ const List = (props) => {
               reorder={reorderSectionEl}
               remove={deleteListElement}
             />
-          </div>
+          </animated.div>
         )
       })}
       <ContentAdd add={addListElement} />
