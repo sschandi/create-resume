@@ -31,7 +31,7 @@ const Content = ({ active }) => {
   const size = useWindowSize()
   const [showMobile, setShowMobile] = useState(false)
   const [showSidebar, setShowSidebar] = useState(false)
-  const sidebar = useSpring({ height: showSidebar && showMobile ? '100%' : '0%' })
+  const sidebar = useSpring({ height: showSidebar && showMobile && active ? '100%' : '0%' })
   const centerContent = useSpring({
     opacity: showSidebar ? 0 : 1,
     position: 'absolute',
@@ -73,7 +73,7 @@ const Content = ({ active }) => {
             })}
           </div>
         </div>
-        { active ? ReactDOM.createPortal(
+        {ReactDOM.createPortal(
           <>
             <animated.div style={sidebar} className="content__actions">
               <SelectContent scrollToBottom={scrollToBottom} />
@@ -89,7 +89,7 @@ const Content = ({ active }) => {
             </button>
           </>,
           document.getElementById('app-layout')
-        ) : null}
+        )}
       </div>
     </animated.div>
   )
