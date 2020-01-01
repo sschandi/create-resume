@@ -47,6 +47,18 @@ p {
   margin: 0;
 }
 
+// Container
+.container {
+  max-width: $breakpoint-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 0;
+  &__fluid {
+    max-width: unset;
+    padding: 0;
+  }
+}
+
 .input {
   position: relative;
   // margin: 1rem;

@@ -1,0 +1,20 @@
+@import './variables';
+
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  height: 80vh;
+  &__title {
+    &--create {
+      color: $primary;
+    }
+    &--resume {
+      color: $secondary;
+    }
+    &--me {
+      color: $accent-1;
+    }
+  }
+}
