@@ -43,7 +43,7 @@ const List = (props) => {
 
   return (
     <div>
-      {transitions.map(({ item, ...rest}, index) => {
+      {transitions.map(({ item, ...rest }, index) => {
         return (
           <animated.div key={item.id} style={rest.props} className="content__wrapper">
             <div className="content__el content--list">

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
+import { useTransition, animated } from 'react-spring'
 import { AppContext } from '../../../contexts/AppContext'
 import { Reference as ReferenceType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
@@ -20,7 +21,7 @@ const Reference = (props) => {
     }
     updateSection(props.index, { ...props.reference, elements: [...props.reference.elements, referenceEl]})
   }
-  const updateReferenceElement = (index: string, name: string, value: string) => {
+  const updateReferenceElement = (index: number, name: string, value: string) => {
     const elements = props.reference.elements
       .map((edu, eduIndex) => eduIndex === index ? { ...edu, [name]: value } : edu)
     updateSection(props.index, { ...props.reference, elements })
@@ -31,18 +32,26 @@ const Reference = (props) => {
     updateSection(props.index, { ...props.reference, elements })
   }
 
+  // Transitions
+  const transitions = useTransition(props.reference.elements, item => item.id, {
+    from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
+    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
+    leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
+    config: { mass: 1, tension: 140, friction: 20 }
+  })
+
   return (
     <div>
-      {props.reference.elements.map((reference, index) => {
+      {transitions.map(({ item, ...rest }, index) => {
         return (
-          <div key={index} className="content__wrapper">
+          <animated.div key={item.id} style={rest.props} className="content__wrapper">
             <div className="content__el content--reference">
               <div className="input">
                 <label>Name</label>
                 <input
                   name="name"
                   placeholder="Name"
-                  value={reference.name}
+                  value={item.name}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateReferenceElement(index, e.target.name, e.target.value)
@@ -54,7 +63,7 @@ const Reference = (props) => {
                 <input
                   name="occupation"
                   placeholder="Occupation"
-                  value={reference.occupation}
+                  value={item.occupation}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateReferenceElement(index, e.target.name, e.target.value)
@@ -66,7 +75,7 @@ const Reference = (props) => {
                 <input
                   name="company"
                   placeholder="Company"
-                  value={reference.company}
+                  value={item.company}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateReferenceElement(index, e.target.name, e.target.value)
@@ -78,7 +87,7 @@ const Reference = (props) => {
                 <input
                   name="companyAddress"
                   placeholder="Company Address"
-                  value={reference.companyAddress}
+                  value={item.companyAddress}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateReferenceElement(index, e.target.name, e.target.value)
@@ -90,7 +99,7 @@ const Reference = (props) => {
                 <input
                   name="phone"
                   placeholder="Phone"
-                  value={reference.phone}
+                  value={item.phone}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateReferenceElement(index, e.target.name, e.target.value)
@@ -102,7 +111,7 @@ const Reference = (props) => {
                 <input
                   name="email"
                   placeholder="Email"
-                  value={reference.email}
+                  value={item.email}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateReferenceElement(index, e.target.name, e.target.value)
@@ -117,7 +126,7 @@ const Reference = (props) => {
               reorder={reorderSectionEl}
               remove={deleteReferenceElement}
             />
-          </div>
+          </animated.div>
         )
       })}
       <ContentAdd add={addReferenceElement} />

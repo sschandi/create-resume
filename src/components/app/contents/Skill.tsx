@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext }  from 'react'
 import UUID from 'uuid/v4'
+import { useTransition, animated } from 'react-spring'
 import { AppContext } from '../../../contexts/AppContext'
 import { Skill as SkillType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
@@ -31,18 +32,26 @@ const Skill = (props) => {
     updateSkillElement(index, { levels })
   }
 
+  // Transitions
+  const transitions = useTransition(props.skill.elements, item => item.id, {
+    from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
+    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
+    leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
+    config: { mass: 1, tension: 140, friction: 20 }
+  })
+
   return (
     <div>
-      {props.skill.elements.map((element, index) => {
+      {transitions.map(({ item, ...rest }, index) => {
         return (
-          <div key={element.id} className="content__wrapper">
+          <animated.div key={item.id} style={rest.props} className="content__wrapper">
             <div className="content__el content--skill">
               <div className="input">
                 <label>Skill</label>
                 <input
                   name="name"
                   placeholder="Skill"
-                  value={element.name}
+                  value={item.name}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateSkillElement(index, { name: e.target.value })
@@ -50,7 +59,7 @@ const Skill = (props) => {
                 />
               </div>
               <div className="skill__list">
-                {element.levels.map((level, levelIndex) => {
+                {item.levels.map((level, levelIndex) => {
                   return (
                     <div
                       key={levelIndex}
@@ -68,7 +77,7 @@ const Skill = (props) => {
               reorder={reorderSectionEl}
               remove={deleteSkillElement}
             />
-          </div>
+          </animated.div>
         )
       })}
       <ContentAdd add={addSkillElement} />
