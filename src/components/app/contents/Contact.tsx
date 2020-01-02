@@ -7,11 +7,13 @@ const defaultContacts = [
 
 const Contact = (props) => {
   const updateContactValue = (index: number, value) => {
-    props.updateContact(index, { name: props.contacts[index].name, value })
+    const { name, id } = props.contacts[index]
+    props.updateContact(index, { id, name, value })
   }
 
   const updateContactName = (index: number, name) => {
-    props.updateContact(index, { name, value: props.contacts[index].value })
+    const { value, id } = props.contacts[index]
+    props.updateContact(index, { id, name, value })
   }
 
   // Transitions
@@ -48,6 +50,7 @@ const Contact = (props) => {
                   type="text"
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
+                    console.log(item, e.target.value)
                     updateContactValue(index, e.target.value)
                   }}
                 />
