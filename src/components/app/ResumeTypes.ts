@@ -10,6 +10,7 @@ export interface Header {
 export interface Contact {
   name: string
   value: string
+  id: string
 }
 
 export interface Section {

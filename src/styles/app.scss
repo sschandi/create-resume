@@ -84,7 +84,7 @@
     }
     &--container {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       grid-column: 1;
       @media (min-width: $breakpoint-md) {
         grid-column: unset;
@@ -97,6 +97,13 @@
       }
       .value {
         margin-right: 1rem;
+      }
+      .btn-icon {
+        width: 2rem;
+        height: 2rem;
+        background-color: $danger;
+        border-radius: 2rem;
+        margin-bottom: 0.5rem;
       }
     }
     &--actions {

@@ -1,4 +1,5 @@
 import React, { useContext, useState, ChangeEvent } from 'react'
+import UUID from 'uuid/v4'
 import { AppContext } from '../../contexts/AppContext'
 import { Contact as ContactType } from './ResumeTypes'
 import Contact from './contents/Contact'
@@ -12,7 +13,12 @@ const Header = () => {
   }
 
   const addToContact = (name: string, value: string = '') => {
-    updateHeader({ contacts: [...header.contacts, { name, value }]})
+    const newContact = {
+      id: UUID(),
+      name,
+      value
+    }
+    updateHeader({ contacts: [...header.contacts, newContact ]})
   }
 
   const updateContact = (index: number, contact: ContactType) => {
@@ -66,7 +72,7 @@ const Header = () => {
             value={header.province}
             type="text"
             name="province"
-            placeholder="British Columbia"
+            placeholder="BC"
             onChange={headerChange}
           />
         </div>
