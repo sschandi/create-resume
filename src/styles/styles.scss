@@ -52,7 +52,7 @@ p {
   max-width: $breakpoint-xl;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem 0;
+  padding: 2rem;
   &__fluid {
     max-width: unset;
     padding: 0;
@@ -153,6 +153,10 @@ p {
     padding: 0;
     margin: 0;
     background-color: transparent;
+  }
+  &-link {
+    display: inline-block;
+    text-decoration: none;
   }
 }
 

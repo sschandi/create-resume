@@ -1,12 +1,30 @@
 @import './variables';
 
 .jumbotron {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  position: relative;
   height: 80vh;
+  padding: 2rem;
+  background-color: $white;
+  overflow: hidden;
+  &--container {
+    position: relative;
+    z-index: 2;
+    max-width: $breakpoint-xl;
+    margin-left: auto;
+    margin-right: auto;
+  }
   &__title {
+    h1 {
+      @media (min-width: $breakpoint-md) {
+        font-size: 6rem;
+      }
+      @media (min-width: $breakpoint-lg) {
+        font-size: 8rem;
+      }
+    }
+    p {
+      font-size: 2rem;
+    }
     &--create {
       color: $primary;
     }
@@ -16,5 +34,18 @@
     &--me {
       color: $accent-1;
     }
+  }
+  &__samples {
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    right: 0;
+    width: 50%;
+    height: 100%;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
