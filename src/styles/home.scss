@@ -2,10 +2,13 @@
 
 .jumbotron {
   position: relative;
-  height: 80vh;
+  min-height: 60vh;
   padding: 2rem;
   background-color: $white;
   overflow: hidden;
+  @media (min-width: $breakpoint-sm) {
+    min-height: 80vh;
+  }
   &--container {
     position: relative;
     z-index: 2;
@@ -15,7 +18,8 @@
   }
   &__title {
     h1 {
-      @media (min-width: $breakpoint-md) {
+      font-size: 3.5rem;
+      @media (min-width: $breakpoint-sm) {
         font-size: 6rem;
       }
       @media (min-width: $breakpoint-lg) {
@@ -23,7 +27,9 @@
       }
     }
     p {
-      font-size: 2rem;
+      @media (min-width: $breakpoint-md) {
+        font-size: 2rem;
+      }
     }
     &--create {
       color: $primary;
@@ -38,10 +44,20 @@
   &__samples {
     position: absolute;
     z-index: 1;
-    top: 30%;
+    top: 60%;
     right: 0;
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: 50%;
+    @media (min-width: $breakpoint-sm) {
+      top: 40%;
+      width: 50%;
+      height: 100%;
+    }
+    @media (min-width: $breakpoint-lg) {
+      top: 30%;
+      width: 50%;
+      height: 100%;
+    }
   }
   &__bg {
     position: absolute;
