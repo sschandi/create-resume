@@ -10,17 +10,12 @@ const imageStyles: CSSProperties = {
   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
 }
 
-const containerStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-}
-
 const ResumeSamples = () => {
   return (
-    <div style={containerStyles}>
-      <img src={CluoImg} style={{ ...imageStyles, transform: 'rotate(-20deg) translateX(-30%)' }} />
-      <img src={TeresImg} style={imageStyles} />
-      <img src={CogitoImg} style={{ ...imageStyles, transform: 'rotate(20deg) translateX(40%)' }} />
+    <div className="resume-samples">
+      <img src={CluoImg} className="resume-samples__img one" />
+      <img src={TeresImg} className="resume-samples__img two" />
+      <img src={CogitoImg} className="resume-samples__img three" />
     </div>
   )
 }
