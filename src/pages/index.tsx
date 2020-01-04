@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../layouts/Layout"
-import ResumeSamples from '../components/ResumeSamples'
+import ResumeSamples from '../components/home/ResumeSamples'
 import Image from "../components/image"
 import SEO from "../components/seo"
 import '../styles/home.scss'

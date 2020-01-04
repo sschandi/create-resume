@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react'
 
-import CluoImg from '../images/home/cluo-sample.png'
-import CogitoImg from '../images/home/cogito-sample.png'
-import TeresImg from '../images/home/teres-sample.png'
+import CluoImg from '../../images/home/cluo-sample.png'
+import CogitoImg from '../../images/home/cogito-sample.png'
+import TeresImg from '../../images/home/teres-sample.png'
 
 const imageStyles: CSSProperties = {
   position: 'absolute',
