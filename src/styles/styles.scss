@@ -121,7 +121,7 @@ p {
 
 .btn {
   border-radius: 0.25rem;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
   margin: 0.5rem;
   border: none;
   background-color: $secondary;
@@ -143,7 +143,7 @@ p {
     background-color: $accent-1;
   }
   &-compact {
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
   }
   &-icon {
