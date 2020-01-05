@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 
 import Layout from "../layouts/Layout"
 import ResumeSamples from '../components/home/ResumeSamples'
+import PrivacyWallImage from '../components/home/PrivacyWallImage'
 import Image from "../components/image"
 import SEO from "../components/seo"
 import '../styles/home.scss'
@@ -41,8 +42,32 @@ const IndexPage = () => (
         </g>
       </svg>
     </section>
-    <section className="features container">
-      <h1>Features</h1>
+    <section className="features features__privacy container">
+      <div className="features__privacy--bg"></div>
+      <div className="features__privacy--content">
+        <h2>Own Your Data</h2>
+        <p>
+          Create Resume works entirely client-side. Your data is never seen, sent, or stored by us.
+        </p>
+        <p>
+          You can view the code for this project in <a href="https://github.com" target="_blank" className="link">our repository.</a>
+        </p>
+      </div>
+      <div className="features__privacy--image">
+        <PrivacyWallImage />
+      </div>
+    </section>
+    <section className="features features__simple container">
+      <div className="features__simple--content">
+        <h2>Simple</h2>
+        <ol>
+          <li>Add your resume content</li>
+          <li>Choose and customize from templates</li>
+          <li>Generate your PDF Resume</li>
+          <span className="optional">Need to make changes in the future?</span>
+          <li>Re-upload your resume to continue where you left off</li>
+        </ol>
+      </div>
     </section>
     {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
