@@ -9,7 +9,7 @@
   // overflow: hidden;
   &__title {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: calc(100% - 3rem);
     padding: 1rem;
     background-color: $accent-1;
