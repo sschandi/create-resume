@@ -1,8 +1,16 @@
 import React from 'react'
+import { useInView } from 'react-intersection-observer'
+import { useSpring, animated } from 'react-spring'
 
 const PrivacyWallImage = () => {
+  const [ref, inView] = useInView({
+    threshold: 1
+  })
+  const brickOneAnimation = useSpring({ transform: inView ? 'translateY(0)' : 'translateY(-20%)' })
+  const brickTwoAnimation = useSpring({ transform: inView ? 'translateY(0)' : 'translateY(-30%)' })
+
   return (
-    <svg width="100%" height="100%" viewBox="0 100 384 600" version="1.1" xmlns="http://www.w3.org/2000/svg" className="privacy-wall" style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit:2 }}>
+    <svg ref={ref} viewBox="0 100 384 600" version="1.1" xmlns="http://www.w3.org/2000/svg" className="privacy-wall" style={{ fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit:2 }}>
         <g className="person">
             <path d="M220.779,325.145C220.779,325.145 220.996,334.941 219.838,344.685C219.296,349.24 220.451,353.295 221.695,354.911C225.548,359.916 177.026,358.975 175.43,358.872C173.833,358.769 177.154,324.687 177.154,324.687L195.598,321.109L217.841,319.035L220.779,325.145Z" style={{fill:'rgb(255,209,154)'}}/>
             <path d="M220.913,334.723C220.33,334.041 220.102,347.101 213.29,352.484C205.651,358.519 193.818,359.288 188.626,356.735C183.434,354.182 178.919,334.362 178.362,332.713C177.806,331.064 173.768,344.343 173.325,352.529C172.881,360.716 173.618,408.301 173.618,408.301L183.762,408.342L221.508,364.906L228.944,349.856L225.826,340.647C225.826,340.647 221.351,335.235 220.913,334.723Z" style={{fill:'rgb(255,254,254)'}}/>
@@ -21,17 +29,17 @@ const PrivacyWallImage = () => {
         <path d="M136.302,387.702L136.672,408.747L182.764,435.619L182.764,414.527L136.302,387.702Z" style={{fill:'rgb(128,128,128)'}}/>
         <path d="M260.758,689.394L306.777,662.824L307.221,410.43L260.758,438.382L260.758,689.394Z" style={{fill:'rgb(84,78,78)'}}/>
         <path d="M91.915,286.288L307.221,410.595L260.758,438.382L41.709,311.915L91.915,286.288Z" style={{fill:'rgb(89,70,70)'}}/>
-        <g className="brick__2">
+        <animated.g style={brickOneAnimation}>
             <path d="M40.836,262.306L41.709,311.915L155.184,379.035L155.184,329.317L40.836,262.306Z" style={{fill:'rgb(114,104,104)'}}/>
             <path d="M155.184,378.871L201.647,351.761L201.647,301.2L155.184,329.152L155.184,378.871Z" style={{fill:'rgb(84,78,78)'}}/>
             <path d="M91.042,236.68L201.647,301.529L155.184,329.317L40.836,262.306L91.042,236.68Z" style={{fill:'rgb(89,70,70)'}}/>
             <path d="M51.547,286.288L51.918,307.333L98.01,334.205L98.01,313.113L51.547,286.288Z" style={{fill:'rgb(128,128,128)'}}/>
-        </g>
-        <g className="brick__1">
+        </animated.g>
+        <animated.g style={brickTwoAnimation}>
             <path d="M151.233,327.046L152.106,376.654L260.758,439.998L260.758,390.28L151.233,327.046Z" style={{fill:'rgb(114,104,104)'}}/>
             <path d="M260.758,439.833L307.221,412.724L307.221,362.162L260.758,390.115L260.758,439.833Z" style={{fill:'rgb(84,78,78)'}}/>
             <path d="M201.44,301.419L307.221,362.492L260.758,390.28L151.233,327.046L201.44,301.419Z" style={{fill:'rgb(89,70,70)'}}/>
-        </g>
+        </animated.g>
     </svg>
   )
 }

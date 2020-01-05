@@ -102,39 +102,50 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   background-color: $white;
   text-align: center;
   margin-top: 4rem;
   margin-bottom: 4rem;
+  padding: 0;
 }
 // Privacy Section
-.features__privacy {
-  &--content {
+.privacy {
+  &__content {
     width: 100%;
+    min-height: 315px;
+    background-color: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: $white;
-    padding: 1rem;
+    padding: 3rem;
     margin: 1rem;
     @media (min-width: $breakpoint-md) {
-      width: 50%;
+      width: 60%;
+      padding: 3rem 6rem;
       margin: unset;
     }
     h2 {
       margin-bottom: 1rem;
     }
   }
-  &--image {
+  &__image {
     display: none;
     z-index: 2;
-    width: 30%;
+    width: 40%;
+    height: 80%;
+    padding: 2rem;
     @media (min-width: $breakpoint-md) {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      width: 60%;
     }
   }
-  &--bg {
+  &__bg {
     display: none;
     position: absolute;
     z-index: 1;
@@ -149,6 +160,7 @@
   }
 }
 .privacy-wall {
+  margin-top: -20%;
   .brick__1 {
     transform: translateY(-30%);
     animation: brick-move 1s ease-in-out forwards;
@@ -170,8 +182,9 @@
   }
 }
 // Simple Section
-.features__simple {
+.simple {
   &--content {
+    padding: 3rem;
     .optional {
       color: $med;
       font-size: 1rem;
@@ -180,6 +193,46 @@
         color: $secondary;
         font-size: 1.5rem;
       }
+    }
+  }
+}
+// Free Section
+.free {
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+    @media (min-width: $breakpoint-md) {
+      width: 50%;
+      margin: unset;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+  }
+  &__image {
+    display: none;
+    z-index: 2;
+    width: 30%;
+    height: 80%;
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
+  }
+  &__bg {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-color: $accent-2;
+    @media (min-width: $breakpoint-md) {
+      display: block;
     }
   }
 }
