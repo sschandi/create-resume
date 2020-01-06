@@ -161,25 +161,6 @@
 }
 .privacy-wall {
   margin-top: -20%;
-  .brick__1 {
-    transform: translateY(-30%);
-    animation: brick-move 1s ease-in-out forwards;
-  }
-  .brick__2 {
-    transform: translateY(-20%);
-    animation: brick-move 1s ease-in-out forwards;
-  }
-  @keyframes brick-move {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
 }
 // Simple Section
 .simple {
@@ -206,7 +187,8 @@
     padding: 1rem;
     margin: 1rem;
     @media (min-width: $breakpoint-md) {
-      width: 50%;
+      width: 60%;
+      padding: 3rem 6rem;
       margin: unset;
     }
     h2 {
@@ -216,10 +198,16 @@
   &__image {
     display: none;
     z-index: 2;
-    width: 30%;
+    width: 40%;
     height: 80%;
+    padding: 2rem 0;
     @media (min-width: $breakpoint-md) {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      width: 60%;
     }
   }
   &__bg {
@@ -230,7 +218,7 @@
     left: 0;
     width: 40%;
     height: 100%;
-    background-color: $accent-2;
+    background-color: $primary;
     @media (min-width: $breakpoint-md) {
       display: block;
     }

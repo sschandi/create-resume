@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import Layout from "../layouts/Layout"
 import ResumeSamples from '../components/home/ResumeSamples'
 import PrivacyWallImage from '../components/home/PrivacyWallImage'
+import NoCostImage from '../components/home/NoCostImage'
 import SEO from "../components/seo"
 import '../styles/home.scss'
 
@@ -74,7 +75,7 @@ const IndexPage = () => {
       <section className="features free container">
         <div className="free__bg"></div>
         <div className="free__image">
-          <PrivacyWallImage />
+          <NoCostImage />
         </div>
         <div className="free__content">
           <h2>Free</h2>
