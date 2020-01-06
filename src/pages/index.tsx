@@ -5,6 +5,9 @@ import Layout from "../layouts/Layout"
 import ResumeSamples from '../components/home/ResumeSamples'
 import PrivacyWallImage from '../components/home/PrivacyWallImage'
 import NoCostImage from '../components/home/NoCostImage'
+import SimpleContentImage from '../components/home/SimpleContentImage'
+// @ts-ignore sometimes it flags it, sometimes it doesn't
+import TeresImg from '../images/home/teres-sample.png'
 import SEO from "../components/seo"
 import '../styles/home.scss'
 
@@ -21,6 +24,7 @@ const IndexPage = () => {
               <span className="jumbotron__title--me">me</span>
             </h1>
             <p>Free. Private. Simple.</p>
+            <p>PDF Resume Generator</p>
             <Link to="/app" className="btn btn-link btn-primary">Go To App</Link>
           </div>
         </div>
@@ -61,7 +65,10 @@ const IndexPage = () => {
         </div>
       </section>
       <section className="features simple container">
-        <div className="simple--content">
+        <div className="simple__image simple__image--left">
+          <SimpleContentImage />
+        </div>
+        <div className="simple__content">
           <h2>Simple</h2>
           <ol>
             <li>Add your resume content</li>
@@ -70,6 +77,9 @@ const IndexPage = () => {
             <span className="optional">Need to make changes in the future?</span>
             <li>Re-upload your resume to continue where you left off</li>
           </ol>
+        </div>
+        <div className="simple__image simple__image--right">
+          <img src={TeresImg} />
         </div>
       </section>
       <section className="features free container">

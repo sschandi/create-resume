@@ -109,6 +109,9 @@
   margin-top: 4rem;
   margin-bottom: 4rem;
   padding: 0;
+  p {
+    margin-bottom: 1rem;
+  }
 }
 // Privacy Section
 .privacy {
@@ -153,7 +156,7 @@
     right: 0;
     width: 40%;
     height: 100%;
-    background-color: $accent-3;
+    background-color: $secondary;
     @media (min-width: $breakpoint-md) {
       display: block;
     }
@@ -164,8 +167,18 @@
 }
 // Simple Section
 .simple {
-  &--content {
+  align-items: unset;
+  &__content {
+    width: 100%;
     padding: 3rem;
+    @media (min-width: $breakpoint-md) {
+      width: 75%;
+      padding: 3rem 6rem;
+      margin: unset;
+    }
+    @media (min-width: $breakpoint-lg) {
+      width: 50%;
+    }
     .optional {
       color: $med;
       font-size: 1rem;
@@ -176,6 +189,43 @@
       }
     }
   }
+  &__image {
+    display: none;
+    width: 25%;
+    &--left {
+      background-color: $accent-1;
+      @media (min-width: $breakpoint-md) {
+        display: block;
+      }
+    }
+    &--right {
+      @media (min-width: $breakpoint-lg) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $accent-3;
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+  @keyframes simple-content {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(200%, 0, 0);
+    }
+  }
 }
 // Free Section
 .free {
@@ -184,8 +234,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
-    margin: 1rem;
+    padding: 3rem;
     @media (min-width: $breakpoint-md) {
       width: 60%;
       padding: 3rem 6rem;
