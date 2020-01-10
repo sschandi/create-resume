@@ -11,6 +11,10 @@ import AppLayout from '../layouts/AppLayout'
 import '../styles/app.scss'
 import SEO from '../components/seo'
 
+import AbstractOne from '../images/abstract-1.inline.svg'
+import AbstractTwo from '../images/abstract-2.inline.svg'
+import AbstractThree from '../images/abstract-3.inline.svg'
+
 enum AppComponents {
   Home = 0,
   Header,
@@ -62,6 +66,21 @@ const App = () => {
                     id="rect833" />
                 </g>
               </svg>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={1} factor={1.5} speed={.3}>
+            <div className="home-bg">
+              <AbstractOne />
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={2} factor={1} speed={.6}>
+            <div className="home-bg">
+              <AbstractTwo />
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={2.9} factor={2} speed={.5}>
+            <div className="home-bg">
+              <AbstractThree />
             </div>
           </ParallaxLayer>
           {/* Main components */}
