@@ -74,7 +74,7 @@ const Content = ({ active }) => {
             })}
           </div>
         </div>
-        {ReactDOM.createPortal(
+        {active && ReactDOM.createPortal(
           <>
             <animated.div style={sidebar} className="content__actions">
               <SelectContent scrollToBottom={scrollToBottom} />
