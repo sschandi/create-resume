@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Document, Page } from 'react-pdf'
 
-const PDFDisplay = ({ document }) => {
+const PDFDisplay = ({ document, loading }) => {
   const docRef = useRef(null)
   const [width, setWidth] = useState(300)
   useEffect(() => {
@@ -36,10 +36,17 @@ const PDFDisplay = ({ document }) => {
     }
   }
 
+  const loadingState = (
+    <div className="pdf-document__loader">
+      <h2>Loading</h2>
+    </div>
+  )
+
   return (
     <div className="pdf">
-      <div ref={docRef} className="pdf-document">
-        <Document file={document} onLoadSuccess={onDocumentLoad}>
+      <div ref={docRef} className="pdf-document" style={{ minHeight: `${width * 1.29}px`}}>
+        {loading && loadingState}
+        <Document file={document} loading={loadingState} noData={loadingState} onLoadSuccess={onDocumentLoad}>
           <Page pageNumber={currPage} width={width} />
         </Document>
         {pageCount > 1 ?

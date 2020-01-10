@@ -183,6 +183,7 @@
     order: -1;
     padding: 1rem;
     background-color: $white;
+    border-radius: 0.25rem;
     @media (min-width: $breakpoint-md) {
       order: unset;
     }
@@ -194,14 +195,23 @@
   &-document {
     position: relative;
     width: 100%;
-    @media (min-width: $breakpoint-sm) {
+    background-color: $white;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    &__loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
       width: 100%;
-    }
-    @media (min-width: $breakpoint-md) {
-      width: 100%;
-    }
-    @media (min-width: $breakpoint-lg) {
-      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $primary;
+      h2 {
+        color: $white;
+      }
     }
   }
   &__pagination {

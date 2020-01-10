@@ -48,19 +48,32 @@ const Design = ({ active }) => {
     pdf.download(`Resume - ${header.name}.pdf`)
   }
 
+  const [loading, setLoading] = useState(true)
+  const effectDocument = async () => {
+    const document = activeTemplate.render(sections, header)
+    const pdf = pdfMake.createPdf(document)
+    await pdf.getDataUrl((url: string) => {
+      setDocument(url)
+    })
+  }
   useEffect(() => {
     if (!active) {
       return
     }
-    const effectDocument = async () => {
-      const document = activeTemplate.render(sections, header)
-      const pdf = pdfMake.createPdf(document)
-      await pdf.getDataUrl((url: string) => {
-        setDocument(url)
-      })
-    }
+    setLoading(true)
     effectDocument()
-  }, [activeTemplate, active])
+    setLoading(false)
+  }, [activeTemplate])
+  useEffect(() => {
+    if (!active) {
+      return
+    }
+    setLoading(true)
+    setTimeout(() => {
+      effectDocument()
+      setLoading(false)
+    }, 1200)
+  }, [active])
 
   return (
     <div id="design">
@@ -71,9 +84,7 @@ const Design = ({ active }) => {
         </div>
         <div className="design">
           <div className="design__preview">
-            {active ?
-              <PDFDisplay document={document} />
-            : null}
+            <PDFDisplay document={document} loading={loading} />
           </div>
           <div className="design__actions">
             <h3>Template</h3>
