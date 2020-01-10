@@ -51,7 +51,7 @@ const App = () => {
         <Parallax pages={5} ref={parallax} horizontal={true} scrolling={false}>
           {/* BG Designs */}
           <ParallaxLayer offset={0.25} factor={1.25} speed={.4}>
-            <div className="home-bg">
+            <div className="app-bg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 205.05208 132.29167"
@@ -69,17 +69,17 @@ const App = () => {
             </div>
           </ParallaxLayer>
           <ParallaxLayer offset={1} factor={1.5} speed={.3}>
-            <div className="home-bg">
+            <div className="app-bg">
               <AbstractOne />
             </div>
           </ParallaxLayer>
-          <ParallaxLayer offset={2} factor={1} speed={.6}>
-            <div className="home-bg">
+          <ParallaxLayer offset={2} factor={1.5} speed={.6}>
+            <div className="app-bg">
               <AbstractTwo />
             </div>
           </ParallaxLayer>
           <ParallaxLayer offset={2.9} factor={2} speed={.5}>
-            <div className="home-bg">
+            <div className="app-bg">
               <AbstractThree />
             </div>
           </ParallaxLayer>
