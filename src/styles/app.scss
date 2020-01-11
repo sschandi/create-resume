@@ -334,4 +334,24 @@
       }
     }
   }
+  &__begin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    font-size: 32px;
+    background-color: $accent-2;
+    border-radius: 0.25rem 0.25rem 0 0;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    &:hover {
+      background-color: scale-color($color: $accent-2, $lightness: -10%)
+    }
+  }
 }
