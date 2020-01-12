@@ -56,7 +56,7 @@ const PDFDisplay = ({ document, loading }) => {
               className="btn btn-compact"
               onClick={() => setPage('prev')}
             >
-              prev
+              Prev
             </button>
             <button
               disabled={currPage === pageCount}
