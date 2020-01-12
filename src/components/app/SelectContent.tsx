@@ -139,9 +139,9 @@ const SelectContent = ({ scrollToBottom }) => {
   })
 
   return (
-    <div className="content__select">
+    <div className="content__select text--center">
       <h3>Add Content</h3>
-      <div className="text--center">
+      <div>
         {springOptions.map(({ ...rest }, index) => {
           return (
             <animated.button
@@ -156,7 +156,7 @@ const SelectContent = ({ scrollToBottom }) => {
         })}
       </div>
       <h4>Custom Options</h4>
-      <div className="text--center">
+      <div>
       {springCustomOptions.map(({ ...rest }, index) => {
           return (
             <animated.button

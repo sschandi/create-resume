@@ -28,10 +28,9 @@ const Text = (props) => {
               {element.elements.map((listEl, listIndex) => {
                 return (
                   <div className="input" key={listIndex}>
-                    <label>{display()} Text</label>
                     <textarea
                       name="element"
-                      placeholder={`${display()} Text`}
+                      placeholder="Text"
                       value={listEl}
                       onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                         e.preventDefault()

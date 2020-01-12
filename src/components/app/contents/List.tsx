@@ -49,10 +49,10 @@ const List = (props) => {
             <div className="content__el content--list">
               <div className="list__title">
                 <div className="input list__input">
-                  <label>{display()} Title</label>
+                  <label>Title</label>
                   <input
                     name="title"
-                    placeholder="List Title"
+                    placeholder="Title"
                     value={item.title}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       e.preventDefault()
@@ -63,10 +63,10 @@ const List = (props) => {
                 <div className="list__extra">
                   {!props.list.date ?
                     <div className="input">
-                      <label>{display()} Subtitle</label>
+                      <label>Subtitle</label>
                       <input
                         name="extra"
-                        placeholder={`${display()} Extra`}
+                        placeholder="Subtitle"
                         value={item.extra}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
                           e.preventDefault()
@@ -77,7 +77,7 @@ const List = (props) => {
                     :
                     <ResumeDateInput
                       value={item.extra}
-                      label={`${display()} Date`}
+                      label="Date"
                       onChange={(extra) => updateListElement(index, { extra })}
                     />
                   }
@@ -85,7 +85,7 @@ const List = (props) => {
               </div>
               <BulletInput
                 value={item.elements}
-                placeholder={`${display()} Bullets`}
+                placeholder="Bullets"
                 onChange={(elements) => updateListElement(index, { elements })}
               />
             </div>
