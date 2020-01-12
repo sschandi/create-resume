@@ -14,6 +14,9 @@ import SEO from '../components/seo'
 import AbstractOne from '../images/abstract-1.inline.svg'
 import AbstractTwo from '../images/abstract-2.inline.svg'
 import AbstractThree from '../images/abstract-3.inline.svg'
+import CluoSample from '../images/home/cluo-sample.png'
+import TeresSample from '../images/home/teres-sample.png'
+import CogitoSample from '../images/home/cogito-sample.png'
 
 enum AppComponents {
   Home = 0,
@@ -57,6 +60,13 @@ const App = () => {
       <AppContextProvider>
         <Parallax pages={5} ref={parallax} horizontal={true} scrolling={false}>
           {/* BG Designs */}
+          <ParallaxLayer offset={0} factor={1} speed={1}>
+            <div className="app-bg">
+              <img src={TeresSample} className="parallax-img parallax-img__1" />
+              <img src={CogitoSample} className="parallax-img parallax-img__2" />
+              <img src={CluoSample} className="parallax-img parallax-img__3" />
+            </div>
+          </ParallaxLayer>
           <ParallaxLayer offset={0.25} factor={1.25} speed={.4}>
             <div className="app-bg">
               <svg
@@ -75,7 +85,7 @@ const App = () => {
               </svg>
             </div>
           </ParallaxLayer>
-          <ParallaxLayer offset={1} factor={1.5} speed={.3}>
+          {/* <ParallaxLayer offset={1} factor={1.5} speed={.3}>
             <div className="app-bg">
               <AbstractOne />
             </div>
@@ -89,7 +99,7 @@ const App = () => {
             <div className="app-bg">
               <AbstractThree />
             </div>
-          </ParallaxLayer>
+          </ParallaxLayer> */}
           {/* Main components */}
           <ParallaxLayer offset={0} {...componentProps}>
             <Home next={goNext} />
