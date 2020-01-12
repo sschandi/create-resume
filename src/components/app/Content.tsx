@@ -6,6 +6,8 @@ import SelectContent from './SelectContent'
 import Section from './contents/Section'
 import useWindowSize from '../useWindowSize'
 
+const MAX_MOBILE_SIZE = 1200
+
 const Content = ({ active }) => {
   const { sections } = useContext(AppContext)
   const transitions = useTransition(sections, item => item.id, {
@@ -27,6 +29,10 @@ const Content = ({ active }) => {
         content.scrollTop = props.y
       }
     })
+    // Close the content box on adding in mobile
+    if (size.width <= MAX_MOBILE_SIZE) {
+      setShowMobile(false)
+    }
   }
 
   const size = useWindowSize()
@@ -40,7 +46,7 @@ const Content = ({ active }) => {
     pointerEvents: showSidebar ? 'none' : 'unset'
   })
   useEffect(() => {
-    if (size.width > 1200) {
+    if (size.width > MAX_MOBILE_SIZE) {
       setShowMobile(true)
       return
     }
@@ -74,7 +80,7 @@ const Content = ({ active }) => {
             })}
           </div>
         </div>
-        {active && ReactDOM.createPortal(
+        {active && sections.length > 0 && ReactDOM.createPortal(
           <>
             <animated.div style={sidebar} className="content__actions">
               <SelectContent scrollToBottom={scrollToBottom} />
