@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons'
 import AppContextProvider from '../contexts/AppContext'
 import Home from '../components/app/Home'
@@ -43,6 +43,13 @@ const App = () => {
     setCurrentComponent(next)
     parallax.current.scrollTo(next)
   }
+
+  // Alert leaving page
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      return 'Download your pdf to keep your progress!'
+    }
+  }, [])
 
   return (
     <AppLayout>

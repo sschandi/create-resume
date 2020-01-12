@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Create Resume`,
-    description: `Make a resume easily.`,
+    description: `Free, Private, Simple PDF Resume Generator`,
     author: `sschandi`,
   },
   plugins: [
@@ -20,13 +20,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Create Resume`,
+        short_name: `Create Resume`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#39648A`,
+        theme_color: `#39648A`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/cr-logo.inline.svg`, // This path is relative to the root of the site.
       },
     },
     {
