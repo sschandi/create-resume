@@ -173,19 +173,27 @@
   margin-bottom: 2rem;
 }
 .design {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  @media (min-width: $breakpoint-md) {
-    grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $breakpoint-lg) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__preview {
+    width: 100%;
+    @media (min-width: $breakpoint-lg) {
+      width: 70%;
+    }
   }
   &__actions {
     order: -1;
     padding: 1rem;
     background-color: $white;
     border-radius: 0.25rem;
-    @media (min-width: $breakpoint-md) {
+    margin: 0 0 1rem 0;
+    @media (min-width: $breakpoint-lg) {
       order: unset;
+      width: calc(30% - 1rem);
     }
   }
 }
