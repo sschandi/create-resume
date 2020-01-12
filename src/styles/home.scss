@@ -17,22 +17,33 @@
     margin-right: auto;
   }
   &__title {
-    margin: 4rem 0 1rem 0;
+    margin: 0 0 1rem 0;
+    @media (min-width: $breakpoint-md) {
+      margin: 4rem 0 1rem 0;
+    }
     h1 {
       font-size: 3.5rem;
       @media (min-width: $breakpoint-sm) {
         font-size: 5rem;
         line-height: 5rem;
       }
+      @media (min-width: $breakpoint-md) {
+        font-size: 7rem;
+        line-height: 7rem;
+      }
     }
     &--create {
-      // color: $primary;
+      color: $primary;
     }
     &--resume {
       color: $secondary;
     }
     &--me {
       color: $accent-1;
+    }
+    .sub-text {
+      color: $accent-2;
+      margin-bottom: 0.5rem;
     }
   }
   .btn {

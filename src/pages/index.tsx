@@ -18,13 +18,13 @@ const IndexPage = () => {
       <section className="jumbotron">
         <div className="jumbotron--container">
           <div className="jumbotron__title">
+            <p className="sub-text">100% Free | No Sign-up | No Data Collection</p>
             <h1 className="jumbotron__title--create">Create</h1>
             <h1 className="jumbotron__title--resume">
               Resu
               <span className="jumbotron__title--me">me</span>
             </h1>
           </div>
-          <p>Free. Private. Simple.</p>
           <p>PDF Resume Generator</p>
           <Link to="/app" className="btn btn-link btn-primary">Go To App</Link>
         </div>
