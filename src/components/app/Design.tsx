@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
+import Modal from '../Modal'
 
 const pdfMake = require('pdfmake/build/pdfmake')
 const pdfFonts = require('./templates/vfs_fonts')
@@ -42,10 +43,12 @@ const Design = ({ active }) => {
   const [document, setDocument] = useState(null)
 
   const [activeTemplate, setActiveTemplate] = useState(templateList[0])
+  const [showModal, setShowModal] = useState(false)
   const downloadActive = () => {
     const document = activeTemplate.render(sections, header)
     const pdf = pdfMake.createPdf(document)
     pdf.download(`Resume - ${header.name}.pdf`)
+    setShowModal(true)
   }
 
   const [loading, setLoading] = useState(true)
@@ -102,6 +105,12 @@ const Design = ({ active }) => {
           </div>
         </div>
       </div>
+      <Modal show={showModal} title="Enjoy your Resume" close={() => setShowModal(false)}>
+        <div className="text--center">
+          <p>If you need to make changes to this resume, you can re-upload the PDF to continue where you left off.</p>
+          <p>Good luck!</p>
+        </div>
+      </Modal>
     </div>
   )
 }
