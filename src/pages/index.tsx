@@ -23,10 +23,10 @@ const IndexPage = () => {
               Resu
               <span className="jumbotron__title--me">me</span>
             </h1>
-            <p>Free. Private. Simple.</p>
-            <p>PDF Resume Generator</p>
-            <Link to="/app" className="btn btn-link btn-primary">Go To App</Link>
           </div>
+          <p>Free. Private. Simple.</p>
+          <p>PDF Resume Generator</p>
+          <Link to="/app" className="btn btn-link btn-primary">Go To App</Link>
         </div>
         <div className="jumbotron__samples">
           <ResumeSamples />
@@ -92,9 +92,6 @@ const IndexPage = () => {
           <div className="free__content--text">
             <p>
               Create Resume's goal is to help people easily make a resume while maintaining control over their personal information.
-            </p>
-            <p>
-              <Link to="/about" className="link">Learn more</Link> about the motives behind this project.
             </p>
           </div>
         </div>

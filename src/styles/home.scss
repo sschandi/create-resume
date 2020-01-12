@@ -17,22 +17,16 @@
     margin-right: auto;
   }
   &__title {
+    margin: 4rem 0 1rem 0;
     h1 {
       font-size: 3.5rem;
       @media (min-width: $breakpoint-sm) {
-        font-size: 6rem;
-      }
-      @media (min-width: $breakpoint-lg) {
-        font-size: 8rem;
-      }
-    }
-    p {
-      @media (min-width: $breakpoint-md) {
-        font-size: 2rem;
+        font-size: 5rem;
+        line-height: 5rem;
       }
     }
     &--create {
-      color: $primary;
+      // color: $primary;
     }
     &--resume {
       color: $secondary;
@@ -40,6 +34,9 @@
     &--me {
       color: $accent-1;
     }
+  }
+  .btn {
+    margin: 1rem 0 0 0;
   }
   &__samples {
     position: absolute;

@@ -41,6 +41,7 @@
       }
     }
     @media (min-width: $breakpoint-lg) {
+      margin-top: 4rem;
       h2 {
         font-size: 3rem;
       }
@@ -240,6 +241,14 @@
   height: 100%;
   @media (min-width: $breakpoint-md) {
     display: block;
+  }
+}
+.app-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    height: 50%;
   }
 }
 
