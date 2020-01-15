@@ -52,6 +52,9 @@ const App = () => {
     window.onbeforeunload = () => {
       return 'Download your pdf to keep your progress!'
     }
+    return () => {
+      window.onbeforeunload = null
+    }
   }, [])
 
   return (
