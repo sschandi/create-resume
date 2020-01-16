@@ -50,7 +50,6 @@ const Contact = (props) => {
                   type="text"
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
-                    console.log(item, e.target.value)
                     updateContactValue(index, e.target.value)
                   }}
                 />
