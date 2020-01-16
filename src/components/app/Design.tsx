@@ -6,10 +6,9 @@ import Modal from '../Modal'
 import { createPDF, templateList } from './templates/Renderer'
 
 const Design = ({ active }) => {
-  const { sections, header } = useContext(AppContext)
+  const { sections, header, activeTemplate, setTemplate } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
-  const [activeTemplate, setActiveTemplate] = useState(templateList[0])
   const [showModal, setShowModal] = useState(false)
   const downloadActive = () => {
     const document = activeTemplate.render(sections, header)
@@ -63,7 +62,7 @@ const Design = ({ active }) => {
                 <button
                   key={template.name}
                   className={`btn ${activeTemplate.name === template.name ? 'btn-accent' : ''}`}
-                  onClick={() => setActiveTemplate(template)}
+                  onClick={() => setTemplate(template.name)}
                 >
                   {template.name}
                 </button>
