@@ -3,40 +3,7 @@ import { AppContext } from '../../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
 import Modal from '../Modal'
 
-const pdfMake = require('pdfmake/build/pdfmake')
-const pdfFonts = require('./templates/vfs_fonts')
-pdfMake.vfs = pdfFonts
-pdfMake.fonts = {
-  Roboto: {
-    normal: 'Roboto-Regular.ttf',
-    bold: 'Roboto-Medium.ttf',
-    italics: 'Roboto-Regular.ttf',
-    bolditalics: 'Roboto-Regular.ttf'
-  },
-  OpenSans: {
-    normal: 'OpenSans-Regular.ttf',
-    bold: 'OpenSans-Bold.ttf',
-    italics: 'OpenSans-Regular.ttf',
-    bolditalics: 'OpenSans-Regular.ttf'
-  },
-  CrimsonText: {
-    normal: 'CrimsonText-Regular.ttf',
-    bold: 'CrimsonText-Bold.ttf',
-    italics: 'CrimsonText-Regular.ttf',
-    bolditalics: 'CrimsonText-Regular.ttf'
-  },
-  Quicksand: {
-    normal: 'Quicksand-Regular.ttf',
-    bold: 'Quicksand-Medium.ttf',
-    italics: 'Quicksand-Regular.ttf',
-    bolditalics: 'Quicksand-Regular.ttf'
-  }
-}
-import Teres from './templates/Teres'
-import Cluo from './templates/Cluo'
-import Cogito from './templates/Cogito'
-
-const templateList = [new Teres(), new Cluo(), new Cogito()]
+import { createPDF, templateList } from './templates/Renderer'
 
 const Design = ({ active }) => {
   const { sections, header } = useContext(AppContext)
@@ -46,7 +13,7 @@ const Design = ({ active }) => {
   const [showModal, setShowModal] = useState(false)
   const downloadActive = () => {
     const document = activeTemplate.render(sections, header)
-    const pdf = pdfMake.createPdf(document)
+    const pdf = createPDF(document)
     pdf.download(`Resume - ${header.name}.pdf`)
     setShowModal(true)
   }
@@ -54,7 +21,7 @@ const Design = ({ active }) => {
   const [loading, setLoading] = useState(true)
   const effectDocument = async () => {
     const document = activeTemplate.render(sections, header)
-    const pdf = pdfMake.createPdf(document)
+    const pdf = createPDF(document)
     await pdf.getDataUrl((url: string) => {
       setDocument(url)
     })
