@@ -93,6 +93,9 @@ p {
       color: $med;
       opacity: 1;
     }
+    &:focus {
+      outline: none;
+    }
     &:disabled {
       opacity: 0.6;
     }
@@ -142,6 +145,9 @@ p {
   transition: all 200ms ease-in;
   &:hover {
     opacity: 0.9;
+  }
+  &:focus {
+    outline: none;
   }
   &:disabled {
     opacity: 0.5;
