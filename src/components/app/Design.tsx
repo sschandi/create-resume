@@ -1,12 +1,13 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
+import DesignColors from './DesignColors'
 import Modal from '../Modal'
 
 import { createPDF, templateList } from './templates/Renderer'
 
 const Design = ({ active }) => {
-  const { sections, header, activeTemplate, setTemplate } = useContext(AppContext)
+  const { sections, header, activeTemplate, setTemplate, colors } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
   const [showModal, setShowModal] = useState(false)
@@ -19,6 +20,11 @@ const Design = ({ active }) => {
 
   const [loading, setLoading] = useState(true)
   const effectDocument = async () => {
+    if (colors) {
+      activeTemplate.setColors(colors)
+    } else {
+      activeTemplate.setColors(activeTemplate.defaultColors)
+    }
     const document = activeTemplate.render(sections, header)
     const pdf = createPDF(document)
     await pdf.getDataUrl((url: string) => {
@@ -32,7 +38,7 @@ const Design = ({ active }) => {
     setLoading(true)
     effectDocument()
     setLoading(false)
-  }, [activeTemplate])
+  }, [activeTemplate, colors])
   useEffect(() => {
     if (!active) {
       return
@@ -68,6 +74,7 @@ const Design = ({ active }) => {
                 </button>
               )
             })}
+            <DesignColors />
           </div>
         </div>
       </div>

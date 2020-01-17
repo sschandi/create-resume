@@ -27,6 +27,7 @@ pdfMake.fonts = {
     bolditalics: 'Quicksand-Regular.ttf'
   }
 }
+import { Colors } from './Interfaces'
 import Teres from './Teres'
 import Cluo from './Cluo'
 import Cogito from './Cogito'
@@ -34,3 +35,24 @@ import Cogito from './Cogito'
 export const createPDF = pdfMake.createPdf
 
 export const templateList = [new Teres(), new Cluo(), new Cogito()]
+
+export const colorsList: Colors[] = [
+  // Default Teres
+  {
+    primary: '#00b8a9',
+    secondary: '#212121',
+    accent: 'grey'
+  },
+  // Default Cluo
+  {
+    primary: '#ff5959',
+    secondary: '#233142',
+    accent: '#4f9da6'
+  },
+  // Default Cogito
+  {
+    primary: '#053f5e',
+    secondary: '#393e46',
+    accent: '#6effbf'
+  }
+]

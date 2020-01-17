@@ -207,6 +207,33 @@
     }
   }
 }
+.design-colors {
+  .colors__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .colors__container {
+    display: flex;
+    margin: 1rem 0;
+  }
+  .colors__box {
+    width: 33.33%;
+    height: 2rem;
+    cursor: pointer;
+    &.lg {
+      height: 4rem;
+    }
+  }
+  .colors__outline {
+    box-sizing: content-box;
+    position: absolute;
+    width: calc(100% + 0.5rem);
+    height: 2.5rem;
+    border: 0.25rem solid $accent-1;
+    transform: translate(-0.5rem, -0.5rem);
+  }
+}
 .pdf {
   display: flex;
   justify-content: center;

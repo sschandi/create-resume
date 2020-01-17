@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import Move from 'lodash-move'
 import { Header, Section } from '../components/app/ResumeTypes'
+import { Colors } from '../components/app/templates/Interfaces'
 import { templateList } from '../components/app/templates/Renderer'
 
 type ContextProps = {
@@ -15,6 +16,8 @@ type ContextProps = {
   reorderSectionEl(section: Section, sectionIndex: number, curIndex: number, newIndex: number): void
   activeTemplate
   setTemplate(name: string): void
+  colors: Colors | null
+  setColors(payload: Colors): void
 }
 
 export const AppContext = createContext<Partial<ContextProps>>({})
@@ -60,7 +63,7 @@ const AppContextProvider = ({ children }) => {
     setActiveTemplate(found)
   }, [template])
 
-  const [colours, setColours] = useState(null)
+  const [colors, setColors] = useState<Colors | null>(null)
 
   return (
     <AppContext.Provider 
@@ -75,7 +78,9 @@ const AppContextProvider = ({ children }) => {
         reorderSection,
         reorderSectionEl,
         activeTemplate,
-        setTemplate
+        setTemplate,
+        colors,
+        setColors
       }}
     >
       {children}

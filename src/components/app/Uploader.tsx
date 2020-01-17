@@ -4,7 +4,7 @@ import PDFJS from 'pdfjs-dist'
 import Modal from '../Modal'
 
 const Uploader = ({ next }) => {
-  const { updateHeader, setSections } = useContext(AppContext);
+  const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
   const input = useRef(null)
   const [error, setError] = useState({ show: false, message: '' })
 
@@ -29,6 +29,8 @@ const Uploader = ({ next }) => {
 
           updateHeader(obj.header)
           setSections(obj.sections)
+          setTemplate(obj.name)
+          setColors(obj.colors)
 
           next()
         } catch (e) {

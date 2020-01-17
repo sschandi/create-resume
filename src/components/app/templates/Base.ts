@@ -26,6 +26,11 @@ export default class Base {
     secondary: '#212121',
     accent: 'grey'
   }
+  public defaultColors: Colors = {
+    primary: '#00b8a9',
+    secondary: '#212121',
+    accent: 'grey'
+  }
   public styles: StyleObject = {
     header: {},
     footer: {},
@@ -61,6 +66,7 @@ export default class Base {
   ) {
     this.name = name
     this.setColors(colors)
+    this.setDefaultColors(colors)
     this.setFont(font)
     this.setStyles(styles)
   }
@@ -108,6 +114,10 @@ export default class Base {
 
   public setColors(colors: Colors | object) {
     this.colors = { ...this.colors, ...colors }
+  }
+
+  public setDefaultColors(colors: Colors | object) {
+    this.defaultColors = { ...this.defaultColors, ...colors }
   }
 
   public setStyles(styles: StyleObject | object) {
