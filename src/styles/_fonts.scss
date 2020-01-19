@@ -6,9 +6,11 @@
 @font-face {
   font-family: 'Libre Baskerville';
   src: url('./LibreBaskerville-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Open Sans';
   src: url('./OpenSans-Regular.ttf') format('truetype');
+  font-display: swap;
 }
