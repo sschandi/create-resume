@@ -238,6 +238,35 @@ p {
   }
 }
 
+// Navigation
+#navigation {
+  background-color: $white;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    .brand {
+      svg {
+        height: 32px;
+      }
+    }
+    .nav-link {
+      text-decoration: none;
+      color: $med-grey;
+      font-size: 16px;
+      margin: 0 0.5rem;
+      &:hover, &:active {
+        color: $primary;
+      }
+    }
+    .btn {
+      margin: 0 0.5rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
 // Footer
 #footer {
   background-color: $white;

@@ -7,7 +7,8 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import Logo from '../images/cr-logo.inline.svg'
 
 import "./layout.scss"
 
@@ -24,6 +25,19 @@ const Layout = ({ fluid = false, children }) => {
 
   return (
     <>
+      <div id="navigation">
+        <nav className="container">
+          <Link to="/" className="brand">
+            <Logo />
+          </Link>
+          <div>
+            <a href="https://github.com/sschandi/create-resume/" rel="noreferrer" className="nav-link">Repository</a>
+            <a href="https://github.com/sschandi/create-resume/issues" rel="noreferrer" className="nav-link">Issues</a>
+            <a href="mailto:createresume@chandi.ca" className="nav-link">Contact</a>
+            <Link to="/app" className="btn btn-primary btn-link">App</Link>
+          </div>
+        </nav>
+      </div>
       <main className={fluid ? 'container container__fluid' : 'container'}>{children}</main>
       <footer id="footer">
         <div className="container">
