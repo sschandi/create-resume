@@ -1,7 +1,7 @@
 {
   "name": "create-resume",
   "private": true,
-  "description": "Make a resume easily",
+  "description": "Client Side, Private PDF Resume Creator",
   "version": "0.1.0",
   "author": "sschandi",
   "dependencies": {
@@ -38,9 +38,8 @@
     "prettier": "^1.18.2"
   },
   "keywords": [
-    "gatsby"
+    "resume"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -48,12 +47,5 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
