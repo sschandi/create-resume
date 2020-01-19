@@ -27,7 +27,7 @@ const Layout = ({ fluid = false, children }) => {
       <main className={fluid ? 'container container__fluid' : 'container'}>{children}</main>
       <footer id="footer">
         <div className="container">
-          <p>{data.site.siteMetadata.title} by <a href="https://github.com/sschandi" className="link">SS Chandi</a></p>
+          <p>{data.site.siteMetadata.title} by <a href="https://github.com/sschandi" rel="noreferrer" className="link">SS Chandi</a></p>
         </div>
       </footer>
     </>

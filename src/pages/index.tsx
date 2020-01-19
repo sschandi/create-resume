@@ -56,7 +56,7 @@ const IndexPage = () => {
               Create Resume works entirely client-side. Your data is never seen, sent, or stored by us.
             </p>
             <p>
-              You can view the code for this project in <a href="https://github.com" target="_blank" className="link">our repository.</a>
+              You can view the code for this project in <a href="https://github.com/sschandi/create-resume" rel="noreferrer" target="_blank" className="link">our repository.</a>
             </p>
           </div>
         </div>
