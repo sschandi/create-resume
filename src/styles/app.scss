@@ -205,6 +205,12 @@
       order: unset;
       width: calc(30% - 1rem);
     }
+    h3 {
+      margin: 1.5rem 0 1rem 0;
+    }
+    > :first-of-type {
+      margin-top: 0;
+    }
   }
 }
 .design-colors {

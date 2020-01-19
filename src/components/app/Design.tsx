@@ -55,7 +55,7 @@ const Design = ({ active }) => {
       <div className="component-container">
         <div className="design__title">
           <h1>Design</h1>
-          <button className="btn btn-primary" onClick={downloadActive}>Get Resume</button>
+          <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
         </div>
         <div className="design">
           <div className="design__preview">
@@ -75,6 +75,7 @@ const Design = ({ active }) => {
               )
             })}
             <DesignColors />
+            <button className="btn btn-primary" style={{ width: '100%', margin: '1rem 0' }} onClick={downloadActive}>Download Resume</button>
           </div>
         </div>
       </div>
