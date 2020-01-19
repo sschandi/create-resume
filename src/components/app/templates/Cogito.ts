@@ -7,7 +7,7 @@ export default class Cogito extends Base {
     const colors: Colors | object = {
       primary: '#053f5e',
       secondary: '#393e46',
-      accent: '#6effbf'
+      accent: '#e3e3e3'
     }
     const font: Font | object = {
 			name: 'OpenSans',

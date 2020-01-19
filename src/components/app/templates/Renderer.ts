@@ -37,11 +37,27 @@ export const createPDF = pdfMake.createPdf
 export const templateList = [new Teres(), new Cluo(), new Cogito()]
 
 export const colorsList: Colors[] = [
+  // Black and White
+  {
+    primary: '#000000',
+    secondary: '#000000',
+    accent: '#9c9c9c'
+  },
+  {
+    primary: '#5a6d8b',
+    secondary: '#868686',
+    accent: '#e4c6be'
+  },
+  {
+    primary: '#7cbfea',
+    secondary: '#626262',
+    accent: '#e3e3e3'
+  },
   // Default Teres
   {
     primary: '#00b8a9',
     secondary: '#212121',
-    accent: 'grey'
+    accent: '#9c9c9c'
   },
   // Default Cluo
   {
@@ -53,6 +69,6 @@ export const colorsList: Colors[] = [
   {
     primary: '#053f5e',
     secondary: '#393e46',
-    accent: '#6effbf'
-  }
+    accent: '#e3e3e3'
+  },
 ]

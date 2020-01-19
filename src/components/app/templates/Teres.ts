@@ -7,7 +7,7 @@ export default class Teres extends Base {
     const colors: Colors | object = {
       primary: '#00b8a9',
       secondary: '#212121',
-      accent: 'grey'
+      accent: '#9c9c9c'
     }
     const font: Font | object = {
       name: 'Quicksand'
