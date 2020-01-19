@@ -98,7 +98,7 @@ const List = (props) => {
           </animated.div>
         )
       })}
-      <ContentAdd add={addListElement} />
+      {!props.list.simple && <ContentAdd add={addListElement} />}
     </div>
   )
 }
