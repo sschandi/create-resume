@@ -11,9 +11,6 @@ import AppLayout from '../layouts/AppLayout'
 import '../styles/app.scss'
 import SEO from '../components/seo'
 
-import AbstractOne from '../images/abstract-1.inline.svg'
-import AbstractTwo from '../images/abstract-2.inline.svg'
-import AbstractThree from '../images/abstract-3.inline.svg'
 import CluoSample from '../images/home/cluo-sample.png'
 import TeresSample from '../images/home/teres-sample.png'
 import CogitoSample from '../images/home/cogito-sample.png'
@@ -88,21 +85,6 @@ const App = () => {
               </svg>
             </div>
           </ParallaxLayer>
-          {/* <ParallaxLayer offset={1} factor={1.5} speed={.3}>
-            <div className="app-bg">
-              <AbstractOne />
-            </div>
-          </ParallaxLayer>
-          <ParallaxLayer offset={2} factor={1.5} speed={.6}>
-            <div className="app-bg">
-              <AbstractTwo />
-            </div>
-          </ParallaxLayer>
-          <ParallaxLayer offset={2.9} factor={2} speed={.5}>
-            <div className="app-bg">
-              <AbstractThree />
-            </div>
-          </ParallaxLayer> */}
           {/* Main components */}
           <ParallaxLayer offset={0} {...componentProps}>
             <Home next={goNext} />
