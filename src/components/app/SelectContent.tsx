@@ -64,6 +64,16 @@ const selectOptions = [
     date: false
   },
   {
+    type: SectionTypes.LIST,
+    title: 'Achievements',
+    elements: [
+      {
+        elements: ['Accumulated over 500 hours of volunteer service.', 'First place in Hackathon.']
+      }
+    ],
+    simple: true,
+  },
+  {
     type: SectionTypes.REFERENCE,
     title: 'References',
     elements: [
