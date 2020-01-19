@@ -12,6 +12,14 @@ const BulletInput = ({ value, placeholder, onChange }) => {
     const string = `${BULLET}${value.join(`\n${BULLET}`)}`
     setInputValue(string)
   }, [])
+
+  // Resize input on init and on add/delete
+  useEffect(() => {
+    if (input.current) {
+      input.current.style.height = 'inherit'
+      input.current.style.height = `${input.current.scrollHeight}px`
+    }
+  }, [inputValue])
   
   // Move cursor position to correct location after inputValue state is updated
   useEffect(() => {
@@ -44,11 +52,6 @@ const BulletInput = ({ value, placeholder, onChange }) => {
       return
     }
     setInputValue(e.target.value)
-    // resize if needed
-    if (input.current) {
-      input.current.style.height = 'inherit'
-      input.current.style.height = `${e.target.scrollHeight}px`
-    }
   }
   const keyEvent = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
