@@ -1,18 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { colorsList } from './templates/Renderer'
+import { useSpring, animated, config } from 'react-spring'
 
 const DesignColors = () => {
   const { colors, setColors } = useContext(AppContext)
+  const [spring, setSpring] = useSpring(() => ({ opacity: 0, top: '0rem', config: config.stiff }))
+  useEffect(() => {
+    if (!colors) {
+      setSpring({ opacity: 0, top: '0rem' })
+      return
+    }
+    const index = colorsList.findIndex((item) => {
+      return JSON.stringify(item) === JSON.stringify(colors)
+    })
+    setSpring({ opacity: 1, top: `${index * 3}rem` })
+  }, [colors])
 
   return (
     <div className="design-colors">
       <h3 className="colors__title">
-        Colours
+        Palette
         {colors && <button className="btn btn-primary btn-compact" onClick={() => setColors(null)}>Use Default</button>}
       </h3>
       <div style={{ position: 'relative' }}>
-        <div className="colors__outline" />
+        <animated.div style={spring} className="colors__outline" />
         {colorsList.map((item, index) => {
           return (
             <div key={index} className="colors__container" onClick={() => setColors(item)}>

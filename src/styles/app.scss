@@ -232,6 +232,7 @@
     height: 2.5rem;
     border: 0.25rem solid $accent-1;
     transform: translate(-0.5rem, -0.5rem);
+    pointer-events: none;
   }
 }
 .pdf {
