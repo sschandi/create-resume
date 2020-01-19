@@ -25,7 +25,6 @@ enum AppComponents {
 const App = () => {
   const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Home)
   const parallax: any = useRef(null)
-  const [contentScrollTop, setcontentScrollTop] = useState(0)
   // Parallax Components Props
   const componentProps = {
     speed: 0,
