@@ -40,10 +40,15 @@ const Content = ({ active }) => {
   const [showSidebar, setShowSidebar] = useState(false)
   const sidebar = useSpring({ height: showSidebar && showMobile && active ? '100%' : '0%' })
   const centerContent = useSpring({
-    opacity: showSidebar ? 0 : 1,
-    position: 'absolute',
-    marginRight: '1rem',
-    pointerEvents: showSidebar ? 'none' : 'unset'
+    to: async (next) => {
+      await next({ position: showSidebar ? 'absolute' : 'relative' })
+      await next({
+        opacity: showSidebar ? 0 : 1,
+        marginRight: '1rem',
+        pointerEvents: showSidebar ? 'none' : 'unset'
+      })
+    },
+    from: { opacity: 0, position: 'absolute', pointerEvents: 'none', marginRight: '1rem' }
   })
   useEffect(() => {
     if (size.width > MAX_MOBILE_SIZE) {
