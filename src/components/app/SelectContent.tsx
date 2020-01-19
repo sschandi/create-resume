@@ -23,8 +23,7 @@ const selectOptions = [
     type: SectionTypes.SKILL,
     title: 'Skills',
     elements: [
-      { name: 'Your Skill', levels: [ true, true, true, true, false ] },
-      { name: 'Your Skill', levels: [ true, true, true, false, false ] }
+      { name: 'Excel', levels: [ true, true, true, true, false ] },
     ]
   },
   {
@@ -32,15 +31,11 @@ const selectOptions = [
     title: 'Experience',
     elements: [
       {
-        title: 'Reginal Manager', extra: '', elements: [
-          'Directed staff.'
+        title: 'Sales - Generic Sales Co.', extra: '', elements: [
+          'Performed research study on product effectiveness by interviewing consumers and reviewing evaluation forms; findings helped manager to identify areas for improvement',
+          'Resolved 25 client calls per day by responding to inquiries regarding credit card programs resulting in improved client relations and decreased complaints.'
         ],
       },
-      {
-        title: 'Reginal Manager', extra: '', elements: [
-          'Directed staff.'
-        ],
-      }
     ],
     date: true
   },
@@ -49,15 +44,10 @@ const selectOptions = [
     title: 'Volunteer',
     elements: [
       {
-        title: 'Reginal Manager', extra: '', elements: [
-          'Directed staff.'
+        title: 'Donations - Awesome Food Bank', extra: '', elements: [
+          'Collaborated with 12 colleagues to create and implement a charity food bank donation competition resulting in a 20% increase in donations.',
         ],
       },
-      {
-        title: 'Reginal Manager', extra: '', elements: [
-          'Directed staff.'
-        ],
-      }
     ],
     date: true
   },
@@ -66,8 +56,8 @@ const selectOptions = [
     title: 'Projects',
     elements: [
       {
-        title: 'My great project', extra: 'This is really neat', elements: [
-          'Directed staff.'
+        title: 'My Great Project', extra: 'Subtitle', elements: [
+          'Designed and implemented my great project to expedite sample collection, saving over $100,000 per year compared to manual collection.'
         ],
       }
     ],
@@ -83,7 +73,7 @@ const selectOptions = [
         company: 'Washington',
         companyAddress: '123',
         phone: '(555) 123 - 4312',
-        email: 'jimmy@company.com',
+        email: 'john@example.com',
       }
     ]
   }
