@@ -82,6 +82,7 @@ const Design = ({ active }) => {
       <Modal show={showModal} title="Enjoy your Resume" close={() => setShowModal(false)}>
         <div className="text--center">
           <p>If you need to make changes to this resume, you can re-upload the PDF to continue where you left off.</p>
+          <p>Comments, issues, or feature requests? Email at: <a href="mailto:createresume@chandi.ca" className="link">createresume@chandi.ca</a></p>
           <p>Good luck!</p>
         </div>
       </Modal>
