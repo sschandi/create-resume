@@ -42,6 +42,7 @@ export interface List {
   extra: string | null
   elements: string[]
   date?: boolean // Used for list extra (date or text)
+  simple?: boolean // Used for list without title and subtitle
   id: string
 }
 

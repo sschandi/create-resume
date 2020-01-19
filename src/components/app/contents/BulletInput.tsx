@@ -9,6 +9,9 @@ const BulletInput = ({ value, placeholder, onChange }) => {
 
   // Initial setup from props
   useEffect(() => {
+    if (value.length === 1 && !value[0]) {
+      return
+    }
     const string = `${BULLET}${value.join(`\n${BULLET}`)}`
     setInputValue(string)
   }, [])

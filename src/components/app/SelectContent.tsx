@@ -93,6 +93,12 @@ const customSelectOptions = [
     date: false
   },
   {
+    type: SectionTypes.LIST,
+    title: 'List',
+    elements: [{ title: '', extra: '', elements: [''] }],
+    simple: true
+  },
+  {
     type: SectionTypes.TEXT,
     title: 'Text',
     elements: [{ elements: [''] }]
