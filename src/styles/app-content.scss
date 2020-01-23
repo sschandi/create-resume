@@ -2,10 +2,10 @@
 @import './variables';
 
 // Rounded corners for first and last content pieces
-.content__elements > :first-child .content :first-child {
+.content__elements > :first-child .content .content__title {
   border-radius: 0.5rem 0.5rem 0 0;
 }
-.content__elements > :last-child .content :last-child {
+.content__elements > :last-child .content :last-child div {
   border-radius: 0 0 0.5rem 0.5rem;
 }
 .content {
