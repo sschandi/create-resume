@@ -1,6 +1,13 @@
 // Styling for items inside src/components/app/contents
 @import './variables';
 
+// Rounded corners for first and last content pieces
+.content__elements > :first-child .content :first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.content__elements > :last-child .content :last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
 .content {
   display: flex;
   flex-direction: column;
@@ -12,7 +19,7 @@
     justify-content: space-between;
     width: calc(100% - 3rem);
     padding: 1rem;
-    background-color: $accent-1;
+    background-color: $primary;
     .input {
       margin-right: 1rem;
       @media (min-width: $breakpoint-md) {
