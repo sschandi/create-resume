@@ -1,10 +1,9 @@
 import React, { useContext, useState, useRef } from 'react'
 import { AppContext } from '../../contexts/AppContext'
-import PDFJS from 'pdfjs-dist/build/pdf'
-import PDFWorker from 'pdfjs-dist/build/pdf.worker.entry'
+import { pdfjs } from 'react-pdf'
 import Modal from '../Modal'
 
-PDFJS.GlobalWorkerOptions.wokerSrc = PDFWorker
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Uploader = ({ next }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
@@ -19,7 +18,7 @@ const Uploader = ({ next }) => {
 
   const loadPDF = (e: any) => {
     const array = new Uint8Array(e.target.result)
-    const loadingTask = PDFJS.getDocument(array)
+    const loadingTask = pdfjs.getDocument(array)
 
     loadingTask.promise.then((doc) => {
       doc.getMetadata().then((data) => {

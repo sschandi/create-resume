@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Document, Page } from 'react-pdf'
+import { Document, Page, pdfjs } from 'react-pdf'
+
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const PDFDisplay = ({ document, loading }) => {
   const docRef = useRef(null)
