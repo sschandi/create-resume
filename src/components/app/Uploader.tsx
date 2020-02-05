@@ -1,7 +1,10 @@
 import React, { useContext, useState, useRef } from 'react'
 import { AppContext } from '../../contexts/AppContext'
-import PDFJS from 'pdfjs-dist'
+import PDFJS from 'pdfjs-dist/build/pdf'
+import PDFWorker from 'pdfjs-dist/build/pdf.worker.entry'
 import Modal from '../Modal'
+
+PDFJS.GlobalWorkerOptions.wokerSrc = PDFWorker
 
 const Uploader = ({ next }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
