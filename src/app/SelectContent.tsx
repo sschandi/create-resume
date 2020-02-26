@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import UUID from 'uuid/v4'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext } from '../contexts/AppContext'
 import { SectionTypes } from './ResumeTypes'
 import { useTrail, animated } from 'react-spring'
 

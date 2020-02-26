@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext } from '../contexts/AppContext'
 import { colorsList } from './templates/Renderer'
 import { useSpring, animated, config } from 'react-spring'
 

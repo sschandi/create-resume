@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react'
 import Move from 'lodash-move'
-import { Header, Section } from '../components/app/ResumeTypes'
-import { Colors } from '../components/app/templates/Interfaces'
-import { templateList } from '../components/app/templates/Renderer'
+import { Header, Section } from '../app/ResumeTypes'
+import { Colors } from '../app/templates/Interfaces'
+import { templateList } from '../app/templates/Renderer'
 
 type ContextProps = {
   header: Header

@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext } from '../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
 import DesignColors from './DesignColors'
-import Modal from '../Modal'
+import Modal from '../components/Modal'
 
 import { createPDF, templateList } from './templates/Renderer'
 

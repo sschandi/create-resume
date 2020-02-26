@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from 'react'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext } from '../contexts/AppContext'
 import { pdfjs } from 'react-pdf'
-import Modal from '../Modal'
+import Modal from '../components/Modal'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 

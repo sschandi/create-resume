@@ -1,6 +1,6 @@
 import React, { useContext, useState, ChangeEvent } from 'react'
 import UUID from 'uuid/v4'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext } from '../contexts/AppContext'
 import { Contact as ContactType } from './ResumeTypes'
 import Contact from './contents/Contact'
 

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
-import { AppContext } from '../../../contexts/AppContext'
+import { AppContext } from '../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 
 const Text = (props) => {

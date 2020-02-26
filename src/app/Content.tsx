@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { useSpring, useTransition, animated } from 'react-spring'
-import { AppContext } from '../../contexts/AppContext'
+import { AppContext } from '../contexts/AppContext'
 import SelectContent from './SelectContent'
 import Section from './contents/Section'
-import useWindowSize from '../useWindowSize'
+import useWindowSize from '../components/useWindowSize'
 
 const MAX_MOBILE_SIZE = 1200
 

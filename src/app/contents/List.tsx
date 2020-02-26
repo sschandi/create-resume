@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
 import { useTransition, animated } from 'react-spring'
-import { AppContext } from '../../../contexts/AppContext'
+import { AppContext } from '../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
