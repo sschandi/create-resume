@@ -1,12 +1,27 @@
 // Styling for items inside src/components/app/contents
 @import './variables';
 
-// Rounded corners for first and last content pieces
-.content__elements > :first-child .content .content__title {
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-.content__elements > :last-child .content :last-child div {
-  border-radius: 0 0 0.5rem 0.5rem;
+// // Rounded corners for first and last content pieces
+.content__elements {
+  > :first-child {
+    .content {
+      > :first-child {
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+    }
+  }
+  > :last-child {
+    .content {
+      > :last-child {
+        > :last-child {
+          border-radius: 0 0 0.5rem 0.5rem;
+          .content__el {
+            border-radius: 0 0 0.5rem 0.5rem;
+          }
+        }
+      }
+    }
+  }
 }
 .content {
   display: flex;
