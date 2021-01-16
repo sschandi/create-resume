@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { useState, ChangeEvent, KeyboardEvent } from 'react'
 import { useTransition, animated } from 'react-spring'
 
 const defaultContacts = [
@@ -6,6 +6,16 @@ const defaultContacts = [
 ]
 
 const Contact = (props) => {
+  const [customContact, setCustomContact] = useState<string>('')
+
+  const addCustomContact = () => {
+    if (!customContact) {
+      return;
+    }
+    props.addToContact(customContact)
+    setCustomContact('')
+  }
+
   const updateContactValue = (index: number, value) => {
     const { name, id } = props.contacts[index]
     props.updateContact(index, { id, name, value })
@@ -32,22 +42,12 @@ const Contact = (props) => {
         {transitions.map(({ item, ...rest }, index) => {
           return (
             <animated.div key={item.id} style={rest.props} className="header__contact--container">
-              <div className="input type">
-                <label>Contact</label>
-                <input
-                  value={item.name}
-                  type="text"
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    e.preventDefault()
-                    updateContactName(index, e.target.value)
-                  }}
-                />
-              </div>
               <div className="input value">
-                <label>Value</label>
+                <label>{item.name}</label>
                 <input
                   value={item.value}
                   type="text"
+                  placeholder={item.name}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     updateContactValue(index, e.target.value)
@@ -66,7 +66,27 @@ const Contact = (props) => {
           {defaultContacts.map((contact, index) => {
             return <button key={index} className="btn btn-primary" onClick={() => props.addToContact(contact)}>{contact}</button>
           })}
-          <button className="btn" onClick={() => props.addToContact('')}>Custom</button>
+          <div className="custom-contact">
+            <div className="custom-contact--input">
+              <div className="input">
+                <input
+                  value={customContact}
+                  type="text"
+                  placeholder="Custom Contact Type"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    setCustomContact(e.target.value);
+                  }}
+                  onKeyPress={(e: KeyboardEvent) => {
+                    if (e.key === 'Enter') {
+                      addCustomContact()
+                    }
+                  }}
+                />
+              </div>
+              <button className="btn" onClick={addCustomContact}>Add</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

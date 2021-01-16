@@ -90,18 +90,15 @@
       @media (min-width: $breakpoint-md) {
         grid-column: unset;
       }
-      .type {
-        margin-right: 1rem;
-        @media (min-width: $breakpoint-lg) {
-          width: 30%;
-        }
-      }
       .value {
+        width: 100%;
         margin-right: 1rem;
       }
       .btn-icon {
         width: 2rem;
         height: 2rem;
+        min-width: 2rem;
+        min-height: 2rem;
         background-color: $danger;
         border-radius: 2rem;
         margin-bottom: 0.5rem;
@@ -109,6 +106,28 @@
     }
     &--actions {
       grid-column: 1 / 3;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .custom-contact {
+        height: 35px;
+        max-width: 300px;
+        margin: 0.5rem;
+        &--input {
+          display: flex;
+          .btn {
+            margin: 0;
+            border-radius: 0 0.25rem 0.25rem 0;
+          }
+          .input {
+            border-radius: 0.25rem 0 0 0.25rem;
+            input {
+              height: 35px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
     }
   }
 }
