@@ -32,15 +32,18 @@ const App = () => {
     onScroll: (e) => e.stopPropagation()
   }
 
+  const go = (to: AppComponents) => {
+    setCurrentComponent(to)
+    parallax.current.scrollTo(to)
+  }
+
   const goBack = () => {
     const back = currentComponent - 1
-    setCurrentComponent(back)
-    parallax.current.scrollTo(back)
+    go(back)
   }
   const goNext = () => {
     const next = currentComponent + 1
-    setCurrentComponent(next)
-    parallax.current.scrollTo(next)
+    go(next)
   }
 
   // Alert leaving page
@@ -99,7 +102,7 @@ const App = () => {
           </ParallaxLayer>
         </Parallax>
       </AppContextProvider>
-      <Navigation current={currentComponent} prev={goBack} next={goNext} />
+      <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
     </AppLayout>
   )
 }

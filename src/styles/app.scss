@@ -361,10 +361,11 @@
     border: 2px solid $primary;
     background-color: $white;
     transition: all 300ms ease-in;
+    cursor: pointer;
     &.completed {
       border-color: $accent-1;
     }
-    &.active {
+    &.active, &:hover {
       transform: scale(1.1);
       color: $secondary;
     }
