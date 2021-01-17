@@ -26,7 +26,7 @@ const IndexPage = () => {
             </h1>
           </div>
           <p>PDF Resume Generator</p>
-          <Link to="/app" className="btn btn-link btn-primary">Go To App</Link>
+          <Link to="/app" className="btn btn-link btn-primary btn-lg">Go To App</Link>
         </div>
         <div className="jumbotron__samples">
           <ResumeSamples />
@@ -93,6 +93,7 @@ const IndexPage = () => {
             <p>
               Create Resume's goal is to help people easily make a resume while maintaining control over their personal information.
             </p>
+            <Link to="/app" className="btn btn-link btn-primary">Create Your Resume</Link>
           </div>
         </div>
       </section>

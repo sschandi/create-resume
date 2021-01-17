@@ -144,7 +144,7 @@ p {
   cursor: pointer;
   transition: all 200ms ease-in;
   &:hover {
-    opacity: 0.9;
+    background-color: scale-color($secondary, $lightness: 15%);
   }
   &:focus {
     outline: none;
@@ -155,9 +155,15 @@ p {
   }
   &-primary {
     background-color: $primary;
+    &:hover {
+      background-color: scale-color($primary, $lightness: 15%);
+    }
   }
   &-accent {
     background-color: $accent-1;
+    &:hover {
+      background-color: scale-color($accent-1, $lightness: 15%);
+    }
   }
   &-compact {
     padding: 0.25rem 0.5rem;
@@ -174,6 +180,9 @@ p {
   &-link {
     display: inline-block;
     text-decoration: none;
+  }
+  &-lg {
+    font-size: 1.2rem;
   }
 }
 
