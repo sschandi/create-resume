@@ -18,7 +18,7 @@ const IndexPage = () => {
       <section className="jumbotron">
         <div className="jumbotron--container">
           <div className="jumbotron__title">
-            <p className="sub-text">100% Free | No Sign-up | No Data Collection</p>
+            <p className="sub-text">Free | No Sign-up | No Data Collection</p>
             <h1 className="jumbotron__title--create">Create</h1>
             <h1 className="jumbotron__title--resume">
               Resu
@@ -49,7 +49,7 @@ const IndexPage = () => {
       </section>
       <section className="features privacy container">
         <div className="privacy__bg"></div>
-        <div className="privacy__content">
+        <div className="privacy__content feature__content">
           <h2>Own Your Data</h2>
           <div className="privacy__content--text">
             <p>
@@ -68,7 +68,7 @@ const IndexPage = () => {
         <div className="simple__image simple__image--left">
           <SimpleContentImage />
         </div>
-        <div className="simple__content">
+        <div className="simple__content feature__content">
           <h2>Simple</h2>
           <ol>
             <li>Add your resume content</li>
@@ -87,7 +87,7 @@ const IndexPage = () => {
         <div className="free__image">
           <NoCostImage />
         </div>
-        <div className="free__content">
+        <div className="free__content feature__content">
           <h2>Free</h2>
           <div className="free__content--text">
             <p>
