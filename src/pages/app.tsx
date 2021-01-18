@@ -70,7 +70,7 @@ const App = () => {
             </div>
           </ParallaxLayer>
           <ParallaxLayer offset={0.25} factor={1.25} speed={.4}>
-            <div className="app-bg">
+            <div className="app-bg__triangle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 205.05208 132.29167"

@@ -18,10 +18,10 @@
       font-size: 6rem;
     }
   }
-  .btn {
-    width: 100%;
+  .home-link {
+    display: none;
     @media (min-width: $breakpoint-md) {
-      width: unset;
+      display: block;
     }
   }
   .subtitle {
@@ -29,14 +29,17 @@
   }
   .home__actions {
     align-self: center;
-    margin-top: 2rem;
+    color: $white;
+    margin-top: 5rem;
     text-align: center;
+    h2 {
+      color: $white;
+    }
     @media (min-width: $breakpoint-md) {
       align-self: flex-end;
       color: $white;
       text-align: right;
       h2 {
-        color: $white;
         font-size: 2.5rem;
       }
     }
@@ -304,6 +307,23 @@
   height: 100%;
   @media (min-width: $breakpoint-md) {
     display: block;
+    width: 100%;
+    height: 100%;
+  }
+  &__triangle {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 200%;
+    height: 100%;
+    bottom: 0;
+    left: -60%;
+    @media (min-width: $breakpoint-md) {
+      width: 100%;
+      height: 100%;
+      bottom: unset;
+      left: unset;
+    }
   }
 }
 .parallax-img {
