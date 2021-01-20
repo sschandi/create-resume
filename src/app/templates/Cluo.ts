@@ -46,7 +46,8 @@ export default class Cluo extends Base {
     province: string,
     postalCode: string
   ): any[] {
-    return [`${address}, ${city}, ${province}, ${postalCode}`]
+    const fullAddress = [address, city, province, postalCode].filter(val => !!val)
+    return [fullAddress.join(', ')]
   }
 
   createContactHeader(contacts: Contact[]): any[] {
