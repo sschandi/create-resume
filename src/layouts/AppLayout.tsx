@@ -1,6 +1,6 @@
 import React from 'react'
 
-const appLayout = ({ children }) => {
+const appLayout: React.FC = ({ children }) => {
   return (
     <div id="app-layout" className="app-layout">
       {children}

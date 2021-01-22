@@ -6,7 +6,12 @@ import { Reference as ReferenceType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
-const Reference = (props) => {
+interface Props {
+  index: number
+  reference: any
+}
+
+const Reference: React.FC<Props> = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addReferenceElement = () => {

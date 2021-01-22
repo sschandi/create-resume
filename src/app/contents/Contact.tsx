@@ -1,11 +1,19 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react'
 import { useTransition, animated } from 'react-spring'
+import { Contact as ContactType } from '../ResumeTypes'
 
 const defaultContacts = [
   'Phone', 'Email', 'Website'
 ]
 
-const Contact = (props) => {
+interface Props {
+  contacts: ContactType[]
+  addToContact: (name: string, value?: string) => void
+  updateContact: (index: number, contact: ContactType) => void
+  deleteContact: (index: number) => void
+}
+
+const Contact: React.FC<Props> = (props) => {
   const [customContact, setCustomContact] = useState<string>('')
 
   const addCustomContact = () => {
@@ -21,10 +29,10 @@ const Contact = (props) => {
     props.updateContact(index, { id, name, value })
   }
 
-  const updateContactName = (index: number, name) => {
-    const { value, id } = props.contacts[index]
-    props.updateContact(index, { id, name, value })
-  }
+  // const updateContactName = (index: number, name) => {
+  //   const { value, id } = props.contacts[index]
+  //   props.updateContact(index, { id, name, value })
+  // }
 
   // Transitions
   const transitions = useTransition(props.contacts, item => item.id, {

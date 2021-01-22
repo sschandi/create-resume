@@ -123,7 +123,7 @@ const customSelectOptions = [
   },
 ]
 
-const SelectContent = ({ scrollToBottom }) => {
+const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
   const add = (section) => {
     // Create unique copy of elements instead of passing reference

@@ -1,6 +1,16 @@
 import React from 'react'
+import { Section } from '../ResumeTypes'
+import { ReorderSectionEl } from '../../contexts/AppContext'
 
-const ContentActions = ({ section, sectionIndex, index, reorder, remove }) => {
+interface Props {
+  section: Section
+  sectionIndex: number
+  index: number
+  reorder: ReorderSectionEl
+  remove: (index: number) => void
+}
+
+const ContentActions: React.FC<Props> = ({ section, sectionIndex, index, reorder, remove }) => {
   return (
     <div className="content__el--actions">
       <button

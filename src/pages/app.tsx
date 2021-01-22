@@ -22,7 +22,7 @@ enum AppComponents {
   Design
 }
 
-const App = () => {
+const App: React.FC = () => {
   const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Home)
   const parallax: any = useRef(null)
   // Parallax Components Props

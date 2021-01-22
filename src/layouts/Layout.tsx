@@ -12,7 +12,7 @@ import Logo from '../images/cr-logo.inline.svg'
 
 import "./layout.scss"
 
-const Layout = ({ fluid = false, children }) => {
+const Layout: React.FC<{ fluid?: boolean }> = ({ fluid = false, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

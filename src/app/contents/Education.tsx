@@ -7,7 +7,12 @@ import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
-const education = (props) => {
+interface Props {
+  education: any
+  index: number
+}
+
+const education: React.FC<Props> = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addEducationElement = () => {

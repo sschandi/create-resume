@@ -1,9 +1,9 @@
-import React, { useState, CSSProperties } from 'react'
+import React, { CSSProperties } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import ContentImage from '../../images/home/resume-content.inline.svg'
 
-const SimpleContentImage = () => {
+const SimpleContentImage: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.7
   })

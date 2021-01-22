@@ -2,7 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { animated, useSpring } from 'react-spring'
 
-const Modal = ({ show, title, close, children }) => {
+interface Props {
+  show: boolean
+  title: string
+  close: () => void
+}
+
+const Modal: React.FC<Props> = ({ show, title, close, children }) => {
   const wrapper = useSpring({ opacity: show ? 1 : 0, visibility: show ? 'visible' : 'hidden' })
   const container = useSpring({ transform: show ? 'scale(1)' : 'scale(0)' })
 

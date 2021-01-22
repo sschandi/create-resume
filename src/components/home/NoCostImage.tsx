@@ -2,7 +2,7 @@ import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useSpring, animated, config } from 'react-spring'
 
-const NoCostImage = () => {
+const NoCostImage: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 1
   })

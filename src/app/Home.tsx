@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Uploader from './Uploader'
 
-const Home = (props) => {
+const Home: React.FC<{ next: () => void }> = ({ next }) => {
   return (
     <div id="home" className="component-container">
       <div className="jumbotron__title">
@@ -18,7 +18,7 @@ const Home = (props) => {
         <h2>Been</h2>
         <h2>Here Before?</h2>
         <p>Continue working on a resume:</p>
-        <Uploader next={props.next} />
+        <Uploader next={next} />
       </div>
     </div>
   )

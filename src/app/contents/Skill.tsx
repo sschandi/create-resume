@@ -6,7 +6,12 @@ import { Skill as SkillType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
-const Skill = (props) => {
+interface Props {
+  index: number
+  skill: any
+}
+
+const Skill: React.FC<Props> = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addSkillElement = () => {

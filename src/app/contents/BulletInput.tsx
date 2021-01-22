@@ -1,8 +1,14 @@
-import React, { useState, useRef, FocusEvent, ChangeEvent, KeyboardEvent, useEffect } from 'react'
+import React, { useState, useRef, ChangeEvent, KeyboardEvent, useEffect } from 'react'
+
+interface Props {
+  value: string[]
+  placeholder: string
+  onChange: (elements: string[]) => void
+}
 
 const BULLET = '• '
 
-const BulletInput = ({ value, placeholder, onChange }) => {
+const BulletInput: React.FC<Props> = ({ value, placeholder, onChange }) => {
   const [inputValue, setInputValue] = useState('')
   const [cursorPosition, setCursorPosition] = useState(null)
   const input = useRef(null)
@@ -38,12 +44,12 @@ const BulletInput = ({ value, placeholder, onChange }) => {
     onChange(array)
   }, [inputValue])
 
-  const focusEvent = (e: FocusEvent<HTMLTextAreaElement>) => {
+  const focusEvent = () => {
     if (inputValue === '') {
       setInputValue(BULLET)
     }
   }
-  const blurEvent = (e: any) => {
+  const blurEvent = () => {
     if (inputValue === BULLET) {
       setInputValue('')
     }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ContentAdd = ({ add }) => {
+const ContentAdd: React.FC<{ add: () => void }> = ({ add }) => {
   return (
     <div className="content__add">
       <button className="btn btn-icon icon__add" onClick={add}>

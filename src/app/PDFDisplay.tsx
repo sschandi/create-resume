@@ -3,7 +3,12 @@ import { Document, Page, pdfjs } from 'react-pdf'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PDFDisplay = ({ document, loading }) => {
+interface Props {
+  document: any
+  loading: boolean
+}
+
+const PDFDisplay: React.FC<Props> = ({ document, loading }) => {
   const docRef = useRef(null)
   const [width, setWidth] = useState(300)
   useEffect(() => {

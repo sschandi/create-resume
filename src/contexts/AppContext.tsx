@@ -4,6 +4,8 @@ import { Header, Section } from '../app/ResumeTypes'
 import { Colors } from '../app/templates/Interfaces'
 import { templateList } from '../app/templates/Renderer'
 
+export type ReorderSectionEl = (section: Section, sectionIndex: number, curIndex: number, newIndex: number) => void
+
 type ContextProps = {
   header: Header
   updateHeader(payload: Partial<Header>): void
@@ -13,7 +15,7 @@ type ContextProps = {
   deleteSection(index: number): void
   setSections(payload: Section[]): void
   reorderSection(curIndex: number, newIndex: number): void
-  reorderSectionEl(section: Section, sectionIndex: number, curIndex: number, newIndex: number): void
+  reorderSectionEl: ReorderSectionEl
   activeTemplate
   setTemplate(name: string): void
   colors: Colors | null
@@ -22,8 +24,7 @@ type ContextProps = {
 
 export const AppContext = createContext<Partial<ContextProps>>({})
 
-const AppContextProvider = ({ children }) => {
-
+const AppContextProvider: React.FC = ({ children }) => {
   const [header, setHeader] = useState<Header>({
     name: '',
     address: '',

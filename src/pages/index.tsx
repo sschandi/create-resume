@@ -6,12 +6,12 @@ import ResumeSamples from '../components/home/ResumeSamples'
 import PrivacyWallImage from '../components/home/PrivacyWallImage'
 import NoCostImage from '../components/home/NoCostImage'
 import SimpleContentImage from '../components/home/SimpleContentImage'
-// @ts-ignore sometimes it flags it, sometimes it doesn't
+
 import TeresImg from '../images/home/teres-sample.png'
 import SEO from "../components/seo"
 import '../styles/home.scss'
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   return (
     <Layout fluid={true}>
       <SEO title="Home" />
