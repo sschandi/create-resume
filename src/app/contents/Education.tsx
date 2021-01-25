@@ -91,6 +91,18 @@ const education: React.FC<Props> = (props) => {
                 label="Date"
                 onChange={(value) => updateEducationElement(index, 'date', value)}
               />
+              <div className="input input--full">
+                <label>Note (Optional)</label>
+                <input
+                  name="note"
+                  placeholder="Note (Optional)"
+                  value={item.note}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateEducationElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
             </div>
             <ContentActions
               section={props.education}

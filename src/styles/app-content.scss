@@ -157,6 +157,11 @@
       width: calc(50% - 0.5rem);
     }
   }
+  .input--full {
+    @media (min-width: $breakpoint-sm) {
+      width: 100%;
+    }
+  }
 }
 
 // Skill Styles

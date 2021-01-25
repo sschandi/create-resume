@@ -34,6 +34,7 @@ export interface Education {
   program: string
   university: string
   date: string
+  note?: string
   id: string
 }
 

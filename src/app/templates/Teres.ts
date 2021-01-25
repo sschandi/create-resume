@@ -87,6 +87,9 @@ export default class Teres extends Base {
         style: ['bold']
       },
       education.university,
+      ...education.note
+        ? [ { text: education.note, style: { fontSize: this.font.defaultSize - 1 }, margin: [0, 1, 0, 0] }]
+        : []
     ]
   }
 }

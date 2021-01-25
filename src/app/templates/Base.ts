@@ -368,7 +368,10 @@ export default class Base {
         style: ['bold']
       },
       education.university,
-      education.date
+      education.date,
+      ...education.note
+        ? [ { text: education.note, style: { fontSize: this.font.defaultSize - 1 }, margin: [0, 1, 0, 0] }]
+        : []
     ]
   }
 
