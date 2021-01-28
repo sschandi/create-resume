@@ -179,6 +179,9 @@ p {
     padding: 0;
     margin: 0;
     background-color: transparent;
+    &:hover {
+      background-color: rgba($white, 0.3);
+    }
   }
   &-link {
     display: inline-block;
