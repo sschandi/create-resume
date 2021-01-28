@@ -121,6 +121,11 @@ const customSelectOptions = [
       { name: 'Your Skill', levels: [ true, true, true, false, false ] }
     ]
   },
+  {
+    type: SectionTypes.PAGEBREAK,
+    title: 'Page Break',
+    elements: [],
+  }
 ]
 
 const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBottom }) => {

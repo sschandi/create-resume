@@ -42,6 +42,7 @@ const Section: React.FC<Props> = ({ section, index }) => {
             name="title"
             placeholder="Title"
             value={section.title}
+            disabled={section.type === SectionTypes.PAGEBREAK}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               e.preventDefault()
               updateSectionTitle(e.target.value)
