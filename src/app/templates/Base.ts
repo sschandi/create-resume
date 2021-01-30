@@ -304,7 +304,8 @@ export default class Base {
   protected renderReferences(title: string, elements: Reference[]): any[] {
     const result = []
     result.push({
-      ...this.createTitle(title)
+      ...this.createTitle(title),
+      pageBreak: 'before'
     })
     elements.forEach(element => {
       const stack = this.createReference(element)
