@@ -263,19 +263,19 @@ export default class Base {
       }
       if (type === SectionTypes.LIST) {
         stack.push({
-          ul: [...element.elements],
+          ul: [...element.elements.map(el => ({ text: el, unbreakable: true }))],
           style:
             !element.title && !element.extra ? 'soloListMargin' : 'listMargin',
-          markerColor: this.colors.primary
+          markerColor: this.colors.primary,
         })
       } else {
         stack.push({
-          stack: [...element.elements],
+          stack: [...element.elements.map(el => ({ text: el, unbreakable: true }))],
           style:
             !element.title && !element.extra ? 'soloListMargin' : 'listMargin'
         })
       }
-      result.push({ stack, unbreakable: true })
+      result.push({ stack })
     })
     return result
   }
