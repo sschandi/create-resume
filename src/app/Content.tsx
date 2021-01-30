@@ -8,7 +8,7 @@ import useWindowSize from '../components/useWindowSize'
 
 const MAX_MOBILE_SIZE = 1200
 
-const Content = ({ active }) => {
+const Content: React.FC<{ active: boolean }> = ({ active }) => {
   const { sections } = useContext(AppContext)
   const transitions = useTransition(sections, item => item.id, {
     from: { transform: 'translate3d(10rem,0,0)', opacity: 0 },

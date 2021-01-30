@@ -1,16 +1,16 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState, useRef, ChangeEvent } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { pdfjs } from 'react-pdf'
 import Modal from '../components/Modal'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const Uploader = ({ next }) => {
+const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
   const input = useRef(null)
   const [error, setError] = useState({ show: false, message: '' })
 
-  const uploadPDF = (e: any) => {
+  const uploadPDF = (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader()
     reader.onload = loadPDF
     reader.readAsArrayBuffer(e.target.files[0])

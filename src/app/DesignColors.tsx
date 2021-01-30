@@ -3,7 +3,7 @@ import { AppContext } from '../contexts/AppContext'
 import { colorsList } from './templates/Renderer'
 import { useSpring, animated, config } from 'react-spring'
 
-const DesignColors = () => {
+const DesignColors: React.FC = () => {
   const { colors, setColors } = useContext(AppContext)
   const [spring, setSpring] = useSpring(() => ({ opacity: 0, top: '0rem', config: config.stiff }))
   useEffect(() => {

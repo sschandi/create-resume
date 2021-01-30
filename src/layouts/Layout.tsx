@@ -12,7 +12,7 @@ import Logo from '../images/cr-logo.inline.svg'
 
 import "./layout.scss"
 
-const Layout = ({ fluid = false, children }) => {
+const Layout: React.FC<{ fluid?: boolean }> = ({ fluid = false, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,7 +30,7 @@ const Layout = ({ fluid = false, children }) => {
           <Link to="/" className="brand">
             <Logo />
           </Link>
-          <div>
+          <div className="nav__items">
             <a href="https://github.com/sschandi/create-resume/" rel="noreferrer" className="nav-link">Repository</a>
             <a href="https://github.com/sschandi/create-resume/issues" rel="noreferrer" className="nav-link">Issues</a>
             <a href="mailto:createresume@chandi.ca" className="nav-link">Contact</a>

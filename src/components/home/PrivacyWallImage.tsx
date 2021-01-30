@@ -2,7 +2,7 @@ import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useSpring, animated } from 'react-spring'
 
-const PrivacyWallImage = () => {
+const PrivacyWallImage: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 1
   })

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const pdfMake = require('pdfmake/build/pdfmake')
 const pdfFonts = require('./vfs_fonts')
 pdfMake.vfs = pdfFonts

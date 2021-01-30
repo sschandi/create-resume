@@ -1,4 +1,4 @@
-import { StyleObject, Font, Colors, PageSizes } from './Interfaces'
+import { StyleObject, Font, Colors, PageSizes, DefaultStyle, RenderResult } from './Interfaces'
 import {
   Contact,
   Education,
@@ -71,7 +71,7 @@ export default class Base {
     this.setStyles(styles)
   }
 
-  get defaultStyle(): object {
+  get defaultStyle(): DefaultStyle {
     return {
       font: this.font.name,
       fontSize: this.font.defaultSize,
@@ -79,7 +79,7 @@ export default class Base {
     }
   }
 
-  public render(sections: Section[], header: Header): object {
+  public render(sections: Section[], header: Header): RenderResult {
     const content = [this.renderHeader(header), ...this.renderContent(sections)]
     const serialized = JSON.stringify({
       name: this.name,
@@ -108,32 +108,29 @@ export default class Base {
     }
   }
 
-  public setFont(font: Font | object) {
+  public setFont(font: Partial<Font>): void {
     this.font = { ...this.font, ...font }
   }
 
-  public setColors(colors: Colors | object) {
+  public setColors(colors: Partial<Colors>): void {
     this.colors = { ...this.colors, ...colors }
   }
 
-  public setDefaultColors(colors: Colors | object) {
+  public setDefaultColors(colors: Partial<Colors>): void {
     this.defaultColors = { ...this.defaultColors, ...colors }
   }
 
-  public setStyles(styles: StyleObject | object) {
+  public setStyles(styles: Partial<StyleObject>): void {
     this.styles = { ...this.styles, ...styles }
   }
 
-  public setPageSize(pageSize: PageSizes) {
+  public setPageSize(pageSize: PageSizes): void {
     this.pageSize = pageSize
   }
 
-  public renderPageHeader(text: string): Function {
-    const pageHeader = (
-      currentPage: number,
-      pageCount: number,
-      pageSize: object
-    ) => {
+  // Note: page size is currently unused, not sure if type is correct
+  public renderPageHeader(text: string): (currentPage: number, pageCount: number, PageSize: Record<string, unknown>) => any {
+    const pageHeader = (currentPage, pageCount, pageSize) => {
       if (currentPage !== 1) {
         return this.createPageHeader(text)
       }
@@ -142,7 +139,7 @@ export default class Base {
     return pageHeader
   }
 
-  protected createPageHeader(text: string): object {
+  protected createPageHeader(text: string): Record<string, unknown> {
     return {
       text,
       style: ['heading', 'header'],
@@ -153,12 +150,9 @@ export default class Base {
     }
   }
 
-  protected renderPageFooter(): Function {
-    const pageFooter = (
-      currentPage: number,
-      pageCount: number,
-      pageSize: object
-    ) => {
+  // Note: page size is currently unused, not sure if type is correct
+  protected renderPageFooter(): (currentPage: number, pageCount: number, PageSize: Record<string, unknown>) => any {
+    const pageFooter = (currentPage, pageCount, pageSize) => {
       if (pageCount > 1) {
         return {
           text: currentPage,
@@ -171,8 +165,8 @@ export default class Base {
     return pageFooter
   }
 
-  protected renderContent(sections: Section[]): any[] {
-    let result: object[] = []
+  protected renderContent(sections: Section[]): any[]{
+    let result: Record<string, unknown>[] = []
     sections.forEach((item: Section) => {
       if (item.type === SectionTypes.LIST || item.type === SectionTypes.TEXT) {
         // result.push(this.renderListSection(item.title, item.elements))
@@ -196,11 +190,11 @@ export default class Base {
     return result
   }
 
-  protected renderPageBreak(): any[] {
+  protected renderPageBreak(): { text: string, pageBreak: string }[] {
     return [{ text: '', pageBreak: 'before' }]
   }
 
-  protected createTitle(title: string): object {
+  protected createTitle(title: string): Record<string, unknown> {
     return {
       text: title,
       style: ['title', 'titleMargin'],
@@ -210,7 +204,7 @@ export default class Base {
     }
   }
 
-  protected renderHeader(header: Header): object {
+  protected renderHeader(header: Header): Record<string, unknown> {
     const address: any[] = this.createAddress(
       header.address,
       header.city,
@@ -269,24 +263,24 @@ export default class Base {
       }
       if (type === SectionTypes.LIST) {
         stack.push({
-          ul: [...element.elements],
+          ul: [...element.elements.map(el => ({ text: el, unbreakable: true }))],
           style:
             !element.title && !element.extra ? 'soloListMargin' : 'listMargin',
-          markerColor: this.colors.primary
+          markerColor: this.colors.primary,
         })
       } else {
         stack.push({
-          stack: [...element.elements],
+          stack: [...element.elements.map(el => ({ text: el, unbreakable: true }))],
           style:
             !element.title && !element.extra ? 'soloListMargin' : 'listMargin'
         })
       }
-      result.push({ stack, unbreakable: true })
+      result.push({ stack })
     })
     return result
   }
 
-  protected createListTitle(title: string): object {
+  protected createListTitle(title: string): Record<string, unknown> {
     return {
       text: title,
       style: ['bold', 'subtitle', 'subtitleMargin'],
@@ -294,14 +288,14 @@ export default class Base {
     }
   }
 
-  protected createListExtra(extra: string): object {
+  protected createListExtra(extra: string): Record<string, unknown> {
     return {
       text: extra,
       style: ['listExtra', 'listExtraMargin']
     }
   }
 
-  protected createListTitleAndExtra(title: string, extra: string): object {
+  protected createListTitleAndExtra(title: string, extra: string): Record<string, unknown> {
     return {
       stack: [this.createListTitle(title), this.createListExtra(extra)]
     }
@@ -374,7 +368,10 @@ export default class Base {
         style: ['bold']
       },
       education.university,
-      education.date
+      education.date,
+      ...education.note
+        ? [ { text: education.note, style: { fontSize: this.font.defaultSize - 1 }, margin: [0, 1, 0, 0] }]
+        : []
     ]
   }
 
@@ -443,14 +440,14 @@ export default class Base {
   }
 
   protected createSkillRating(
-    type: string,
+    type: 'ellipse' | 'rect',
     color: string,
     width: number,
     height: number,
     x: number,
     y: number,
     radius: number
-  ): object {
+  ): Record<string, unknown> {
     if (type === 'ellipse') {
       return {
         type,

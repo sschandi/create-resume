@@ -15,6 +15,10 @@
     max-width: $breakpoint-xl;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    @media (min-width: $breakpoint-md) {
+      text-align: left;
+    }
   }
   &__title {
     margin: 0 0 1rem 0;
@@ -56,10 +60,12 @@
     right: 0;
     width: 100%;
     height: 50%;
+    margin-top: 2rem;
     @media (min-width: $breakpoint-sm) {
       top: 40%;
       width: 50%;
       height: 100%;
+      margin-top: 0;
     }
     @media (min-width: $breakpoint-lg) {
       top: 30%;
@@ -69,8 +75,17 @@
   }
   &__bg {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10%;
+    right: -15%;
+    @media (min-width: $breakpoint-sm) {
+      top: 8%;
+      right: -5%;
+    }
+    @media (min-width: $breakpoint-md) {
+      display: block;
+      top: 0;
+      right: 0;
+    }
   }
 }
 
@@ -120,20 +135,31 @@
   p {
     margin-bottom: 1rem;
   }
+  @media (min-width: $breakpoint-md) {
+    h2 {
+      font-size: 1
+    }
+  }
+}
+.feature {
+  &__content {
+    padding: 2rem;
+    @media (min-width: $breakpoint-md) {
+      padding: 3rem;
+    }
+  }
 }
 // Privacy Section
 .privacy {
   &__content {
     width: 100%;
-    min-height: 315px;
     background-color: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem;
-    margin: 1rem;
     @media (min-width: $breakpoint-md) {
       width: 60%;
+      min-height: 315px;
       padding: 3rem 6rem;
       margin: unset;
     }
@@ -178,7 +204,6 @@
   align-items: unset;
   &__content {
     width: 100%;
-    padding: 3rem;
     @media (min-width: $breakpoint-md) {
       width: 75%;
       padding: 3rem 6rem;
@@ -186,6 +211,9 @@
     }
     @media (min-width: $breakpoint-lg) {
       width: 50%;
+    }
+    ol {
+      padding-left: 1rem;
     }
     .optional {
       color: $med;
@@ -242,7 +270,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem;
     @media (min-width: $breakpoint-md) {
       width: 60%;
       padding: 3rem 6rem;

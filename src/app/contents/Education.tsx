@@ -7,7 +7,12 @@ import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
-const education = (props) => {
+interface Props {
+  education: any
+  index: number
+}
+
+const education: React.FC<Props> = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const addEducationElement = () => {
@@ -86,6 +91,18 @@ const education = (props) => {
                 label="Date"
                 onChange={(value) => updateEducationElement(index, 'date', value)}
               />
+              <div className="input input--full">
+                <label>Note (Optional)</label>
+                <input
+                  name="note"
+                  placeholder="Note (Optional)"
+                  value={item.note}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    e.preventDefault()
+                    updateEducationElement(index, e.target.name, e.target.value)
+                  }}
+                />
+              </div>
             </div>
             <ContentActions
               section={props.education}

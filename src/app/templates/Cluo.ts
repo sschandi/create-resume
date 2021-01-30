@@ -5,19 +5,19 @@ import { Contact } from '../ResumeTypes'
 export default class Cluo extends Base {
 
   constructor() {
-    const colors: Colors | object = {
+    const colors: Colors = {
       primary: '#ff5959',
       secondary: '#233142',
       accent: '#4f9da6'
     }
-    const font: Font | object = {
+    const font: Font = {
       name: 'Roboto',
       headingSize: 18,
       titleSize: 16,
       subtitleSize: 12,
       defaultSize: 11
     }
-    const styles: StyleObject | object = {
+    const styles: Partial<StyleObject> = {
       header: {
         alignment: 'left'
       },
@@ -45,8 +45,9 @@ export default class Cluo extends Base {
     city: string,
     province: string,
     postalCode: string
-  ): any[] {
-    return [`${address}, ${city}, ${province}, ${postalCode}`]
+  ): string[] {
+    const fullAddress = [address, city, province, postalCode].filter(val => !!val)
+    return [fullAddress.join(', ')]
   }
 
   createContactHeader(contacts: Contact[]): any[] {
@@ -72,7 +73,7 @@ export default class Cluo extends Base {
     // contacts.forEach((contact: Contact) => {
     //   contactHeader.push(contact.value)
     // })
-    const contactHeader: any[] = [
+    const contactHeader = [
       {
         columns: [
           {

@@ -1,6 +1,12 @@
 import React, { useState, useEffect, ChangeEvent } from 'react'
 // Component expects value to be in formatted like: 'Jan. 2010 - Jan. 2012'
 
+interface Props {
+  value: string
+  onChange: (value: string) => void
+  label: string
+}
+
 const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
 const years = () => {
   const yrs = []
@@ -12,7 +18,7 @@ const years = () => {
   return yrs
 }
 
-const ResumeDateInput = ({ value, onChange, label }) => {
+const ResumeDateInput: React.FC<Props> = ({ value, onChange, label }) => {
   const [date, setDate] = useState({
     month1: 'Jan.',
     year1: '2010',
@@ -21,7 +27,7 @@ const ResumeDateInput = ({ value, onChange, label }) => {
     present: false
   })
   
-  const handleChange = (e: ChangeEvent<any>) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     if (e.target.name === 'present') {
       setDate({ ...date, [e.target.name]: !date.present })
       return

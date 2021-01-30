@@ -18,10 +18,10 @@
       font-size: 6rem;
     }
   }
-  .btn {
-    width: 100%;
+  .home-link {
+    display: none;
     @media (min-width: $breakpoint-md) {
-      width: unset;
+      display: block;
     }
   }
   .subtitle {
@@ -29,14 +29,17 @@
   }
   .home__actions {
     align-self: center;
-    margin-top: 2rem;
+    color: $white;
+    margin-top: 5rem;
     text-align: center;
+    h2 {
+      color: $white;
+    }
     @media (min-width: $breakpoint-md) {
       align-self: flex-end;
       color: $white;
       text-align: right;
       h2 {
-        color: $white;
         font-size: 2.5rem;
       }
     }
@@ -90,18 +93,15 @@
       @media (min-width: $breakpoint-md) {
         grid-column: unset;
       }
-      .type {
-        margin-right: 1rem;
-        @media (min-width: $breakpoint-lg) {
-          width: 30%;
-        }
-      }
       .value {
+        width: 100%;
         margin-right: 1rem;
       }
       .btn-icon {
         width: 2rem;
         height: 2rem;
+        min-width: 2rem;
+        min-height: 2rem;
         background-color: $danger;
         border-radius: 2rem;
         margin-bottom: 0.5rem;
@@ -109,6 +109,28 @@
     }
     &--actions {
       grid-column: 1 / 3;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .custom-contact {
+        height: 35px;
+        max-width: 300px;
+        margin: 0.5rem;
+        &--input {
+          display: flex;
+          .btn {
+            margin: 0;
+            border-radius: 0 0.25rem 0.25rem 0;
+          }
+          .input {
+            border-radius: 0.25rem 0 0 0.25rem;
+            input {
+              height: 35px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -285,6 +307,23 @@
   height: 100%;
   @media (min-width: $breakpoint-md) {
     display: block;
+    width: 100%;
+    height: 100%;
+  }
+  &__triangle {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 200%;
+    height: 100%;
+    bottom: 0;
+    left: -60%;
+    @media (min-width: $breakpoint-md) {
+      width: 100%;
+      height: 100%;
+      bottom: unset;
+      left: unset;
+    }
   }
 }
 .parallax-img {
@@ -325,6 +364,7 @@
   position: fixed;
   bottom: 0;
   left: 50%;
+  width: 100%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
@@ -342,10 +382,11 @@
     border: 2px solid $primary;
     background-color: $white;
     transition: all 300ms ease-in;
+    cursor: pointer;
     &.completed {
       border-color: $accent-1;
     }
-    &.active {
+    &.active, &:hover {
       transform: scale(1.1);
       color: $secondary;
     }
@@ -424,6 +465,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: $white;
     font-size: 32px;
     background-color: $accent-2;

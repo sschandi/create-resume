@@ -4,15 +4,15 @@ import { Education } from '../ResumeTypes'
 
 export default class Teres extends Base {
   constructor() {
-    const colors: Colors | object = {
+    const colors: Partial<Colors>= {
       primary: '#00b8a9',
       secondary: '#212121',
       accent: '#9c9c9c'
     }
-    const font: Font | object = {
+    const font: Partial<Font> = {
       name: 'Quicksand'
     }
-    const styles: StyleObject | object = {
+    const styles: Partial<StyleObject> = {
       header: {
         alignment: 'center'
       },
@@ -48,7 +48,7 @@ export default class Teres extends Base {
     super('Teres', colors, font, styles)
 	}
 	
-	createListTitleAndExtra(title: string, extra: string) {
+	createListTitleAndExtra(title: string, extra: string): Record<string, unknown> {
     return {
       columns: [
         {
@@ -73,7 +73,7 @@ export default class Teres extends Base {
     return result
   }
 
-  createEducation(education: Education) {
+  createEducation(education: Education): any[] {
     const title = {
       columns: [
         { width: '50%', text: education.degree },
@@ -87,6 +87,9 @@ export default class Teres extends Base {
         style: ['bold']
       },
       education.university,
+      ...education.note
+        ? [ { text: education.note, style: { fontSize: this.font.defaultSize - 1 }, margin: [0, 1, 0, 0] }]
+        : []
     ]
   }
 }

@@ -22,7 +22,7 @@ enum AppComponents {
   Design
 }
 
-const App = () => {
+const App: React.FC = () => {
   const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Home)
   const parallax: any = useRef(null)
   // Parallax Components Props
@@ -32,15 +32,18 @@ const App = () => {
     onScroll: (e) => e.stopPropagation()
   }
 
+  const go = (to: AppComponents) => {
+    setCurrentComponent(to)
+    parallax.current.scrollTo(to)
+  }
+
   const goBack = () => {
     const back = currentComponent - 1
-    setCurrentComponent(back)
-    parallax.current.scrollTo(back)
+    go(back)
   }
   const goNext = () => {
     const next = currentComponent + 1
-    setCurrentComponent(next)
-    parallax.current.scrollTo(next)
+    go(next)
   }
 
   // Alert leaving page
@@ -67,7 +70,7 @@ const App = () => {
             </div>
           </ParallaxLayer>
           <ParallaxLayer offset={0.25} factor={1.25} speed={.4}>
-            <div className="app-bg">
+            <div className="app-bg__triangle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 205.05208 132.29167"
@@ -99,7 +102,7 @@ const App = () => {
           </ParallaxLayer>
         </Parallax>
       </AppContextProvider>
-      <Navigation current={currentComponent} prev={goBack} next={goNext} />
+      <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
     </AppLayout>
   )
 }

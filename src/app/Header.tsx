@@ -1,10 +1,10 @@
-import React, { useContext, useState, ChangeEvent } from 'react'
+import React, { useContext, ChangeEvent } from 'react'
 import UUID from 'uuid/v4'
 import { AppContext } from '../contexts/AppContext'
 import { Contact as ContactType } from './ResumeTypes'
 import Contact from './contents/Contact'
 
-const Header = () => {
+const Header: React.FC = () => {
   const { header, updateHeader } = useContext(AppContext)
 
   const headerChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +12,7 @@ const Header = () => {
     updateHeader({ [e.target.name]: e.target.value })
   }
 
-  const addToContact = (name: string, value: string = '') => {
+  const addToContact = (name: string, value = '') => {
     const newContact = {
       id: UUID(),
       name,

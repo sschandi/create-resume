@@ -121,9 +121,14 @@ const customSelectOptions = [
       { name: 'Your Skill', levels: [ true, true, true, false, false ] }
     ]
   },
+  {
+    type: SectionTypes.PAGEBREAK,
+    title: 'Page Break',
+    elements: [],
+  }
 ]
 
-const SelectContent = ({ scrollToBottom }) => {
+const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
   const add = (section) => {
     // Create unique copy of elements instead of passing reference

@@ -2,7 +2,12 @@ import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { List as ListType } from '../ResumeTypes'
 
-const Text = (props) => {
+interface Props {
+  index: number
+  text: any
+}
+
+const Text: React.FC<Props> = (props) => {
   const { updateSection } = useContext(AppContext)
 
   const updateListElement = (index: number, value: Partial<ListType>) => {
@@ -17,7 +22,7 @@ const Text = (props) => {
   }
   
   // Display for placeholder/labels
-  const display = () => props.text.title ? props.text.title : 'Text'
+  // const display = () => props.text.title ? props.text.title : 'Text'
 
   return (
     <div>

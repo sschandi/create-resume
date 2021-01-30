@@ -7,7 +7,12 @@ import Education from './Education'
 import Reference from './Reference'
 import { SectionTypes } from '../ResumeTypes'
 
-const Section = ({ section, index }) => {
+interface Props {
+  index: number
+  section: any
+}
+
+const Section: React.FC<Props> = ({ section, index }) => {
   const { sections, updateSection, deleteSection, reorderSection } = useContext(AppContext)
 
   const updateSectionTitle = (title: string) => {
@@ -37,6 +42,7 @@ const Section = ({ section, index }) => {
             name="title"
             placeholder="Title"
             value={section.title}
+            disabled={section.type === SectionTypes.PAGEBREAK}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               e.preventDefault()
               updateSectionTitle(e.target.value)

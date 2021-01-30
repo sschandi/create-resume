@@ -4,16 +4,16 @@ import { Header, Contact } from '../ResumeTypes'
 
 export default class Cogito extends Base {
 	constructor() {
-    const colors: Colors | object = {
+    const colors: Partial<Colors> = {
       primary: '#053f5e',
       secondary: '#393e46',
       accent: '#e3e3e3'
     }
-    const font: Font | object = {
+    const font: Partial<Font> = {
 			name: 'OpenSans',
 			headingSize: 24
     }
-    const styles: StyleObject | object = {
+    const styles: Partial<StyleObject> = {
       header: {
         alignment: 'right'
       },
@@ -49,14 +49,14 @@ export default class Cogito extends Base {
     super('Cogito', colors, font, styles)
 	}
 
-	protected renderHeader(header: Header): object {
-    const address: any[] = this.createAddress(
+	protected renderHeader(header: Header): Record<string, unknown> {
+    const address = this.createAddress(
       header.address,
       header.city,
       header.province,
       header.postalCode
     )
-    const contactHeader: any[] = this.createContactHeader(header.contacts)
+    const contactHeader = this.createContactHeader(header.contacts)
 
     return {
       columns: [
@@ -83,7 +83,7 @@ export default class Cogito extends Base {
     city: string,
     province: string,
     postalCode: string
-  ): any[] {
+  ): string[] {
     return [address, `${city} ${province} ${postalCode}`]
   }
 
@@ -95,7 +95,7 @@ export default class Cogito extends Base {
     return contactHeader
   }
 
-  protected createListTitleAndExtra(title: string, extra: string): object {
+  protected createListTitleAndExtra(title: string, extra: string): Record<string, unknown> {
     return {
       text: [this.createListTitle(title), ' ', this.createListExtra(extra)],
       style: ['subtitle', 'subtitleMargin'],

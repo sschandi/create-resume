@@ -8,7 +8,12 @@ import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
-const List = (props) => {
+interface Props {
+  index: number
+  list: any
+}
+
+const List: React.FC<Props> = (props) => {
   const { updateSection, reorderSectionEl } = useContext(AppContext)
 
   const updateListElement = (index: number, value: Partial<ListType>) => {

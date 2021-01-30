@@ -14,7 +14,7 @@ export interface StyleObject {
 	soloListMargin: Styles
 	skillRating: {
 		// ellipse or rect
-		type: string
+		type: 'ellipse' | 'rect'
 		width: number
 		height: number
 		x: number
@@ -22,7 +22,7 @@ export interface StyleObject {
 		// only for rect
 		radius?: number
 	}
-  [key: string]: Styles | object
+  [key: string]: Styles | Record<string, unknown>
 }
 
 export interface Styles {
@@ -53,4 +53,27 @@ export enum PageSizes {
 	A4 = 'A4',
 	LETTER = 'LETTER',
 	LEGAL = 'LEGAL',
+}
+
+export interface DefaultStyle {
+	font: string
+	fontSize: number
+	color: string
+}
+
+export interface RenderResult {
+	pageSize: PageSizes
+	header: any
+	content: any[]
+	footer: any
+	defaultStyle: DefaultStyle,
+	styles: StyleObject,
+	info: {
+		title: string
+		author: string
+		subject: string
+		keywords: string
+		creator: string
+		serialized: string
+	}
 }
