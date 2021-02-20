@@ -27,11 +27,11 @@ const selectOptions = [
     ]
   },
   {
-    type: SectionTypes.LIST,
+    type: SectionTypes.EXPERIENCE,
     title: 'Experience',
     elements: [
       {
-        title: 'Sales - Generic Sales Co.', extra: 'Jan. 2010 - Aug. 2012', elements: [
+        title: 'Sales', company: 'Generic Sales Co.', extra: 'Jan. 2010 - Aug. 2012', elements: [
           'Performed research study on product effectiveness by interviewing consumers and reviewing evaluation forms; findings helped manager to identify areas for improvement',
           'Resolved 25 client calls per day by responding to inquiries regarding credit card programs resulting in improved client relations and decreased complaints.'
         ],
@@ -40,11 +40,11 @@ const selectOptions = [
     date: true
   },
   {
-    type: SectionTypes.LIST,
+    type: SectionTypes.EXPERIENCE,
     title: 'Volunteer',
     elements: [
       {
-        title: 'Donations - Awesome Food Bank', extra: 'Jan. 2010 - Aug. 2012', elements: [
+        title: 'Donations', company: 'Awesome Food Bank', extra: 'Jan. 2010 - Aug. 2012', elements: [
           'Collaborated with 12 colleagues to create and implement a charity food bank donation competition resulting in a 20% increase in donations.',
         ],
       },

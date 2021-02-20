@@ -1,6 +1,7 @@
 import React, { useContext, ChangeEvent } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import List from './List'
+import Experience from './Experience'
 import Text from './Text'
 import Skill from './Skill'
 import Education from './Education'
@@ -23,6 +24,8 @@ const Section: React.FC<Props> = ({ section, index }) => {
   const Component = () => {
     if (section.type === SectionTypes.LIST) {
       return <List list={section} index={index} />
+    } else if (section.type === SectionTypes.EXPERIENCE) {
+      return <Experience experience={section} index={index} />
     } else if (section.type === SectionTypes.TEXT) {
       return <Text text={section} index={index} />
     } else if (section.type === SectionTypes.SKILL) {
