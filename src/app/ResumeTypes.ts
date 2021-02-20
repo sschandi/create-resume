@@ -22,6 +22,7 @@ export interface Section {
 
 export enum SectionTypes {
   LIST = 'List',
+  EXPERIENCE = 'Experience',
   TEXT = 'Text',
   SKILL = 'Skill',
   EDUCATION = 'Education',
@@ -44,6 +45,14 @@ export interface List {
   elements: string[]
   date?: boolean // Used for list extra (date or text)
   simple?: boolean // Used for list without title and subtitle
+  id: string
+}
+
+export interface Experience {
+  title: string
+  extra: string
+  company: string
+  elements: string[]
   id: string
 }
 

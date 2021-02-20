@@ -2,6 +2,7 @@ import { StyleObject, Font, Colors, PageSizes, DefaultStyle, RenderResult } from
 import {
   Contact,
   Education,
+  Experience,
   Header,
   List,
   Reference,
@@ -174,6 +175,11 @@ export default class Base {
           ...result,
           ...this.renderListAndText(item.title, item.elements, item.type)
         ]
+      } else if (item.type === SectionTypes.EXPERIENCE) {
+        result = [
+          ...result,
+          ...this.renderExperience(item.title, item.elements)
+        ]
       } else if (item.type === SectionTypes.REFERENCE) {
         result = [
           ...result,
@@ -299,6 +305,15 @@ export default class Base {
     return {
       stack: [this.createListTitle(title), this.createListExtra(extra)]
     }
+  }
+
+  protected renderExperience(title: string, elements: Experience[]): any[] {
+    const experienceAsList: List[] = elements.map(element => {
+      const title = [element.title, element.company].filter(el => !!el).join(' - ')
+      return { ...element, title, date: true }
+    })
+
+    return this.renderListAndText(title, experienceAsList, SectionTypes.LIST)
   }
 
   protected renderReferences(title: string, elements: Reference[]): any[] {
