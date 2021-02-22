@@ -1,21 +1,25 @@
-import React, { useContext, useRef, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
 import DesignColors from './DesignColors'
+import AnonymousDownload from './AnonymousDownload'
 import Modal from '../components/Modal'
 
 import { createPDF, templateList } from './templates/Renderer'
 
-const Design = ({ active }) => {
+const Design: React.FC<{ active: boolean }> = ({ active }) => {
   const { sections, header, activeTemplate, setTemplate, colors } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
   const [showModal, setShowModal] = useState(false)
-  const downloadActive = () => {
-    const document = activeTemplate.render(sections, header)
+  const downloadActive = (resumeSections, resumeHeader) => {
+    const document = activeTemplate.render(resumeSections, resumeHeader)
     const pdf = createPDF(document)
     pdf.download(`Resume - ${header.name}.pdf`)
     setShowModal(true)
+  }
+  const download = () => {
+    downloadActive(sections, header);
   }
 
   const [loading, setLoading] = useState(true)
@@ -55,7 +59,7 @@ const Design = ({ active }) => {
       <div className="component-container">
         <div className="design__title">
           <h1>Design</h1>
-          <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
+          <button className="btn btn-primary" onClick={download}>Download Resume</button>
         </div>
         <div className="design">
           <div className="design__preview">
@@ -75,7 +79,8 @@ const Design = ({ active }) => {
               )
             })}
             <DesignColors />
-            <button className="btn btn-primary" style={{ width: '100%', margin: '1rem 0' }} onClick={downloadActive}>Download Resume</button>
+            <button className="btn btn-primary" style={{ width: '100%', margin: '1rem 0' }} onClick={download}>Download Resume</button>
+            <AnonymousDownload download={downloadActive} sections={sections} header={header} />
           </div>
         </div>
       </div>
