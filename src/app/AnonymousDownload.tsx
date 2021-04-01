@@ -21,7 +21,6 @@ const AnonymousDownload: React.FC<Props> = ({ download, sections, header }) => {
   const [modal, setModal] = useState(false)
 
   const downloadAnonymous = () => {
-    console.log(anonymizedSections(), anonymizedHeader())
     download(anonymizedSections(), anonymizedHeader())
   }
 
@@ -43,7 +42,30 @@ const AnonymousDownload: React.FC<Props> = ({ download, sections, header }) => {
 
   const anonymizedSections = () => {
     return sections.map(section => {
-      let redactedElements = section.elements
+      let redactedElements = section.elements.map(el => {
+        Object.keys(el).forEach(key => {
+          // Don't alter ids of elements
+          if (key === 'id') {
+            return
+          }
+
+          const type = typeof el[key]
+          
+          if (type === 'object') {
+            if (Array.isArray(el[key])) {
+              // Skills can only have an array of booleans which should not be altered
+              if (section.type === SectionTypes.SKILL) {
+                return
+              }
+              // TODO: redact in here
+              console.log('array', el[key])
+            }
+          } else if (type === 'string') {
+            // TODO: redact in here
+          }
+        })
+        return el
+      })
 
       if (section.type === SectionTypes.EXPERIENCE) {
         redactedElements = anonymizedExperience(redactedElements)
