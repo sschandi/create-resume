@@ -97,7 +97,7 @@ export default class Cogito extends Base {
 
   protected createListTitleAndExtra(title: string, extra: string): Record<string, unknown> {
     return {
-      text: [this.createListTitle(title), ' ', this.createListExtra(extra)],
+      text: [this.createListTitle(title), '  ', this.createListExtra(extra)],
       style: ['subtitle', 'subtitleMargin'],
     }
   }
