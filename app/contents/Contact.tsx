@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated } from '@react-spring/web'
 import { Contact as ContactType } from '../ResumeTypes'
 
 const defaultContacts = [
@@ -35,7 +35,8 @@ const Contact: React.FC<Props> = (props) => {
   // }
 
   // Transitions
-  const transitions = useTransition(props.contacts, item => item.id, {
+  const transitions = useTransition(props.contacts, {
+    keys: item => item.id,
     from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
@@ -47,9 +48,9 @@ const Contact: React.FC<Props> = (props) => {
       <h2>Contact Info</h2>
       <p>How can employers reach you?</p>
       <div className="header__contact">
-        {transitions.map(({ item, ...rest }, index) => {
+        {transitions((styleProps, item: ContactType, t, index: number) => {
           return (
-            <animated.div key={item.id} style={rest.props} className="header__contact--container">
+            <animated.div key={item.id} style={styleProps} className="header__contact--container">
               <div className="input value">
                 <label>{item.name}</label>
                 <input

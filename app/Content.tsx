@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useSpring, useTransition, animated } from 'react-spring'
+import { useSpring, useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../contexts/AppContext'
 import SelectContent from './SelectContent'
 import Section from './contents/Section'
@@ -10,7 +10,8 @@ const MAX_MOBILE_SIZE = 1200
 
 const Content: React.FC<{ active: boolean }> = ({ active }) => {
   const { sections } = useContext(AppContext)
-  const transitions = useTransition(sections, item => item.id, {
+  const transitions = useTransition(sections, {
+    keys: item => item.id,
     from: { transform: 'translate3d(10rem,0,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(10rem,0,0)', opacity: 0 },
@@ -76,9 +77,9 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
             <SelectContent scrollToBottom={scrollToBottom} />
           </animated.div>
           <div className="content__elements">
-            {transitions.map(({ item, props }, index) => {
+            {transitions((styleProps, item, t, index: number)=> {
               return (
-                <animated.div key={item.id} style={props}>
+                <animated.div key={item.id} style={styleProps}>
                   <Section section={item} index={index} />
                 </animated.div>
               )
@@ -100,7 +101,7 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
               </svg>
             </button>
           </>,
-          document.getElementById('app-layout')
+          document.getElementById('app-layout') as HTMLElement
         )}
       </div>
     </animated.div>

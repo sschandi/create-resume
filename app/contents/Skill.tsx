@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useContext }  from 'react'
 import UUID from 'uuid/v4'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../../contexts/AppContext'
 import { Skill as SkillType } from '../ResumeTypes'
 import ContentActions from './ContentActions'
@@ -38,7 +38,8 @@ const Skill: React.FC<Props> = (props) => {
   }
 
   // Transitions
-  const transitions = useTransition(props.skill.elements, item => item.id, {
+  const transitions = useTransition(props.skill.elements, {
+    keys: item => item.id,
     from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
@@ -47,9 +48,9 @@ const Skill: React.FC<Props> = (props) => {
 
   return (
     <div>
-      {transitions.map(({ item, ...rest }, index) => {
+      {transitions((styleProps, item: SkillType, t, index: number) => {
         return (
-          <animated.div key={item.id} style={rest.props} className="content__wrapper">
+          <animated.div key={item.id} style={styleProps} className="content__wrapper">
             <div className="content__el content--skill">
               <div className="input">
                 <label>Skill</label>

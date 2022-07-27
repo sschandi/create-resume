@@ -36,7 +36,8 @@ const List: React.FC<Props> = (props) => {
   }
 
   // Transitions
-  const transitions = useTransition(props.list.elements, item => item.id, {
+  const transitions = useTransition(props.list.elements, {
+    keys: item => item.id,
     from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
@@ -45,9 +46,9 @@ const List: React.FC<Props> = (props) => {
 
   return (
     <div>
-      {transitions.map(({ item, ...rest }, index) => {
+      {transitions((styleProps, item: ListType, t, index: number) => {
         return (
-          <animated.div key={item.id} style={rest.props} className="content__wrapper">
+          <animated.div key={item.id} style={styleProps} className="content__wrapper">
             <div className="content__el content--list">
               {!props.list.simple &&
                 <div className="list__title">
@@ -56,7 +57,7 @@ const List: React.FC<Props> = (props) => {
                     <input
                       name="title"
                       placeholder="Title"
-                      value={item.title}
+                      value={item.title || ''}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         e.preventDefault()
                         updateListElement(index, { title: e.target.value })
@@ -70,7 +71,7 @@ const List: React.FC<Props> = (props) => {
                         <input
                           name="extra"
                           placeholder="Subtitle"
-                          value={item.extra}
+                          value={item.extra || ''}
                           onChange={(e: ChangeEvent<HTMLInputElement>) => {
                             e.preventDefault()
                             updateListElement(index, { extra: e.target.value })
@@ -79,7 +80,7 @@ const List: React.FC<Props> = (props) => {
                       </div>
                       :
                       <ResumeDateInput
-                        value={item.extra}
+                        value={item.extra || ''}
                         label="Date"
                         onChange={(extra) => updateListElement(index, { extra })}
                       />

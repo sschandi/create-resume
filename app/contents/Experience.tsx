@@ -37,7 +37,8 @@ const Experience: React.FC<Props> = (props) => {
   }
 
   // Transitions
-  const transitions = useTransition(props.experience.elements, item => item.id, {
+  const transitions = useTransition(props.experience.elements, {
+    keys: item => item.id,
     from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
@@ -46,9 +47,9 @@ const Experience: React.FC<Props> = (props) => {
 
   return (
     <div>
-      {transitions.map(({ item, ...rest }, index) => {
+      {transitions((styleProps, item: ExperienceType, t, index: number) => {
         return (
-          <animated.div key={item.id} style={rest.props} className="content__wrapper">
+          <animated.div key={item.id} style={styleProps} className="content__wrapper">
             <div className="content__el content--list">
               <div className="list__title">
                 <div className="input list__input">
