@@ -8,8 +8,7 @@ import Design from '../app/Design'
 import Navigation from '../app/Navigation'
 
 import AppLayout from '../layouts/AppLayout'
-// TODO: Create Next SEO alternative
-// import SEO from '../components/seo'
+import SEO from '../components/seo'
 
 import CluoSample from '../images/home/cluo-sample.png'
 import TeresSample from '../images/home/teres-sample.png'
@@ -28,8 +27,9 @@ const App: React.FC = () => {
   // Parallax Components Props
   const componentProps = {
     speed: 0,
+    // Style is now set directly on the component because ts errored when set here
     // style: { overflowY: 'auto' },
-    onScroll: (e) => e.stopPropagation()
+    // onScroll: (e: any) => e.stopPropagation()
   }
 
   const go = (to: AppComponents) => {
@@ -53,26 +53,26 @@ const App: React.FC = () => {
 
   // Alert leaving page
   useEffect(() => {
-    // window.onbeforeunload = () => {
-    //   return 'Download your pdf to keep your progress!'
+    window.onbeforeunload = () => {
+      return 'Download your pdf to keep your progress!'
 
-    // }
-    // return () => {
-    //   window.onbeforeunload = null
-    // }
+    }
+    return () => {
+      window.onbeforeunload = null
+    }
   }, [])
 
   return (
     <AppLayout>
-      {/* <SEO title="App" /> */}
+      <SEO title="App" />
       <AppContextProvider>
-        <Parallax pages={5} ref={parallax} horizontal={true} scrolling="false">
+        <Parallax pages={5} ref={parallax} horizontal={true} enabled={false}>
           {/* BG Designs */}
           <ParallaxLayer offset={0} factor={1} speed={1}>
             <div className="app-bg">
-              <img src={TeresSample} className="parallax-img parallax-img__1" />
-              <img src={CogitoSample} className="parallax-img parallax-img__2" />
-              <img src={CluoSample} className="parallax-img parallax-img__3" />
+              <img src={TeresSample.src} alt="" className="parallax-img parallax-img__1" />
+              <img src={CogitoSample.src} alt="" className="parallax-img parallax-img__2" />
+              <img src={CluoSample.src} alt="" className="parallax-img parallax-img__3" />
             </div>
           </ParallaxLayer>
           <ParallaxLayer offset={0.25} factor={1.25} speed={.4}>
@@ -94,16 +94,16 @@ const App: React.FC = () => {
             </div>
           </ParallaxLayer>
           {/* Main components */}
-          <ParallaxLayer offset={0} {...componentProps}>
+          <ParallaxLayer offset={0} {...componentProps} style={{ overflowY: 'auto' }}>
             <Home next={goNext} />
           </ParallaxLayer>
-          <ParallaxLayer offset={1} {...componentProps}>
+          <ParallaxLayer offset={1} {...componentProps} style={{ overflowY: 'auto' }}>
             <Header />
           </ParallaxLayer>
-          <ParallaxLayer offset={2} {...componentProps}>
+          <ParallaxLayer offset={2} {...componentProps} style={{ overflowY: 'auto' }}>
             <Content active={currentComponent === AppComponents.Content} />
           </ParallaxLayer>
-          <ParallaxLayer offset={3} {...componentProps}>
+          <ParallaxLayer offset={3} {...componentProps} style={{ overflowY: 'auto' }}>
             <Design active={currentComponent === AppComponents.Design} />
           </ParallaxLayer>
         </Parallax>
