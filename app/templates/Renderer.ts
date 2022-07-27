@@ -42,6 +42,7 @@ import Cogito from './Cogito'
 
 export const createPDF = pdfMake.createPdf
 
+export type TemplateOptions = Teres | Cluo | Cogito
 export const templateList = [new Teres(), new Cluo(), new Cogito()]
 
 export const colorsList: Colors[] = [

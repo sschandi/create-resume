@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import Move from 'lodash-move'
 import { Header, Section } from '../app/ResumeTypes'
 import { Colors } from '../app/templates/Interfaces'
-import { templateList } from '../app/templates/Renderer'
+import { templateList, TemplateOptions } from '../app/templates/Renderer'
 
 export type ReorderSectionEl = (section: Section, sectionIndex: number, curIndex: number, newIndex: number) => void
 
@@ -16,13 +16,27 @@ type ContextProps = {
   setSections(payload: Section[]): void
   reorderSection(curIndex: number, newIndex: number): void
   reorderSectionEl: ReorderSectionEl
-  activeTemplate
+  activeTemplate: TemplateOptions
   setTemplate(name: string): void
   colors: Colors | null
   setColors(payload: Colors): void
 }
 
-export const AppContext = createContext<Partial<ContextProps>>({})
+export const AppContext = createContext<ContextProps>({
+  header: {} as Header,
+  updateHeader: () => {},
+  sections: [],
+  addSection: () => {},
+  updateSection: () => {},
+  deleteSection: () => {},
+  setSections: () => {},
+  reorderSection: () => {},
+  reorderSectionEl: () => {},
+  activeTemplate: {} as TemplateOptions,
+  setTemplate: () => {},
+  colors: null,
+  setColors: () => {},
+})
 
 const AppContextProvider: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({ children }) => {
   const [header, setHeader] = useState<Header>({
@@ -41,7 +55,7 @@ const AppContextProvider: React.FC<{ children: JSX.Element | JSX.Element[] }> = 
   const addSection = (payload: Section) => {
     setSections([...sections, payload])
   }
-  const updateSection = (index, payload: Section) => {
+  const updateSection = (index: number, payload: Section) => {
     setSections(sections.map((section, secIndex) => secIndex === index ? payload : section))
   }
   const deleteSection = (index: number) => {
@@ -61,7 +75,9 @@ const AppContextProvider: React.FC<{ children: JSX.Element | JSX.Element[] }> = 
   const [activeTemplate, setActiveTemplate] = useState(templateList[0])
   useEffect(() => {
     const found = templateList.find((temp) => temp.name === template)
-    setActiveTemplate(found)
+    if (found) {
+      setActiveTemplate(found)
+    }
   }, [template])
 
   const [colors, setColors] = useState<Colors | null>(null)

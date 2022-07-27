@@ -13,7 +13,9 @@ const Home: React.FC<{ next: () => void }> = ({ next }) => {
           <span className="jumbotron__title--me">me</span>
         </h1>
       </div>
-      <Link href="/" className="btn btn-link btn-primary home-link">Learn More</Link>
+      <Link href="/">
+        <button className="btn btn-link btn-primary home-link">Learn More</button>
+      </Link>
       <div className="home__actions">
         <h2>Been</h2>
         <h2>Here Before?</h2>
