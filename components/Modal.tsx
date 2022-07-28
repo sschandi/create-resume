@@ -6,6 +6,7 @@ interface Props {
   show: boolean
   title: string
   close: () => void
+  children: JSX.Element
 }
 
 const Modal: React.FC<Props> = ({ show, title, close, children }) => {
@@ -14,6 +15,7 @@ const Modal: React.FC<Props> = ({ show, title, close, children }) => {
 
   return (
     ReactDOM.createPortal(
+      // @ts-ignore
       <animated.div style={wrapper} className="modal__wrapper">
         <animated.div style={container} className="modal__container text--center">
           <h2>{title}</h2>

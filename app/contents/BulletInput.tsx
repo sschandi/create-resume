@@ -10,8 +10,8 @@ const BULLET = '• '
 
 const BulletInput: React.FC<Props> = ({ value, placeholder, onChange }) => {
   const [inputValue, setInputValue] = useState('')
-  const [cursorPosition, setCursorPosition] = useState(null)
-  const input = useRef(null)
+  const [cursorPosition, setCursorPosition] = useState(0)
+  const input = useRef<HTMLTextAreaElement | null>(null)
 
   // Initial setup from props
   useEffect(() => {

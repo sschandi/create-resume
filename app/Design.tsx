@@ -6,7 +6,7 @@ import Modal from '../components/Modal'
 
 import { createPDF, templateList } from './templates/Renderer'
 
-const Design = ({ active }) => {
+const Design = ({ active }: { active: boolean }) => {
   const { sections, header, activeTemplate, setTemplate, colors } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
@@ -28,6 +28,7 @@ const Design = ({ active }) => {
     const document = activeTemplate.render(sections, header)
     const pdf = createPDF(document)
     await pdf.getDataUrl((url: string) => {
+      // @ts-ignore currently no typing for pdf-make
       setDocument(url)
     })
   }

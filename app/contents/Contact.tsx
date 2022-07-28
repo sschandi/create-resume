@@ -24,7 +24,7 @@ const Contact: React.FC<Props> = (props) => {
     setCustomContact('')
   }
 
-  const updateContactValue = (index: number, value) => {
+  const updateContactValue = (index: number, value: string) => {
     const { name, id } = props.contacts[index]
     props.updateContact(index, { id, name, value })
   }

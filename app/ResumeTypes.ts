@@ -13,23 +13,6 @@ export interface Contact {
   id: string
 }
 
-export interface Section {
-  title: string
-  type: string
-  elements: any[] // swap any type to list of possible options
-  id: string
-}
-
-export enum SectionTypes {
-  LIST = 'List',
-  EXPERIENCE = 'Experience',
-  TEXT = 'Text',
-  SKILL = 'Skill',
-  EDUCATION = 'Education',
-  REFERENCE = 'Reference',
-  PAGEBREAK = 'PageBreak'
-}
-
 export interface Education {
   degree: string
   program: string
@@ -69,5 +52,22 @@ export interface Reference {
   companyAddress?: string
   phone?: string
   email?: string
+  id: string
+}
+
+export enum SectionTypes {
+  LIST = 'List',
+  EXPERIENCE = 'Experience',
+  TEXT = 'Text',
+  SKILL = 'Skill',
+  EDUCATION = 'Education',
+  REFERENCE = 'Reference',
+  PAGEBREAK = 'PageBreak'
+}
+
+export interface Section {
+  title: string
+  type: string
+  elements: any[] // swap any type to list of possible options
   id: string
 }

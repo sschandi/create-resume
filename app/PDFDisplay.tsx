@@ -9,7 +9,7 @@ interface Props {
 }
 
 const PDFDisplay: React.FC<Props> = ({ document, loading }) => {
-  const docRef = useRef(null)
+  const docRef = useRef<HTMLDivElement | null>(null)
   const [width, setWidth] = useState(300)
   useEffect(() => {
     if (!docRef.current) {
@@ -32,7 +32,7 @@ const PDFDisplay: React.FC<Props> = ({ document, loading }) => {
   const [pageCount, setPageCount] = useState(0)
   const [currPage, setCurrPage] = useState(1)
 
-  const onDocumentLoad = ({ numPages }) => {
+  const onDocumentLoad = ({ numPages }: { numPages: number }) => {
     setPageCount(numPages)
   }
   const setPage = (action: 'prev' | 'next') => {

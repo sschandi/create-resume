@@ -7,21 +7,31 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pd
 
 const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
-  const input = useRef(null)
+  const input = useRef<HTMLInputElement | null>(null)
   const [error, setError] = useState({ show: false, message: '' })
 
   const uploadPDF = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return
+    }
     const reader = new FileReader()
     reader.onload = loadPDF
     reader.readAsArrayBuffer(e.target.files[0])
+  }
+
+  const clickUploadInput = () => {
+    if (!input.current) {
+      return
+    }
+    input.current.click()
   }
 
   const loadPDF = (e: any) => {
     const array = new Uint8Array(e.target.result)
     const loadingTask = pdfjs.getDocument(array)
 
-    loadingTask.promise.then((doc) => {
-      doc.getMetadata().then((data) => {
+    loadingTask.promise.then((doc: any) => {
+      doc.getMetadata().then((data: any) => {
         if (!data || !data.info || !data.info.Custom || !data.info.Custom.serialized) {
           setError({ show: true, message: 'Sorry, this file was not made here :(' })
           return
@@ -54,7 +64,7 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
       />
       <button
         className="btn btn-accent"
-        onClick={() => input.current.click()}
+        onClick={clickUploadInput}
       >
         Upload PDF
       </button>

@@ -21,6 +21,11 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
   const [scrollLoc, setScrollLoc] = useSpring(() => ({ y: 0}))
   const scrollToBottom = () => {
     const content = document.getElementById('content')
+
+    if (!content) {
+      return
+    }
+
     setScrollLoc({
       y: content.scrollHeight,
       reset: true,
@@ -73,6 +78,7 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
         <div className="content__main">
           <h1>Resume Content</h1>
           <p>Now lets fill everything with Content</p>
+          {/* @ts-ignore */}
           <animated.div style={centerContent}>
             <SelectContent scrollToBottom={scrollToBottom} />
           </animated.div>
