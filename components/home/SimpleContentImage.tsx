@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import ContentImage from '../../images/home/resume-content.inline.svg'
+import ContentImage from '../../images/home/resume-content.svg'
 
 const SimpleContentImage: React.FC = () => {
   const [ref, inView] = useInView({
@@ -18,16 +18,20 @@ const SimpleContentImage: React.FC = () => {
   return (
     <div ref={ref} style={{ position: 'relative', left: '0', overflow: 'hidden', height: '100%', width: '100%' }}>
       <div style={{ ...imageStyles, top: '0%' }}>
-        <ContentImage />
+        {/* <ContentImage /> */}
+        <img src={ContentImage.src} alt="" />
       </div>
       <div style={{ ...imageStyles, top: '20%', animationDelay: '1s' }}>
-        <ContentImage />
+        {/* <ContentImage /> */}
+        <img src={ContentImage.src} alt="" />
       </div>
       <div style={{ ...imageStyles, top: '35%', animationDelay: '0.7s' }}>
-        <ContentImage />
+        {/* <ContentImage /> */}
+        <img src={ContentImage.src} alt="" />
       </div>
       <div style={{ ...imageStyles, top: '60%', animationDelay: '1.3s' }}>
-        <ContentImage />
+        {/* <ContentImage /> */}
+        <img src={ContentImage.src} alt="" />
       </div>
     </div>
   )
