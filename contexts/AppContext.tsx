@@ -19,7 +19,7 @@ type ContextProps = {
   activeTemplate: TemplateOptions
   setTemplate(name: string): void
   colors: Colors | null
-  setColors(payload: Colors): void
+  setColors(payload: Colors | null): void
 }
 
 export const AppContext = createContext<ContextProps>({

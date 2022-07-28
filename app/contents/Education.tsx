@@ -2,13 +2,13 @@ import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
 import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../../contexts/AppContext'
-import { Education as EducationType } from '../ResumeTypes'
+import { Education as EducationType, SectionEl } from '../ResumeTypes'
 import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
 interface Props {
-  education: any
+  education: SectionEl<EducationType>
   index: number
 }
 

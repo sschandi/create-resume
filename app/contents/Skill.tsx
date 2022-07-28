@@ -2,13 +2,13 @@ import React, { ChangeEvent, useContext }  from 'react'
 import UUID from 'uuid/v4'
 import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../../contexts/AppContext'
-import { Skill as SkillType } from '../ResumeTypes'
+import { Skill as SkillType, SectionEl } from '../ResumeTypes'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
 interface Props {
   index: number
-  skill: any
+  skill: SectionEl<SkillType>
 }
 
 const Skill: React.FC<Props> = (props) => {

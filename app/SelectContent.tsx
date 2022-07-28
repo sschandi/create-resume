@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import UUID from 'uuid/v4'
 import { AppContext } from '../contexts/AppContext'
-import { SectionTypes } from './ResumeTypes'
+import { Section, SectionTypes } from './ResumeTypes'
 import { useTrail, animated } from '@react-spring/web'
 
-const selectOptions = [
+type SectionNoId = Omit<Section, 'id'>
+
+const selectOptions: SectionNoId[] = [
   {
     type: SectionTypes.TEXT,
     title: 'Summary',
@@ -130,7 +132,7 @@ const customSelectOptions = [
 
 const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBottom }) => {
   const { addSection } = useContext(AppContext)
-  const add = (section) => {
+  const add = (section: SectionNoId) => {
     // Create unique copy of elements instead of passing reference
     const sectionWithIdElements = section.elements.map((el) => ({ ...el, id: UUID() }))
     const sectionWithId = { ...section, id: UUID(), elements: sectionWithIdElements }

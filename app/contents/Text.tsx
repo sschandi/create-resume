@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
-import { List as ListType } from '../ResumeTypes'
+import { List as ListType, SectionEl } from '../ResumeTypes'
 
 interface Props {
   index: number
-  text: any
+  text: SectionEl<ListType>
 }
 
 const Text: React.FC<Props> = (props) => {

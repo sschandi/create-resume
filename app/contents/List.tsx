@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
 import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../../contexts/AppContext'
-import { List as ListType } from '../ResumeTypes'
+import { List as ListType, SectionEl } from '../ResumeTypes'
 import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
@@ -10,7 +10,7 @@ import ContentAdd from './ContentAdd'
 
 interface Props {
   index: number
-  list: any
+  list: SectionEl<ListType>
 }
 
 const List: React.FC<Props> = (props) => {

@@ -2,13 +2,13 @@ import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
 import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../../contexts/AppContext'
-import { Reference as ReferenceType } from '../ResumeTypes'
+import { Reference as ReferenceType, SectionEl } from '../ResumeTypes'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
 
 interface Props {
   index: number
-  reference: any
+  reference: SectionEl<ReferenceType>
 }
 
 const Reference: React.FC<Props> = (props) => {

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext } from 'react'
 import UUID from 'uuid/v4'
 import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../../contexts/AppContext'
-import { Experience as ExperienceType } from '../ResumeTypes'
+import { Experience as ExperienceType, SectionEl } from '../ResumeTypes'
 import BulletInput from './BulletInput'
 import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
@@ -10,7 +10,7 @@ import ContentAdd from './ContentAdd'
 
 interface Props {
   index: number
-  experience: any
+  experience: SectionEl<ExperienceType>
 }
 
 const Experience: React.FC<Props> = (props) => {

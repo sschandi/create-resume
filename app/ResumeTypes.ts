@@ -26,8 +26,6 @@ export interface List {
   title: string | null
   extra: string | null
   elements: string[]
-  date?: boolean // Used for list extra (date or text)
-  simple?: boolean // Used for list without title and subtitle
   id: string
 }
 
@@ -55,6 +53,8 @@ export interface Reference {
   id: string
 }
 
+export interface PageBreak {}
+
 export enum SectionTypes {
   LIST = 'List',
   EXPERIENCE = 'Experience',
@@ -65,9 +65,17 @@ export enum SectionTypes {
   PAGEBREAK = 'PageBreak'
 }
 
+export type SectionOption = List | Experience | Skill | Education | Reference | PageBreak
+
 export interface Section {
   title: string
   type: string
-  elements: any[] // swap any type to list of possible options
+  elements: SectionOption[]
   id: string
+  date?: boolean // Used for list extra (date or text)
+  simple?: boolean // Used for list without title and subtitle
+}
+
+export interface SectionEl<T> extends Section {
+  elements: T[]
 }
