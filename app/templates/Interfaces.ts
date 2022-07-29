@@ -12,17 +12,8 @@ export interface StyleObject {
 	skillMargin: Styles
 	listMargin: Styles
 	soloListMargin: Styles
-	skillRating: {
-		// ellipse or rect
-		type: 'ellipse' | 'rect'
-		width: number
-		height: number
-		x: number
-		y: number
-		// only for rect
-		radius?: number
-	}
-  [key: string]: Styles | Record<string, unknown>
+	skillRating: SkillRating
+  [key: string]: Styles | SkillRating
 }
 
 export interface Styles {
@@ -32,6 +23,17 @@ export interface Styles {
 	alignment?: string
 	fontSize?: number
 	lineHeight?: number
+}
+
+interface SkillRating {
+	// ellipse or rect
+	type: 'ellipse' | 'rect'
+	width: number
+	height: number
+	x: number
+	y: number
+	// only for rect
+	radius?: number
 }
 
 export interface Font {

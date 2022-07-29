@@ -4,7 +4,7 @@ import { Education } from '../ResumeTypes'
 
 export default class Teres extends Base {
   constructor() {
-    const colors: Partial<Colors>= {
+    const colors: Colors= {
       primary: '#00b8a9',
       secondary: '#212121',
       accent: '#9c9c9c'

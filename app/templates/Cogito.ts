@@ -4,7 +4,7 @@ import { Header, Contact } from '../ResumeTypes'
 
 export default class Cogito extends Base {
 	constructor() {
-    const colors: Partial<Colors> = {
+    const colors: Colors = {
       primary: '#053f5e',
       secondary: '#393e46',
       accent: '#e3e3e3'

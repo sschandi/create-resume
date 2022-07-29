@@ -61,7 +61,7 @@ export default class Base {
 
   constructor(
     name: string,
-    colors: Partial<Colors>,
+    colors: Colors,
     font: Partial<Font>,
     styles: Partial<StyleObject>
   ) {
@@ -113,16 +113,16 @@ export default class Base {
     this.font = { ...this.font, ...font }
   }
 
-  public setColors(colors: Partial<Colors>): void {
+  public setColors(colors: Colors): void {
     this.colors = { ...this.colors, ...colors }
   }
 
-  public setDefaultColors(colors: Partial<Colors>): void {
+  public setDefaultColors(colors: Colors): void {
     this.defaultColors = { ...this.defaultColors, ...colors }
   }
 
   public setStyles(styles: Partial<StyleObject>): void {
-    this.styles = { ...this.styles, ...styles }
+    this.styles = { ...this.styles, ...styles } as StyleObject
   }
 
   public setPageSize(pageSize: PageSizes): void {
@@ -131,7 +131,7 @@ export default class Base {
 
   // Note: page size is currently unused, not sure if type is correct
   public renderPageHeader(text: string): (currentPage: number, pageCount: number, PageSize: Record<string, unknown>) => any {
-    const pageHeader = (currentPage, pageCount, pageSize) => {
+    const pageHeader = (currentPage: number, pageCount: number, pageSize: Record<string, unknown>) => {
       if (currentPage !== 1) {
         return this.createPageHeader(text)
       }
@@ -153,7 +153,7 @@ export default class Base {
 
   // Note: page size is currently unused, not sure if type is correct
   protected renderPageFooter(): (currentPage: number, pageCount: number, PageSize: Record<string, unknown>) => any {
-    const pageFooter = (currentPage, pageCount, pageSize) => {
+    const pageFooter = (currentPage: number, pageCount: number, pageSize: Record<string, unknown>) => {
       if (pageCount > 1) {
         return {
           text: currentPage,
@@ -173,22 +173,22 @@ export default class Base {
         // result.push(this.renderListSection(item.title, item.elements))
         result = [
           ...result,
-          ...this.renderListAndText(item.title, item.elements, item.type)
+          ...this.renderListAndText(item.title, item.elements as List[], item.type)
         ]
       } else if (item.type === SectionTypes.EXPERIENCE) {
         result = [
           ...result,
-          ...this.renderExperience(item.title, item.elements)
+          ...this.renderExperience(item.title, item.elements as Experience[])
         ]
       } else if (item.type === SectionTypes.REFERENCE) {
         result = [
           ...result,
-          ...this.renderReferences(item.title, item.elements)
+          ...this.renderReferences(item.title, item.elements as Reference[])
         ]
       } else if (item.type === SectionTypes.SKILL) {
-        result = [...result, ...this.renderSkills(item.title, item.elements)]
+        result = [...result, ...this.renderSkills(item.title, item.elements as Skill[])]
       } else if (item.type === SectionTypes.EDUCATION) {
-        result = [...result, ...this.renderEducation(item.title, item.elements)]
+        result = [...result, ...this.renderEducation(item.title, item.elements as Education[])]
       } else if (item.type === SectionTypes.PAGEBREAK) {
         result = [...result, ...this.renderPageBreak()]
       }
