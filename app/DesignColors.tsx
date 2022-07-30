@@ -5,16 +5,16 @@ import { useSpring, animated, config } from '@react-spring/web'
 
 const DesignColors: React.FC = () => {
   const { colors, setColors } = useContext(AppContext)
-  const [spring, setSpring] = useSpring(() => ({ opacity: 0, top: '0rem', config: config.stiff }))
+  const [spring, springApi] = useSpring(() => ({ opacity: 0, top: '0rem', config: config.stiff }))
   useEffect(() => {
     if (!colors) {
-      setSpring({ opacity: 0, top: '0rem' })
+      springApi.start({ opacity: 0, top: '0rem' })
       return
     }
     const index = colorsList.findIndex((item) => {
       return JSON.stringify(item) === JSON.stringify(colors)
     })
-    setSpring({ opacity: 1, top: `${index * 3}rem` })
+    springApi.start({ opacity: 1, top: `${index * 3}rem` })
   }, [colors])
 
   return (
