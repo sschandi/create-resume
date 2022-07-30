@@ -18,7 +18,10 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
     config: { mass: 1, tension: 140, friction: 20 }
   })
 
-  const [scrollLoc, setScrollLoc] = useSpring(() => ({ y: 0}))
+  const [scrollLoc, scrollLocApi] = useSpring(() => ({
+    y: 0,
+    reset: true,
+  }))
   const scrollToBottom = () => {
     const content = document.getElementById('content')
 
@@ -26,13 +29,11 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
       return
     }
 
-    setScrollLoc({
+    scrollLocApi.start({
       y: content.scrollHeight,
-      reset: true,
       from: { y: content.scrollTop },
-      // @ts-ignore I don't even know what typescript thinks this is, but its right according to documentation
-      onFrame: props => {
-        content.scrollTop = props.y
+      onRest: props => {
+        content.scrollTop = props.value.y
       }
     })
     // Close the content box on adding in mobile

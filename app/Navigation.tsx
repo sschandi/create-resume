@@ -16,9 +16,9 @@ interface Props {
 }
 
 const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
-  const [width, setWidth] = useSpring(() => ({ x2: '0%' }))
+  const [width, widthApi] = useSpring(() => ({ x2: '0%' }))
   const updateWidth = (percent: string) => {
-    setWidth({
+    widthApi.start({
       x2: percent
     })
   }
