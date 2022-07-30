@@ -1,16 +1,46 @@
 @import './variables';
 @import './app-content.scss';
 
+#app-layout {
+  width: 100%;
+  height: 100%;
+}
+
+.app-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 5rem;
+}
+
+.component-container {
+  width: 100%;
+  max-width: $breakpoint-xl;
+  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 5rem);
   text-align: center;
   @media (min-width: $breakpoint-md) {
     align-items: flex-start;
     text-align: left;
+  }
+  .component-container {
+    @media (max-width: #{$breakpoint-md - 1}) {
+      min-height: calc(100vh - 5rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
   }
   h1 {
     font-size: 4rem;
@@ -49,6 +79,74 @@
         font-size: 3rem;
       }
     }
+  }
+}
+.app-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  @media (min-width: $breakpoint-md) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  &__triangle {
+    position: absolute;
+    z-index: -1;
+    display: none;
+    width: 200%;
+    height: 100%;
+    bottom: 0;
+    left: -30%;
+    @media (min-width: $breakpoint-md) {
+      display: block;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 25%;
+    }
+  }
+  &__square-mini {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: $secondary;
+    z-index: -1;
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+  &--wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}
+.parallax-img {
+  position: absolute;
+  bottom: 0;
+  width: 30%;
+  &__1 {
+    left: 0;
+    transform: translate(10%, 30%) rotate(-28deg);
+  }
+  &__2 {
+    left: 33%;
+    transform: translate(20%, 20%) rotate(-28deg);
+  }
+  &__3 {
+    left: 66%;
+    transform: translate(0%, -40%) rotate(-28deg);
   }
 }
 
@@ -139,6 +237,7 @@
 #content {
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .content__actions {
   position: fixed;
@@ -296,68 +395,6 @@
     display: flex;
     justify-content: center;
   }
-}
-
-// Main Parallax Styling
-.app-bg {
-  display: none;
-  position: relative;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  @media (min-width: $breakpoint-md) {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  &__triangle {
-    position: absolute;
-    z-index: -1;
-    display: block;
-    width: 200%;
-    height: 100%;
-    bottom: 0;
-    left: -60%;
-    @media (min-width: $breakpoint-md) {
-      width: 100%;
-      height: 100%;
-      bottom: unset;
-      left: unset;
-    }
-  }
-}
-.parallax-img {
-  position: absolute;
-  bottom: 0;
-  width: 30%;
-  &__1 {
-    left: 0;
-    transform: translate(10%, 30%) rotate(-28deg);
-  }
-  &__2 {
-    left: 33%;
-    transform: translate(20%, 20%) rotate(-28deg);
-  }
-  &__3 {
-    left: 66%;
-    transform: translate(0%, -40%) rotate(-28deg);
-  }
-}
-.app-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    height: 50%;
-  }
-}
-
-.component-container {
-  max-width: $breakpoint-xl;
-  padding: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5rem;
 }
 
 .navigation {
