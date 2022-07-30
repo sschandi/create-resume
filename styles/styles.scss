@@ -6,15 +6,20 @@
   box-sizing: border-box;
 }
 html {
+  height: 100%;
   font-family: $font-family-base;
 }
 body {
+  height: 100%;
   margin: 0;
   background-color: $light;
   color: $med-grey;
   font-size: 16px;
   @media (min-width: $breakpoint-md) {
     font-size: 20px;
+  }
+  #__next {
+    height: 100%;
   }
 }
 // html, body, #___gatsby, #gatsby-focus-wrapper {
@@ -280,7 +285,7 @@ p {
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      @media (max-width: $breakpoint-md - 1) {
+      @media (max-width: #{$breakpoint-md - 1}) {
         > a {
           margin: 0.25rem;
         }
