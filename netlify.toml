@@ -1,0 +1,15 @@
+[build]
+command = "next build && next export"
+publish = "out"
+ignore = "if [ $CACHED_COMMIT_REF == $COMMIT_REF ]; then (exit 1); else git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ../..; fi;"
+
+[build.environment]
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
+NODE_VERSION = "17"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+# This is a fake plugin, that makes it run npm install
+[[plugins]]
+package = "@netlify/plugin-local-install-core"
