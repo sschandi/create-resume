@@ -64,9 +64,15 @@ const App: React.FC = () => {
     <AppLayout>
       <SEO title="App" />
       <AppContextProvider>
-        <div className="app-page">
-          {appPage(currentComponent)}
-        </div>
+        {currentComponent === AppComponents.Home ?
+          appPage(currentComponent) :
+          <div className="app-page app-page__component">
+            <div id="app-nav">Hi</div>
+            <div className="app-component">
+              {appPage(currentComponent)}
+            </div>
+          </div>
+        }
       </AppContextProvider>
       <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
     </AppLayout>
