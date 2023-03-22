@@ -38,8 +38,36 @@
   margin-right: auto;
 }
 
-#app-nav {
+.app-nav {
   color: $color-reverse;
+  padding: 2rem 1rem;
+  &__content {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  &__links {
+    .btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+    }
+    svg {
+      margin-right: 1rem;
+    }
+  }
+  &__next {
+    width: 100%;
+    display: flex;
+    > .btn {
+      flex: 1;
+      margin: 0.5rem 0;
+    }
+    > :first-child {
+      margin-right: 1rem;
+    }
+  }
 }
 
 #home {

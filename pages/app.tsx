@@ -9,7 +9,7 @@ import Navigation from '../app/Navigation'
 import AppLayout from '../layouts/AppLayout'
 import SEO from '../components/seo'
 
-enum AppComponents {
+export enum AppComponents {
   Home = 0,
   Header,
   Content,
@@ -53,7 +53,6 @@ const App: React.FC = () => {
   useEffect(() => {
     window.onbeforeunload = () => {
       return 'Download your pdf to keep your progress!'
-
     }
     return () => {
       window.onbeforeunload = null
@@ -67,14 +66,13 @@ const App: React.FC = () => {
         {currentComponent === AppComponents.Home ?
           appPage(currentComponent) :
           <div className="app-page app-page__component">
-            <div id="app-nav">Hi</div>
+            <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
             <div className="app-component">
               {appPage(currentComponent)}
             </div>
           </div>
         }
       </AppContextProvider>
-      <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
     </AppLayout>
   )
 }

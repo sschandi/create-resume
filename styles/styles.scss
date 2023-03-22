@@ -98,7 +98,7 @@ p {
     font-size: 16px;
     color: $color;
     background-color: $light-bg;
-    border: 1px solid $grey-4;
+    border: 1px solid $grey-3;
     border-radius: 0.25rem;
     transition: width 200ms ease-in;
     &::placeholder {
@@ -169,6 +169,12 @@ p {
     background-color: $primary;
     &:hover {
       background-color: scale-color($primary, $lightness: 15%);
+    }
+  }
+  &-secondary {
+    background-color: $grey-1;
+    &:hover {
+      background-color: scale-color($grey-1, $lightness: 15%);
     }
   }
   &-accent {
