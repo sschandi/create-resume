@@ -21,6 +21,7 @@ const Home: React.FC<{ next: () => void }> = ({ next }) => {
         <Link href="/">
           <button className="btn btn-link btn-primary home-link">Learn More</button>
         </Link>
+        <button className="btn btn-link btn-primary home-link" onClick={() => next()}>Begin</button>
         <div className="home__actions">
           <h2>Been</h2>
           <h2>Here Before?</h2>
