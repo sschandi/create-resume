@@ -152,9 +152,9 @@ const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBotto
   })
 
   return (
-    <div className="content__select text--center">
+    <div className="content__select">
       <h3>Add Content</h3>
-      <div>
+      <div className="content__select--items">
         {springOptions.map(({ ...rest }, index) => {
           return (
             <animated.button
@@ -169,7 +169,7 @@ const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBotto
         })}
       </div>
       <h4>Custom Options</h4>
-      <div>
+      <div className="content__select--items">
       {springCustomOptions.map(({ ...rest }, index) => {
           return (
             <animated.button

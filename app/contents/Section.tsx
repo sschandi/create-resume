@@ -40,7 +40,7 @@ const Section: React.FC<Props> = ({ section, index }) => {
   return (
     <div className="content">
       <div className="content__title" >
-        <div className="input">
+        <div className={`input ${section.type === SectionTypes.PAGEBREAK && 'input__pagebreak'}`}>
           <input
             name="title"
             placeholder="Title"
@@ -58,26 +58,24 @@ const Section: React.FC<Props> = ({ section, index }) => {
               <circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>
             </svg>
           </button>
-          <div className="movable">
-            <button
-              disabled={index === 0}
-              className="btn btn-icon"
-              onClick={() => reorderSection(index, index - 1)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="18 15 12 9 6 15"></polyline>
-              </svg>
-            </button>
-            <button
-              disabled={index === sections.length - 1}
-              className="btn btn-icon"
-              onClick={() => reorderSection(index, index + 1)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-          </div>
+          <button
+            disabled={index === 0}
+            className="btn btn-icon"
+            onClick={() => reorderSection(index, index - 1)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+          <button
+            disabled={index === sections.length - 1}
+            className="btn btn-icon"
+            onClick={() => reorderSection(index, index + 1)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
       {Component()}
