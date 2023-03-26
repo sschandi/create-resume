@@ -54,29 +54,37 @@ const Design = ({ active }: { active: boolean }) => {
   return (
     <div id="design">
       <div className="component-container">
-        <div className="design__title">
-          <h1>Design</h1>
-          <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
-        </div>
-        <div className="design">
-          <div className="design__preview">
-            <PDFDisplay document={document} loading={loading} />
+        <div className="design__main">
+          <div>
+            <div className="design__title">
+              <h1>Design</h1>
+              <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
+            </div>
+            <div className="design">
+              <div className="design__preview">
+                <PDFDisplay document={document} loading={loading} />
+              </div>
+            </div>
           </div>
-          <div className="design__actions">
-            <h3>Template</h3>
-            {templateList.map((template) => {
-              return (
-                <button
-                  key={template.name}
-                  className={`btn ${activeTemplate.name === template.name ? 'btn-accent' : ''}`}
-                  onClick={() => setTemplate(template.name)}
-                >
-                  {template.name}
-                </button>
-              )
-            })}
-            <DesignColors />
-            <button className="btn btn-primary" style={{ width: '100%', margin: '1rem 0' }} onClick={downloadActive}>Download Resume</button>
+          <div className="content__select--wrapper">
+            <div className="content__select design__select">
+              <h3>Template</h3>
+              <div className="content__select--items">
+                {templateList.map((template) => {
+                  return (
+                    <button
+                      key={template.name}
+                      className={`btn ${activeTemplate.name === template.name ? 'btn-accent' : ''}`}
+                      onClick={() => setTemplate(template.name)}
+                    >
+                      {template.name}
+                    </button>
+                  )
+                })}
+              </div>
+              <DesignColors />
+              <button className="btn btn-primary design__download" style={{  }} onClick={downloadActive}>Download Resume</button>
+            </div>
           </div>
         </div>
       </div>

@@ -371,7 +371,7 @@
   left: 0;
   @media (min-width: $breakpoint-lg) {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 6rem;
   }
   h3 {
     font-size: 1.5rem;
@@ -420,45 +420,43 @@
 }
 
 // Design styles
+.design__main {
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: 1fr 300px;
+  }
+}
 .design__title {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  .btn {
+    width: 100%;
+    margin: 1rem 0 0 0;
+    @media (min-width: $breakpoint-md) {
+      width: unset;
+      margin: 0;
+    }
+  }
 }
 .design {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   background-color: $grey-4;
   border-radius: 1rem;
   padding: 1rem;
-  @media (min-width: $breakpoint-lg) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
   &__preview {
     width: 100%;
     @media (min-width: $breakpoint-lg) {
       width: 70%;
     }
   }
-  &__actions {
-    order: -1;
-    padding: 1rem;
-    background-color: $white;
-    border-radius: 0.25rem;
-    margin: 0 0 1rem 0;
-    @media (min-width: $breakpoint-lg) {
-      order: unset;
-      width: calc(30% - 1rem);
-    }
-    h3 {
-      margin: 1.5rem 0 1rem 0;
-    }
-    > :first-of-type {
-      margin-top: 0;
-    }
+  &__download {
+    width: calc(100% - 2rem);
+    margin: 0 1rem !important;
   }
 }
 .design-colors {
@@ -466,6 +464,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 1rem;
+    .btn {
+      font-size: 0.7rem;
+      padding: 0.375rem 1rem;
+    }
+  }
+  .colors--wrapper {
+    position: relative;
+    padding: 0 1rem;
   }
   .colors__container {
     display: flex;
@@ -475,14 +482,11 @@
     width: 33.33%;
     height: 2rem;
     cursor: pointer;
-    &.lg {
-      height: 4rem;
-    }
   }
   .colors__outline {
     box-sizing: content-box;
     position: absolute;
-    width: calc(100% + 0.5rem);
+    width: calc(100% - 1.5rem);
     height: 2.5rem;
     border: 0.25rem solid $accent-1;
     transform: translate(-0.5rem, -0.5rem);

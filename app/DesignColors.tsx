@@ -21,9 +21,12 @@ const DesignColors: React.FC = () => {
     <div className="design-colors">
       <h3 className="colors__title">
         Palette
-        {colors && <button className="btn btn-primary btn-compact" onClick={() => setColors(null)}>Use Default</button>}
+        {colors ?
+          <button className="btn btn-primary btn-compact" onClick={() => setColors(null)}>Use Default</button> :
+          <button className="btn btn-secondary btn-compact" disabled={true}>Using Default</button>
+        }
       </h3>
-      <div style={{ position: 'relative' }}>
+      <div className="colors--wrapper">
         <animated.div style={spring} className="colors__outline" />
         {colorsList.map((item, index) => {
           return (
