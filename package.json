@@ -19,6 +19,7 @@
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.0",
     "react-pdf": "^5.7.2",
+    "react-use-measure": "^2.1.1",
     "sass": "^1.54.0",
     "uuid": "^3.3.3"
   },

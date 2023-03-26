@@ -83,7 +83,7 @@ const Design = ({ active }: { active: boolean }) => {
                 })}
               </div>
               <DesignColors />
-              <button className="btn btn-primary design__download" style={{  }} onClick={downloadActive}>Download Resume</button>
+              <button className="btn btn-primary design__download" onClick={downloadActive}>Download Resume</button>
             </div>
           </div>
         </div>

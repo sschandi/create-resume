@@ -455,8 +455,12 @@
     }
   }
   &__download {
+    display: none;
     width: calc(100% - 2rem);
     margin: 0 1rem !important;
+    @media (min-width: $breakpoint-lg) {
+      display: block;
+    }
   }
 }
 .design-colors {
@@ -464,7 +468,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
     .btn {
       font-size: 0.7rem;
       padding: 0.375rem 1rem;
@@ -473,6 +478,7 @@
   .colors--wrapper {
     position: relative;
     padding: 0 1rem;
+    overflow: hidden;
   }
   .colors__container {
     display: flex;
@@ -489,7 +495,7 @@
     width: calc(100% - 1.5rem);
     height: 2.5rem;
     border: 0.25rem solid $accent-1;
-    transform: translate(-0.5rem, -0.5rem);
+    transform: translate(-0.5rem, 0.5rem);
     pointer-events: none;
   }
 }
