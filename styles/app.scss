@@ -47,14 +47,28 @@
 }
 
 .app-nav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: $dark-bg;
+  z-index: 100;
   color: $color-reverse;
-  padding: 2rem 1rem;
+  padding: 0.5rem 1rem 2rem 1rem;
+  @media (min-width: $breakpoint-md) {
+    position: unset;
+    padding: 2rem 1rem;
+  }
   &__content {
     position: sticky;
-    top: 0;
+    top: 2rem;
     left: 0;
   }
   &__links {
+    display: none;
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
     .btn {
       width: 100%;
       display: flex;
