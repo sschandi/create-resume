@@ -15,7 +15,7 @@ const urlBase = 'https://createresu.me'
 
 const defaults = {
   title: 'Create Resume',
-  description: 'Free, Private, Simple PDF Resume Generator',
+  description: 'Create a professional resume for free, in minutes, without sacrificing your privacy.',
   image: Banner.src,
   type: 'website',
   // twitterCreator: ''
