@@ -33,7 +33,7 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
     loadingTask.promise.then((doc: any) => {
       doc.getMetadata().then((data: any) => {
         if (!data || !data.info || !data.info.Custom || !data.info.Custom.serialized) {
-          setError({ show: true, message: 'Sorry, this file was not made here :(' })
+          setError({ show: true, message: 'Sorry, only resumes created here can be re-uploaded' })
           return
         }
         try {
@@ -46,9 +46,11 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
 
           next()
         } catch (e) {
-          setError({ show: true, message: 'Sorry, file data is corrupted :(' })
+          setError({ show: true, message: 'Error, file data is corrupt' })
         }
       })
+    }).catch(() => {
+      setError({ show: true, message: 'Error reading file' })
     })
   }
 
