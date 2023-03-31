@@ -59,6 +59,18 @@
     position: unset;
     padding: 2rem 1rem;
   }
+  h1 {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: none;
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
+    span {
+      color: $primary;
+    }
+  }
   &__content {
     position: sticky;
     top: 2rem;
@@ -222,6 +234,17 @@
   }
 }
 
+.app-continue {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  flex: 1;
+  .btn {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
 // Header styles
 .header {
   &__personal {
@@ -248,8 +271,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
-    margin: 2rem 0;
     border-radius: 0.25rem;
+    margin: 0.5rem 0;
     @media (min-width: $breakpoint-md) {
       grid-template-columns: 1fr 1fr;
     }
@@ -278,18 +301,23 @@
       grid-column: 1 / 3;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       .custom-contact {
+        width: 400px;
+        max-width: 100%;
         height: 35px;
-        max-width: 300px;
         margin: 0.5rem;
+        @media (min-width: $breakpoint-md) {
+          width: 300px;
+        }
         &--input {
+          width: 100%;
           display: flex;
           .btn {
             margin: 0;
             border-radius: 0 10rem 10rem 0;
           }
           .input {
+            flex: 1;
             border-radius: 0.25rem 0 0 0.25rem;
             input {
               height: 35px;
@@ -432,6 +460,13 @@
 .content__elements {
   margin-top: 2rem;
 }
+.content__empty {
+  text-align: center;
+  background-color: $primary;
+  color: $color-reverse;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+}
 
 // Design styles
 .design__main {
@@ -474,6 +509,11 @@
     margin: 0 1rem !important;
     @media (min-width: $breakpoint-lg) {
       display: block;
+    }
+  }
+  &__select {
+    h3 {
+      text-align: left;
     }
   }
 }

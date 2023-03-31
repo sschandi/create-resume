@@ -65,7 +65,7 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
         onChange={uploadPDF}
       />
       <button
-        className="btn btn-accent"
+        className="btn btn-primary btn-lg"
         onClick={clickUploadInput}
       >
         Upload PDF

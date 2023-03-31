@@ -12,13 +12,10 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
     <div id="app-nav" className="app-nav">
       {/* For sticky positioning */}
       <div className="app-nav__content">
+        <h1>
+          Create Resu<span>me</span>
+        </h1>
         <div className="app-nav__links">
-          <button className="btn btn-secondary" onClick={() => go(AppComponents.Home)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>Home</span>
-          </button>
           <button className="btn btn-secondary" onClick={() => go(AppComponents.Header)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
@@ -39,7 +36,7 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
           </button>
         </div>
         <div className="app-nav__next">
-          <button disabled={current === AppComponents.Home} className="btn btn-secondary" onClick={() => prev()}>
+          <button disabled={current === AppComponents.Header} className="btn btn-secondary" onClick={() => prev()}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="18" height="18">
               <path xmlns="http://www.w3.org/2000/svg" d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z" fill="currentColor"></path>
             </svg>
