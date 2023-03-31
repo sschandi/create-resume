@@ -1,4 +1,8 @@
+import { useState } from 'react'
+import { animated, useSpring } from '@react-spring/web'
 import { AppComponents } from '../pages/app'
+import Preview from './Preview'
+import useWindowSize from '../components/useWindowSize'
 
 interface Props {
   current: number
@@ -7,9 +11,36 @@ interface Props {
   go: (to: AppComponents) => void
 }
 
+const MD_SCREEN = 768;
+
 const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
+  const size = useWindowSize()
+  const [mobileOpen, setMobileOpen] = useState(false)
+  // window height - mobile expand indicator height - prev/next btn height
+  const mobileOpenHeight = size.height - 25 - 91
+  const spring = useSpring({
+    height: mobileOpen ? mobileOpenHeight : 0,
+  })
+
   return (
     <div id="app-nav" className="app-nav">
+      {size.width < MD_SCREEN &&
+        <div className="mobile-expand">
+          <div className="mobile-expand__clicker" onClick={() => setMobileOpen((c) => !c)}>
+            <div
+              className="mobile-expand__clicker--indicator"
+            />
+          </div>
+          <animated.div style={spring} className="mobile-expand__content">
+            {mobileOpen &&
+              <div className="app-preview">
+                <h3>Preview</h3>
+                <Preview />
+              </div>
+            }
+          </animated.div>
+        </div>
+      }
       {/* For sticky positioning */}
       <div className="app-nav__content">
         <h1>
@@ -50,6 +81,14 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
           </button>
         </div>
       </div>
+      {size.width >= MD_SCREEN &&
+        <div className="app-nav__additional">
+          {/* <h3>Preview</h3> */}
+            <div className="app-preview">
+              <Preview />
+            </div>
+        </div>
+      }
     </div>
   )
 }

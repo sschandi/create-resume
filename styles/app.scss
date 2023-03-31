@@ -6,6 +6,9 @@
   height: 100%;
 }
 
+$md-sidebar: 250px;
+$xl-sidebar: 300px;
+
 .app-page {
   position: relative;
   width: 100%;
@@ -18,10 +21,10 @@
   grid-template-columns: 1fr;
   background-color: $dark-bg;
   @media (min-width: $breakpoint-md) {
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: $md-sidebar 1fr;
   }
   @media (min-width: $breakpoint-xl) {
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: $xl-sidebar 1fr;
   }
 }
 
@@ -32,9 +35,9 @@
   // users cannot see the input because it is right at the
   // bottom of the page, add margin so there is space between
   // the bottom of the page and newly added item
-  margin: 0 0 8rem 0;
+  margin: 1rem 0 8rem 0;
   @media (min-width: $breakpoint-md) {
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 0;
   }
 }
 
@@ -54,7 +57,6 @@
   background-color: $dark-bg;
   z-index: 100;
   color: $color-reverse;
-  padding: 0.5rem 1rem 2rem 1rem;
   @media (min-width: $breakpoint-md) {
     position: unset;
     padding: 2rem 1rem;
@@ -75,6 +77,21 @@
     position: sticky;
     top: 2rem;
     left: 0;
+    padding: 0.5rem 1rem 2rem 1rem;
+    @media (min-width: $breakpoint-md) {
+      padding: 0;
+    }
+  }
+  &__additional {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    @media (min-width: $breakpoint-md) {
+      width: $md-sidebar;
+    }
+    @media (min-width: $breakpoint-xl) {
+      width: $xl-sidebar;
+    }
   }
   &__links {
     display: none;
@@ -104,6 +121,41 @@
     > :first-child {
       margin-right: 1rem;
     }
+  }
+}
+.app-preview {
+  padding: 1rem;
+  @media (min-width: $breakpoint-md) {
+    padding: 0.5rem 1rem 1rem 1rem;
+  }
+  h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+}
+.mobile-expand {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid $grey-2;
+  border-bottom: 1px solid $grey-2;
+  overflow-y: auto;
+  cursor: pointer;
+  &__clicker {
+    display: flex;
+    justify-content: center;
+    &--indicator {
+      width: 3rem;
+      height: 0.5rem;
+      background-color: $grey-2;
+      border-radius: 2rem;
+      cursor: pointer;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
   }
 }
 
@@ -345,6 +397,13 @@
   @media (min-width: $breakpoint-xl) {
     grid-template-columns: 1fr 300px;
   }
+  h1 {
+    // On small screens add some space between title and sticky top content
+    margin-top: 1rem;
+    @media (min-width: $breakpoint-md) {
+      margin-top: 0;
+    }
+  }
 }
 .content__actions {
   position: fixed;
@@ -482,6 +541,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  h1 {
+    // On small screens add some space between title and sticky top content
+    margin-top: 1rem;
+    @media (min-width: $breakpoint-md) {
+      margin-top: 0;
+    }
+  }
   .btn {
     width: 100%;
     margin: 1rem 0 0 0;
@@ -572,7 +638,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $primary;
+      background-color: $grey-1;
       h2 {
         color: $white;
       }
