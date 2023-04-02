@@ -1,12 +1,15 @@
-import React, { useContext, useRef, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
 import DesignColors from './DesignColors'
 import Modal from '../components/Modal'
+import useWindowSize from '../components/useWindowSize'
 
 import { createPDF, templateList } from './templates/Renderer'
 
 const Design = ({ active }: { active: boolean }) => {
+  const size = useWindowSize()
+
   const { sections, header, activeTemplate, setTemplate, colors } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
@@ -61,7 +64,7 @@ const Design = ({ active }: { active: boolean }) => {
               <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
             </div>
             <div className="design">
-              <div className="design__preview">
+              <div key={size.width} className="design__preview">
                 <PDFDisplay document={document} loading={loading} />
               </div>
             </div>
