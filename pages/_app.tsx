@@ -1,6 +1,5 @@
 import '../styles/styles.scss'
 import '../styles/app.scss'
-import '../styles/home.scss'
 import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
