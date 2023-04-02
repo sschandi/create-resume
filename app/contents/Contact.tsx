@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react'
 import { useTransition, animated } from '@react-spring/web'
 import { Contact as ContactType } from '../ResumeTypes'
+import { shrinkTransitionConfig } from '../helpers/springs'
 
 const defaultContacts = [
   'Phone', 'Email', 'Website'
@@ -35,13 +36,7 @@ const Contact: React.FC<Props> = (props) => {
   // }
 
   // Transitions
-  const transitions = useTransition(props.contacts, {
-    keys: item => item.id,
-    from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
-    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
-    leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
-    config: { mass: 1, tension: 140, friction: 20 }
-  })
+  const transitions = useTransition(props.contacts, shrinkTransitionConfig)
 
   return (
     <div>
@@ -81,7 +76,7 @@ const Contact: React.FC<Props> = (props) => {
                 <input
                   value={customContact}
                   type="text"
-                  placeholder="Custom Contact Type"
+                  placeholder="Custom (ex. Portfolio)"
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     setCustomContact(e.target.value);

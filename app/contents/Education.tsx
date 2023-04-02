@@ -6,6 +6,7 @@ import { Education as EducationType, SectionEl } from '../ResumeTypes'
 import ResumeDateInput from './ResumeDateInput'
 import ContentActions from './ContentActions'
 import ContentAdd from './ContentAdd'
+import { shrinkTransitionConfig } from '../helpers/springs'
 
 interface Props {
   education: SectionEl<EducationType>
@@ -37,13 +38,7 @@ const Education: React.FC<Props> = (props) => {
   }
 
   // Transitions
-  const transitions = useTransition(props.education.elements, {
-    keys: item => item.id,
-    from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
-    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
-    leave: { transform: 'translate3d(0,-20px,0)', opacity: 0 },
-    config: { mass: 1, tension: 140, friction: 20 }
-  })
+  const transitions = useTransition(props.education.elements, shrinkTransitionConfig)
 
   return (
     <div>

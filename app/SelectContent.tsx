@@ -175,7 +175,7 @@ const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBotto
             <animated.button
               key={index}
               style={{ ...rest }}
-              className="btn btn-primary"
+              className="btn"
               onClick={() => add(customSelectOptions[index])}
             >
               {customSelectOptions[index].title}

@@ -63,6 +63,7 @@ $content-border-color: $grey-3;
   }
   &__wrapper {
     position: relative;
+    overflow: hidden;
     // For small devices (usually touch) always show as hover won't work
     // TODO: detect if device is actually touch to handle large touch screens
     // @media (max-width: calc(#{$breakpoint-md} - 1)) {

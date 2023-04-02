@@ -3,16 +3,11 @@ import { useSpring, useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../contexts/AppContext'
 import SelectContent from './SelectContent'
 import Section from './contents/Section'
+import { shrinkTransitionConfig } from './helpers/springs'
 
 const Content: React.FC<{ active: boolean }> = ({ active }) => {
   const { sections } = useContext(AppContext)
-  const transitions = useTransition(sections, {
-    keys: item => item.id,
-    from: { transform: 'translate3d(10rem,0,0)', opacity: 0 },
-    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
-    leave: { transform: 'translate3d(10rem,0,0)', opacity: 0 },
-    config: { mass: 1, tension: 140, friction: 20 }
-  })
+  const transitions = useTransition(sections, shrinkTransitionConfig)
 
   const [scrollLoc, scrollLocApi] = useSpring(() => ({
     y: 0,
@@ -45,11 +40,16 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
             <div className="content__elements">
               {transitions((styleProps, item, t, index: number)=> {
                 return (
-                  <animated.div key={item.id} style={styleProps}>
+                  <animated.div key={item.id} style={{ ...styleProps, overflow: 'hidden' }}>
                     <Section section={item} index={index} />
                   </animated.div>
                 )
               })}
+              {sections.length === 0 &&
+                <div className="content__empty">
+                  Add Content to get your Resume Started!
+                </div>
+              }
             </div>
           </div>
           <div className="content__select--wrapper">
