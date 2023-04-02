@@ -23,14 +23,20 @@ const DesignColors: React.FC = () => {
   const [ref, refSize] = useMeasure()
   const [width, setWidth] = useState(window.innerWidth)
   const [open, setOpen] = useState(width > SMALL_BREAKPOINT)
-  const viewPalettes = width > SMALL_BREAKPOINT
+  const viewPalettes = width >= SMALL_BREAKPOINT
   const colorListSpring = useSpring({
     height: open ? refSize.height : 0,
     overflow: 'hidden',
   })
   useEffect(() => {
     const handleResize = () => {
-      setWidth(window.innerWidth)
+      const { innerWidth } = window
+      setWidth(innerWidth)
+      if (innerWidth < 992) {
+        setOpen(false)
+      } else {
+        setOpen(true)
+      }
     }
 
     window.addEventListener('resize', handleResize)
