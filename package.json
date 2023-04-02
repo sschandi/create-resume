@@ -13,7 +13,7 @@
     "@types/pdfmake": "^0.2.0",
     "lodash": "^4.17.21",
     "lodash-move": "^1.1.1",
-    "next": "12.2.3",
+    "next": "12.2.4",
     "pdfjs-dist": "^2.14.305",
     "pdfmake": "^0.2.5",
     "react": "18.2.0",
