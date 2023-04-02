@@ -386,15 +386,6 @@ $xl-sidebar: 300px;
         width: 100%;
         margin-right: 1rem;
       }
-      .btn-icon {
-        width: 2rem;
-        height: 2rem;
-        min-width: 2rem;
-        min-height: 2rem;
-        background-color: $danger;
-        border-radius: 2rem;
-        margin-bottom: 0.5rem;
-      }
     }
     &--actions {
       grid-column: 1 / 3;
@@ -828,6 +819,46 @@ $xl-sidebar: 300px;
     transition: all 200ms ease-in;
     &:hover {
       background-color: scale-color($color: $accent-2, $lightness: -10%)
+    }
+  }
+}
+
+.btn__app-icon {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $grey-4;
+  color: $color;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  cursor: pointer;
+  &:hover {
+    background-color: scale-color($grey-4, $lightness: 15%);
+  }
+  &:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+  span {
+    white-space: nowrap;
+    margin: 0 0.25rem;
+  }
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  &.delete {
+    color: $danger;
+  }
+  &.add {
+    color: $color-reverse;
+    background-color: $success;
+    border-radius: 10rem;
+    padding: 0.25rem 1rem;
+    &:hover {
+      background-color: scale-color($success, $lightness: 15%);
     }
   }
 }
