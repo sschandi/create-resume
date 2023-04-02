@@ -61,11 +61,16 @@ $xl-sidebar: 300px;
     position: unset;
     padding: 2rem 1rem;
   }
+  // Navbar title is also link, rest all a tag properties
+  a {
+    all: unset;
+  }
   h1 {
+    display: none;
     font-size: 1.75rem;
     text-align: center;
     margin-bottom: 1rem;
-    display: none;
+    cursor: pointer;
     @media (min-width: $breakpoint-md) {
       display: block;
     }
@@ -91,6 +96,14 @@ $xl-sidebar: 300px;
     }
     @media (min-width: $breakpoint-xl) {
       width: $xl-sidebar;
+    }
+  }
+  &__uploader {
+    margin: 0.25rem 1rem;
+    .btn {
+      width: 100%;
+      font-size: 0.8rem;
+      margin: 0;
     }
   }
   &__links {

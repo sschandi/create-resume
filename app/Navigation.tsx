@@ -1,7 +1,9 @@
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import { animated, useSpring } from '@react-spring/web'
 import { AppComponents } from '../pages/app'
 import Preview from './Preview'
+import Uploader from './Uploader'
 import useWindowSize from '../components/useWindowSize'
 
 interface Props {
@@ -39,10 +41,15 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
           <animated.div style={spring} className="mobile-expand__content--wrapper">
             <div className="mobile-expand__content">
               {mobileOpen &&
-                <div className="app-preview">
-                  <h3>Preview</h3>
-                  <Preview />
-                </div>
+                <>
+                  <div className="app-nav__uploader">
+                    <Uploader next={() => {}} btnClasses="btn btn-secondary" btnText="Edit Existing Resume" />
+                  </div>
+                  <div className="app-preview">
+                    <h3>Preview</h3>
+                    <Preview />
+                  </div>
+                </>
               }
             </div>
           </animated.div>
@@ -50,9 +57,13 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
       }
       {/* For sticky positioning */}
       <div className="app-nav__content">
-        <h1>
-          Create Resu<span>me</span>
-        </h1>
+        <Link href="/">
+          <a>
+            <h1>
+              Create Resu<span>me</span>
+            </h1>
+          </a>
+        </Link>
         <div className="app-nav__links">
           <button className="btn btn-secondary" onClick={() => go(AppComponents.Header)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
@@ -90,10 +101,12 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
       </div>
       {!isMobile &&
         <div className="app-nav__additional">
-          {/* <h3>Preview</h3> */}
-            <div className="app-preview">
-              <Preview />
-            </div>
+          <div className="app-nav__uploader">
+            <Uploader next={() => {}} btnClasses="btn btn-secondary" btnText="Edit Existing Resume" />
+          </div>
+          <div className="app-preview">
+            <Preview />
+          </div>
         </div>
       }
     </div>

@@ -5,7 +5,13 @@ import Modal from '../components/Modal'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
+interface Props {
+  next: () => void
+  btnClasses?: string
+  btnText?: string
+}
+
+const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload PDF' }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
   const input = useRef<HTMLInputElement | null>(null)
   const [error, setError] = useState({ show: false, message: '' })
@@ -65,10 +71,10 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
         onChange={uploadPDF}
       />
       <button
-        className="btn btn-primary btn-lg"
+        className={btnClasses}
         onClick={clickUploadInput}
       >
-        Upload PDF
+        {btnText}
       </button>
       <Modal show={error.show} title="Error" close={() => setError({ show: false, message: '' })}>
         <div className="text--danger">

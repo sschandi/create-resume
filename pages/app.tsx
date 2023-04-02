@@ -85,7 +85,7 @@ const App: React.FC = () => {
         <Modal show={showUpload} title="Continue Working" close={afterClose}>
           <div className="app-continue">
             <p>Upload your PDF created with Create Resume to continue where you left off.</p>
-            <Uploader next={afterClose} />
+            <Uploader next={afterClose} btnClasses="btn btn-primary btn-lg" />
           </div>
         </Modal>
       </AppContextProvider>
