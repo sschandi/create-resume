@@ -517,7 +517,8 @@ $xl-sidebar: 300px;
   left: 0;
   @media (min-width: $breakpoint-lg) {
     text-align: center;
-    margin-top: 6rem;
+    padding-top: 2rem;
+    margin-top: 4rem;
   }
   h3 {
     font-size: 1.5rem;
@@ -562,7 +563,7 @@ $xl-sidebar: 300px;
   }
 }
 .content__elements {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .content__empty {
   text-align: center;
@@ -833,11 +834,11 @@ $xl-sidebar: 300px;
   }
   &.add {
     color: $color-reverse;
-    background-color: $success;
+    background-color: $dark-bg;
     border-radius: 10rem;
     padding: 0.25rem 1rem;
     &:hover {
-      background-color: scale-color($success, $lightness: 15%);
+      background-color: $success;
     }
   }
 }
