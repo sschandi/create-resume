@@ -19,7 +19,7 @@ const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
   const size = useWindowSize()
   const isMobile = useMemo(() => (size.width < MD_SCREEN || size.height < MIN_HEIGHT), [size])
   const [mobileOpen, setMobileOpen] = useState(false)
-  // window height - mobile expand indicator height - prev/next btn height
+  // window height - mobile expand indicator height - prev/next btn height - extra space to create iOS 'sheet' style
   const mobileOpenHeight = size.height - 25 - 91 - 50
   const spring = useSpring({
     height: mobileOpen ? mobileOpenHeight : 0,

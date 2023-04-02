@@ -77,7 +77,7 @@ $xl-sidebar: 300px;
     position: sticky;
     top: 2rem;
     left: 0;
-    padding: 0.5rem 1rem 2rem 1rem;
+    padding: 0.25rem 1rem;
     @media (min-width: $breakpoint-md) {
       padding: 0;
     }
@@ -132,6 +132,32 @@ $xl-sidebar: 300px;
     text-align: center;
     font-size: 1.5rem;
     margin: 0.5rem 0;
+  }
+  &__content {
+    position: relative;
+    transform-origin: bottom left;
+    &:hover {
+      .preview-btn {
+        // Small screens should not expand, there is no space
+        @media  (min-width: $breakpoint-md) {
+          display: flex;
+        }
+      }
+    }
+    .preview-btn {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3rem;
+      height: 3rem;
+      z-index: 10;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      transition: none;
+    }
   }
 }
 .mobile-expand {
