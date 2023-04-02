@@ -99,8 +99,8 @@ p {
     border-radius: 0.25rem;
     transition: width 200ms ease-in;
     &::placeholder {
-      color: $med;
-      opacity: 1;
+      color: $grey-2;
+      opacity: 0.5;
     }
     &:focus {
       outline: none;
@@ -138,7 +138,7 @@ p {
     height: calc(100% - 21px);
     width: 2rem;
     border-radius: 0 0.25rem 0.25rem 0;
-    background-color: $light;
+    background-color: $grey-4;
   }
 }
 
@@ -175,9 +175,9 @@ p {
     }
   }
   &-accent {
-    background-color: $accent-1;
+    background-color: $accent;
     &:hover {
-      background-color: scale-color($accent-1, $lightness: 15%);
+      background-color: scale-color($accent, $lightness: 15%);
     }
   }
   &-compact {
@@ -243,7 +243,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba($light, 0.5);
+    background-color: rgba($grey-4, 0.5);
   }
   &__container {
     width: 600px;

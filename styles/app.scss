@@ -665,7 +665,7 @@ $xl-sidebar: 300px;
     position: absolute;
     width: calc(100% - 1.5rem);
     height: 2.5rem;
-    border: 0.25rem solid $accent-1;
+    border: 0.25rem solid $accent;
     transform: translate(-0.5rem, 0.5rem);
     pointer-events: none;
   }
@@ -729,7 +729,7 @@ $xl-sidebar: 300px;
     transition: all 300ms ease-in;
     cursor: pointer;
     &.completed {
-      border-color: $accent-1;
+      border-color: $accent;
     }
     &.active, &:hover {
       transform: scale(1.1);
@@ -758,7 +758,7 @@ $xl-sidebar: 300px;
     top: 50%;
     left: 0;
     z-index: -1;
-    stroke: $accent-1;
+    stroke: $accent;
     stroke-width: 8;
   }
   &__btn {
@@ -774,7 +774,7 @@ $xl-sidebar: 300px;
     transition: all 200ms ease-in;
     &:hover {
       svg {
-        color: $accent-1;
+        color: $accent;
       }
     }
     &:focus {
@@ -798,27 +798,6 @@ $xl-sidebar: 300px;
       &:hover {
         transform: translateX(-5px);
       }
-    }
-  }
-  &__begin {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 150%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: $white;
-    font-size: 32px;
-    background-color: $accent-2;
-    border-radius: 0.25rem 0.25rem 0 0;
-    cursor: pointer;
-    transition: all 200ms ease-in;
-    &:hover {
-      background-color: scale-color($color: $accent-2, $lightness: -10%)
     }
   }
 }
