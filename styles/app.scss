@@ -135,7 +135,8 @@ $xl-sidebar: 300px;
   }
 }
 .mobile-expand {
-  padding: 0.5rem 1rem;
+  background-color: $dark-bg;
+  padding: 0 1rem;
   border-top: 1px solid $grey-2;
   border-bottom: 1px solid $grey-2;
   overflow-y: auto;
@@ -143,11 +144,14 @@ $xl-sidebar: 300px;
   &__clicker {
     display: flex;
     justify-content: center;
+    padding: 0.5rem;
     &--indicator {
-      width: 3rem;
-      height: 0.5rem;
+      width: 4rem;
+      min-height: 0.5rem;
       background-color: $grey-2;
       border-radius: 2rem;
+      font-size: 0.7rem;
+      text-align: center;
       cursor: pointer;
     }
   }
@@ -156,6 +160,9 @@ $xl-sidebar: 300px;
     flex-direction: column;
     // align-items: center;
     justify-content: center;
+    &--wrapper {
+      overflow-y: auto;
+    }
   }
 }
 
