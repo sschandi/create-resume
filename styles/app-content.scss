@@ -63,19 +63,10 @@ $content-border-color: $grey-3;
   }
   &__wrapper {
     position: relative;
+    // On smaller screens, sticky top 'Add Content' gets covered by
+    // the wrapper element on scroll 
+    z-index: 0;
     overflow: hidden;
-    // For small devices (usually touch) always show as hover won't work
-    // TODO: detect if device is actually touch to handle large touch screens
-    // @media (max-width: calc(#{$breakpoint-md} - 1)) {
-    //   .content__el--actions {
-    //     transform: translateX(100%);
-    //   }
-    // }
-    // &:hover {
-    //   .content__el--actions {
-    //     transform: translateX(100%);
-    //   }
-    // }
   }
   &__el {
     position: relative;

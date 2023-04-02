@@ -438,6 +438,12 @@ $xl-sidebar: 300px;
 .content__main {
   display: grid;
   grid-template-columns: 1fr;
+  // For content and design sections, there are fixed top elements
+  // on small screens. Add margin so we can always see main content
+  margin-top: 5rem;
+  @media (min-width: $breakpoint-md) {
+    margin-top: 0;
+  }
   @media (min-width: $breakpoint-lg) {
     grid-template-columns: 1fr 200px;
   }
@@ -493,15 +499,16 @@ $xl-sidebar: 300px;
 .content__select--wrapper {
   width: 100vw;
   grid-row: 1;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: $white;
   border-radius: 0;
   border-bottom: 1px solid $grey-3;
   padding: 0.5rem 0;
-  margin: 0 -1rem;
+  margin: 0;
   @media (min-width: $breakpoint-md) {
+    position: sticky;
     width: unset;
     margin: 0;
   }
@@ -578,6 +585,12 @@ $xl-sidebar: 300px;
 .design__main {
   display: grid;
   grid-template-columns: 1fr;
+  // For content and design sections, there are fixed top elements
+  // on small screens. Add margin so we can always see main content
+  margin-top: 6rem;
+  @media (min-width: $breakpoint-md) {
+    margin-top: 0;
+  }
   @media (min-width: $breakpoint-lg) {
     grid-template-columns: 1fr 300px;
   }
