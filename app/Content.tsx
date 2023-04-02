@@ -1,37 +1,22 @@
 import React, { useContext } from 'react'
-import { useSpring, useTransition, animated } from '@react-spring/web'
+import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../contexts/AppContext'
 import SelectContent from './SelectContent'
 import Section from './contents/Section'
-import { shrinkTransitionConfig } from './helpers/springs'
+import { sectionShrinkTransitionConfig } from './helpers/springs'
 
 const Content: React.FC<{ active: boolean }> = ({ active }) => {
   const { sections } = useContext(AppContext)
-  const transitions = useTransition(sections, shrinkTransitionConfig)
+  const transitions = useTransition(sections, sectionShrinkTransitionConfig)
 
-  const [scrollLoc, scrollLocApi] = useSpring(() => ({
-    y: 0,
-    reset: true,
-  }))
   const scrollToBottom = () => {
-    const content = document.getElementsByClassName('app-page')[0]
-
-    if (!content) {
-      return
-    }
-
-    scrollLocApi.start({
-      y: content.scrollHeight,
-      from: { y: content.scrollTop },
-      onRest: props => {
-        content.scrollTop = props.value.y
-      }
-    })
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight)
+    }, 100)
   }
 
   return (
-    // @ts-ignore scrollTop is a thing for animated divs
-    <animated.div id="content" scrollTop={scrollLoc.y}>
+    <animated.div id="content">
       <div className="component-container">
         <div className="content__main">
           <div>

@@ -8,3 +8,8 @@ export const shrinkTransitionConfig = {
   leave: { maxHeight: 0, opacity: 0.5 },
   config: { mass: 1, tension: 140, friction: 20 }
 }
+
+export const sectionShrinkTransitionConfig = {
+  ...shrinkTransitionConfig,
+  from: { maxHeight: 1000, opacity: 0 },
+}

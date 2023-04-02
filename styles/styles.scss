@@ -15,6 +15,7 @@ body {
   background-color: $light-bg;
   color: $color;
   font-size: 16px;
+  overflow-y: scroll;
   #__next {
     height: 100%;
     min-height: 100%;
@@ -234,7 +235,7 @@ p {
 // Modal
 .modal {
   &__wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;

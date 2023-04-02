@@ -3,7 +3,7 @@
 
 #app-layout {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 $md-sidebar: 250px;
@@ -12,9 +12,7 @@ $xl-sidebar: 300px;
 .app-page {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  min-height: 100%;
 }
 .app-page__component {
   display: grid;
@@ -121,7 +119,7 @@ $xl-sidebar: 300px;
       margin-right: 1rem;
     }
   }
-  &__next {
+  &__next, &__fixed-next {
     width: 100%;
     display: flex;
     .btn {
@@ -133,6 +131,17 @@ $xl-sidebar: 300px;
     }
     > :first-child {
       margin-right: 1rem;
+    }
+  }
+  &__fixed-next {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: unset;
+    padding: 1rem;
+    @media (min-width: $breakpoint-lg) {
+      display: block;
     }
   }
 }
