@@ -5,7 +5,13 @@ import Modal from '../components/Modal'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
+interface Props {
+  next: () => void
+  btnClasses?: string
+  btnText?: string
+}
+
+const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload PDF' }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
   const input = useRef<HTMLInputElement | null>(null)
   const [error, setError] = useState({ show: false, message: '' })
@@ -33,7 +39,7 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
     loadingTask.promise.then((doc: any) => {
       doc.getMetadata().then((data: any) => {
         if (!data || !data.info || !data.info.Custom || !data.info.Custom.serialized) {
-          setError({ show: true, message: 'Sorry, this file was not made here :(' })
+          setError({ show: true, message: 'Sorry, only resumes created here can be re-uploaded' })
           return
         }
         try {
@@ -46,9 +52,11 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
 
           next()
         } catch (e) {
-          setError({ show: true, message: 'Sorry, file data is corrupted :(' })
+          setError({ show: true, message: 'Error, file data is corrupt' })
         }
       })
+    }).catch(() => {
+      setError({ show: true, message: 'Error reading file' })
     })
   }
 
@@ -63,10 +71,10 @@ const Uploader: React.FC<{ next: () => void }> = ({ next }) => {
         onChange={uploadPDF}
       />
       <button
-        className="btn btn-accent"
+        className={btnClasses}
         onClick={clickUploadInput}
       >
-        Upload PDF
+        {btnText}
       </button>
       <Modal show={error.show} title="Error" close={() => setError({ show: false, message: '' })}>
         <div className="text--danger">

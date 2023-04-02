@@ -1,29 +1,25 @@
-$primary: #39648A;
-$secondary: #2d9cca;
+$primary: #2d9cca;
+$secondary: #39648A;
+$accent: #fccb64;
 // Could change these
 $danger: #e84118;
 $success: #10ac84;
 
-// accents
-$accent-1: #fccb64;
-$accent-2: #db5669;
-$accent-3: #3ed2dc;
+$color: #000000;
+$color-reverse: #ffffff;
+$light-bg: #ffffff;
+$dark-bg: #000000;
 
-$dark: #25274d;
-$light: #F7F9FB;
-$med: #AAABB8;
-
-$light-grey: #e5e5e5;
-$med-grey: #393e46;
-$dark-grey: #222831;
+$grey-1: #1a1c1e;
+$grey-2: #393e4a;
+$grey-3: #eef1fa;
+$grey-4: #f5f6fb;
 
 $white: #ffffff;
 $black: #000000;
 
 $font-family-header: 'Libre Baskerville', sans-serif;
-$font-family-base: 'Open Sans', sans-serif;
-
-$border-radius: 0.25rem;
+$font-family-base: 'Mulish', sans-serif;
 
 // Breakpoints
 $breakpoint-sm: 576px;

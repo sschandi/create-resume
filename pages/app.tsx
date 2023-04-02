@@ -1,28 +1,27 @@
 import React, { useState, useEffect, ReactElement } from 'react'
+import { useRouter } from 'next/router'
 import AppContextProvider from '../contexts/AppContext'
-import Home from '../app/Home'
 import Header from '../app/Header'
 import Content from '../app/Content'
 import Design from '../app/Design'
 import Navigation from '../app/Navigation'
+import Uploader from '../app/Uploader'
+import Modal from '../components/Modal'
 
 import AppLayout from '../layouts/AppLayout'
 import SEO from '../components/seo'
 
-enum AppComponents {
-  Home = 0,
-  Header,
+export enum AppComponents {
+  Header = 0,
   Content,
   Design
 }
 
 const App: React.FC = () => {
-  const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Home)
+  const [currentComponent, setCurrentComponent] = useState<AppComponents>(AppComponents.Header)
 
   const appPage = (prop: AppComponents): ReactElement<any, any> => {
     switch (prop) {
-      case AppComponents.Home:
-        return <Home next={goNext} />
       case AppComponents.Header:
         return <Header />
       case AppComponents.Content:
@@ -53,22 +52,43 @@ const App: React.FC = () => {
   useEffect(() => {
     window.onbeforeunload = () => {
       return 'Download your pdf to keep your progress!'
-
     }
     return () => {
       window.onbeforeunload = null
     }
   }, [])
 
+  // If continue query is present, (sent from 'Continue Working' on home page)
+  // open modal for user to upload their resume
+  const [showUpload, setShowUpload] = useState(false)
+  const afterClose = () => {
+    router.replace('/app')
+    setShowUpload(false)
+  }
+  const router = useRouter()
+  useEffect(() => {
+    if (router.query.continue) {
+      setShowUpload(true)
+    }
+  }, [router.query])
+
   return (
     <AppLayout>
       <SEO title="App" />
       <AppContextProvider>
-        <div className="app-page">
-          {appPage(currentComponent)}
+        <div className="app-page app-page__component">
+          <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
+          <div className="app-component">
+            {appPage(currentComponent)}
+          </div>
         </div>
+        <Modal show={showUpload} title="Continue Working" close={afterClose}>
+          <div className="app-continue">
+            <p>Upload your PDF created with Create Resume to continue where you left off.</p>
+            <Uploader next={afterClose} btnClasses="btn btn-primary btn-lg" />
+          </div>
+        </Modal>
       </AppContextProvider>
-      <Navigation current={currentComponent} prev={goBack} next={goNext} go={go} />
     </AppLayout>
   )
 }

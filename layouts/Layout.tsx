@@ -23,7 +23,7 @@ const Layout: React.FC<{ fluid?: boolean, children: JSX.Element | JSX.Element[] 
       <main className={fluid ? 'container container__fluid' : 'container'}>{children}</main>
       <footer id="footer">
         <div className="container">
-          <p>Create Resume by <a href="https://github.com/sschandi" rel="noreferrer" className="link">SS Chandi</a></p>
+          <p>Create Resume by <a href="https://chandi.ca" rel="noreferrer" className="link">SS Chandi</a></p>
         </div>
       </footer>
     </>

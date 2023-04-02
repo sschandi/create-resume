@@ -15,7 +15,7 @@ const urlBase = 'https://createresu.me'
 
 const defaults = {
   title: 'Create Resume',
-  description: 'Free, Private, Simple PDF Resume Generator',
+  description: 'Create a professional resume for free, in minutes, without sacrificing your privacy.',
   image: Banner.src,
   type: 'website',
   // twitterCreator: ''
@@ -32,6 +32,13 @@ const SEO: React.FC<Props> = ({ description, title, image, type }) => {
       <title>{fullTitle}</title>
 
       <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+      <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#2d9cca" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="theme-color" content="#ffffff" />
 
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={fullTitle} key="title" />

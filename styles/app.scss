@@ -3,16 +3,40 @@
 
 #app-layout {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
+$md-sidebar: 250px;
+$xl-sidebar: 300px;
+
 .app-page {
-  width: 100%;
-  height: 100%;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-bottom: 5rem;
+  width: 100%;
+  min-height: 100%;
+}
+.app-page__component {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: $dark-bg;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: $md-sidebar 1fr;
+  }
+  @media (min-width: $breakpoint-xl) {
+    grid-template-columns: $xl-sidebar 1fr;
+  }
+}
+
+.app-component {
+  background-color: $light-bg;
+  border-radius: 1rem;
+  // On Mobile, when adding new content with auto-focusing,
+  // users cannot see the input because it is right at the
+  // bottom of the page, add margin so there is space between
+  // the bottom of the page and newly added item
+  margin: 1rem 0 8rem 0;
+  @media (min-width: $breakpoint-md) {
+    margin: 1rem 1rem 1rem 0;
+  }
 }
 
 .component-container {
@@ -21,6 +45,173 @@
   padding: 1rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.app-nav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: $dark-bg;
+  z-index: 100;
+  color: $color-reverse;
+  @media (min-width: $breakpoint-md) {
+    position: unset;
+    padding: 2rem 1rem;
+  }
+  // Navbar title is also link, rest all a tag properties
+  a {
+    all: unset;
+  }
+  h1 {
+    display: none;
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
+    span {
+      color: $primary;
+    }
+  }
+  &__content {
+    position: sticky;
+    top: 2rem;
+    left: 0;
+    padding: 0.25rem 1rem;
+    @media (min-width: $breakpoint-md) {
+      padding: 0;
+    }
+  }
+  &__additional {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    @media (min-width: $breakpoint-md) {
+      width: $md-sidebar;
+    }
+    @media (min-width: $breakpoint-xl) {
+      width: $xl-sidebar;
+    }
+  }
+  &__uploader {
+    margin: 0.25rem 1rem;
+    .btn {
+      width: 100%;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+  }
+  &__links {
+    display: none;
+    @media (min-width: $breakpoint-md) {
+      display: block;
+    }
+    .btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+    }
+    svg {
+      margin-right: 1rem;
+    }
+  }
+  &__next, &__fixed-next {
+    width: 100%;
+    display: flex;
+    .btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem 0;
+    }
+    > :first-child {
+      margin-right: 1rem;
+    }
+  }
+  &__fixed-next {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: unset;
+    padding: 1rem;
+    @media (min-width: $breakpoint-lg) {
+      display: block;
+    }
+  }
+}
+.app-preview {
+  padding: 1rem;
+  @media (min-width: $breakpoint-md) {
+    padding: 0.5rem 1rem 1rem 1rem;
+  }
+  h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  &__content {
+    position: relative;
+    transform-origin: bottom left;
+    &:hover {
+      .preview-btn {
+        // Small screens should not expand, there is no space
+        @media  (min-width: $breakpoint-md) {
+          display: flex;
+        }
+      }
+    }
+    .preview-btn {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3rem;
+      height: 3rem;
+      z-index: 10;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      transition: none;
+    }
+  }
+}
+.mobile-expand {
+  background-color: $dark-bg;
+  padding: 0 1rem;
+  border-top: 1px solid $grey-2;
+  border-bottom: 1px solid $grey-2;
+  overflow-y: auto;
+  cursor: pointer;
+  &__clicker {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    &--indicator {
+      width: 4rem;
+      min-height: 0.5rem;
+      background-color: $grey-2;
+      border-radius: 2rem;
+      font-size: 0.7rem;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
+    &--wrapper {
+      overflow-y: auto;
+    }
+  }
 }
 
 #home {
@@ -150,6 +341,17 @@
   }
 }
 
+.app-continue {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  flex: 1;
+  .btn {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
 // Header styles
 .header {
   &__personal {
@@ -157,7 +359,6 @@
     grid-template-columns: 1fr;
     grid-gap: 1rem;
     background-color: $white;
-    padding: 1rem;
     margin: 2rem 0;
     border-radius: 0.25rem;
     @media (min-width: $breakpoint-md) {
@@ -177,10 +378,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
-    background-color: $white;
-    padding: 1rem;
-    margin: 2rem 0;
     border-radius: 0.25rem;
+    margin: 0.5rem 0;
     @media (min-width: $breakpoint-md) {
       grid-template-columns: 1fr 1fr;
     }
@@ -188,6 +387,7 @@
       display: flex;
       align-items: flex-end;
       grid-column: 1;
+      overflow: hidden;
       @media (min-width: $breakpoint-md) {
         grid-column: unset;
       }
@@ -195,32 +395,28 @@
         width: 100%;
         margin-right: 1rem;
       }
-      .btn-icon {
-        width: 2rem;
-        height: 2rem;
-        min-width: 2rem;
-        min-height: 2rem;
-        background-color: $danger;
-        border-radius: 2rem;
-        margin-bottom: 0.5rem;
-      }
     }
     &--actions {
       grid-column: 1 / 3;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       .custom-contact {
+        width: 400px;
+        max-width: 100%;
         height: 35px;
-        max-width: 300px;
         margin: 0.5rem;
+        @media (min-width: $breakpoint-md) {
+          width: 300px;
+        }
         &--input {
+          width: 100%;
           display: flex;
           .btn {
             margin: 0;
-            border-radius: 0 0.25rem 0.25rem 0;
+            border-radius: 0 10rem 10rem 0;
           }
           .input {
+            flex: 1;
             border-radius: 0.25rem 0 0 0.25rem;
             input {
               height: 35px;
@@ -235,9 +431,32 @@
 
 // Content Styles
 #content {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  // height: 100%;
+  // overflow-y: auto;
+  // overflow-x: hidden;
+}
+.content__main {
+  display: grid;
+  grid-template-columns: 1fr;
+  // For content and design sections, there are fixed top elements
+  // on small screens. Add margin so we can always see main content
+  margin-top: 5rem;
+  @media (min-width: $breakpoint-md) {
+    margin-top: 0;
+  }
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: 1fr 200px;
+  }
+  @media (min-width: $breakpoint-xl) {
+    grid-template-columns: 1fr 300px;
+  }
+  h1 {
+    // On small screens add some space between title and sticky top content
+    margin-top: 1rem;
+    @media (min-width: $breakpoint-md) {
+      margin-top: 0;
+    }
+  }
 }
 .content__actions {
   position: fixed;
@@ -254,7 +473,7 @@
   }
   @media (min-width: $breakpoint-xl) {
     right: 50%;
-    transform: translateX(600px);
+    transform: translateX(700px);
   }
   &--btn {
     background-color: $white;
@@ -277,60 +496,151 @@
     }
   }
 }
-.content__select {
-  padding: 1rem;
-  margin-top: 2rem;
+.content__select--wrapper {
+  width: 100vw;
+  grid-row: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: $white;
-  border-radius: 0.25rem;
-  overflow: hidden;
+  border-radius: 0;
+  border-bottom: 1px solid $grey-3;
+  padding: 0.5rem 0;
+  margin: 0;
+  @media (min-width: $breakpoint-md) {
+    position: sticky;
+    width: unset;
+    margin: 0;
+  }
+  @media (min-width: $breakpoint-lg) {
+    width: 100%;
+    grid-row: unset;
+    border-radius: 0.25rem;
+    border-bottom: none;
+    padding: 1rem;
+  }
+}
+.content__select {
+  position: sticky;
+  top: 0;
+  left: 0;
+  @media (min-width: $breakpoint-lg) {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 4rem;
+  }
   h3 {
+    font-size: 1.5rem;
+    padding: 0 1rem;
     margin-bottom: 0.5rem;
+    @media (min-width: $breakpoint-lg) {
+      font-size: 2rem;
+    }
   }
   h4 {
+    display: none;
     margin-top: 0.5rem;
     margin-bottom: 0.25rem;
+    @media (min-width: $breakpoint-lg) {
+      display: block;
+    }
+  }
+  .btn {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    padding: 0.375rem 1rem;
+    margin: 0 0.25rem;
+    @media (min-width: $breakpoint-md) {
+      white-space: unset;
+      margin: 0.25rem;
+    }
+    @media (min-width: $breakpoint-xl) {
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+    }
+  }
+  &--items {
+    display: flex;
+    overflow-x: auto;
+    margin: 0.5rem 0 0 0;
+    padding: 0 0.5rem;
+    @media (min-width: $breakpoint-md) {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 .content__elements {
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+.content__empty {
+  text-align: center;
+  background-color: $dark-bg;
+  color: $color-reverse;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
 }
 
 // Design styles
+.design__main {
+  display: grid;
+  grid-template-columns: 1fr;
+  // For content and design sections, there are fixed top elements
+  // on small screens. Add margin so we can always see main content
+  margin-top: 6rem;
+  @media (min-width: $breakpoint-md) {
+    margin-top: 0;
+  }
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: 1fr 300px;
+  }
+}
 .design__title {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  h1 {
+    // On small screens add some space between title and sticky top content
+    margin-top: 1rem;
+    @media (min-width: $breakpoint-md) {
+      margin-top: 0;
+    }
+  }
+  .btn {
+    width: 100%;
+    margin: 1rem 0 0 0;
+    @media (min-width: $breakpoint-md) {
+      width: unset;
+      margin: 0;
+    }
+  }
 }
 .design {
   display: flex;
-  flex-direction: column;
-  @media (min-width: $breakpoint-lg) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  justify-content: center;
+  background-color: $grey-4;
+  border-radius: 1rem;
+  padding: 1rem;
   &__preview {
     width: 100%;
     @media (min-width: $breakpoint-lg) {
       width: 70%;
     }
   }
-  &__actions {
-    order: -1;
-    padding: 1rem;
-    background-color: $white;
-    border-radius: 0.25rem;
-    margin: 0 0 1rem 0;
+  &__download {
+    display: none;
+    width: calc(100% - 2rem);
+    margin: 0 1rem !important;
     @media (min-width: $breakpoint-lg) {
-      order: unset;
-      width: calc(30% - 1rem);
+      display: block;
     }
+  }
+  &__select {
     h3 {
-      margin: 1.5rem 0 1rem 0;
-    }
-    > :first-of-type {
-      margin-top: 0;
+      text-align: left;
     }
   }
 }
@@ -339,6 +649,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 0.5rem;
+    margin-bottom: 0;
+    .btn {
+      font-size: 0.7rem;
+      padding: 0.375rem 1rem;
+    }
+  }
+  .colors--wrapper {
+    position: relative;
+    padding: 0 1rem;
+    overflow: hidden;
   }
   .colors__container {
     display: flex;
@@ -348,17 +669,14 @@
     width: 33.33%;
     height: 2rem;
     cursor: pointer;
-    &.lg {
-      height: 4rem;
-    }
   }
   .colors__outline {
     box-sizing: content-box;
     position: absolute;
-    width: calc(100% + 0.5rem);
+    width: calc(100% - 1.5rem);
     height: 2.5rem;
-    border: 0.25rem solid $accent-1;
-    transform: translate(-0.5rem, -0.5rem);
+    border: 0.25rem solid $accent;
+    transform: translate(-0.5rem, 0.5rem);
     pointer-events: none;
   }
 }
@@ -381,7 +699,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $primary;
+      background-color: $grey-1;
       h2 {
         color: $white;
       }
@@ -421,7 +739,7 @@
     transition: all 300ms ease-in;
     cursor: pointer;
     &.completed {
-      border-color: $accent-1;
+      border-color: $accent;
     }
     &.active, &:hover {
       transform: scale(1.1);
@@ -450,7 +768,7 @@
     top: 50%;
     left: 0;
     z-index: -1;
-    stroke: $accent-1;
+    stroke: $accent;
     stroke-width: 8;
   }
   &__btn {
@@ -466,7 +784,7 @@
     transition: all 200ms ease-in;
     &:hover {
       svg {
-        color: $accent-1;
+        color: $accent;
       }
     }
     &:focus {
@@ -492,25 +810,44 @@
       }
     }
   }
-  &__begin {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 150%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: $white;
-    font-size: 32px;
-    background-color: $accent-2;
-    border-radius: 0.25rem 0.25rem 0 0;
-    cursor: pointer;
-    transition: all 200ms ease-in;
+}
+
+.btn__app-icon {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $grey-4;
+  color: $color;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  cursor: pointer;
+  &:hover {
+    background-color: scale-color($grey-4, $lightness: 15%);
+  }
+  &:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+  span {
+    white-space: nowrap;
+    margin: 0 0.25rem;
+  }
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  &.delete {
+    color: $danger;
+  }
+  &.add {
+    color: $color-reverse;
+    background-color: $dark-bg;
+    border-radius: 10rem;
+    padding: 0.25rem 1rem;
     &:hover {
-      background-color: scale-color($color: $accent-2, $lightness: -10%)
+      background-color: $success;
     }
   }
 }

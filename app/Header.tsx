@@ -42,7 +42,6 @@ const Header: React.FC = () => {
             type="text"
             name="name"
             placeholder="John Smith"
-            autoFocus
             onChange={headerChange}
           />
         </div>

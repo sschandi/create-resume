@@ -1,12 +1,15 @@
-import React, { useContext, useRef, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
 import DesignColors from './DesignColors'
 import Modal from '../components/Modal'
+import useWindowSize from '../components/useWindowSize'
 
 import { createPDF, templateList } from './templates/Renderer'
 
 const Design = ({ active }: { active: boolean }) => {
+  const size = useWindowSize()
+
   const { sections, header, activeTemplate, setTemplate, colors } = useContext(AppContext)
   const [document, setDocument] = useState(null)
 
@@ -54,29 +57,37 @@ const Design = ({ active }: { active: boolean }) => {
   return (
     <div id="design">
       <div className="component-container">
-        <div className="design__title">
-          <h1>Design</h1>
-          <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
-        </div>
-        <div className="design">
-          <div className="design__preview">
-            <PDFDisplay document={document} loading={loading} />
+        <div className="design__main">
+          <div>
+            <div className="design__title">
+              <h1>Design</h1>
+              <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
+            </div>
+            <div className="design">
+              <div key={size.width} className="design__preview">
+                <PDFDisplay document={document} loading={loading} />
+              </div>
+            </div>
           </div>
-          <div className="design__actions">
-            <h3>Template</h3>
-            {templateList.map((template) => {
-              return (
-                <button
-                  key={template.name}
-                  className={`btn ${activeTemplate.name === template.name ? 'btn-accent' : ''}`}
-                  onClick={() => setTemplate(template.name)}
-                >
-                  {template.name}
-                </button>
-              )
-            })}
-            <DesignColors />
-            <button className="btn btn-primary" style={{ width: '100%', margin: '1rem 0' }} onClick={downloadActive}>Download Resume</button>
+          <div className="content__select--wrapper">
+            <div className="content__select design__select">
+              <h3>Template</h3>
+              <div className="content__select--items">
+                {templateList.map((template) => {
+                  return (
+                    <button
+                      key={template.name}
+                      className={`btn ${activeTemplate.name === template.name ? 'btn-accent' : ''}`}
+                      onClick={() => setTemplate(template.name)}
+                    >
+                      {template.name}
+                    </button>
+                  )
+                })}
+              </div>
+              <DesignColors />
+              <button className="btn btn-primary design__download" onClick={downloadActive}>Download Resume</button>
+            </div>
           </div>
         </div>
       </div>
