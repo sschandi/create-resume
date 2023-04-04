@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://createresu.me">
-    <img alt="Gatsby" src="./src/images/cr-logo.inline.svg" width="60" />
+    <img alt="Create Resume" src="./images/cr-logo.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
