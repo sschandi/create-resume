@@ -15,7 +15,7 @@ interface Props {
 
 const MD_SCREEN = 768;
 // Minimum height needed to show both preview and sidebar content
-const MIN_HEIGHT = 575
+const MIN_HEIGHT = 668
 
 const Navigation: React.FC<Props> = ({ current, prev, next, go }) => {
   const size = useWindowSize()
