@@ -52,11 +52,11 @@ export default class Teres extends Base {
     return {
       columns: [
         {
-          width: '50%',
+          width: '75%',
           ...this.createListTitle(title)
         },
         {
-          width: '50%',
+          width: '25%',
           ...this.createListExtra(extra)
         }
       ]
