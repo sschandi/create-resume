@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ContentAdd: React.FC<{ add: () => void }> = ({ add }) => {
   return (
     <div className="content__add">

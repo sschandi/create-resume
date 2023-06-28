@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import Move from 'lodash-move'
 import { Header, Section } from '../app/ResumeTypes'
 import { Colors } from '../app/templates/Interfaces'

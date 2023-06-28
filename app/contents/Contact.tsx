@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from 'react'
+import { useState, type ChangeEvent, type KeyboardEvent } from 'react'
 import { useTransition, animated } from '@react-spring/web'
 import { Contact as ContactType } from '../ResumeTypes'
 import { shrinkTransitionConfig } from '../helpers/springs'

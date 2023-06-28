@@ -1,4 +1,4 @@
-import React, { useContext, ChangeEvent } from 'react'
+import { useContext, type ChangeEvent } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import List from './List'
 import Experience from './Experience'

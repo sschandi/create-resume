@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { useTransition, animated } from '@react-spring/web'
 import { AppContext } from '../contexts/AppContext'
 import SelectContent from './SelectContent'

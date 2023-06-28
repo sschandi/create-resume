@@ -1,4 +1,3 @@
-import React from 'react'
 import { Section } from '../ResumeTypes'
 import { ReorderSectionEl } from '../../contexts/AppContext'
 

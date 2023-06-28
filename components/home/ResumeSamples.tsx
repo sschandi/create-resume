@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 
 import CluoImg from '../../images/home/cluo-sample.png'
 import CogitoImg from '../../images/home/cogito-sample.png'
@@ -14,4 +14,4 @@ const ResumeSamples: React.FC = () => {
   )
 }
 
-export default ResumeSamples
+export default memo(ResumeSamples)

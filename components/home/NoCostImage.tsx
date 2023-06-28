@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useSpring, animated, config } from '@react-spring/web'
 
@@ -49,4 +49,4 @@ const NoCostImage: React.FC = () => {
   )
 }
 
-export default NoCostImage
+export default memo(NoCostImage)

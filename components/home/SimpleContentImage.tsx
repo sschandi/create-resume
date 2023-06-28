@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import { memo, type CSSProperties } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import ContentImage from '../../images/home/resume-content.svg'
@@ -37,4 +37,4 @@ const SimpleContentImage: React.FC = () => {
   )
 }
 
-export default SimpleContentImage
+export default memo(SimpleContentImage)

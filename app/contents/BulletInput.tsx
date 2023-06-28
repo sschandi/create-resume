@@ -1,4 +1,6 @@
-import React, { useState, useRef, ChangeEvent, KeyboardEvent, useEffect } from 'react'
+import {
+  useState, useRef, useEffect, type ChangeEvent, type KeyboardEvent,
+} from 'react'
 
 interface Props {
   value: string[]

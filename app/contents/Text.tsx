@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext } from 'react'
+import { type ChangeEvent, useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { List as ListType, SectionEl } from '../ResumeTypes'
 

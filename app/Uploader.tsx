@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, ChangeEvent } from 'react'
+import { useContext, useState, useRef, type ChangeEvent } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { pdfjs } from 'react-pdf'
 import Modal from '../components/Modal'

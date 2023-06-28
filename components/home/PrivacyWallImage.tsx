@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useSpring, animated } from '@react-spring/web'
 
@@ -44,4 +44,4 @@ const PrivacyWallImage: React.FC = () => {
   )
 }
 
-export default PrivacyWallImage
+export default memo(PrivacyWallImage)

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, memo } from 'react'
 import { useSpring, animated, config } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
 import { AppContext } from '../contexts/AppContext'
@@ -75,4 +75,4 @@ const DesignColors: React.FC = () => {
   )
 }
 
-export default DesignColors
+export default memo(DesignColors)

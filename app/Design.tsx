@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import PDFDisplay from './PDFDisplay'
 import DesignColors from './DesignColors'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect, type ChangeEvent } from 'react'
 // Component expects value to be in formatted like: 'Jan. 2010 - Jan. 2012'
 
 interface Props {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactElement } from 'react'
+import { useState, useEffect, memo, type ReactElement } from 'react'
 import { useRouter } from 'next/router'
 import AppContextProvider from '../contexts/AppContext'
 import Header from '../app/Header'
@@ -93,4 +93,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default memo(App)

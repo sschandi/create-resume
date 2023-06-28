@@ -1,4 +1,4 @@
-import React, { useContext, ChangeEvent } from 'react'
+import { useContext, memo, type ChangeEvent } from 'react'
 import UUID from 'uuid/v4'
 import { AppContext } from '../contexts/AppContext'
 import { Contact as ContactType } from './ResumeTypes'
@@ -96,4 +96,4 @@ const Header: React.FC = () => {
   )
 }
 
-export default Header
+export default memo(Header)
