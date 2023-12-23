@@ -1,20 +1,20 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://createresu.me">
-    <img alt="Create Resume" src="./images/cr-logo.svg" width="60" />
+  <a href="https://debanensite.nl">
+    <img alt="deBanenSite App" src="./images/cr-logo.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Create Resume
+  deBanenSite.nl App
 </h1>
 
-# Client Side, Private, PDF Resume Generator. [Go To App](https://createresu.me)
+# Client Side, Private, PDF Resume Generator. [Go To App](https://debanensite.app)
 
 ## Features
 
 1.  **Private Data**
 
-    Create Resume generates your resume client side, no data is ever seen, sent, or stored.
+    deBanenSite.nl APP generates your resume client side, no data is ever seen, sent, or stored.
 
 1.  **Continuous Editing**
 

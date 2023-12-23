@@ -384,6 +384,7 @@ $xl-sidebar: 300px;
   .btn {
     width: 100%;
     margin: 1rem 0;
+    color: white;
   }
 }
 
@@ -749,7 +750,7 @@ $xl-sidebar: 300px;
     position: relative;
     width: 100%;
     background-color: $white;
-    border-radius: 6px;
+    border-radius: 0px;
     overflow: hidden;
     &__loader {
       position: absolute;

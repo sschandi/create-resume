@@ -48,36 +48,36 @@ export const templateList = [new Teres(), new Cluo(), new Cogito()]
 export const colorsList: Colors[] = [
   // Black and White
   {
-    primary: '#62717E',
+    primary: '#EEE2D2',
     secondary: '#47474b',
-    accent: '#9c9c9c'
+    accent: '#dbdbdb'
   },
   {
-    primary: '#5a6d8b',
-    secondary: '#868686',
-    accent: '#e4c6be'
+    primary: '#C59855',
+    secondary: '#47474b',
+    accent: '#dbdbdb'
   },
   {
-    primary: '#7cbfea',
-    secondary: '#626262',
-    accent: '#e3e3e3'
+    primary: '#98FB98',
+    secondary: '#47474b',
+    accent: '#dbdbdb'
   },
   // Default
   {
-    primary: '#0050b8',
-    secondary: '#000000',
+    primary: '#AFEEEE',
+    secondary: '#47474b',
     accent: '#dbdbdb'
   },
   // Default 2
   {
-    primary: '#ff5959',
-    secondary: '#233142',
+    primary: '#FF6961',
+    secondary: '#47474b',
     accent: '#dbdbdb'
   },
   // Default 3
   {
-    primary: '#053f5e',
-    secondary: '#393e46',
+    primary: '#000000',
+    secondary: '#47474b',
     accent: '#dbdbdb'
   },
 ]
