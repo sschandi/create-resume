@@ -29,7 +29,7 @@ const Modal: React.FC<Props> = ({ show, title, close, children }) => {
             {children}
           </div>
           <div className="modal__close">
-            <button className="btn" onClick={close}>Close</button>
+            <button className="btn" onClick={close}>Sluiten</button>
           </div>
         </animated.div>
       </animated.div>

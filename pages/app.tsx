@@ -51,7 +51,7 @@ const App: React.FC = () => {
   // Alert leaving page
   useEffect(() => {
     window.onbeforeunload = () => {
-      return 'Download your pdf to keep your progress!'
+      return 'Download je pdf om de aanpassingen te bewaren!'
     }
     return () => {
       window.onbeforeunload = null
@@ -82,9 +82,9 @@ const App: React.FC = () => {
             {appPage(currentComponent)}
           </div>
         </div>
-        <Modal show={showUpload} title="Continue Working" close={afterClose}>
+        <Modal show={showUpload} title="Werk verder aan je CV." close={afterClose}>
           <div className="app-continue">
-            <p>Upload your PDF created with Create Resume to continue where you left off.</p>
+            <p>Upload je PDF die je met de CV maker hebt gemaakt om verder te gaan waar je gebleven was.</p>
             <Uploader next={afterClose} btnClasses="btn btn-primary btn-lg" />
           </div>
         </Modal>

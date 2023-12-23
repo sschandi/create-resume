@@ -48,10 +48,10 @@ const Experience: React.FC<Props> = (props) => {
             <div className="content__el content--list">
               <div className="list__title">
                 <div className="input list__input">
-                  <label>Title</label>
+                  <label>Functietitel</label>
                   <input
                     name="title"
-                    placeholder="Title"
+                    placeholder="Functietitel"
                     value={item.title}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       e.preventDefault()
@@ -62,16 +62,16 @@ const Experience: React.FC<Props> = (props) => {
                 <div className="list__extra">
                   <ResumeDateInput
                     value={item.extra}
-                    label="Date"
+                    label="Datum"
                     onChange={(extra) => updateListElement(index, { extra })}
                   />
                 </div>
                 <div className="list__extra">
                   <div className="input">
-                    <label>Company</label>
+                    <label>Bedrijfsnaam</label>
                     <input
                       name="company"
-                      placeholder="Company"
+                      placeholder="Bedrijfsnaam"
                       value={item.company}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         e.preventDefault()
@@ -83,7 +83,7 @@ const Experience: React.FC<Props> = (props) => {
               </div>
               <BulletInput
                 value={item.elements}
-                placeholder="Bullets"
+                placeholder="Functieomschrijving"
                 onChange={(elements) => updateListElement(index, { elements })}
               />
             </div>

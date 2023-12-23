@@ -6,9 +6,9 @@ export default class Cluo extends Base {
 
   constructor() {
     const colors: Colors = {
-      primary: '#ff5959',
+      primary: '#00a841',
       secondary: '#233142',
-      accent: '#4f9da6'
+      accent: '#dbdbdb'
     }
     const font: Font = {
       name: 'Roboto',
@@ -37,7 +37,7 @@ export default class Cluo extends Base {
         margin: [0, 7, 0, 3]
       },
 		}
-    super('Cluo', colors, font, styles)
+    super('Non-Profit', colors, font, styles)
   }
 
   protected createAddress(

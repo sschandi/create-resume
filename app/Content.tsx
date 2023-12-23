@@ -20,8 +20,8 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
       <div className="component-container">
         <div className="content__main">
           <div>
-            <h1>Content</h1>
-            <p>Add your Resume Content</p>
+            <h1></h1>
+            <p></p>
             <div className="content__elements">
               {transitions((styleProps, item, t, index: number)=> {
                 return (
@@ -32,7 +32,7 @@ const Content: React.FC<{ active: boolean }> = ({ active }) => {
               })}
               {sections.length === 0 &&
                 <div className="content__empty">
-                  Add Content to get your Resume Started!
+                 Ingevulde informatie kan altijd later nog worden aangepast.
                 </div>
               }
             </div>

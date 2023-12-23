@@ -13,8 +13,8 @@ interface Props {
 const urlBase = 'https://createresu.me'
 
 const defaults = {
-  title: 'Create Resume',
-  description: 'Create a professional resume for free, in minutes, without sacrificing your privacy.',
+  title: 'deBanenSite.nl',
+  description: 'Maak gratis en binnen enkele minuten een professioneel cv zonder je privacy op te offeren.',
   image: Banner.src,
   type: 'website',
   // twitterCreator: ''

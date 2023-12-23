@@ -4,7 +4,7 @@ import { Contact as ContactType } from '../ResumeTypes'
 import { shrinkTransitionConfig } from '../helpers/springs'
 
 const defaultContacts = [
-  'Phone', 'Email', 'Website'
+  'Telefoonnummer', 'E-mailadres', 'LinkedIn'
 ]
 
 interface Props {
@@ -40,9 +40,11 @@ const Contact: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <h2>Contact Info</h2>
-      <p>How can employers reach you?</p>
-      <div className="header__contact">
+         <div className="header__contact">
+      <h3>Contactgegevens</h3>
+      <br></br>
+      <p>Hoe kunnen werkgevers jou bereiken?<br></br><br></br>
+     Selecteer een categorie of maak er zelf een aan.</p>
         {transitions((styleProps, item: ContactType, t, index: number) => {
           return (
             <animated.div key={item.id} style={styleProps} className="header__contact--container">
@@ -76,7 +78,7 @@ const Contact: React.FC<Props> = (props) => {
                 <input
                   value={customContact}
                   type="text"
-                  placeholder="Custom (ex. Portfolio)"
+                  placeholder="Categorie maken"
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
                     setCustomContact(e.target.value);
@@ -88,7 +90,7 @@ const Contact: React.FC<Props> = (props) => {
                   }}
                 />
               </div>
-              <button className="btn" onClick={addCustomContact}>Add</button>
+              <button className="btn" onClick={addCustomContact}>Toevoegen</button>
             </div>
           </div>
         </div>

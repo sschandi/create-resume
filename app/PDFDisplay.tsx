@@ -45,7 +45,7 @@ const PDFDisplay: React.FC<Props> = ({ document, loading }) => {
 
   const loadingState = (
     <div className="pdf-document__loader">
-      <h2>Loading</h2>
+      <h2>Laden</h2>
     </div>
   )
 
@@ -63,14 +63,14 @@ const PDFDisplay: React.FC<Props> = ({ document, loading }) => {
               className="btn btn-compact"
               onClick={() => setPage('prev')}
             >
-              Prev
+              Vorige
             </button>
             <button
               disabled={currPage === pageCount}
               className="btn btn-compact"
               onClick={() => setPage('next')}
             >
-              Next
+              Volgende
             </button>
           </div>
         : null}

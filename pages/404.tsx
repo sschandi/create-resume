@@ -7,7 +7,7 @@ const ErrorPage: NextPage = () => {
     <Layout>
       <div className="error-page">
         <h1>404</h1>
-        <h2>This page could not be found.</h2>
+        <h2>Pagina niet gevonden.</h2>
       </div>
     </Layout>
   )

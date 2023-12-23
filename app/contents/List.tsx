@@ -48,10 +48,10 @@ const List: React.FC<Props> = (props) => {
               {!props.list.simple &&
                 <div className="list__title">
                   <div className="input list__input">
-                    <label>Title</label>
+                    <label>Titel</label>
                     <input
                       name="title"
-                      placeholder="Title"
+                      placeholder="Titel"
                       value={item.title || ''}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         e.preventDefault()
@@ -62,10 +62,10 @@ const List: React.FC<Props> = (props) => {
                   <div className="list__extra">
                     {!props.list.date ?
                       <div className="input">
-                        <label>Subtitle</label>
+                        <label>Ondertitel</label>
                         <input
                           name="extra"
-                          placeholder="Subtitle"
+                          placeholder="Ondertitel"
                           value={item.extra || ''}
                           onChange={(e: ChangeEvent<HTMLInputElement>) => {
                             e.preventDefault()
@@ -76,7 +76,7 @@ const List: React.FC<Props> = (props) => {
                       :
                       <ResumeDateInput
                         value={item.extra || ''}
-                        label="Date"
+                        label="Datum"
                         onChange={(extra) => updateListElement(index, { extra })}
                       />
                     }
@@ -85,7 +85,7 @@ const List: React.FC<Props> = (props) => {
               }
               <BulletInput
                 value={item.elements}
-                placeholder="Bullets"
+                placeholder="Functieomschrijving"
                 onChange={(elements) => updateListElement(index, { elements })}
               />
             </div>

@@ -9,33 +9,33 @@ type SectionNoId = Omit<Section, 'id'>
 const selectOptions: SectionNoId[] = [
   {
     type: SectionTypes.TEXT,
-    title: 'Summary',
+    title: 'Profiel',
     elements: [
-      { elements: ['Summary Here'] }
+      { elements: ['Omschrijf profiel'] }
     ]
   },
   {
     type: SectionTypes.EDUCATION,
-    title: 'Education',
+    title: 'Opleiding',
     elements: [
       { degree: '', program: '', university: '', date: '' }
     ]
   },
   {
     type: SectionTypes.SKILL,
-    title: 'Skills',
+    title: 'Vaardigheden',
     elements: [
       { name: 'Excel', levels: [ true, true, true, true, false ] },
     ]
   },
   {
     type: SectionTypes.EXPERIENCE,
-    title: 'Experience',
+    title: 'Werkervaring',
     elements: [
       {
-        title: 'Sales', company: 'Generic Sales Co.', extra: 'Jan. 2010 - Aug. 2012', elements: [
-          'Performed research study on product effectiveness by interviewing consumers and reviewing evaluation forms; findings helped manager to identify areas for improvement',
-          'Resolved 25 client calls per day by responding to inquiries regarding credit card programs resulting in improved client relations and decreased complaints.'
+        title: 'Bijv. Accountmanager', company: 'Bijv. deBanenSite.nl', extra: 'Jan. 2010 - Aug. 2016', elements: [
+          'Bijv. Voerde een onderzoek uit naar de effectiviteit van producten door consumenten te interviewen en evaluatieformulieren te bekijken; de bevindingen hielpen de manager om verbeterpunten te identificeren',
+          'Loste 25 telefoontjes van klanten per dag op door vragen over creditcardprogramma s te beantwoorden, wat resulteerde in een betere klantrelatie en minder klachten.'
         ],
       },
     ],
@@ -43,11 +43,11 @@ const selectOptions: SectionNoId[] = [
   },
   {
     type: SectionTypes.EXPERIENCE,
-    title: 'Volunteer',
+    title: 'Vrijwilligerswerk',
     elements: [
       {
-        title: 'Donations', company: 'Awesome Food Bank', extra: 'Jan. 2010 - Aug. 2012', elements: [
-          'Collaborated with 12 colleagues to create and implement a charity food bank donation competition resulting in a 20% increase in donations.',
+        title: 'Bijv. Donaties', company: 'Bijv. De Voedselbank', extra: 'Jan. 2010 - Aug. 2012', elements: [
+          'Bijv. Werkte samen met 12 medewerkers aan het opzetten en uitvoeren van een donatiewedstrijd voor de voedselbank, wat resulteerde in een toename van 28% van het aantal donaties.',
         ],
       },
     ],
@@ -55,11 +55,11 @@ const selectOptions: SectionNoId[] = [
   },
   {
     type: SectionTypes.LIST,
-    title: 'Projects',
+    title: 'Portfolio',
     elements: [
       {
-        title: 'My Great Project', extra: 'Subtitle', elements: [
-          'Designed and implemented my great project to expedite sample collection, saving over $100,000 per year compared to manual collection.'
+        title: 'Bijv. Innovatie expert', extra: 'Bijv. Verbeterplannen maken', elements: [
+          'Bijv. Ontwierp en implementeerde mijn verbeter project om het verzamelen van proefmonsters te versnellen, waardoor meer dan €100.000 per jaar wordt bespaard in vergelijking met handmatig verzamelen.'
         ],
       }
     ],
@@ -67,25 +67,25 @@ const selectOptions: SectionNoId[] = [
   },
   {
     type: SectionTypes.LIST,
-    title: 'Achievements',
+    title: 'Prestaties',
     elements: [
       {
-        elements: ['Accumulated over 500 hours of volunteer service.', 'First place in Hackathon.']
+        elements: ['Bijv. Een klantbehoud programma gestart, wat resulteerde in een 70% hoger retentie percentage.']
       }
     ],
     simple: true,
   },
   {
     type: SectionTypes.REFERENCE,
-    title: 'References',
+    title: 'Referenties',
     elements: [
       {
-        name: 'John Smith',
-        occupation: 'Sales',
-        company: 'Washington',
-        companyAddress: '123',
-        phone: '(555) 123 - 4312',
-        email: 'john@example.com',
+        name: 'Naam contactpersoon',
+        occupation: 'Functie contactpersoon',
+        company: 'Bedrijfsnaam',
+        companyAddress: 'Bedrijfsadres',
+        phone: 'Zakelijk telefoonnummer contactpersoon',
+        email: 'E-mailadres contactpersoon',
       }
     ]
   }
@@ -94,38 +94,38 @@ const selectOptions: SectionNoId[] = [
 const customSelectOptions = [
   {
     type: SectionTypes.LIST,
-    title: 'List with Date',
+    title: 'Datalijst',
     elements: [{ title: '', extra: '', elements: [''] }],
     date: true
   },
   {
     type: SectionTypes.LIST,
-    title: 'List with Subtitle',
+    title: 'Titellijst',
     elements: [{ title: '', extra: '', elements: [''] }],
     date: false
   },
   {
     type: SectionTypes.LIST,
-    title: 'List',
+    title: 'Lijst',
     elements: [{ title: '', extra: '', elements: [''] }],
     simple: true
   },
   {
     type: SectionTypes.TEXT,
-    title: 'Text',
+    title: 'Tekstblok',
     elements: [{ elements: [''] }]
   },
   {
     type: SectionTypes.SKILL,
-    title: 'Skill',
+    title: 'Competenties',
     elements: [
       { name: '', levels: [ true, true, true, true, false ] },
-      { name: 'Your Skill', levels: [ true, true, true, false, false ] }
+      { name: 'competenties', levels: [ true, true, true, false, false ] }
     ]
   },
   {
     type: SectionTypes.PAGEBREAK,
-    title: 'Page Break',
+    title: 'Extra pagina',
     elements: [],
   }
 ]
@@ -153,7 +153,7 @@ const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBotto
 
   return (
     <div className="content__select">
-      <h3>Add Content</h3>
+      <h3>CV opstellen</h3>
       <div className="content__select--items">
         {springOptions.map(({ ...rest }, index) => {
           return (
@@ -168,7 +168,7 @@ const SelectContent: React.FC<{ scrollToBottom: () => void }> = ({ scrollToBotto
           )
         })}
       </div>
-      <h4>Custom Options</h4>
+      <h4></h4>
       <div className="content__select--items">
       {springCustomOptions.map(({ ...rest }, index) => {
           return (

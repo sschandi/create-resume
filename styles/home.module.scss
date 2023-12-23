@@ -4,13 +4,14 @@
   position: relative;
   min-height: 80vh;
   color: $color-reverse;
-  background-color: $dark-bg;
+  background-color: transparent;
   border-radius: 1rem;
   padding: 2rem 1rem;
   margin: 0.5rem 1rem 1rem 1rem;
   overflow: hidden;
   @media (min-width: $breakpoint-sm) {
     padding: 2rem;
+    display: none;
   }
 }
 .title {
@@ -45,14 +46,22 @@
 .action {
   position: relative;
   z-index: 2;
-  width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
   padding: 1rem;
+  gap: 10px;
+  align-content: center;
+  align-items: stretch;
+  width: 100%;
+  justify-items: center;
+  margin: 1rem;
+  justify-content: center;
+  padding-right: 3rem;
+  margin: 0 1rem;
   > * {
-    max-width: 300px;
+    max-width: initial;
   }
   &::after {
     content: '';
@@ -73,7 +82,6 @@
 .spacer {
   height: 150px;
 }
-
 .samples {
   position: absolute;
   bottom: -30%;
@@ -140,10 +148,12 @@
   }
   .createStep {
     position: relative;
-    background-color: $grey-3;
-    border-radius: 1rem;
+    background-color: transparent;
+    border-radius: 6px;
     padding: 2rem;
     margin: 0 1rem;
+    border: 1.5px solid #dbdbdb26;
+    box-shadow: rgb(0 0 0 / 20%) 4px 8px 24px;
     @media (min-width: calc(#{$breakpoint-xl} + 2rem)) {
       margin: 0 !important;
     }
@@ -166,10 +176,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 1rem 0 1rem 0;
-      background-color: $dark-bg;
+      border-radius: 6px;
+      background-color: $primary;
       font-size: 1.5rem;
-      color: $color-reverse;
+      color: #fff;
       font-family: $font-family-header;
     }
   }
@@ -182,9 +192,10 @@
 .privacy {
   width: 100%;
   max-width: $breakpoint-xl;
-  background-color: $dark-bg;
+  background-color: transparent;
   color: $color-reverse;
-  border-radius: 1rem;
+  border: 1.5px solid rgba(219, 219, 219, 0.1490196078);
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 8px 24px;
   margin: 0 auto;
   padding: 2rem;
   h1 {
@@ -201,7 +212,6 @@
     margin: 1rem auto;
   }
   strong {
-    text-decoration: underline;
     text-decoration-thickness: 3px;
     text-underline-position: above;
   }

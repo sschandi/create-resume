@@ -48,10 +48,10 @@ const Skill: React.FC<Props> = (props) => {
           <animated.div key={item.id} style={styleProps} className="content__wrapper">
             <div className="content__el content--skill">
               <div className="input">
-                <label>Skill</label>
+                <label>Competenties</label>
                 <input
                   name="name"
-                  placeholder="Skill"
+                  placeholder="Competenties"
                   value={item.name}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()

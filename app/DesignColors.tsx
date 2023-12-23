@@ -46,14 +46,14 @@ const DesignColors: React.FC = () => {
   return (
     <div className="design-colors">
       <h3 className="colors__title">
-        Palette
+        
         <span style={{ display: 'flex' }}>
           {colors ?
-            <button className="btn btn-primary btn-compact" onClick={() => setColors(null)}>Use Default</button> :
-            <button className="btn btn-secondary btn-compact" disabled={true}>Using Default</button>
+            <button className="btn btn-primary btn-compact" onClick={() => setColors(null)}>Standaard kleur</button> :
+            <button className="btn btn-secondary btn-compact" disabled={true}>Standaard kleur</button>
           }
           {(!viewPalettes || !open) && <button className="btn btn-primary btn-compact" onClick={() => setOpen((open) => !open)}>
-            {open ? 'Close' : 'View'}
+            {open ? 'Toepassen' : 'Kleurenpalet'}
           </button>}
         </span>
       </h3>

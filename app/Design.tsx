@@ -60,8 +60,8 @@ const Design = ({ active }: { active: boolean }) => {
         <div className="design__main">
           <div>
             <div className="design__title">
-              <h1>Design</h1>
-              <button className="btn btn-primary" onClick={downloadActive}>Download Resume</button>
+              <h3></h3>
+              <button className="btn btn-primary" onClick={downloadActive}>Download CV</button>
             </div>
             <div className="design">
               <div key={size.width} className="design__preview">
@@ -71,7 +71,8 @@ const Design = ({ active }: { active: boolean }) => {
           </div>
           <div className="content__select--wrapper">
             <div className="content__select design__select">
-              <h3>Template</h3>
+              <h3>Vormgeving</h3>
+              <p>Kies jouw vormgeving in het kleurenpalet.</p>
               <div className="content__select--items">
                 {templateList.map((template) => {
                   return (
@@ -86,16 +87,16 @@ const Design = ({ active }: { active: boolean }) => {
                 })}
               </div>
               <DesignColors />
-              <button className="btn btn-primary design__download" onClick={downloadActive}>Download Resume</button>
+              <button className="btn btn-primary design__download" onClick={downloadActive}>Download CV</button>
             </div>
           </div>
         </div>
       </div>
-      <Modal show={showModal} title="Enjoy your Resume" close={() => setShowModal(false)}>
+      <Modal show={showModal} title="Maak nu een account aan!" close={() => setShowModal(false)}>
         <div className="text--center">
-          <p>If you need to make changes to this resume, you can re-upload the PDF to continue where you left off.</p>
-          <p>Comments, issues, or feature requests? Email at: <a href="mailto:createresume@chandi.ca" className="link">createresume@chandi.ca</a></p>
-          <p>Good luck!</p>
+          <p>Upload jouw gemaakte CV in je account om te starten.</p>
+          <p>Klik hiervoor rechtsboven op account aanmaken.</p>
+          <p>CV aanpassen? Upload deze opnieuw in de CV maker.</p>
         </div>
       </Modal>
     </div>

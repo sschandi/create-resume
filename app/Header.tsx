@@ -32,56 +32,56 @@ const Header: React.FC = () => {
 
   return (
     <div className="component-container">
-      <h1>Header</h1>
-      <p>Lets start off with the easy stuff.</p>
+      <h3>Persoonlijke informatie</h3>
+      <p></p>
       <div className="header__personal">
         <div className="input name">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Naam</label>
           <input
             value={header.name}
             type="text"
             name="name"
-            placeholder="John Smith"
+            placeholder="Volledige naam"
             onChange={headerChange}
           />
         </div>
         <div className="input address">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Adres</label>
           <input
             value={header.address}
             type="text"
             name="address"
-            placeholder="123 Sesame Street"
+            placeholder="Straatnaam + huisnummer"
             onChange={headerChange}
           />
         </div>
         <div className="input city">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">Woonplaats</label>
           <input
             value={header.city}
             type="text"
             name="city"
-            placeholder="Vancouver"
-            onChange={headerChange}
-          />
-        </div>
-        <div className="input province">
-          <label htmlFor="province">Province / State</label>
-          <input
-            value={header.province}
-            type="text"
-            name="province"
-            placeholder="BC"
+            placeholder="Woonplaats"
             onChange={headerChange}
           />
         </div>
         <div className="input postal">
-          <label htmlFor="postalCode">Postal / Zip Code</label>
+          <label htmlFor="postalCode">Postcode</label>
           <input
             value={header.postalCode}
             type="text"
             name="postalCode"
-            placeholder="1A2 B3C"
+            placeholder="Postcode"
+            onChange={headerChange}
+          />
+        </div>
+        <div className="input province">
+          <label htmlFor="province">Provincie</label>
+          <input
+            value={header.province}
+            type="text"
+            name="province"
+            placeholder="Provincie"
             onChange={headerChange}
           />
         </div>

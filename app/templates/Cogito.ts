@@ -5,9 +5,9 @@ import { Header, Contact } from '../ResumeTypes'
 export default class Cogito extends Base {
 	constructor() {
     const colors: Colors = {
-      primary: '#053f5e',
-      secondary: '#393e46',
-      accent: '#e3e3e3'
+      primary: '#49494b',
+      secondary: '#000000',
+      accent: '#dbdbdb'
     }
     const font: Partial<Font> = {
 			name: 'OpenSans',
@@ -46,7 +46,7 @@ export default class Cogito extends Base {
         margin: [10, 7, 10, 3]
       }
     }
-    super('Cogito', colors, font, styles)
+    super('Financieel', colors, font, styles)
 	}
 
 	protected renderHeader(header: Header): Record<string, unknown> {

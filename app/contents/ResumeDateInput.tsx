@@ -7,7 +7,7 @@ interface Props {
   label: string
 }
 
-const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
+const months = ['Jan.', 'Feb.', 'Mrt.', 'Apr.', 'Mei', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dec.']
 const years = () => {
   const yrs = []
   const date = new Date()
@@ -21,9 +21,9 @@ const years = () => {
 const ResumeDateInput: React.FC<Props> = ({ value, onChange, label }) => {
   const [date, setDate] = useState({
     month1: 'Jan.',
-    year1: '2010',
+    year1: '2023',
     month2: 'Aug.',
-    year2: '2012',
+    year2: '2024',
     present: false
   })
   
@@ -123,7 +123,7 @@ const ResumeDateInput: React.FC<Props> = ({ value, onChange, label }) => {
               style={{ width: 'unset', marginRight: '0.25rem' }}
               onChange={handleChange}
             />
-            Present
+            Heden
           </label>
         </div>
       </div>

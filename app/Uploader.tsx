@@ -11,7 +11,7 @@ interface Props {
   btnText?: string
 }
 
-const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload PDF' }) => {
+const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload CV(PDF)' }) => {
   const { updateHeader, setSections, setTemplate, setColors } = useContext(AppContext);
   const input = useRef<HTMLInputElement | null>(null)
   const [error, setError] = useState({ show: false, message: '' })
@@ -39,7 +39,7 @@ const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload
     loadingTask.promise.then((doc: any) => {
       doc.getMetadata().then((data: any) => {
         if (!data || !data.info || !data.info.Custom || !data.info.Custom.serialized) {
-          setError({ show: true, message: 'Sorry, only resumes created here can be re-uploaded' })
+          setError({ show: true, message: 'Sorry, alleen een cv dat hier is gemaakt kan opnieuw worden geüpload' })
           return
         }
         try {
@@ -52,11 +52,11 @@ const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload
 
           next()
         } catch (e) {
-          setError({ show: true, message: 'Error, file data is corrupt' })
+          setError({ show: true, message: 'Fout, bestandsgegevens zijn beschadigd' })
         }
       })
     }).catch(() => {
-      setError({ show: true, message: 'Error reading file' })
+      setError({ show: true, message: 'Fout bij lezen bestand' })
     })
   }
 
@@ -78,7 +78,7 @@ const Uploader: React.FC<Props> = ({ next, btnClasses = 'btn', btnText = 'Upload
       </button>
       <Modal show={error.show} title="Error" close={() => setError({ show: false, message: '' })}>
         <div className="text--danger">
-          <p>Unable to Process</p>
+          <p>Kan verzoek niet verwerken</p>
           <p>{error.message}</p>
         </div>
       </Modal>

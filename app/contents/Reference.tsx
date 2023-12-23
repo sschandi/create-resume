@@ -48,10 +48,10 @@ const Reference: React.FC<Props> = (props) => {
           <animated.div key={item.id} style={styleProps} className="content__wrapper">
             <div className="content__el content--reference">
               <div className="input">
-                <label>Name</label>
+                <label>Naam</label>
                 <input
                   name="name"
-                  placeholder="Name"
+                  placeholder="Naam"
                   value={item.name}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
@@ -60,10 +60,10 @@ const Reference: React.FC<Props> = (props) => {
                 />
               </div>
               <div className="input">
-                <label>Occupation</label>
+                <label>Functietitel</label>
                 <input
                   name="occupation"
-                  placeholder="Occupation"
+                  placeholder="Functietitel"
                   value={item.occupation}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
@@ -72,7 +72,7 @@ const Reference: React.FC<Props> = (props) => {
                 />
               </div>
               <div className="input">
-                <label>Company</label>
+                <label>Bedrijfsnaam</label>
                 <input
                   name="company"
                   placeholder="Company"
@@ -84,10 +84,10 @@ const Reference: React.FC<Props> = (props) => {
                 />
               </div>
               <div className="input">
-                <label>Address</label>
+                <label>Bedrijfsadres</label>
                 <input
                   name="companyAddress"
-                  placeholder="Company Address"
+                  placeholder="Bedrijfsadres"
                   value={item.companyAddress}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
@@ -96,10 +96,10 @@ const Reference: React.FC<Props> = (props) => {
                 />
               </div>
               <div className="input">
-                <label>Phone</label>
+                <label>Telefoonnummer</label>
                 <input
                   name="phone"
-                  placeholder="Phone"
+                  placeholder="Telefoonnummer"
                   value={item.phone}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()

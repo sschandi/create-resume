@@ -47,10 +47,10 @@ const Education: React.FC<Props> = (props) => {
           <animated.div key={item.id} style={styleProps} className="content__wrapper">
             <div className="content__el content--education">
               <div className="input">
-                <label>Degree</label>
+                <label>Graad/titel</label>
                 <input
                   name="degree"
-                  placeholder="Degree"
+                  placeholder="Graad/titel"
                   value={item.degree}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
@@ -59,10 +59,10 @@ const Education: React.FC<Props> = (props) => {
                 />
               </div>
               <div className="input">
-                <label>Program</label>
+                <label>Studierichting</label>
                 <input
                   name="program"
-                  placeholder="Program"
+                  placeholder="Studierichting"
                   value={item.program}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
@@ -71,10 +71,10 @@ const Education: React.FC<Props> = (props) => {
                 />
               </div>
               <div className="input">
-                <label>University</label>
+                <label>Onderwijsinstelling</label>
                 <input
                   name="university"
-                  placeholder="University"
+                  placeholder="Onderwijsinstelling"
                   value={item.university}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()
@@ -88,10 +88,10 @@ const Education: React.FC<Props> = (props) => {
                 onChange={(value) => updateEducationElement(index, 'date', value)}
               />
               <div className="input input--full">
-                <label>Note (Optional)</label>
+                <label>Beschrijving (Optioneel)</label>
                 <input
                   name="note"
-                  placeholder="Note (Optional)"
+                  placeholder="Beschrijving (Optioneel)"
                   value={item.note}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     e.preventDefault()

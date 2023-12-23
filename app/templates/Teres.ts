@@ -5,9 +5,9 @@ import { Education } from '../ResumeTypes'
 export default class Teres extends Base {
   constructor() {
     const colors: Colors= {
-      primary: '#00b8a9',
-      secondary: '#212121',
-      accent: '#9c9c9c'
+      primary: '#0050b8',
+      secondary: '#000000',
+      accent: '#dbdbdb'
     }
     const font: Partial<Font> = {
       name: 'Quicksand'
@@ -45,7 +45,7 @@ export default class Teres extends Base {
         margin: [10, 7, 10, 3]
       }
     }
-    super('Teres', colors, font, styles)
+    super('Commercieel', colors, font, styles)
 	}
 	
 	createListTitleAndExtra(title: string, extra: string): Record<string, unknown> {

@@ -23,12 +23,12 @@ export default class Base {
     defaultSize: 11
   }
   public colors: Colors = {
-    primary: '#00b8a9',
+    primary: '#0050b8',
     secondary: '#212121',
     accent: 'grey'
   }
   public defaultColors: Colors = {
-    primary: '#00b8a9',
+    primary: '#0050b8',
     secondary: '#212121',
     accent: 'grey'
   }
@@ -103,7 +103,7 @@ export default class Base {
         author: header.name,
         subject: 'Resume',
         keywords: '',
-        creator: 'Create Resume',
+        creator: 'deBanenSite.nl App',
         serialized
       }
     }
